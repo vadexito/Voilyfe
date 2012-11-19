@@ -1,0 +1,90 @@
+.image-front
+{
+position: fixed;
+width: 200%;
+height: 200%;
+left: -50%;
+background: black;
+}
+
+.logo-site
+{
+    width:60px;
+    height:60px;
+    margin-left:20px;
+}
+
+#image-access
+{
+    display: block;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.front-card 
+{
+    top: 50%;
+    height: 328px;
+    width: 838px;
+    margin: 25px 0 0 -418px;
+    position: absolute;
+    left: 50%;
+}
+
+
+#front-welcome 
+{
+   padding: 5% 0 1% 0;
+}
+
+.front-welcome-text h1
+{
+    margin-bottom: 3px;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+}
+
+.front-welcome-text h4
+{
+    font-size:20px;
+    font-style: italic;
+}
+
+.front-welcome-text 
+{
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 22px;
+    color: #EEE;
+    text-align: left;
+    text-shadow: black 0 1px 2px;
+    padding: 0;
+    bottom: 50%;
+    margin-bottom: 15%;
+}
+
+/*******
+*
+* login form
+*
+********/
+#formLogin label.checkbox
+{
+    font-size: 11px;
+}
+
+#submit_login
+{
+    margin-bottom: 10px;
+}
+
+.inline-list 
+{
+margin-left: 0;
+}

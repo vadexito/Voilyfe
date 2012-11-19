@@ -1,0 +1,32 @@
+.logo-site
+{
+    width:40px;
+    height:40px;
+    margin-left:20px;
+}
+
+
+/* change background, remove other border, unbold text */
+.ui-input-text,.ui-focus{
+  background-image: none;
+  border: 0;
+  font-weight: normal;
+}
+
+/*
+================================================================
+slide show access page
+================================================================
+*/
+
+#fluid_container
+{
+    margin: 10% auto;
+    max-width: 1000px;
+    width: 70%;
+}
+
+#slide-show
+{
+    margin-bottom: 30%;
+}

@@ -1,0 +1,245 @@
+/*
+================================================================================
+global
+================================================================================
+*/
+
+
+
+body {
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+
+.ui-page {
+    background: transparent;
+    background: url('/images/background/mobile.jpg');
+    
+}
+.ui-content{
+    background: transparent;
+}
+
+ul[data-role=listview] a p
+{
+    color: #E9572A;
+    text-shadow: 0 -0.7px 0 #F24611
+    
+}
+
+#input_latitude, #input_longitude
+{
+    display:none;
+}
+
+/*
+================================================================================
+event line display
+================================================================================
+*/
+
+li.event-line a.ui-link-inherit.event-line-link
+{
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+}
+
+
+
+
+/*
+================================================================================
+custom icons
+================================================================================
+*/
+.nav-glyphish .ui-btn .ui-btn-inner 
+{
+    padding-top: 40px !important; 
+}
+
+.nav-glyphish .ui-btn .ui-icon 
+{ 
+    width: 30px!important;
+    height: 30px!important;
+    margin-left: -15px !important;
+    box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.ui-icon-mylife-graphs,.ui-icon-mylife-calendar,.ui-icon-mylife-last-events,
+.ui-icon-mylife-options,
+.ui-icon-mylife-location,.ui-icon-mylife-persons,.ui-icon-mylife-tags,
+.ui-icon-mylife-image,
+.ui-icon-mylife-price,.ui-icon-mylife-meals,.ui-icon-mylife-restaurants,.ui-icon-mylife-mealtype
+.ui-icon-mylife-quantity,.ui-icon-mylife-medicine,.ui-icon-mylife-duration,.ui-icon-mylife-typeswimming,
+.ui-icon-mylife-swimming_location
+{ 
+    background-size: 24px 22px; 
+}
+
+.ui-icon-mylife-graphs{background:url('/images/icons/nav_bar/graphs.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-calendar{background:url('/images/icons/nav_bar/calendar.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-last-events{background:url('/images/icons/nav_bar/last-events.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-options{background:url('/images/icons/nav_bar/options.png') 50% 50% no-repeat;} 
+
+.ui-icon-mylife-location{background:url('/images/icons/nav_bar/location.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-persons{background:url('/images/icons/nav_bar/persons.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-tags{background:url('/images/icons/nav_bar/tags.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-image{background:url('/images/icons/nav_bar/image.png') 50% 50% no-repeat;} 
+
+.ui-icon-mylife-price{background:url('/images/icons/nav_bar/price.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-restaurants{background:url('/images/icons/nav_bar/restaurants.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-meals{background:url('/images/icons/nav_bar/meals.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-mealtype{background:url('/images/icons/nav_bar/mealtype.png') 50% 50% no-repeat;} 
+
+.ui-icon-mylife-quantity{background:url('/images/icons/nav_bar//quantity.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-medicine{background:url('/images/icons/nav_bar/medicine.png') 50% 50% no-repeat;} 
+
+.ui-icon-mylife-duration{background:url('/images/icons/nav_bar/duration.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-typeswimming{background:url('/images/icons/nav_bar/typeswimming.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-swimming_location{background:url('/images/icons/nav_bar/swimming_location.png') 50% 50% no-repeat;} 
+
+
+
+div[data-id=footer] .ui-btn-text
+{
+    font-size: 10px;
+}
+
+a.event-date
+{
+    text-decoration: none;
+}
+
+.widget-graph
+{
+    height:100px;
+    width:200px;
+}
+
+
+
+/*
+================================================================
+graphs for stats on events
+================================================================
+*/
+#chart_div
+{
+    margin: 20px auto;
+    max-width: 1000px;
+    width: 80%;
+}
+
+.ui-datebox-griddate
+{
+    width: 13%;
+    font-size:16px;
+}
+
+.ui-datebox-container 
+{
+    width:99%
+}
+
+/*
+================================================================
+Nav bar element customization (left and right buttons and title)
+================================================================
+*/
+
+.ui-btn-corner-all 
+{
+    -moz-border-radius: 0.5em /*{global-radii-buttons}*/;
+    -webkit-border-radius: 0.5em /*{global-radii-buttons}*/;
+    border-radius: 0.5em /*{global-radii-buttons}*/;
+}
+
+form[role=search] div
+{
+    -moz-border-radius: 1em /*{global-radii-buttons}*/;
+    -webkit-border-radius: 1em /*{global-radii-buttons}*/;
+    border-radius: 1em /*{global-radii-buttons}*/;
+}
+
+.ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-mini .ui-btn-inner 
+{
+    font-size: 11px;
+}
+
+.ui-header .ui-title, .ui-footer .ui-title 
+{
+    font-size: 22px;
+    margin: .3em 30% .5em ;
+}
+
+.ui-header .ui-btn-left, .ui-header .ui-btn-right, .ui-footer .ui-btn-left, .ui-footer .ui-btn-right 
+{
+top: 5px;
+}
+
+/*
+================================================================
+eventcreate / form element : tags
+================================================================
+*/
+
+.li-tags
+{
+    margin-left: 1em;
+    
+}
+
+
+
+/*
+================================================================
+eventcreate / title and date in title
+================================================================
+*/
+
+h1.title_event_form.ui-title
+{
+    margin:5px;
+    padding:0;
+    line-height: 15px;
+}
+.title_event_form a.button_date
+{
+    font-size: 14px;
+    text-decoration: none;
+    margin:0;
+    color:white;
+    
+}
+
+.title_event_form a.button_date:hover
+{
+    color:white;
+}
+
+.title_event_form span
+{
+    font-size: 18px;
+    margin:0;
+}
+
+form pre
+{
+    font-size: 9px;
+}
+
+/* plus button for more options next to input*/
+img.button-option-plus
+{
+    float: right;
+    position:relative;
+    margin:5px 20px ;
+    max-height: 25px;
+    max-width: 25px;
+}

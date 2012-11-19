@@ -1,0 +1,46 @@
+.hero-unit
+{
+    padding:30px;
+    margin-top: 20px;
+}
+
+#new-event-btn
+{
+    margin-top: 40px;
+}
+
+#calendar-events
+{
+    margin-top: 40px;
+}
+
+#add_event
+{
+    margin:auto;
+}
+
+.form-excep-submit
+{
+    margin:auto;
+    width: 50%;
+}
+
+#add_event input[type="submit"]
+{
+    margin-top: 50px;
+}
+
+a.add-event-button
+{
+    float:right;
+}
+
+#map_canvas, #map
+{
+    width: 300px;
+    height: 300px;
+}
+
+
+
+

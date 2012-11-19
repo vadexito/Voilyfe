@@ -1,0 +1,216 @@
+/* Google Font API */
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700|Droid+Sans:700);
+
+/* import core styles | Basis-Stylesheets einbinden */
+@import url(../../yaml/core/base.css);
+
+/* import screen layout | Screen-Layout einbinden */
+@import url(../../yaml/navigation/hlist.css);
+@import url(../../yaml/navigation/vlist.css);
+@import url(../../yaml/forms/gray-theme.css);
+
+@import url(../../yaml/screen/typography.css);
+@import url(../../yaml/screen/grid-960-12.css);
+@import url(../../yaml/screen/screen-FULLPAGE-layout.css);
+
+ 
+section
+{
+    display: inline-block;
+    vertical-align: top;
+    text-align: justify;
+    margin: 20px;
+}
+
+
+header h1
+{
+    margin:0;
+}
+
+/**
+ * Footer(s) of the site
+ *
+ **/
+
+footer
+{
+    clear:left;
+    background:#efefef;
+    text-align:center;
+}
+
+footer a 
+{
+    background-color: #efefef;
+    color: #7F7e7d;
+    text-decoration: none;
+} 
+
+footer a:hover 
+{
+    background-color: #efefef;
+    color: #000;
+    text-decoration: none;
+} 
+
+
+footer ul 
+{
+    list-style-type: none; 
+    padding: 0;
+    margin:0;
+}
+
+footer li 
+{
+    display: inline; 
+    padding: 0 5px;
+}
+
+
+pre
+{
+    font-size: 5px;
+}
+
+#section_access_shortpres
+{
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    padding-top: 100px ;
+}
+
+#text_shortpres
+{ 
+  width:150px; 
+  display:inline-block;
+  line-height:1.2; 
+  text-align:left; 
+}
+
+#section_access_login
+{
+    width: 250px;
+    margin-right: 15px;
+}
+
+#section_access_signin
+{
+    width: 250px;
+    margin-right: 15px;
+    
+}
+#section_event_calendar
+{
+    width: 150px;
+    margin-right: 15px;
+}
+
+#section_event_list
+{
+    width: 350px;
+    margin-right: 15px;
+}
+
+#section_event_stat
+{
+    width: 250px;
+    margin-right: 15px;
+}
+
+#sub_menu_new_events
+{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/**
+ * main horizontal menu
+ *
+ **/
+
+
+#upper-menu
+{
+    position:static;
+}
+
+#upper-menu, #upper-menu ul  /*Liste   */   
+{
+        padding : 0; /* pas de marge intérieure */
+        margin : 0;  /*ni extérieure */
+        list-style : none;  /*on supprime le style par défaut de la liste */
+        line-height : 21px; /* on définit une hauteur pour chaque élément */
+        text-align : center; /* on centre le texte qui se trouve dans la liste */
+}
+
+
+#upper-menu a  /*Contenu des listes */
+{
+        display : block; /* on change le type d'élément, les liens deviennent des balises de type block */
+        padding : 0; /* aucune marge intérieure */
+        background : #222; /* couleur de fond         */
+        color : #fff; /* couleur du texte */
+        text-decoration : none; /* on supprime le style par défaut des liens (la plupart du temps = souligné) */
+        width : 144px;/*  largeur */
+}
+
+
+#upper-menu li /* Elements des listes  */     
+{ 
+        float : left; 
+}
+
+
+#upper-menu li ul  /*Sous-listes */
+{ 
+        position: absolute;  /*Position absolue */
+        width: 144px;  /*Largeur des sous-listes */
+        left: -999em;  /*Hop, on envoie loin du champ de vision */
+}
+
+
+
+#upper-menu li ul li /* Éléments de sous-listes */
+{
+       /* pour IE qui ne reconnaît pas "transparent" (comme précédemment) */
+        border-top : 1px solid #CCC;/*  on met une bordure blanche en haut de chaque élément d'une sous liste */
+}
+
+/* IE ne reconnaissant pas le sélecteur ">" */
+html>body #upper-menu li ul li                
+{
+        border-top : 1px solid transparent; /* on met une bordure transparente en haut de chaque élément*/ 
+}
+
+#upper-menu li ul ul 
+{
+        margin    : -22px 0 0 144px ;/*  On décale les sous-sous-listes pour qu'elles ne soient pas au dessus des sous-listes*/  
+        /* pour IE qui ne reconnaît pas "transparent" (comme précédemment) */
+        border-left     : 1px solid #fff ; /* Petite bordure à gauche pour ne pas coller ...  */     
+}
+
+ /*IE ne reconnaissant pas le sélecteur ">" ... je me répète ;-) */
+html>body #upper-menu li ul ul                
+{
+        border-left     : 1px solid transparent ; /* on met une bordure transparente sur la gauche de chaque élément */
+}
+
+#upper-menu a:hover /* Lorsque la souris passe sur un des liens  */   
+{
+        background: #aaa; /* ... et au contraire, le fond en blanc */
+}
+
+#upper-menu li:hover ul ul, #upper-menu li.sfhover ul ul  /*Sous-sous-listes lorsque la souris passe sur un élément de liste */
+{
+        left: -999em; /* On expédie les sous-sous-listes hors du champ de vision */
+}
+
+#upper-menu li:hover ul, #upper-menu li li:hover ul, #upper-menu li.sfhover ul, #upper-menu li li.sfhover ul /*  Sous-listes lorsque la souris passe sur un élément de liste ET sous-sous-lites lorsque la souris passe sur un élément de sous-liste */
+{
+        left: auto;  /*Repositionnement normal */
+        min-height: 0; /* Corrige un bug sous IE */
+}
+

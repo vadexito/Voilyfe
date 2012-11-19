@@ -1,0 +1,26 @@
+
+.widget
+{
+    height:30%;
+    margin:2%;
+}
+
+li.widget-divider
+{
+    height: 1px;
+    margin: 9px 1px;
+    overflow: hidden;
+    background-color: #E5E5E5;
+    border-bottom: 1px solid white;
+    line-height: 20px;
+    list-style: none;
+    
+}
+
+#side-menu div.well
+{
+    max-width: 240px;
+    padding: 8px 0;
+}
+
+

@@ -1,0 +1,18 @@
+AuthName "mylife admin"
+AuthType Basic
+AuthUserFile "/homepages/29/d414259862/htdocs/Mylife/public/.htpasswd"
+Require valid-user
+
+Allow from 91.64.221.133
+Allow from 82.225.161.105
+
+SetEnv APPLICATION_ENV staging
+AddDefaultCharset utf-8
+Options -MultiViews
+RewriteEngine ON
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
