@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./TestBootstrap.php" colors="true">
+    <testsuite name="Mylife">
+        <directory>./</directory>
+    </testsuite>
+    <listeners>
+        <listener class="Lagged_Test_PHPUnit_ControllerTestCase_Listener" file="Lagged/Test/PHPUnit/ControllerTestCase/Listener.php" />
+    </listeners>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../application</directory>
+            <directory suffix=".php">../library/ZC/Repository</directory>
+            <directory suffix=".php">../library/Pepit/AssociationType</directory>
+            <directory suffix=".php">../library/Pepit/Controller</directory>
+            <directory suffix=".php">../library/Pepit/Filter</directory>
+            <directory suffix=".php">../library/Pepit/Doctrine</directory>
+            <directory suffix=".php">../library/Pepit/Form</directory>
+            <directory suffix=".php">../library/Pepit/Items</directory>
+            <directory suffix=".php">../library/Pepit/Model</directory>
+            <directory suffix=".php">../library/Pepit/Validate</directory>
+            <exclude>
+                <directory suffix=".phtml">../</directory>
+                <directory suffix=".php">../application/modules/events/forms/Elements</directory>
+            </exclude> 
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="./log/report" charset="UTF-8"
+        yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
+        <log type="testdox-html" target="./log/testdox.html"/>
+    </logging>
+</phpunit>

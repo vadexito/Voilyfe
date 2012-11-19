@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>application/modules/backend/models</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--[if IE]><script src="excanvas.compressed.js"></script><![endif]-->
+    <script src="RGraph.common.js" ></script>
+    <script src="RGraph.bar.js" ></script>
+    <script src="RGraph.scatter.js" ></script>
+  </head>
+
+  <body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="title">application/modules/backend/models</td></tr>
+      <tr><td><div align="center"><p><a href="application_modules_backend_models.html">Back to Code Coverage report</a></p></div></td></tr>
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+    </table>
+
+    <br />
+
+    <center>
+      <table width="90%" cellpadding="2" cellspacing="1" border="0">
+        <tr>
+          <td valign="top">
+            <h2>Class Coverage Distribution</h2>
+            <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
+            <script>
+            var ccd = new RGraph.Bar('classCoverageDistribution', [7,0,0,0,0,0,0,0,0,0,0,0]);
+            ccd.Set('chart.background.barcolor1', 'white');
+            ccd.Set('chart.background.barcolor2', 'white');
+            ccd.Set('chart.colors', ['blue']);
+            ccd.Set('chart.shadow', true);
+            ccd.Set('chart.shadow.offsetx', 3);
+            ccd.Set('chart.shadow.offsety', 3);
+            ccd.Set('chart.labels', ['0%','0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%','100%']);
+            ccd.Set('chart.text.size', 5);
+            ccd.Draw();
+            </script>
+          </td>
+
+          <td valign="top">
+            <h2>Class Complexity</h2>
+            <canvas id="classComplexity" width="475" height="200"></canvas>
+            <script>
+            var cc = new RGraph.Scatter('classComplexity', [[0,13,"blue","Backend_Model_Abstract_Container"],[0,21,"blue","Backend_Model_Backup"],[0,22,"blue","Backend_Model_Categories"],[0,11,"blue","Backend_Model_GoogleAPI"],[0,14,"blue","Backend_Model_Init"],[0,29,"blue","Backend_Model_ItemGroups"],[0,47,"blue","Backend_Model_Items"]]);
+            cc.Set('chart.xmax', 100);
+            cc.Set('chart.background.barcolor1', 'white');
+            cc.Set('chart.background.barcolor2', 'white');
+            cc.Set('chart.tickmarks', 'plus');
+            cc.Set('chart.ticksize', 5);
+            cc.Set('chart.text.size', 5);
+            cc.Set('chart.ylabels', false);
+            cc.Draw();
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <h2>Top Project Risks</h2>
+            <ul>
+              <li><a href="application_modules_backend_models_Items.php.html#3">Backend_Model_Items</a> (2256)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#3">Backend_Model_ItemGroups</a> (870)</li>
+              <li><a href="application_modules_backend_models_Categories.php.html#9">Backend_Model_Categories</a> (506)</li>
+              <li><a href="application_modules_backend_models_Backup.php.html#9">Backend_Model_Backup</a> (462)</li>
+              <li><a href="application_modules_backend_models_Init.php.html#11">Backend_Model_Init</a> (210)</li>
+              <li><a href="application_modules_backend_models_Abstract_Container.php.html#10">Backend_Model_Abstract_Container</a> (182)</li>
+              <li><a href="application_modules_backend_models_GoogleAPI.php.html#11">Backend_Model_GoogleAPI</a> (132)</li>
+
+            </ul>
+          </td>
+
+          <td valign="top">
+            <h2>Least Tested Methods</h2>
+            <ul>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#315">Backend_Model_ItemGroups::getRowContainerShortEntityName</a> (0%)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#302">Backend_Model_ItemGroups::getParentClassContainer</a> (0%)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#295">Backend_Model_ItemGroups::getRowContainerEntityName</a> (0%)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#321">Backend_Model_ItemGroups::getContainerRowModel</a> (0%)</li>
+              <li><a href="application_modules_backend_models_Items.php.html#23">Backend_Model_Items::getFormElementPath</a> (0%)</li>
+              <li><a href="application_modules_backend_models_Items.php.html#49">Backend_Model_Items::getFormElementFromDoctrineArray</a> (0%)</li>
+              <li><a href="application_modules_backend_models_Items.php.html#40">Backend_Model_Items::update</a> (0%)</li>
+              <li><a href="application_modules_backend_models_Items.php.html#33">Backend_Model_Items::insert</a> (0%)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#282">Backend_Model_ItemGroups::getContainerForRowsPath</a> (0%)</li>
+              <li><a href="application_modules_backend_models_ItemGroups.php.html#277">Backend_Model_ItemGroups::getNameSpaceForContainer</a> (0%)</li>
+
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+    <br />
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.5.15 at Mon Nov 19 12:14:31 CET 2012.</td></tr>
+    </table>
+
+    <br/>
+  </body>
+</html>
