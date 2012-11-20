@@ -10,7 +10,7 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         $this->setPathsIcon();
         $categoryName = 'category_'.$event->category->name;
         
-        return $this->_renderLine(
+        return $this->renderLine(
             $this->_getThumbnailSrc($event),
             ucfirst($this->view->translate($categoryName)),
             $this->_renderCommonProperties($event),
@@ -46,7 +46,7 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         }
     }
     
-    protected function _renderLine($imgSrc,$title,$subTitle,$subTitle2,$href)
+    public function renderLine($imgSrc,$title,$subTitle,$subTitle2,$href)
     {
         return '<li class="event-line">
         <a class="event-line-link" href="'.$href.'">

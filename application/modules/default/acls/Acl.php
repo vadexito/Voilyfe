@@ -29,7 +29,6 @@ class Application_Acl_Acl extends Zend_Acl
             
             ->add(new Application_Acl_UserResource())
             ->add(new Application_Acl_WithOwnerResource('events:event'))
-            ->add(new Application_Acl_WithOwnerResource('events:ajax'))
             ->add(new Application_Acl_WithOwnerResource('events:itemgrouprow'))
             ->add(new Application_Acl_WithOwnerResource('events:itemrow'))
                 
@@ -43,6 +42,7 @@ class Application_Acl_Acl extends Zend_Acl
                 
             ->add(new Zend_Acl_Resource('events:admin'),Application_Acl_Resources::ADMIN_SECTION)
             ->add(new Zend_Acl_Resource('events:rest'),Application_Acl_Resources::ACCOUNT_FREE)
+            ->add(new Zend_Acl_Resource('events:ajax'),Application_Acl_Resources::ACCOUNT_FREE)
             ->add(new Zend_Acl_Resource('members:admin'),Application_Acl_Resources::ADMIN_SECTION)
             
         
@@ -64,12 +64,8 @@ class Application_Acl_Acl extends Zend_Acl
             ->allow(Application_Acl_Roles::MEMBER,'events:event',[
                 'index','create','delete','edit'
             ])
-            ->allow(Application_Acl_Roles::MEMBER,'events:ajax',[
-                'widgetchart','eventcalendar','datelocale','validateform',
-                'knownlocations','googlelocations'
-            ])
+                
             ->allow(Application_Acl_Roles::MEMBER,'events:event',['edit','delete'])
-            ->allow(Application_Acl_Roles::MEMBER,'events:ajax',['edit','delete'])
             ->allow(Application_Acl_Roles::MEMBER,'events:itemgrouprow',['index','create','delete','edit','showall'])
             ->allow(Application_Acl_Roles::MEMBER,'events:itemrow',['index','create','delete','edit','showall']);
             
@@ -82,7 +78,6 @@ class Application_Acl_Acl extends Zend_Acl
     {
         
         $this->allow(Application_Acl_Roles::MEMBER,'events:event',['edit','delete'],new Application_Acl_OwnerAssertion());
-        $this->allow(Application_Acl_Roles::MEMBER,'events:ajax',['edit','delete'],new Application_Acl_OwnerAssertion());
         $this->allow(Application_Acl_Roles::MEMBER,'events:itemgrouprow',['edit','delete'],new Application_Acl_OwnerAssertion());
         $this->allow(Application_Acl_Roles::MEMBER,'events:itemrow',['edit','delete'],new Application_Acl_OwnerAssertion());
         $this->allow(Application_Acl_Roles::MEMBER,'members:user',['edit','delete'],new Application_Acl_OwnerAssertion());

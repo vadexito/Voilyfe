@@ -1,7 +1,9 @@
 <?php 
 $this->headLink()->prependStylesheet('/css/lib/datebox.css');
-$this->headScript()->appendFile('/js/lib/jqm-datebox/datebox-core.js');
-$this->headScript()->appendFile('/js/lib/jqm-datebox/datebox/datebox-core-modeCalbox.js');
+
+$this->inlineScript()->offsetSetFile(100,'https://www.google.com/jsapi'); 
+$this->inlineScript()->offsetSetFile(101,'/js/lib/jqm-datebox/datebox-core.js');
+$this->inlineScript()->offsetSetFile(102,'/js/lib/jqm-datebox/datebox-core-modeCalbox.js');
 if ($this->category->name !=='all')
 {
     $name = 'category_'.$this->category->name;

@@ -126,7 +126,7 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
             $jsFile = '/application/js/'.$prefix.$this->_suffix.'.js';
             if (file_exists(APPLICATION_PATH.'/../public'.$jsFile))
             {
-                $this->_layout->getView()->inlineScript()->appendFile($jsFile);
+                $this->_layout->getView()->inlineScript()->offsetSetFile(600,$jsFile);
                 break;
             }
         }

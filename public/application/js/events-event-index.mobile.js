@@ -1,11 +1,9 @@
-google.load('visualization', '1.0', {'packages':['corechart']});
-
 /*
 ================================================================================
 load google package for graphs / maps
 ================================================================================
 */
-
+google.load('visualization', '1.0', {'packages':['corechart']});
 
 $(function(){
     
@@ -14,21 +12,16 @@ $(function(){
 get category from server
 ================================================================================
 */
-    var categoryId;
+    var categoryId = 'all';
     
     //get category from url for ajax calls if categoryId sent through url
     var pattern1 = /.*container\/(\d+).*/;
-    var pattern2 = /.*event\/showall.*/;
     if (window.location.pathname.match(pattern1)){
+        
         categoryId = window.location.pathname.replace(pattern1,"$1");
-    } else if (window.location.pathname.match(pattern2)){
-        categoryId = 'all';
-    } else {
-        if ($('#categoryId').length > 0){
-            categoryId = $('#categoryId').attr('value');
-        }
     }
-     
+    
+    console.log(categoryId);
     
     
 /*
@@ -38,9 +31,7 @@ SUBPAGE GRAPHS : draw graphs from google chart
 */
 
     if ($('#chart_div').length >0){
-        $.get('/events/ajax/widgetchart/containerId/'
-                        +categoryId
-                        +'/parameter/frequency/format/json',success,'json');
+        
         function success(input){
             
             function drawVisualization() {
@@ -63,6 +54,10 @@ SUBPAGE GRAPHS : draw graphs from google chart
             google.load('visualization', '1.0', {'callback':drawVisualization,'packages':['corechart']}); 
             
         }
+        
+        $.get('/events/ajax/widgetchart/containerId/'
+                        +categoryId
+                        +'/parameter/frequency/format/json',success,'json');
     }
     
 /*

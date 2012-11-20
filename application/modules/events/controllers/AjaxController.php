@@ -2,24 +2,35 @@
 
 class Events_AjaxController extends Zend_Controller_Action
 {
-
+    use Events_Controllers_Trait;
+    
+    protected $_model;
+    protected $_category;
+    
     public function init()
     { 
-        
         $ajaxContext = $this->_helper->getHelper('AjaxContext');
-        $ajaxContext->addActionContext('widgetchart', 'json')
-                    ->addActionContext('eventcalendar', 'json')
-                    ->addActionContext('datelocale', 'json')
-                    ->addActionContext('validateform', 'json')
-                    ->addActionContext('knownlocations', 'json')
-                    ->addActionContext('googlelocations', 'json')
-                    ->initContext();
+        $ajaxContext->addActionContexts([
+            'widgetchart' => 'json',
+            'eventcalendar' => 'json',
+            'datelocale' => 'json',
+            'validateform' => 'json',
+            'knownlocations' => 'json',
+            'googlelocations' => 'json',
+        ])->initContext();
+        
+        $this->_model = new Events_Model_Events();
+        
+        $this->_category = $this->getCategory(
+                $this->_model, 
+                $this->getRequest()->getParam('containerId')
+        );
         
     }
     
     public function widgetchartAction()
     {
-        $optionWidget = NULL;
+        $optionWidget = [];
         $parameter = 'frequency';
         if ($this->getRequest()->getParam('parameter'))
         {
@@ -28,7 +39,7 @@ class Events_AjaxController extends Zend_Controller_Action
         }
         
         
-        if ($this->_category)
+        if (is_numeric($this->_category))
         {
             $events = $this->_model->findEventsByCategoryByMemberIdOrderByDateDesc(
                 Zend_Auth::getInstance()->getIdentity()->id,

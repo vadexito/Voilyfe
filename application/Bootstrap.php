@@ -25,6 +25,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         include_once 'Pepit/Model/Traits/BindForm.php';
         include_once 'Pepit/Model/Traits/Doctrine2.php';
         include_once 'Pepit/Doctrine/Trait.php';
+        include_once APPLICATION_PATH.'/modules/events/controllers/trait/Trait.php';
     }
 
     protected function _initView()

@@ -114,21 +114,20 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
     {
         $view = $this->_layout->getView();
         
+        $view->inlineScript()->offsetSetFile(5,'/js/lib/jquery.js');
         //init library files
         if ($deviceType === self::DEVICE_TYPE_MOBILE)
         {
-            $view->headScript()->prependFile('/js/lib/jquery_mobile/jquery.mobile.js');
-            $view->headScript()->prependFile('/js/lib/jquery.js');
-            $view->inlineScript()->prependFile('/application/js/globalinline.mobile.js');
+            $view->inlineScript()->offsetSetFile(20,'/js/lib/jquery_mobile/jquery.mobile.js');
+            $view->inlineScript()->offsetSetFile(500,'/application/js/globalinline.mobile.js');
         }
         else
         {
+            $view->inlineScript()->offsetSetFile(20,'/js/lib/jquery-ui/jquery-ui.custom.js');
+            $view->inlineScript()->offsetSetFile(30,'/js/lib/bootstrap.js');
+            $view->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
+            $view->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
             
-            $view->headScript()->prependFile('/js/lib/backbone.js');
-            $view->headScript()->prependFile('/js/lib/underscore.js');
-            $view->headScript()->prependFile('/js/lib/bootstrap.js');
-            $view->headScript()->prependFile('/js/lib/jquery-ui/jquery-ui.custom.js');
-            $view->headScript()->prependFile('/js/lib/jquery.js');
         }
     }
     

@@ -35,7 +35,7 @@ class Events_Controller_Action_Helper_Calendar
             
             if (file_exists(APPLICATION_PATH.'/../public'.$pathRel))
             {
-                $view->inlineScript()->prependFile($pathRel);  
+                $view->inlineScript()->offsetSetFile(200,$pathRel);  
             }
         }
         else if ($this->getRequest()->getActionName() === 'index')
@@ -47,7 +47,7 @@ class Events_Controller_Action_Helper_Calendar
             
             if (file_exists(APPLICATION_PATH.'/../public'.$pathRel))
             {
-                $view->headScript()->appendFile($pathRel);  
+                $view->inlineScript()->offsetSetFile(110,$pathRel);  
             }
         }
     }

@@ -3,7 +3,8 @@
 
 class Events_EventController extends Events_Controller_Abstract_Abstract
 {
-
+    use Events_Controllers_Trait;
+    
     protected $_category = NULL;
     
     protected $_config;
@@ -16,36 +17,17 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         //used to initialize predispatch function
         $this->aclResource = 'events:event';
         $this->_model = new Events_Model_Events();
-        $this->_initCategory();
+        
+        $this->_category = $this->getCategory(
+                $this->_model, 
+                $this->getRequest()->getParam('containerId')
+        );
         
         $this->view->category = $this->_category;
         $this->_config = Zend_Registry::get('config');
         
         //initialize calendar widget for localization
         $this->_helper->calendar($this->view);
-    }
-    
-    protected function _initCategory()
-    {
-        $id = $this->getRequest()->getParam('containerId');
-        if ($id)
-        {
-            $categoryId = $id;
-            $category = $this->_model
-                                ->getEntityManager()
-                                ->getRepository('ZC\Entity\Category')
-                                ->find($categoryId);
-            $this->_category = $category;
-            
-        }
-        else
-        //we define a category for all categories    
-        {
-            $categoryAll = new stdClass();
-            $categoryAll->name = 'all';
-            $categoryAll->categories = NULL;
-            $this->_category = $categoryAll;
-        }
     }
      
     public function indexAction()
@@ -110,7 +92,6 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         //sent to the view
         $this->view->events = $events;
         $this->view->paginatorEvents = $this->_initPaginator($events);
-        
     }
 
     
@@ -239,7 +220,6 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
     {
         
     }
-    
    
 }
 
