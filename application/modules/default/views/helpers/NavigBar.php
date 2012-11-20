@@ -15,7 +15,7 @@ class Application_View_Helper_NavigBar extends Zend_View_Helper_Abstract
         }
         if (!($links === ''))
         {
-            $links='<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">'."\n"
+            $links='<ul class="dropdown-menu">'."\n"
                             .$links.
                             '<li class="divider"></li>'
                             .$separatedLinks.
@@ -27,9 +27,9 @@ class Application_View_Helper_NavigBar extends Zend_View_Helper_Abstract
         <div id="nav-languages" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <ul class="nav pull-right" role="navigation">
+                    <ul class="nav pull-right">
                         <li class="dropdown">                  
-                            <a class="dropdown-toggle" role="button"'.$optionToogle.'href="'.$hrefTitle.'">'."\n\t\t\t\t".
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button"'.$optionToogle.'href="'.$hrefTitle.'">'."\n\t\t\t\t".
                                 $title.$caret.'
                             </a>
                                 '.$links.'
