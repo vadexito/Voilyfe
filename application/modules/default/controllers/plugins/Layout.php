@@ -8,12 +8,14 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     
     protected $_defaultLayout = 'layout';
     
-    protected $_prefixes = [];
+    protected $_prefixesCss = [];
+    protected $_prefixesJs = [];
+    protected $_prefixesLayout = [];
     
     protected $_changesToDefault = NULL;
     
     public function dispatchLoopStartup (
-        Zend_Controller_Request_Abstract $request)
+        \Zend_Controller_Request_Abstract $request)
     {
         $this->_setPrefixes($request);
         $this->_setPrefixDevice();
@@ -27,7 +29,7 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     {
         $layout = $this->_layout;
         
-        foreach (array_merge($this->_prefixes,[$this->_defaultLayout]) as $prefix)
+        foreach (array_merge($this->_prefixesLayout,[$this->_defaultLayout]) as $prefix)
         {
             $layoutFile = $layout->getLayoutPath().$prefix.$this->_suffix.'.phtml';
             if (file_exists($layoutFile))
@@ -52,7 +54,7 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     }
     
     
-    protected function _changePrefixRule($request)
+    protected function _changePrefixRuleLayout($request)
     {
         if ($this->_changesToDefault === NULL)
         {
@@ -92,21 +94,34 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     
     protected function _setPrefixes($request)
     {
-        $mvc = $this->_changePrefixRule($request);
-        $module = $mvc['module'];
-        $controller= $mvc['controller'];
-        $action= $mvc['action'];
+        $mvc = $this->_changePrefixRuleLayout($request);
+        $moduleForLayout = $mvc['module'];
+        $controllerForLayout = $mvc['controller'];
+        $actionForLayout = $mvc['action'];
         
-        $this->_prefixes = [
+        $this->_prefixesLayout = [
+            implode('-',[$moduleForLayout,$controllerForLayout,$actionForLayout]),
+            implode('-',[$moduleForLayout,$controllerForLayout]),
+            $moduleForLayout
+        ];
+        
+        $module = $request->getModuleName();
+        $controller = $request->getControllerName();
+        $action = $request->getActionName();
+        
+        $this->_prefixesJs = [
             implode('-',[$module,$controller,$action]),
             implode('-',[$module,$controller]),
             $module
         ];
+        $this->_prefixesCss = $this->_prefixesJs;
+        
+        
     }
     
     protected function _initJsAndCSS()
     {
-        foreach ($this->_prefixes as $prefix)
+        foreach ($this->_prefixesJs as $prefix)
         {
             $jsFile = '/application/js/'.$prefix.$this->_suffix.'.js';
             if (file_exists(APPLICATION_PATH.'/../public'.$jsFile))
@@ -116,7 +131,7 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
             }
         }
         
-        foreach ($this->_prefixes as $prefix)
+        foreach ($this->_prefixesCss as $prefix)
         {
             $cssFile = '/application/css/'.$prefix.$this->_suffix.'.css';
             if (file_exists(APPLICATION_PATH.'/../public'.$cssFile))
