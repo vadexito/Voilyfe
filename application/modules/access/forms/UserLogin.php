@@ -31,6 +31,12 @@ class Access_Form_UserLogin extends Pepit_Form
         else
         {
             $this->setAttrib('class','well');
+            $this->setLegend($this->getTranslator()->translate('sign-in_to_mylife'));
+             $this->setDecorators(array(
+            'FormElements',
+            ['fieldset',['class'=>'']],
+            'Form'
+        ));
         }
         
         

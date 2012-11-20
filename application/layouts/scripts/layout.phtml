@@ -1,7 +1,7 @@
 <?php echo $this->doctype()."\n" ?>
 <html>
     <head>
-        <?php echo $this->partial('_head.phtml') ?>
+        <?php echo $this->partial('partial/_head.phtml') ?>
     </head>
     <body> 
         <header id="homeheader" class="jumbotron subhead">
@@ -12,13 +12,13 @@
         </header>
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
-                <?php echo $this->partial('_hNav.phtml') ?>
+                <?php echo $this->partial('partial/_hNav.phtml') ?>
             </div>
         </nav>
         <div class="container-fluid">
             <div class="row-fluid">
                 <div id="side-menu" class="span3 bs-docs-sidebar">
-                    <?php echo $this->partial('_vNav.phtml') ?> 
+                    <?php echo $this->partial('partial/_vNav.phtml') ?> 
                 </div>
                 <div id="main" class="span9">
                     <?php echo $this->flashMessages();?>
@@ -28,7 +28,7 @@
         </div>
         <footer class="footer">
             <div class="container-fluid">
-                <?php echo $this->partial('_footer.phtml') ?>
+                <?php echo $this->partial('partial/_footer.phtml') ?>
             </div>
         </footer>
         <?php echo $this->inlineScript() ?>
