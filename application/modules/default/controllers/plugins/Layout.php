@@ -10,6 +10,8 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     
     protected $_prefixes = [];
     
+    protected $_changesToDefault = NULL;
+    
     public function dispatchLoopStartup (
         Zend_Controller_Request_Abstract $request)
     {
@@ -35,42 +37,6 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
             }
         }
         $this->_layout->setLayout($this->_defaultLayout);
-        
-//        // layout for backend
-//        if ($module == 'backend') 
-//        {
-//            $layout->setLayout('backend');
-//            return;
-//        }
-//        
-//        //testing of access site
-//        if (!Zend_Auth::getInstance()->hasIdentity())
-//        {
-//            if (file_exists($layout->getLayoutPath().'access'.$this->_suffix.'.phtml'))
-//            {
-//                $layout->setLayout('access'.$this->_suffix);
-//            }
-//            else
-//            {
-//                $layout->setLayout('access');
-//            }
-//        }
-//        //check if there if file specific for module and mobile
-//        elseif (file_exists($layout->getLayoutPath().$module.$this->_suffix.'.phtml'))
-//        {
-//            $layout->setLayout($module.$this->_suffix);
-//        }
-//        //check if there is a file specific for module 
-//        elseif (file_exists($layout->getLayoutPath().$module.'.phtml'))
-//        {
-//            $layout->setLayout($module);
-//        }
-//        //check if mobile for default layout for mobile
-//        elseif (file_exists($layout->getLayoutPath()
-//                .$this->_defaultLayout.$this->_suffix.'.phtml')) 
-//        {
-//            $layout->setLayout($this->_defaultLayout.$this->_suffix);
-//        }
     }
     
     protected function _setPrefixDevice()
@@ -86,11 +52,50 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     }
     
     
+    protected function _changePrefixRule($request)
+    {
+        if ($this->_changesToDefault === NULL)
+        {
+            $this->_changesToDefault = Zend_Registry::get('config')->layout
+                                                                ->redirect
+                                                                ->toArray();
+        }
+        
+        $mvcDefault = [
+            'module'        => $request->getModuleName(),
+            'controller'    => $request->getControllerName(),
+            'action'        => $request->getActionName()
+        ];
+        
+        foreach ($this->_changesToDefault as $mvcPath)
+        {
+            if($mvcPath['from'] === $mvcDefault);
+            {
+                $mvc = [];
+                foreach ($mvcDefault as $key => $value)
+                {
+                    if (array_key_exists($key,$mvcPath['to']))
+                    {
+                        $mvc[$key] = $mvcPath['to'][$key];
+                    }
+                    else
+                    {
+                        $mvc[$key] = $value; 
+                    }
+                }
+                return $mvc;
+                
+            }
+        }
+    }
+    
+    
     protected function _setPrefixes($request)
     {
-        $module = $request->getModuleName();
-        $controller = $request->getControllerName();
-        $action = $request->getActionName();
+        $mvc = $this->_changePrefixRule($request);
+        $module = $mvc['module'];
+        $controller= $mvc['controller'];
+        $action= $mvc['action'];
         
         $this->_prefixes = [
             implode('-',[$module,$controller,$action]),
