@@ -1,0 +1,40 @@
+<?php if ($this->category->name !== 'all') :?>
+<div class="hero-unit">
+    <h1>
+        <?php $name = 'category_'.$this->category->name ; echo ucfirst($this->translate($name)); ?>
+    </h1>                        
+</div>
+<div class="row-fluid">
+    <div class="span10">
+        <?php echo $this->tableCategory($this->paginatorEvents,$this->category)?>
+        <div class="pagination span5 offset4">
+            <?php echo $this->paginationControl($this->paginatorEvents,'Sliding','_pagination.phtml')?>
+        </div>
+        <div class="widget span5">
+            <?php echo $this->widget; ?>
+        </div>
+        <div class="span6">
+            <button class="btn btn_chart" value="frequency"><?php echo $this->translate('item_frequency'); ?></button>
+            <?php foreach($this->properties as $property) :?>
+                <button class="btn btn_chart" value="<?php echo $property['name']; ?>"><?php $name = 'item_'.$property['itemName']; echo ucfirst($this->translate($name)); ?></button>
+            <?php endforeach; ?>
+             <div id="chart_div" class="widget-graph"><div>
+        </div>
+    </div>
+</div>
+<?php else : ?>
+<div class="hero-unit">
+    <h1>
+        <?php echo $this->translate('menu_summary_allevents'); ?>
+    </h1>                        
+</div>
+<div class="row-fluid">
+    <?php echo $this->tableAllEvents($this->paginatorEvents)?>
+        <div class="pagination span5 offset4">
+            <?php echo $this->paginationControl($this->paginatorEvents,'Sliding','_pagination.phtml')?>
+        </div>
+</div>
+<div class="row-fluid">
+    <div id="chart_div" class="widget-graph"></div>
+</div>
+<?php endif; ?>

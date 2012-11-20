@@ -1,0 +1,28 @@
+<?php echo $this->doctype()."\n" ?>
+<html>
+    <head><?php echo $this->partial('partial/_head.phtml',['indent'=>8]) ;?>
+    </head>
+    <body><?php if ($this->formLogin) : echo $this->languageBar() ; else : echo $this->navigBar($this->translate('msg_question_already_member'),$this->url(['action'=>'login'],'access')); endif; ?>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6 offset3"><?php echo $this->flashMessages();?>
+                    <?php echo $this->layout()->content ;?>
+                    <footer class="inline-list">
+                            <?php echo $this->partial('partial/_footer.phtml') ?>
+                    </footer>
+                </div>
+        </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
+<?php
+
+//$amazon = new Zend_Service_Amazon('AMAZON_API_KEY', 'US', 'AMAZON_SECRET_KEY');
+//$results = $amazon->itemSearch(array('SearchIndex' => 'Books',
+//                                     'Keywords' => 'php'));
+//foreach ($results as $result) {
+//    echo $result->Title . '<br />';
+//}
+
+   
+ 

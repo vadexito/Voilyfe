@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <alnumInvalid>
+        <translate>Invalid type given. String, integer or float expected</translate>
+    </alnumInvalid>
+    <notAlnum>
+        <translate>'%value%' contains characters which are non alphabetic and no digits</translate>
+    </notAlnum>
+    <alnumStringEmpty>
+        <translate>'%value%' is an empty string</translate>
+    </alnumStringEmpty>
+</messages>

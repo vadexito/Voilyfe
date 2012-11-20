@@ -1,0 +1,16 @@
+<div data-role="page" id="<?php echo $this->id; ?>" class="<?php echo $this->class; ?>"><!-- page -->
+    <div data-role="header" data-position="fixed" data-id="header" >
+        <a data-theme="b" data-rel="back" data-ajax="false" class="ui-btn-left"><?php echo $this->translate('menu_cancel'); ?></a>
+        <h1 class='title_event_form'><span><?php echo $this->title ;?></span><br/><a data-rel="popup" href="#popup<?php echo $this->id; ?>" class="button_date"><?php echo $this->date; ?></a></h1>
+        <a data-theme="b" data-ajax="false" data-rel="back" class="menu_done item-group-form ui-btn-right"><?php echo ucfirst($this->translate('menu_done')) ?></a>
+    </div><!-- /header -->
+    <div data-role="content">	
+        <?php echo $this->content; ?>
+    </div><!-- /content -->
+    <div data-role="footer" data-position="fixed" data-id="footer" class="nav-glyphish">
+        <?php echo $this->navBarItems($this->form->getElements(),$this->propertyName);?>
+    </div><!-- /footer -->
+    <div data-role="popup" class="popupDate" id="popup<?php echo $this->id; ?>">
+        <?php echo $this->formDate('date'.$this->id,'',array('class' => 'popupinput')); ?>
+    </div>   
+</div><!-- end of page -->

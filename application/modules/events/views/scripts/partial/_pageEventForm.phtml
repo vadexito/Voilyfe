@@ -1,0 +1,29 @@
+
+
+
+<div data-role="page" id="<?php echo $this->id; ?>" class="<?php echo $this->class; ?>"><!-- page -->
+    
+    
+    <div data-role="header" data-position="fixed" data-id="header" ><!-- header -->
+        <a data-theme="b" href="<?php echo $this->url(array(),'home')?>" data-ajax="false" class="ui-btn-left"><?php echo $this->translate('menu_cancel'); ?></a>
+        <h1 class='title_event_form'><span><?php echo $this->title ;?></span><br/><a data-rel="popup" href="#popup<?php echo $this->id; ?>" class="button_date"><?php echo $this->date; ?></a></h1>
+        <a data-theme="b" class="menu_save ui-btn-right"><?php echo ucfirst($this->translate('menu_save')) ?></a>
+    </div><!-- end of header -->
+    
+    
+    <div data-role="content">	<!-- content -->
+        <?php echo $this->content; ?>
+    </div><!-- end of content -->
+    
+    
+    <div data-role="footer" data-position="fixed" data-id="footer" class="nav-glyphish"><!-- footer -->
+        <?php echo $this->navBarItems($this->form->getElements(),$this->propertyName);?>
+    </div><!-- end of footer -->
+    
+    
+    <div data-role="popup" class="popupDate" id="popup<?php echo $this->id; ?>"><!-- popup -->
+        <?php echo $this->formDate('date'.$this->propertyName,'',array('class' => 'popupinput')); ?>
+    </div> <!-- end of popup -->  
+</div><!-- end of page -->
+
+

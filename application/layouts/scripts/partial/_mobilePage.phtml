@@ -1,0 +1,9 @@
+<div data-role="page" data-prefetch id="<?php echo $this->id ? $this->id : '' ?>"><!-- page -->
+    <?php echo $this->partial('partial/_header.mobile.phtml',array('title' => $this->title,'buttonLeft' => $this->buttonLeft,'buttonRight'=>$this->buttonRight)); ?>
+    <div data-role="content">	
+        <?php echo $this->content; ?>
+    </div><!-- /content -->
+    <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('page' => $this->page)): ''?>
+</div><!-- end of page -->
+
+    

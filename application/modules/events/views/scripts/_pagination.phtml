@@ -1,0 +1,48 @@
+<!--
+Voir http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+-->
+ 
+<?php if ($this->pageCount): ?>
+<div class="paginationControl">
+    <!-- First page link -->
+    <?php if (isset($this->previous)): ?>
+    <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+        <span class="badge"><i class="icon-step-backward"></i></span>
+    </a>
+    <?php else: ?>
+    <span class="disabled"><span class="badge"><i class="icon-step-backward"></i></span></span>
+    <?php endif; ?>
+
+    <!-- Previous page link -->
+    <?php if (isset($this->previous)): ?>
+    <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+        <span class="badge"><i class="icon-arrow-left"></i></span>
+    </a>
+    <?php else: ?>
+    <span class="disabled"><span class="badge"><i class="icon-arrow-left"></i></span></span>
+    <?php endif; ?>
+
+    <!-- Next page link -->
+    <?php if (isset($this->next)): ?>
+    <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+        <span class="badge"><i class="icon-arrow-right"></i></span>
+    </a>
+    <?php else: ?>
+    <span class="disabled"><span class="badge"><i class="icon-arrow-right"></i></span></span>
+    <?php endif; ?>
+
+    <!-- Last page link -->
+    <?php if (isset($this->next)): ?>
+    <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+        <span class="badge"><i class="icon-step-forward"></i></span>
+    </a>
+    <?php else: ?>
+    <span class="disabled"><span class="badge"><i class="icon-step-forward"></i></span></span>
+    <?php endif; ?>
+
+    <span id='text_paginator'>
+        <?php echo $this->translate('item_page').' '.$this->current; ?> / <?php echo $this->pageCount; ?>
+    </span>
+    <?php endif; ?>
+</div>
+

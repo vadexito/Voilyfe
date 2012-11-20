@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <fileExistsDoesNotExist>
+        <translate>File '%value%' does not exist</translate>
+    </fileExistsDoesNotExist>
+</messages>

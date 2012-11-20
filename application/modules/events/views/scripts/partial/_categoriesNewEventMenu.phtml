@@ -1,0 +1,21 @@
+<?php 
+    $singleCat = array();
+    $imgPath = Zend_Registry::get('config')->public
+                                           ->images->icon->category->path; 
+    foreach ($this->container as $page) 
+    {
+        foreach ($page->getPages() as $subPage)
+        {
+            if (!$subPage->isMeta)
+            {
+                $singleCat[] = $this->categoryListLine($subPage,$imgPath,false,false);
+            }
+        }
+    }
+    usort($singleCat,"Layout_View_Helper_ListCategories::compEvents");
+?>
+<ul id="list-singleCat" data-role="listview" data-inset="true" data-icon="plus" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
+    <!-- only the submenu for the options -->
+<?php foreach ($singleCat as $option): echo $option['render']; endforeach; ?>
+</ul>
+    

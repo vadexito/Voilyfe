@@ -1,0 +1,8 @@
+<?php $i=0; foreach ($this->widgets as $widget) : ?>
+<?php if ($i%2 == 0) : ?><div class="row-fluid"><?php endif; ?>
+<div class="span4 widget well">
+    <?php echo $widget; ?>
+</div>
+<?php if ($i%2 == 1) : ?></div><?php endif; ?>
+<?php $i++; endforeach;?>
+

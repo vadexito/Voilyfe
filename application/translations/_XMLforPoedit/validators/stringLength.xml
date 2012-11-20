@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <stringLengthInvalid>
+        <translate>Invalid type given. String expected</translate>
+    </stringLengthInvalid>
+    <stringLengthTooShort>
+        <translate>'%value%' is less than %min% characters long</translate>
+    </stringLengthTooShort>
+    <stringLengthTooLong>
+        <translate>'%value%' is more than %max% characters long</translate>
+    </stringLengthTooLong>
+</messages>

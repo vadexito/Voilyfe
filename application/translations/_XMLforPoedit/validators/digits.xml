@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <notDigits>
+        <translate>'%value%' must contain only digits</translate>
+    </notDigits>
+    <digitsStringEmpty>
+        <translate>'%value%' is an empty string</translate>
+    </digitsStringEmpty>
+    <digitsInvalid>
+        <translate>Invalid type given. String, integer or float expected</translate>
+    </digitsInvalid>
+</messages>

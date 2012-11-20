@@ -1,0 +1,28 @@
+<ul data-role="listview">
+<?php
+    $filterMonth = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::MONTH_NAME));
+    $filterYear = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::YEAR));
+    
+    $events = $this->events;
+    if (!$events)
+    {
+        echo 'No event to show';
+    }
+    else
+    {
+        $month = null;
+        $year = null;
+        foreach ($this->events as $event)
+        {
+            //we put a divider each month
+            if (!($filterMonth->filter($event->date) === $month &&
+                    $filterYear->filter($event->date) === $year))
+            {
+                $month = $filterMonth->filter($event->date);
+                $year = $filterYear->filter($event->date);
+                echo '<li data-role="list-divider">'.$month.' '.$year.'</li>';
+            }
+            echo $this->eventLine($event);
+        }
+    }?>
+</ul>

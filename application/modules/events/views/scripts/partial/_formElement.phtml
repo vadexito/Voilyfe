@@ -1,0 +1,10 @@
+<ul data-role="listview" data-inset="true">
+    <li id="form_element_<?php $this->formElement->setDisableTranslator(true); $rawLabel = $this->formElement->getLabel(); echo $rawLabel; $this->formElement->setDisableTranslator(false); ?>" data-role="fieldcontain" data-theme="d" class="event_form_element">
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><label for="<?php echo $this->formElement->getId() ?>" class="optional" ><?php echo ucfirst($this->formElement->getLabel()); ?></label></div>
+            <div class="ui-block-b"><?php echo $this->formElement; ?></div>
+	</fieldset>
+        
+    </li>
+</ul>
+<ul id="suggestions_<?php echo $rawLabel; ?>" data-role="listview" data-inset="true"></ul>

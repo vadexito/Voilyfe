@@ -1,0 +1,77 @@
+<?php 
+if ($this->category->name !=='all')
+{
+    $name = 'category_'.$this->category->name;
+    $hrefButtonAdd = $this->url(array('action' => 'create','containerId' => $this->category->id),'event');
+}
+else
+{
+    $name = 'name_site';
+    $hrefButtonAdd = '#list_singleCategories';
+}
+
+$buttonRight = '<a data-theme="b" href="'
+        . $hrefButtonAdd 
+        .'" data-iconpos="notext" data-icon="plus" data-ajax="false" class="ui-btn-right"></a>';
+
+$buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" class="ui-btn-left">';
+     echo $this->partial('partial/_mobilePage.phtml', array(
+           'id'         => 'last-events-page',
+           'page'       => 'last-events',
+           'content'    => $this->partial('partial/_pageLastEvents-mobile.phtml',['events' => $this->events]),
+           'title'      =>  ucfirst($this->translate($name)),
+           'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
+           'buttonRight'=> $buttonRight,
+           'footer'     => '_footerCategories.mobile'
+        )) ;?>
+    <!-- pages for menu -->
+        <?php echo $this->partial('partial/_mobilePage.phtml', array(
+            'id'         => 'calendar-page',
+            'page'       => 'calendar',
+            'content'    => $this->partial('partial/_pageCalendar-mobile.phtml',['events' => $this->events,'eventsPerDay' => $this->eventsPerDay]),
+            'title'      => ucfirst($this->translate($name)),
+            'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
+            'buttonRight'=> $buttonRight,
+            'footer'     => '_footerCategories.mobile'
+        )); ?>
+        <?php echo $this->partial('partial/_mobilePage.phtml', array(
+            'id'         => 'graphs-page',
+            'page'       => 'graphs',
+            'content'    => $this->partial('partial/_pageGraph-mobile.phtml',array('events' => $this->events)),
+            'title'      => ucfirst($this->translate($name)),
+            'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
+            'buttonRight'=> $buttonRight,
+            'footer'     => '_footerCategories.mobile'
+        )); ?>
+        <?php echo $this->partial('partial/_mobilePage.phtml', array(
+            'id'         => 'list_singleCategories',
+            'content'    => $this->listCategories('partial/_categoriesNewEventMenu.phtml','eventAdd'),
+            'title'      => ucfirst($this->translate('menu_add_event')),
+            'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
+            'footer'     => '_footerCategories.mobile'
+        )); ?>
+        <?php echo $this->partial('partial/_mobilePage.phtml', array(
+            'id'         => 'list_allCategories',
+            'content'    => $this->listCategories('partial/_categoriesMenu.phtml','metaCategory'),
+            'title'      => ucfirst($this->translate('menu_see_categories')),
+            'buttonLeft' => 'back',
+            'footer'     => '_footerCategories.mobile'
+        )); ?>
+        <?php echo $this->partial('partial/_mobilePage.phtml', array(
+            'id'         => 'options-page',
+            'page'       => 'option',
+            'content'    => $this->settingsMobile(),
+            'title'      => ucfirst($this->translate('menu_settings')),
+            'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
+            'buttonRight'=> $buttonRight,
+            'footer'     => '_footerCategories.mobile'
+        )) ;?>
+
+
+
+
+
+
+
+
+

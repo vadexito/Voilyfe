@@ -1,0 +1,324 @@
+http://thoughtsofthree.com/2011/04/defining-discriminator-maps-at-child-level-in-doctrine-2-0/
+
+Thoughts of Three
+
+
+Implementing a sharded counter using Objectify (Updated) Google unveils 
+full-text search on the App Engine
+Defining Discriminator Maps at Child-level in Doctrine 2.0
+By Jasper Kuperus On April 26, 2011 · 8 Comments · In Doctrine, PHP
+Doctrine ORM 2.0 is a very powerful object-relation mapper for PHP 5.3.0+ which
+provides us with several powerful features. One of these features is the ability
+to define mappings using annotations in your model classes.
+
+When using inheritance, there are two types, Single Table Inheritance 
+and Class Table Inheritance,for which you need to help Doctrine a little bit by
+defining the possible subclasses. For these inheritance types you need to 
+specify a discriminator map usingthe @DiscriminatorMap annotation, which looks 
+something like this:
+
+
+/** 
+ * @Entity 
+ * @InheritanceType( "SINGLE_TABLE" ) 
+ * @DiscriminatorColumn( name = "discr", type = "string" ) 
+ * @DiscriminatorMap( { "person" = "Person", "employee" = "Employee" } ) 
+ */  
+class Person {  
+    // Implementation...  
+}  
+  
+/** 
+ * @Entity 
+ */  
+class Employee extends Person {  
+    // Implementation...  
+}  
+Using such inheritance with a discriminator map introduces the need to update 
+the parent class whenever you create a subclass. Next to the fact that this is 
+quite ugly, in some situations it is just not desirable to modify your parent 
+class. This article provides a solution for supplying the entries for the 
+discriminator map at the child level.
+
+Annotations
+
+First of all, we will stop using the @DiscriminatorMap annotation. Instead, 
+we will introduce the annotation @DiscriminatorEntry. Using this annotation, 
+we will provide only the discriminator value for every subclass, including 
+the parent class itself. The following example illustrates this:
+
+
+/** 
+ * @Entity 
+ * @InheritanceType( "SINGLE_TABLE" ) 
+ * @DiscriminatorColumn( name = "discr", type = "string" ) 
+ * @DiscriminatorEntry( value = "person" ) 
+ */  
+class Person {  
+    // Implementation...  
+}  
+  
+/** 
+ * @Entity 
+ * @DiscriminatorEntry( value = "employee" ) 
+ */  
+class Employee extends Person {  
+    // Implementation...  
+}  
+For reading the annotations, we can use the AnnotationReader of Doctrine. Below,
+we define a short class that helps us reading the annotations and another 
+for the annotation.
+
+
+namespace MyNamespace;  
+  
+// Initialize the Annotation reader, set the correct namespace  
+Annotation::$reader = new DoctrineCommonAnnotationsAnnotationReader();  
+Annotation::$reader->setDefaultAnnotationNamespace( __NAMESPACE__ . "\" );  
+  
+class Annotation {  
+    public static $reader;  
+  
+    public static function getAnnotationsForClass( $className ) {  
+        // Get the reflection class and return the annotations  
+        $class = new ReflectionClass( $className );  
+        return Annotation::$reader->getClassAnnotations( $class );  
+    }  
+}  
+  
+class DiscriminatorEntry {  
+    private $value; // Will hold the discriminator value  
+  
+    public function __construct( array $data ) {  
+        $this->value = $data['value'];  
+    }  
+  
+    public function getValue() {  
+        return $this->value;  
+    }  
+}  
+Note: You will probably want a bit more validation of the annotation. 
+Here we simply set the value and leave out such validation. So in our case, 
+every annotation that at least contains an attributed named value will do the
+job.
+
+Doctrine Events
+
+Another great feature of Doctrine 2.0 is the Event System. This lets us hook
+into Doctrine in an elegant way. We will define an EventSubscriber that 
+subscribes itself to the loadClassMetadata event. The loadClassMetadata event
+is fired after the metadata for a class has been loaded. When we get this event,
+we will build the discriminator map and provide it to Doctrine. The following
+code shows the skeleton we use for this:
+
+
+class DiscriminatorListener implements DoctrineCommonEventSubscriber {  
+    private $driver;    // Doctrines Metadata Driver  
+    private $map;       // Our temporary map for calculations  
+    private $cachedMap; // The cached map for fast lookups  
+  
+    const ENTRY_ANNOTATION = 'NamespaceToTheDiscriminatorEntry';  
+  
+    public function getSubscribedEvents() {  
+        // Subscribe to the correct event  
+        return Array( DoctrineORMEvents::loadClassMetadata );  
+    }  
+  
+    public function __construct( DoctrineORMEntityManager $db ) {  
+        $this->driver = $db->getConfiguration()->getMetadataDriverImpl();  
+        $this->cachedMap = Array();  
+    }  
+  
+    public function loadClassMetadata( DoctrineORMEventLoadClassMetadataEventArgs $event ) {  
+        // Respond to the event, implementation given later...  
+    }  
+}  
+This self-written Event Listener should now be handed over to Doctrine, 
+so it can dispatch events to it. This is done in the following way:
+
+view plaincopy to clipboardprint?
+// Initialize Doctrine, provide the options / config yourself!  
+$em = DoctrineORMEntityManager::create( $connectionOptions, $config );  
+$em->getEventManager()->addEventSubscriber( new NamespaceToTheDiscriminatorListener( $em ) );  
+Implementing the DiscriminatorListener
+
+We have defined several helper methods in the DiscriminatorListener. 
+In this section we will discuss all these helper methods and finally 
+the method for handling the loadClassMetadata event.
+
+Note: When interpreting the @DiscriminatorMap annotation, Doctrine 
+automatically distills the subclasses and the discriminator value for the 
+parent class out of this map. It is very important for us to also set these
+values. This does however only apply for the top-most parent class.
+
+Extracting Discriminator Entries
+
+The method extractEntry() retrieves all the annotations for the class 
+and looks for the @DiscriminatorEntry annotation. When this is found, 
+it is submitted in the map if this is a unique value. It returns a boolean
+that tells us whether the annotation was found or not.
+
+view plaincopy to clipboardprint?
+private function extractEntry( $class ) {  
+    $annotations = NamespaceToAnnotation::getAnnotationForClass( $class );  
+    $success = false;  
+  
+    if( array_key_exists( self::ENTRY_ANNOTATION, $annotations ) ) {  
+        $value = $annotations[self::ENTRY_ANNOTATION]->getValue();  
+  
+        if( in_array( $value, $this->map ) ) {  
+            throw new Exception( "Found duplicate discriminator map entry '" 
+            . $value . "' in " . $class );  
+        }  
+  
+        $this->map[$class] = $value;  
+        $success =  true;  
+    }  
+  
+    return $success;  
+}  
+Building the Discriminator Map
+
+For building the discriminator map, we use the method checkFamily(). 
+This method checks whether the requested class is the top-most parent or not.
+If this is not the case, we do a recursive call with the parent class in order
+to also check all classes that extend that class. Otherwise, we use the method
+checkChildren() which looks for classes that extend the given class and have a
+discriminator value. We only have to check the children if we are the top-most
+parent, since checkChildren() recursively checks the children for every child
+again. In a nutshell, this method constructs the map out of the inheritance
+tree.
+
+view plaincopy to clipboardprint?
+private function checkFamily( $class ) {  
+    $rc     = new ReflectionClass( $class );  
+    $parent = $rc->getParentClass()->name;  
+  
+    if( $parent !== false ) {  
+        // Also check all the children of our parent  
+        $this->checkFamily( $parent );  
+    } else {  
+        // This is the top-most parent, used in overrideMetadata  
+        $this->cachedMap[$class]['isParent'] = true;  
+  
+        // Find all the children of this class  
+        $this->checkChildren( $class );  
+    }  
+}  
+  
+private function checkChildren( $class ) {  
+    foreach( $this->driver->getAllClassNames() as $name ) {  
+        $cRc        = new ReflectionClass( $name );  
+        $cParent    = $cRc->getParentClass()->name;  
+  
+        // Check if we already had this class, if its a child and if it has the annotation  
+        if( ! array_key_exists( $name, $this->map )  
+            && $cParent == $class && $this->extractEntry( $name ) ) {  
+            // This child might again have children...  
+            $this->checkChildren( $name );  
+        }  
+    }  
+}  
+Overriding metadata
+
+For overriding the metadata, we need to set the discriminator map and the 
+discriminator value. If we have the top-most parent, we should also define
+the subclasses of this class. The subclasses are easily calculated by removing
+itself from the map. For this we use the cachedMap, which is built in the 
+loadClassMetadata() method. The following keys apply for this array:
+
+map: The discriminator map
+discr: The discriminator value
+isParent: Is this the top-most parent?
+The cachedMap has for every class that was identified an entry that contains
+an array with the above keys. The overrideMetadata() then looks as follows:
+
+view plaincopy to clipboardprint?
+private function overrideMetadata( DoctrineORMEventLoadClassMetadataEventArgs $event, $class ) {  
+    // Set the discriminator map and value  
+    $event->getClassMetadata()->discriminatorMap =  
+            $this->cachedMap[$class]['map'];  
+    $event->getClassMetadata()->discriminatorValue =  
+            $this->cachedMap[$class]['discr'];  
+  
+    // If we are the top-most parent, set subclasses!  
+    if( isset( $this->cachedMap[$class]['isParent'] )  
+        && $this->cachedMap[$class]['isParent'] === true ) {  
+        // Remove yourself from the map, set this as subclasses, but only the values!  
+        $subclasses = $this->cachedMap[$class]['map'];  
+        unset( $subclasses[$this->cachedMap[$class]['discr']] );  
+        $event->getClassMetadata()->subClasses =  
+                array_values( $subclasses );  
+    }  
+}  
+Note: The event has to be used here to override the metadata. When not using
+the event, you be aware that for methods of Doctrine that again generate
+the loadClassMetadata event.
+
+Handling the event
+
+Then, finally, we will handle the event. First we will do a look-up to see
+whether we already calculated the map to which this class belongs, we can
+then simply override the metadata directly. Otherwise, a check is done whether
+we have an empty discriminator map and whether the @DiscriminatorEntry 
+annotation was found. When this is found, we have to build the whole map, 
+using checkFamily(). If this is not the case, there is simply nothing to do
+for this class.
+
+After calculating the map, which is then an array with as keys the classnames
+and as values the discriminator values, we should build the cachedMap for fast
+look-ups in the future. For this we first flip the map to comply to the format
+Doctrine uses and per class we save this and its discriminator value in the
+cachedMap. Finally, the data of the class where it all started with is
+overridden using the overrideMetadata() method:
+
+view plaincopy to clipboardprint?
+public function loadClassMetadata( DoctrineORMEventLoadClassMetadataEventArgs
+$event ) {  
+    // Reset the temporary calculation map and get the classname  
+    $this->map  = Array();  
+    $class      = $event->getClassMetadata()->name;  
+  
+    // Lookup whether we already calculated the map for this element  
+    if( array_key_exists( $class, $this->cachedMap ) ) {  
+        $this->overrideMetadata( $event, $class );  
+        return;  
+    }  
+  
+    // Check whether we have to process this class  
+    if( count( $event->getClassMetadata()->discriminatorMap ) == 0  
+            && $this->extractEntry( $class ) ) {  
+        // Now build the whole map  
+        $this->checkFamily( $class );  
+    } else {  
+        // Nothing to do...  
+        return;  
+    }  
+  
+    // Create the lookup entries  
+    $dMap = array_flip( $this->map );  
+    foreach( $this->map as $cName => $discr ) {  
+        $this->cachedMap[$cName]['map']     = $dMap;  
+        $this->cachedMap[$cName]['discr']   = $this->map[$cName];  
+    }  
+  
+    // Override the data for this class  
+    $this->overrideMetadata( $event, $class );  
+}  
+Conclusions & Performance
+
+When putting all the pieces together, we can now define discriminator 
+map entries at the child level and work our way around the ugly way in
+which Doctrine handles inheritance using discriminator maps. There is 
+however a big side-note to this. This will be an intensive calculation 
+and doing it for every request would not be a smart thing to do. Although it 
+is not discussed in this article, it is a good practice to cache the entries 
+that are produced in the cachedMap using for instance APC Cache.
+
+Another more efficient way might be to incorporate the calculation of the
+discriminator maps in the run script which you will probably use to let 
+Doctrine create the database scheme. By building the cache there, the 
+DiscriminatorListener will only remain one task, the look-up in the cache.
+
+
+

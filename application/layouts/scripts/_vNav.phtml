@@ -1,0 +1,20 @@
+<?php 
+    $mainMenu = new Zend_Navigation();
+    $pageIds = array('event','home','metaCategory');
+    foreach ($pageIds as $id)
+    {
+        if ($this->navigation()->findById($id))
+        {
+            $mainMenu->addPage($this->navigation()->findById($id));
+        }
+    }
+?>
+
+<?php echo $this->navigation()->menu($mainMenu);?>
+
+
+
+
+
+
+

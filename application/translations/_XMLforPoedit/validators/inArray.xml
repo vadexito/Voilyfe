@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messages>
+    <notInArray>
+        <translate>'%value%' was not found in the haystack</translate>
+    </notInArray>
+</messages>

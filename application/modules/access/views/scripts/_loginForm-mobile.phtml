@@ -1,0 +1,18 @@
+<form enctype="application/x-www-form-urlencoded" data-theme ="e" data-ajax="false" method="<?php echo $this->element->getMethod(); ?>" action="<?php echo $this->element->getAction(); ?>">
+    <ul data-role="listview" data-inset="true">
+        <li data-role="fieldcontain">
+            <?php echo $this->element->userName; ?>
+        </li>
+        <li data-role="fieldcontain">
+            <?php echo $this->element->userPassword; ?>
+        </li>
+        <li class="ui-body">
+            <fieldset>
+                <div><?php echo $this->element->submit_login; ?></div>
+            </fieldset>
+        </li>
+    </ul>
+</form>
+    
+    
+    

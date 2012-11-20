@@ -1,0 +1,13 @@
+<ul data-role="listview" data-inset="true">
+    <li><a href="#find_current_event" data-rel="popup" data-theme="b"><?php echo $this->translate('button_search_current_event')?></a></li>
+    <li><a href="#list_singleCategories" data-theme="b"><?php echo $this->translate('button_add_new_event')?></a></li>
+    <li><a href="#list_allCategories" data-theme="b"><?php echo $this->translate('button_see_categories')?></a></li>
+</ul>
+<div id="find_current_event" data-role="popup" class="ui-content" data-position-to="window">
+    <div id="map" style="height:400px;width:400px;"></div>
+    <ul data-role="listview">
+        <li data-role="divider" data-theme="a"><?php echo $this->translate('title_nb_results');?></li>
+        <li><a href=""><img src="" /><h3></h3><p></p><span class="ui-li-count"></span></a></li>
+    </ul>
+</div>
+        

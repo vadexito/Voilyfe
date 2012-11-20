@@ -1,0 +1,17 @@
+<?php echo $this->form->itemGroupId; $this->form->removeElement('submit_insert');$this->form->removeElement('itemGroupId');?>
+<div class="ui-body ui-body-d">
+<?php 
+    $containerName = $this->form->getAttrib('data-container-name');
+    $nameElement =  $this->form->getElement($containerName.'_name'); $this->form->removeElement($containerName.'_name');
+    $formElements = $this->form->getElements();
+    array_walk($formElements,function (&$value){
+        $value = array('formElement' => $value);
+    });
+?>
+    <ul data-role="listview" data-inset="true">    
+        <?php echo $this->partial('partial/_formElementItem.mobile.phtml', array('formElement' => $nameElement)); ?>
+    </ul>
+    <ul data-role="listview" data-inset="true">
+        <?php echo $this->partialLoop('partial/_formElementItem.mobile.phtml',$formElements); ?>
+    </ul>   
+</div>

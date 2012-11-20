@@ -1,0 +1,7 @@
+<?php echo $this->partial('partial/_mobilePage.phtml', array(
+        'id'         => 'signin',
+        'content'    => ($this->formRegister) ? $this->formRegister : '',
+        'title'      => ucfirst($this->translate('title_sitename')),
+        'buttonLeft' => '<a href="'.$this->url([],'home').'" data-ajax="false" data-theme="b" data-transition="flip" class="ui-btn-left">'.$this->translate('menu_home').'</a>',
+        'buttonRight'=> '<a href="'.$this->url(['action'=>'login'],'access').'" data-theme="b" data-transition="slide" class="ui-btn-right">'.$this->translate('msg_question_already_member').'</a>'
+    )); ?>

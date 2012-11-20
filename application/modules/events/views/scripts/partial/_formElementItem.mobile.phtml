@@ -1,0 +1,12 @@
+<li id="form_element_<?php echo $this->formElement->getId();?>" data-role="fieldcontain" data-theme="d" class="itemGroup_form_element">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a">
+            <label for="<?php echo $this->formElement->getId(); ?>" class="optional" >
+                <?php echo ucfirst($this->formElement->getLabel()); ?>
+            </label>
+        </div>
+        <div class="ui-block-b">
+            <?php echo $this->formElement; ?>
+        </div>
+    </fieldset>
+</li>

@@ -1,0 +1,738 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Mylife Beta1\n"
+"POT-Creation-Date: 2012-11-15 12:02+0100\n"
+"PO-Revision-Date: 2012-11-15 12:02+0100\n"
+"Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
+"Language-Team: \n"
+"Language: chinese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;setLabel;setValue;setLegend;"
+"_refresh;append;prepend;translate;setMessage;test\n"
+"X-Poedit-Basepath: C:\\Users\\Bacteria\\Documents\\www\\Mylife\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: application\n"
+
+#: application/Bootstrap.php:168
+#: application/layouts/scripts/access.mobile.phtml:52
+#: application/layouts/scripts/access.mobile.phtml:60
+#: application/layouts/scripts/layout.mobile.phtml:10
+#: application/layouts/scripts/partial/_footer.mobile.phtml:4
+msgid "menu_home"
+msgstr ""
+
+#: application/Bootstrap.php:177
+msgid "menu_event"
+msgstr ""
+
+#: application/Bootstrap.php:187
+msgid "menu_event_add"
+msgstr ""
+
+#: application/Bootstrap.php:195
+msgid "menu_metaCategory"
+msgstr ""
+
+#: application/Bootstrap.php:205
+msgid "menu_user"
+msgstr ""
+
+#: application/Bootstrap.php:215
+msgid "menu_logout"
+msgstr ""
+
+#: application/Bootstrap.php:223
+msgid "menu_set_preferences"
+msgstr ""
+
+#: application/layouts/helpers/ButtonHeader.php:18
+msgid "menu_back_to_previous_page"
+msgstr ""
+
+#: application/modules/access/forms/UserLogin.php:16
+#: application/modules/access/forms/UserLogin.php:21
+#: application/modules/members/forms/UserRegister.php:14
+#: application/modules/members/forms/UserRegister.php:25
+msgid "user_name"
+msgstr "用户名或电子邮件地址"
+
+#: application/modules/access/forms/UserLogin.php:24
+#: application/modules/access/forms/UserLogin.php:30
+#: application/modules/members/forms/UserRegister.php:30
+#: application/modules/members/forms/UserRegister.php:42
+msgid "user_password"
+msgstr "密码"
+
+#: application/modules/access/forms/UserLogin.php:38
+msgid "user_rememberMe"
+msgstr "记住我"
+
+#: application/modules/access/forms/UserLogin.php:49
+msgid "user_forgotten_password"
+msgstr "忘记密码?"
+
+#: application/modules/access/forms/UserLogin.php:54
+msgid "action_login"
+msgstr "登录"
+
+#: application/modules/backend/forms/CategoryUpdate.php:21
+#: application/modules/backend/forms/ItemUpdate.php:20
+#: application/modules/events/forms/EventUpdate.php:20
+#: application/modules/events/forms/ItemGroupRowUpdate.php:20
+#: application/modules/events/forms/ItemRowCreate.php:43
+#: application/modules/events/forms/ItemRowUpdate.php:20
+#: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:43
+#: application/modules/members/forms/UserUpdate.php:19
+msgid "action_save"
+msgstr ""
+
+#: application/modules/backend/forms/ItemCreate.php:42
+msgid "action_create"
+msgstr ""
+
+#: application/modules/default/controllers/ErrorController.php:59
+msgid "no_authorization_view_page"
+msgstr ""
+
+#: application/modules/default/controllers/plugins/Navmenu.php:101
+msgid "menu_user_profile"
+msgstr ""
+
+#: application/modules/default/views/helpers/LanguageBar.php:63
+msgid "menu_language"
+msgstr "语言:"
+
+#: application/modules/events/controllers/EventController.php:194
+msgid "msg_event_created"
+msgstr ""
+
+#: application/modules/events/controllers/EventController.php:234
+msgid "msg_event_updated"
+msgstr ""
+
+#: application/modules/events/controllers/EventController.php:266
+msgid "msg_event_deleted"
+msgstr ""
+
+#: application/modules/events/controllers/EventController.php:302
+msgid "legend_all_events"
+msgstr ""
+
+#: application/modules/events/controllers/EventController.php:416
+msgid "category_unknown"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Address.php:22
+#: application/translations/_XMLforPoedit/categories.xml:29
+msgid "item_address"
+msgstr ""
+
+#: application/modules/events/forms/Elements/CuisineType.php:21
+#: application/translations/_XMLforPoedit/categories.xml:33
+msgid "item_cuisineType"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Date.php:25
+#: application/modules/events/views/helpers/EventTable/TableAllEvents.php:37
+#: application/modules/events/views/helpers/EventTable/TableCategory.php:70
+#: application/modules/events/views/helpers/EventTable/TableUniqueCategory.php:69
+msgid "item_date"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Duration.php:19
+#: application/translations/_XMLforPoedit/categories.xml:38
+msgid "item_duration"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Meals.php:22
+#: application/translations/_XMLforPoedit/categories.xml:30
+msgid "item_meals"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Mealtype.php:21
+#: application/translations/_XMLforPoedit/categories.xml:32
+msgid "item_mealtype"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Name.php:22
+#: application/translations/_XMLforPoedit/categories.xml:28
+msgid "item_name"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Persons.php:15
+#: application/translations/_XMLforPoedit/categories.xml:40
+msgid "item_persons"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Persons.php:19
+#: application/modules/events/forms/Elements/Restaurants.php:17
+#: application/modules/events/forms/Elements/Tags.php:19
+msgid "msg_press_return_to_save"
+msgstr ""
+
+#: application/modules/events/forms/Elements/PhoneNumber.php:22
+#: application/translations/_XMLforPoedit/categories.xml:27
+msgid "item_phoneNumber"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Price.php:28
+#: application/translations/_XMLforPoedit/categories.xml:31
+msgid "item_price"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Restaurants.php:14
+#: application/translations/_XMLforPoedit/categories.xml:45
+msgid "item_restaurants"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Tags.php:15
+#, fuzzy
+msgid "item_tags"
+msgstr "电子邮件地址"
+
+#: application/modules/events/forms/Elements/Typeswimming.php:19
+#: application/translations/_XMLforPoedit/categories.xml:39
+msgid "item_typeswimming"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Typeswimming.php:23
+msgid "item_typeswimming_crawl"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Typeswimming.php:24
+msgid "item_typeswimming_breaststroke"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Typeswimming.php:25
+msgid "item_typeswimming_back"
+msgstr ""
+
+#: application/modules/events/views/helpers/ButtonNewEvent.php:34
+msgid "menu_createNewEvent"
+msgstr ""
+
+#: application/modules/events/views/helpers/EventTable/TableAllEvents.php:25
+#: application/modules/events/views/helpers/EventTable/TableCategory.php:32
+#: application/modules/events/views/helpers/EventTable/TableUniqueCategory.php:29
+msgid "msg_noEventToShow"
+msgstr ""
+
+#: application/modules/events/views/helpers/EventTable/TableAllEvents.php:36
+msgid "item_category"
+msgstr ""
+
+#: application/modules/members/controllers/UserController.php:77
+msgid "msg_user_registered"
+msgstr ""
+
+#: application/modules/members/forms/UserRegister.php:49
+#: application/modules/members/forms/UserRegister.php:61
+msgid "item_confirmPassword"
+msgstr ""
+
+#: application/modules/members/forms/UserRegister.php:68
+#: application/modules/members/forms/UserRegister.php:75
+msgid "item_email"
+msgstr "电子邮件地址"
+
+#: application/modules/members/forms/UserRegister.php:81
+#: application/modules/members/forms/UserRegister.php:89
+msgid "item_first_name"
+msgstr ""
+
+#: application/modules/members/forms/UserRegister.php:94
+#: application/modules/members/forms/UserRegister.php:102
+msgid "item_last_name"
+msgstr ""
+
+#: application/modules/members/forms/UserRegister.php:133
+msgid "item_captcha"
+msgstr ""
+
+#: application/modules/members/forms/UserRegister.php:140
+msgid "action_register"
+msgstr "注册 Mylife"
+
+#: application/layouts/scripts/access.mobile.phtml:17
+#: application/layouts/scripts/access.mobile.phtml:37
+msgid "name_site"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:17
+msgid "Remember your life and visualize it anytime from anywhere!"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:22
+msgid "Save your life, do not forget anymore!"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:22
+msgid ""
+"Save every part of your life you would like to. Write a diary of all the "
+"activies, events you want."
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:27
+msgid "Remember your life, accessing it anywhere"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:27
+msgid ""
+"Find what you want in your passed saved life. Mylife offers a powerful tool "
+"to sort and access your events"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:32
+msgid "Visualize you life"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:32
+msgid ""
+"You can see summaries, graphs, dictionaries giving a short but accessible "
+"picture of every aspects of your life"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:37
+msgid "See where you are"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:44
+msgid "menu_connect"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:45
+msgid "menu_signin"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:51
+#: application/layouts/scripts/access.mobile.phtml:59
+#: application/layouts/scripts/layout.phtml:9
+#: application/modules/access/views/scripts/access/index.phtml:8
+msgid "title_sitename"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:53
+msgid "msg_question_become_member"
+msgstr ""
+
+#: application/layouts/scripts/access.mobile.phtml:61
+#: application/layouts/scripts/access.phtml:7
+msgid "msg_question_already_member"
+msgstr ""
+
+#: application/layouts/scripts/layout.phtml:10
+#: application/modules/access/views/scripts/access/index.phtml:10
+msgid "site_shortpres"
+msgstr ""
+
+#: application/layouts/scripts/_footer.phtml:4
+msgid "static_content_aboutUs"
+msgstr ""
+
+#: application/layouts/scripts/_footer.phtml:9
+msgid "static_content_help"
+msgstr ""
+
+#: application/layouts/scripts/_footer.phtml:14
+msgid "static_content_terms"
+msgstr ""
+
+#: application/layouts/scripts/_footer.phtml:19
+msgid "static_content_privacy"
+msgstr ""
+
+#: application/layouts/scripts/_footer.phtml:24
+msgid "static_content_languages"
+msgstr ""
+
+#: application/layouts/scripts/partial/_footer.mobile.phtml:5
+msgid "menu_find_event"
+msgstr ""
+
+#: application/layouts/scripts/partial/_footer.mobile.phtml:6
+#: application/modules/events/views/scripts/event/index-mobile.phtml:56
+msgid "menu_see_categories"
+msgstr ""
+
+#: application/layouts/scripts/partial/_initialMenu.phtml:2
+msgid "button_search_current_event"
+msgstr ""
+
+#: application/layouts/scripts/partial/_initialMenu.phtml:3
+msgid "button_add_new_event"
+msgstr ""
+
+#: application/layouts/scripts/partial/_initialMenu.phtml:4
+msgid "button_see_categories"
+msgstr ""
+
+#: application/layouts/scripts/partial/_initialMenu.phtml:9
+msgid "title_nb_results"
+msgstr ""
+
+#: application/modules/access/views/scripts/access/index.phtml:9
+msgid "site_slogan"
+msgstr ""
+
+#: application/modules/events/views/scripts/_pagination.phtml:44
+msgid "item_page"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/delete.phtml:2
+#: application/modules/events/views/scripts/itemgrouprow/delete.phtml:2
+#: application/modules/events/views/scripts/itemrow/delete.phtml:2
+#: application/modules/members/views/scripts/user/delete.phtml:2
+msgid "msg_questionSureToDelete"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:23
+#: application/modules/events/views/scripts/event/index-mobile.phtml:33
+#: application/modules/events/views/scripts/event/index-mobile.phtml:42
+#: application/modules/events/views/scripts/event/index-mobile.phtml:50
+#: application/modules/events/views/scripts/event/index-mobile.phtml:65
+msgid "menu_short_categories"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:49
+msgid "menu_add_event"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:64
+msgid "menu_settings"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index.phtml:17
+msgid "item_frequency"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index.phtml:28
+msgid "menu_summary_allevents"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
+msgid "menu_list_category_to_add_new_events"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:38
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:52
+msgid "menu_list_more_categories"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:39
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:53
+#: application/modules/events/views/scripts/partial/_categoriesNewEventMenu.phtml:17
+msgid "searchbar_search_categories"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:47
+msgid "menu_list_meta_category"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:6
+msgid "menu_last_events"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:7
+#, fuzzy
+msgid "menu_calendar"
+msgstr "语言:"
+
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:8
+msgid "menu_graphs"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:9
+msgid "menu_options"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_pageEventForm.phtml:8
+#: application/modules/events/views/scripts/partial/_pageItemGroupForm.phtml:3
+#, fuzzy
+msgid "menu_cancel"
+msgstr "语言:"
+
+#: application/modules/events/views/scripts/partial/_pageEventForm.phtml:10
+#, fuzzy
+msgid "menu_save"
+msgstr "语言:"
+
+#: application/modules/events/views/scripts/partial/_pageItemGroupForm.phtml:5
+#, fuzzy
+msgid "menu_done"
+msgstr "语言:"
+
+#: application/translations/_XMLforPoedit/categories.xml:4
+msgid "category_art"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:5
+msgid "category_book"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:6
+msgid "category_boughteating"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:7
+msgid "category_bridge"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:8
+msgid "category_culture"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:9
+msgid "category_delivery"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:10
+msgid "category_everydaylife"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:11
+msgid "category_family"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:12
+msgid "category_films"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:13
+msgid "category_games"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:14
+msgid "category_health"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:15
+msgid "category_leisure"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:16
+msgid "category_medicine"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:17
+msgid "category_music"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:18
+msgid "category_restaurant"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:19
+msgid "category_running"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:20
+msgid "category_social"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:21
+msgid "category_sport"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:22
+msgid "category_swimming"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:23
+msgid "category_trip"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:24
+msgid "category_work"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:34
+msgid "item_medicine"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:35
+msgid "item_quantity"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:36
+msgid "item_opinion"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:37
+msgid "item_location"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:43
+#, fuzzy
+msgid "item_company"
+msgstr "电子邮件地址"
+
+#: application/translations/_XMLforPoedit/categories.xml:44
+msgid "item_restaurant"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/alnum.xml:4
+#: application/translations/_XMLforPoedit/validators/digits.xml:10
+#: application/translations/_XMLforPoedit/validators/float.xml:4
+msgid "Invalid type given. String, integer or float expected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/alnum.xml:7
+msgid "'%value%' contains characters which are non alphabetic and no digits"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/alnum.xml:10
+#: application/translations/_XMLforPoedit/validators/alpha.xml:10
+#: application/translations/_XMLforPoedit/validators/digits.xml:7
+msgid "'%value%' is an empty string"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/alpha.xml:4
+#: application/translations/_XMLforPoedit/validators/emailAddress.xml:4
+#: application/translations/_XMLforPoedit/validators/stringLength.xml:4
+msgid "Invalid type given. String expected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/alpha.xml:7
+msgid "'%value%' contains non alphabetic characters"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/date.xml:4
+msgid "Invalid type given. String, integer, array or Zend_Date expected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/date.xml:7
+msgid "'%value%' does not appear to be a valid date"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/date.xml:10
+msgid "'%value%' does not fit the date format '%format%'"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/digits.xml:4
+msgid "'%value%' must contain only digits"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/emailAddress.xml:7
+msgid ""
+"'%value%' is no valid email address in the basic format local-part@hostname"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/emailAddress.xml:10
+msgid "'%value%' exceeds the allowed length"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/float.xml:7
+msgid "'%value%' does not appear to be a float"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/greaterThan.xml:4
+msgid "'%value%' is not greater than '%min%'"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/identical.xml:4
+msgid "The two given tokens do not match"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/identical.xml:7
+msgid "No token was provided to match against"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/inArray.xml:4
+msgid "'%value%' was not found in the haystack"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/int.xml:4
+msgid "Invalid type given. String or integer expected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/int.xml:7
+msgid "'%value%' does not appear to be an integer"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/lessThan.xml:4
+msgid "'%value%' is not less than '%max%'"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/notEmpty.xml:4
+msgid "Value is required and can't be empty"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/notEmpty.xml:7
+msgid "Invalid type given. String, integer, float, boolean or array expected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/stringLength.xml:7
+msgid "'%value%' is less than %min% characters long"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/stringLength.xml:10
+msgid "'%value%' is more than %max% characters long"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/count.xml:4
+msgid "Too many files, maximum '%max%' are allowed but '%count%' are given"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/count.xml:7
+msgid "Too few files, minimum '%min%' are expected but '%count%' are given"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/exists.xml:4
+msgid "File '%value%' does not exist"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/notExists.xml:4
+msgid "File '%value%' exists"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/size.xml:4
+msgid ""
+"Maximum allowed size for file '%value%' is '%max%' but '%size%' detected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/size.xml:7
+msgid ""
+"Minimum expected size for file '%value%' is '%min%' but '%size%' detected"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/validators/file/size.xml:10
+msgid "File '%value%' is not readable or does not exist"
+msgstr ""
+
+#, fuzzy
+#~ msgid "item_people"
+#~ msgstr "电子邮件地址"
+
+#, fuzzy
+#~ msgid "item_image"
+#~ msgstr "电子邮件地址"
+
+#~ msgid "fr_FR"
+#~ msgstr "français"
+
+#~ msgid "français"
+#~ msgstr "français"
+
+#~ msgid "de_DE"
+#~ msgstr "allemand"
+
+#~ msgid "Deutsch"
+#~ msgstr "Allemand"
+
+#~ msgid "pl_PL"
+#~ msgstr "polonais"
+
+#~ msgid "Polski"
+#~ msgstr "polonais"
+
+#~ msgid "es_ES"
+#~ msgstr "espagnol"
+
+#~ msgid "Español"
+#~ msgstr "espagnol"
+
+#~ msgid "'%value%' is not valid"
+#~ msgstr "'%value%' n'est pas une valeur valide"

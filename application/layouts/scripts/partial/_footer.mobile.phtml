@@ -1,0 +1,9 @@
+<div data-role="footer" data-position="fixed" data-id="footer" >
+    <div data-role="navbar">
+        <ul>
+                <li><a href="<?php echo $this->url(array(),'home'); ?>" data-icon="home"><?php echo ucfirst($this->translate('menu_home')); ?></a></li>
+                <li><a href="<?php echo $this->url(array('controller' => 'event','action' => 'find'),'event'); ?>" data-icon="search"><?php echo ucfirst($this->translate('menu_find_event')); ?></a></li>
+                <li><a href="#list_allCategories" data-icon="grid"><?php echo ucfirst($this->translate('menu_see_categories')); ?></a></li>
+        </ul>
+    </div><!-- /navbar -->
+</div><!-- /footer -->

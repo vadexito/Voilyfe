@@ -1,0 +1,16 @@
+<div class='row-fluid'>
+    <div class="hero-unit">
+        <h1>
+            <?php $name = 'category_'.$this->category->name ; echo ucfirst($this->translate($name)); ?>
+        </h1>                        
+    </div>
+</div>
+<div class='row-fluid'>
+    <div class="span9">
+        <?php echo $this->form;?>
+    </div>
+    <div class="span3">
+         <div id="map"></div>
+    </div>
+</div>
+
