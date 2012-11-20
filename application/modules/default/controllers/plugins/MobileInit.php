@@ -104,8 +104,8 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
         {
             //using twitter bootstrap
             $view->headLink()->prependStylesheet('/application/css/global.css');
-            $view->headLink()->prependStylesheet('/bootstrap/css/bootstrap-responsive.css');
-            $view->headLink()->prependStylesheet('/css/lib/bootstrap.css');
+            $view->headLink()->prependStylesheet('/css/lib/bootstrap/bootstrap-responsive.css');
+            $view->headLink()->prependStylesheet('/css/lib/bootstrap/bootstrap.css');
             $view->headLink()->appendStylesheet('/css/lib/jquery-ui/jquery-ui.custom.css');
         }
     }
@@ -119,11 +119,7 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
         {
             $view->headScript()->prependFile('/js/lib/jquery_mobile/jquery.mobile.js');
             $view->headScript()->prependFile('/js/lib/jquery.js');
-            
-            
             $view->inlineScript()->prependFile('/application/js/globalinline.mobile.js');
-            $view->inlineScript()->prependFile('/application/js/globalinline.js');
-            
         }
         else
         {
@@ -131,12 +127,8 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
             $view->headScript()->prependFile('/js/lib/backbone.js');
             $view->headScript()->prependFile('/js/lib/underscore.js');
             $view->headScript()->prependFile('/js/lib/bootstrap.js');
-            $view->headScript()->prependFile('https://www.google.com/jsapi');
-            $view->headScript()->prependFile("http://maps.googleapis.com/maps/api/js?key=AIzaSyCF7ZgOuhe3sg_c1J0F7hpuace2NAv-DVk&sensor=false&libraries=places");
-            $view->headScript()->prependFile('/js/jquery-ui.custom.js');
+            $view->headScript()->prependFile('/js/lib/jquery-ui/jquery-ui.custom.js');
             $view->headScript()->prependFile('/js/lib/jquery.js');
-            $view->inlineScript()->appendFile('/application/js/globalinline.js');
-            $view->inlineScript()->appendFile('/application/js/globalinline.desktop.js');
         }
     }
     

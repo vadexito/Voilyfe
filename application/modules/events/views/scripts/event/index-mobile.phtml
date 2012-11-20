@@ -1,4 +1,7 @@
 <?php 
+$this->headLink()->prependStylesheet('/css/lib/datebox.css');
+$this->headScript()->appendFile('/js/lib/jqm-datebox/datebox-core.js');
+$this->headScript()->appendFile('/js/lib/jqm-datebox/datebox/datebox-core-modeCalbox.js');
 if ($this->category->name !=='all')
 {
     $name = 'category_'.$this->category->name;

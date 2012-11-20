@@ -47,9 +47,6 @@ class Events_Controller_Action_Helper_Calendar
             
             if (file_exists(APPLICATION_PATH.'/../public'.$pathRel))
             {
-                $view->headLink()->prependStylesheet('/jquery_mobile/datebox/datebox.css');
-                $view->headScript()->appendFile('/jquery_mobile/datebox/datebox-core.js');
-                $view->headScript()->appendFile('/jquery_mobile/datebox/datebox-core-modeCalbox.js');
                 $view->headScript()->appendFile($pathRel);  
             }
         }
