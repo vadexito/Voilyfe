@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-11-15 12:02+0100\n"
-"PO-Revision-Date: 2012-11-15 12:02+0100\n"
+"POT-Creation-Date: 2012-11-20 18:24+0100\n"
+"PO-Revision-Date: 2012-11-20 18:26+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: german\n"
@@ -12,39 +12,39 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;setLabel;setValue;setLegend;"
 "_refresh;append;prepend;translate;setMessage;test\n"
-"X-Poedit-Basepath: C:\\Users\\Bacteria\\Documents\\www\\Mylife\n"
+"X-Poedit-Basepath: C:\\Users\\Bacteria\\Documents\\Work\\Programming\\GitHub"
+"\\Voilyfe\\Voilyfe\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:168
-#: application/layouts/scripts/access.mobile.phtml:52
-#: application/layouts/scripts/access.mobile.phtml:60
-#: application/layouts/scripts/layout.mobile.phtml:10
+#: application/Bootstrap.php:171
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
+#: application/modules/access/views/scripts/access/login-mobile.phtml:5
+#: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr "Home"
 
-#: application/Bootstrap.php:177
+#: application/Bootstrap.php:180
 msgid "menu_event"
 msgstr "Ereignis"
 
-#: application/Bootstrap.php:187
+#: application/Bootstrap.php:190
 msgid "menu_event_add"
 msgstr "Ereignis hinzufügen"
 
-#: application/Bootstrap.php:195
+#: application/Bootstrap.php:198
 msgid "menu_metaCategory"
 msgstr "Kategorien"
 
-#: application/Bootstrap.php:205
+#: application/Bootstrap.php:208
 msgid "menu_user"
 msgstr "Benutzer"
 
-#: application/Bootstrap.php:215
+#: application/Bootstrap.php:218
 msgid "menu_logout"
 msgstr "ausloggen"
 
-#: application/Bootstrap.php:223
+#: application/Bootstrap.php:226
 msgid "menu_set_preferences"
 msgstr "Einstelungen"
 
@@ -52,31 +52,31 @@ msgstr "Einstelungen"
 msgid "menu_back_to_previous_page"
 msgstr "zurück"
 
-#: application/modules/access/forms/UserLogin.php:16
-#: application/modules/access/forms/UserLogin.php:21
+#: application/modules/access/forms/UserLogin.php:15
+msgid "action_login"
+msgstr "anmelden"
+
+#: application/modules/access/forms/Elements/RememberMe.php:20
+msgid "user_rememberMe"
+msgstr "Angemeldet bleiben"
+
+#: application/modules/access/forms/Elements/RememberMe.php:28
+msgid "user_forgotten_password"
+msgstr "Passwort vergessen?"
+
+#: application/modules/access/forms/Elements/UserName.php:14
+#: application/modules/access/forms/Elements/UserName.php:18
 #: application/modules/members/forms/UserRegister.php:14
 #: application/modules/members/forms/UserRegister.php:25
 msgid "user_name"
 msgstr "Benutzername"
 
-#: application/modules/access/forms/UserLogin.php:24
-#: application/modules/access/forms/UserLogin.php:30
+#: application/modules/access/forms/Elements/UserPassword.php:14
+#: application/modules/access/forms/Elements/UserPassword.php:18
 #: application/modules/members/forms/UserRegister.php:30
 #: application/modules/members/forms/UserRegister.php:42
 msgid "user_password"
 msgstr "Passwort"
-
-#: application/modules/access/forms/UserLogin.php:38
-msgid "user_rememberMe"
-msgstr "meine Daten speichern"
-
-#: application/modules/access/forms/UserLogin.php:49
-msgid "user_forgotten_password"
-msgstr "Passwort vergessen?"
-
-#: application/modules/access/forms/UserLogin.php:54
-msgid "action_login"
-msgstr "anmelden"
 
 #: application/modules/backend/forms/CategoryUpdate.php:21
 #: application/modules/backend/forms/ItemUpdate.php:20
@@ -84,7 +84,7 @@ msgstr "anmelden"
 #: application/modules/events/forms/ItemGroupRowUpdate.php:20
 #: application/modules/events/forms/ItemRowCreate.php:43
 #: application/modules/events/forms/ItemRowUpdate.php:20
-#: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:43
+#: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:39
 #: application/modules/members/forms/UserUpdate.php:19
 msgid "action_save"
 msgstr "speichern"
@@ -92,6 +92,12 @@ msgstr "speichern"
 #: application/modules/backend/forms/ItemCreate.php:42
 msgid "action_create"
 msgstr "erstellen"
+
+#: application/modules/backend/forms/Elements/Category.php:22
+#: application/modules/events/forms/Elements/Address.php:22
+#: application/translations/_XMLforPoedit/categories.xml:29
+msgid "item_address"
+msgstr "Adresse"
 
 #: application/modules/default/controllers/ErrorController.php:59
 msgid "no_authorization_view_page"
@@ -101,41 +107,36 @@ msgstr "Zugang zu diesem Inhalt gesperrt"
 msgid "menu_user_profile"
 msgstr "Benutzerprofil"
 
-#: application/modules/default/views/helpers/LanguageBar.php:63
+#: application/modules/default/views/helpers/LanguageBar.php:57
 msgid "menu_language"
 msgstr "Sprache:"
 
-#: application/modules/events/controllers/EventController.php:194
-msgid "msg_event_created"
-msgstr "Ereignis erstellt"
-
-#: application/modules/events/controllers/EventController.php:234
-msgid "msg_event_updated"
-msgstr "Ereignis aktualisiert"
-
-#: application/modules/events/controllers/EventController.php:266
-msgid "msg_event_deleted"
-msgstr "Ereignis gelöscht"
-
-#: application/modules/events/controllers/EventController.php:302
+#: application/modules/events/controllers/AjaxController.php:45
 msgid "legend_all_events"
 msgstr "Alle Ereignisse"
 
-#: application/modules/events/controllers/EventController.php:416
+#: application/modules/events/controllers/AjaxController.php:153
 msgid "category_unknown"
 msgstr "nicht bekannt"
 
-#: application/modules/events/forms/Elements/Address.php:22
-#: application/translations/_XMLforPoedit/categories.xml:29
-msgid "item_address"
-msgstr "Adresse"
+#: application/modules/events/controllers/EventController.php:152
+msgid "msg_event_created"
+msgstr "Ereignis erstellt"
+
+#: application/modules/events/controllers/EventController.php:192
+msgid "msg_event_updated"
+msgstr "Ereignis aktualisiert"
+
+#: application/modules/events/controllers/EventController.php:224
+msgid "msg_event_deleted"
+msgstr "Ereignis gelöscht"
 
 #: application/modules/events/forms/Elements/CuisineType.php:21
 #: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_cuisineType"
 msgstr "Art der Küche"
 
-#: application/modules/events/forms/Elements/Date.php:25
+#: application/modules/events/forms/Elements/Date.php:23
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:37
 #: application/modules/events/views/helpers/EventTable/TableCategory.php:70
 #: application/modules/events/views/helpers/EventTable/TableUniqueCategory.php:69
@@ -146,6 +147,15 @@ msgstr "Datum"
 #: application/translations/_XMLforPoedit/categories.xml:38
 msgid "item_duration"
 msgstr "Dauer"
+
+#: application/modules/events/forms/Elements/Image.php:21
+msgid "item_image"
+msgstr "Bild"
+
+#: application/modules/events/forms/Elements/Location.php:19
+#: application/translations/_XMLforPoedit/categories.xml:37
+msgid "item_location"
+msgstr "Standort"
 
 #: application/modules/events/forms/Elements/Meals.php:22
 #: application/translations/_XMLforPoedit/categories.xml:30
@@ -162,14 +172,12 @@ msgstr "Essensart"
 msgid "item_name"
 msgstr "Name"
 
-#: application/modules/events/forms/Elements/Persons.php:15
+#: application/modules/events/forms/Elements/Persons.php:23
 #: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_persons"
 msgstr "Personen"
 
-#: application/modules/events/forms/Elements/Persons.php:19
-#: application/modules/events/forms/Elements/Restaurants.php:17
-#: application/modules/events/forms/Elements/Tags.php:19
+#: application/modules/events/forms/Elements/Persons.php:25
 msgid "msg_press_return_to_save"
 msgstr "Drücke Enter um zu speichern"
 
@@ -183,12 +191,7 @@ msgstr "Telefonnummer"
 msgid "item_price"
 msgstr "Preis"
 
-#: application/modules/events/forms/Elements/Restaurants.php:14
-#: application/translations/_XMLforPoedit/categories.xml:45
-msgid "item_restaurants"
-msgstr "Restaurants"
-
-#: application/modules/events/forms/Elements/Tags.php:15
+#: application/modules/events/forms/Elements/Tags.php:22
 msgid "item_tags"
 msgstr "Tags"
 
@@ -209,7 +212,7 @@ msgstr "Brustschwimmen"
 msgid "item_typeswimming_back"
 msgstr "Rückenschwimmen"
 
-#: application/modules/events/views/helpers/ButtonNewEvent.php:34
+#: application/modules/events/views/helpers/ButtonNewEvent.php:18
 msgid "menu_createNewEvent"
 msgstr "Neues Ereignis erstellen"
 
@@ -223,7 +226,7 @@ msgstr "Keine Eregnisse"
 msgid "item_category"
 msgstr "Kategorie"
 
-#: application/modules/members/controllers/UserController.php:77
+#: application/modules/members/controllers/UserController.php:53
 msgid "msg_user_registered"
 msgstr "Regiestrierter Benutzer"
 
@@ -255,114 +258,53 @@ msgstr "Füge das angezeite Wort ein:"
 msgid "action_register"
 msgstr "Registrieren"
 
-#: application/layouts/scripts/access.mobile.phtml:17
-#: application/layouts/scripts/access.mobile.phtml:37
-msgid "name_site"
-msgstr "Seite"
-
-#: application/layouts/scripts/access.mobile.phtml:17
-msgid "Remember your life and visualize it anytime from anywhere!"
-msgstr "Errinere Dich an Dein Leben stelle es dar wann und wo Du willst!"
-
-#: application/layouts/scripts/access.mobile.phtml:22
-msgid "Save your life, do not forget anymore!"
-msgstr "Speichere Dein Leben und vergiss nichts mehr!"
-
-#: application/layouts/scripts/access.mobile.phtml:22
-msgid ""
-"Save every part of your life you would like to. Write a diary of all the "
-"activies, events you want."
-msgstr ""
-"Speichere jeden Teil Deines Lebens. Schreibe ein Tagebuch über alle Deinen "
-"Aktivitäten und Ereignisse Deines Lebens."
-
-#: application/layouts/scripts/access.mobile.phtml:27
-msgid "Remember your life, accessing it anywhere"
-msgstr "Erinnere Dich an Dein Leben überall!"
-
-#: application/layouts/scripts/access.mobile.phtml:27
-msgid ""
-"Find what you want in your passed saved life. Mylife offers a powerful tool "
-"to sort and access your events"
-msgstr ""
-"Finde, was Du brauchst von Deinen gespeicherten Ereignissen. Mylife bietet "
-"ein excellentes Tool für Sortieren Deiner Ereignisse!"
-
-#: application/layouts/scripts/access.mobile.phtml:32
-msgid "Visualize you life"
-msgstr "Visualisiere Dein Leben "
-
-#: application/layouts/scripts/access.mobile.phtml:32
-msgid ""
-"You can see summaries, graphs, dictionaries giving a short but accessible "
-"picture of every aspects of your life"
-msgstr ""
-"Du kannst Diagramme, Zusammenfassung oder Wortschatz sehen, die Dir ein "
-"kleines aber zugängliches Bild über jeden Aspekt Deines Lebens zeigen."
-
-#: application/layouts/scripts/access.mobile.phtml:37
-msgid "See where you are"
-msgstr "Schaue wo Du stehst"
-
-#: application/layouts/scripts/access.mobile.phtml:44
-msgid "menu_connect"
-msgstr "verbinden"
-
-#: application/layouts/scripts/access.mobile.phtml:45
-msgid "menu_signin"
-msgstr "Regiestrieren"
-
-#: application/layouts/scripts/access.mobile.phtml:51
-#: application/layouts/scripts/access.mobile.phtml:59
-#: application/layouts/scripts/layout.phtml:9
-#: application/modules/access/views/scripts/access/index.phtml:8
-msgid "title_sitename"
-msgstr "Mylife"
-
-#: application/layouts/scripts/access.mobile.phtml:53
-msgid "msg_question_become_member"
-msgstr "Kein Mitglied?"
-
-#: application/layouts/scripts/access.mobile.phtml:61
-#: application/layouts/scripts/access.phtml:7
+#: application/layouts/scripts/access.phtml:5
+#: application/modules/members/views/scripts/user/register-mobile.phtml:6
 msgid "msg_question_already_member"
 msgstr "Schon Mitglied?"
 
+#: application/layouts/scripts/layout.phtml:9
+#: application/modules/access/views/scripts/access/index.phtml:3
+#: application/modules/access/views/scripts/access/login-mobile.phtml:4
+#: application/modules/members/views/scripts/user/register-mobile.phtml:4
+msgid "title_sitename"
+msgstr "Mylife"
+
 #: application/layouts/scripts/layout.phtml:10
-#: application/modules/access/views/scripts/access/index.phtml:10
+#: application/modules/access/views/scripts/access/index.phtml:6
 msgid "site_shortpres"
 msgstr ""
 "Mylife ermöglicht Dir zu speichern, behalten und visualisieren Dein Leben "
 "mit wenig Klicks!"
-
-#: application/layouts/scripts/_footer.phtml:4
-msgid "static_content_aboutUs"
-msgstr "Über uns"
-
-#: application/layouts/scripts/_footer.phtml:9
-msgid "static_content_help"
-msgstr "Hilfe"
-
-#: application/layouts/scripts/_footer.phtml:14
-msgid "static_content_terms"
-msgstr "Bedingungen"
-
-#: application/layouts/scripts/_footer.phtml:19
-msgid "static_content_privacy"
-msgstr "Datenschutz"
-
-#: application/layouts/scripts/_footer.phtml:24
-msgid "static_content_languages"
-msgstr "Sprache"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:5
 msgid "menu_find_event"
 msgstr "finde das Ereignis"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:56
+#: application/modules/events/views/scripts/event/index-mobile.phtml:59
 msgid "menu_see_categories"
 msgstr "Kategorien"
+
+#: application/layouts/scripts/partial/_footer.phtml:4
+msgid "static_content_aboutUs"
+msgstr "Über uns"
+
+#: application/layouts/scripts/partial/_footer.phtml:9
+msgid "static_content_help"
+msgstr "Hilfe"
+
+#: application/layouts/scripts/partial/_footer.phtml:14
+msgid "static_content_terms"
+msgstr "Bedingungen"
+
+#: application/layouts/scripts/partial/_footer.phtml:19
+msgid "static_content_privacy"
+msgstr "Datenschutz"
+
+#: application/layouts/scripts/partial/_footer.phtml:24
+msgid "static_content_languages"
+msgstr "Sprache"
 
 #: application/layouts/scripts/partial/_initialMenu.phtml:2
 msgid "button_search_current_event"
@@ -380,9 +322,70 @@ msgstr "Kategorien"
 msgid "title_nb_results"
 msgstr "Anzahl der Ereignisse"
 
-#: application/modules/access/views/scripts/access/index.phtml:9
+#: application/modules/access/views/scripts/access/index-mobile.phtml:11
+#: application/modules/access/views/scripts/access/index-mobile.phtml:19
+msgid "name_site"
+msgstr "Seite"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:11
+msgid "Remember your life and visualize it anytime from anywhere!"
+msgstr "Errinere Dich an Dein Leben stelle es dar wann und wo Du willst!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:13
+msgid "Save your life, do not forget anymore!"
+msgstr "Speichere Dein Leben und vergiss nichts mehr!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:13
+msgid ""
+"Save every part of your life you would like to. Write a diary of all the "
+"activies, events you want."
+msgstr ""
+"Speichere jeden Teil Deines Lebens. Schreibe ein Tagebuch über alle Deinen "
+"Aktivitäten und Ereignisse Deines Lebens."
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:15
+msgid "Remember your life, accessing it anywhere"
+msgstr "Erinnere Dich an Dein Leben überall!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:15
+msgid ""
+"Find what you want in your passed saved life. Mylife offers a powerful tool "
+"to sort and access your events"
+msgstr ""
+"Finde, was Du brauchst von Deinen gespeicherten Ereignissen. Mylife bietet "
+"ein excellentes Tool für Sortieren Deiner Ereignisse!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:17
+msgid "Visualize you life"
+msgstr "Visualisiere Dein Leben "
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:17
+msgid ""
+"You can see summaries, graphs, dictionaries giving a short but accessible "
+"picture of every aspects of your life"
+msgstr ""
+"Du kannst Diagramme, Zusammenfassung oder Wortschatz sehen, die Dir ein "
+"kleines aber zugängliches Bild über jeden Aspekt Deines Lebens zeigen."
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:19
+msgid "See where you are"
+msgstr "Schaue wo Du stehst"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:26
+msgid "menu_connect"
+msgstr "verbinden"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:29
+msgid "menu_signin"
+msgstr "Regiestrieren"
+
+#: application/modules/access/views/scripts/access/index.phtml:5
 msgid "site_slogan"
 msgstr "Es lohnt sich, an das Leben zu erinnern"
+
+#: application/modules/access/views/scripts/access/login-mobile.phtml:6
+msgid "msg_question_become_member"
+msgstr "Kein Mitglied?"
 
 #: application/modules/events/views/scripts/_pagination.phtml:44
 msgid "item_page"
@@ -395,27 +398,27 @@ msgstr "Seite"
 msgid "msg_questionSureToDelete"
 msgstr "Du möchtest den Vorgang löschen?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:23
-#: application/modules/events/views/scripts/event/index-mobile.phtml:33
-#: application/modules/events/views/scripts/event/index-mobile.phtml:42
-#: application/modules/events/views/scripts/event/index-mobile.phtml:50
-#: application/modules/events/views/scripts/event/index-mobile.phtml:65
+#: application/modules/events/views/scripts/event/index-mobile.phtml:26
+#: application/modules/events/views/scripts/event/index-mobile.phtml:36
+#: application/modules/events/views/scripts/event/index-mobile.phtml:45
+#: application/modules/events/views/scripts/event/index-mobile.phtml:53
+#: application/modules/events/views/scripts/event/index-mobile.phtml:68
 msgid "menu_short_categories"
 msgstr "Kategorien"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:49
+#: application/modules/events/views/scripts/event/index-mobile.phtml:52
 msgid "menu_add_event"
 msgstr "Ereignis hinzufügen"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:64
+#: application/modules/events/views/scripts/event/index-mobile.phtml:67
 msgid "menu_settings"
 msgstr "Einstellungen"
 
-#: application/modules/events/views/scripts/event/index.phtml:17
+#: application/modules/events/views/scripts/event/index.phtml:19
 msgid "item_frequency"
 msgstr "Häufigkeit"
 
-#: application/modules/events/views/scripts/event/index.phtml:28
+#: application/modules/events/views/scripts/event/index.phtml:30
 msgid "menu_summary_allevents"
 msgstr "Alle Ereignisse"
 
@@ -563,10 +566,6 @@ msgstr "Anzahl"
 msgid "item_opinion"
 msgstr "Meinung"
 
-#: application/translations/_XMLforPoedit/categories.xml:37
-msgid "item_location"
-msgstr "Standort"
-
 #: application/translations/_XMLforPoedit/categories.xml:43
 msgid "item_company"
 msgstr "Firma"
@@ -574,6 +573,10 @@ msgstr "Firma"
 #: application/translations/_XMLforPoedit/categories.xml:44
 msgid "item_restaurant"
 msgstr "Restaurant"
+
+#: application/translations/_XMLforPoedit/categories.xml:45
+msgid "item_restaurants"
+msgstr "Restaurants"
 
 #: application/translations/_XMLforPoedit/validators/alnum.xml:4
 #: application/translations/_XMLforPoedit/validators/digits.xml:10
@@ -707,10 +710,6 @@ msgstr "Die Datei  '%value%'  kann nicht gelesen werden order existiert nicht"
 #, fuzzy
 #~ msgid "item_people"
 #~ msgstr "E-Mail"
-
-#, fuzzy
-#~ msgid "item_image"
-#~ msgstr "Datum"
 
 #~ msgid "events"
 #~ msgstr "Ereignisse"
