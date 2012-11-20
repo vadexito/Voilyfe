@@ -24,28 +24,6 @@ abstract class Pepit_Model_Abstract_Abstract
      */
     protected $_storageName = null;
     
-    
-    
-    
-    
-    
-    
-    static protected function _addModule($frontController,$name)
-    {
-        $module = $frontController->getRequest()->getModuleName();
-        if ('default' === $module)
-        {
-            // define path and prefix
-            $prefix = 'Application_';
-        } 
-        else
-        {
-            // define path and prefix
-            $prefix = ucfirst($module);
-        }
-        return $prefix.'_'.$name;
-    }
-    
     /**
      * load formular
      *
@@ -54,16 +32,16 @@ abstract class Pepit_Model_Abstract_Abstract
      * @return Zend_Form
      */
     
-    static public function loadForm($name,$options=NULL,$frontController = NULL)
+    static public function loadForm($name,$options=NULL,$module=NULL)
     {
-       if ($frontController === NULL)
+       if ($module === NULL)
        {
-           $frontController = Zend_Controller_Front::getInstance();
+           $module = Zend_Controller_Front::getInstance()->getRequest()
+                                                         ->getModuleName();
        }
-       $className  = self::_addModule(
-               $frontController,
-               'Form_' . ucfirst((string) $name)
-        );
+       
+       $className  = ucfirst($module).'_Form_' . ucfirst((string) $name);
+        
        if ($options)
        {
            return new $className($options);
@@ -95,16 +73,14 @@ abstract class Pepit_Model_Abstract_Abstract
      * @param string $name Name of model class or asso array containing name and type
      * @return Pepit_Model_Abstract
      */
-    static public function loadModel($name,$frontController = NULL,array $options = NULL)
+    static public function loadModel($name,array $options = NULL,$module = NULL)
     {
-        if ($frontController === NULL)
-        {
-            $frontController = Zend_Controller_Front::getInstance();
-        }
-        $className  = self::_addModule(
-            $frontController,
-            'Model_' . ucfirst((string) $name)
-        );
+        if ($module === NULL)
+       {
+           $module = Zend_Controller_Front::getInstance()->getRequest()
+                                                         ->getModuleName();
+       }
+        $className  = ucfirst($module) . '_Model_' . ucfirst((string) $name);
         if ($options)
         {
             return new $className($options);

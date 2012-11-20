@@ -18,7 +18,7 @@ Trait Pepit_Model_Traits_BindForm
     
     
     
-    public function BindToForm($form)
+    public function bindToForm($form)
     {
         $this->_form = $form;
         $form->setModel($this);
@@ -31,12 +31,11 @@ Trait Pepit_Model_Traits_BindForm
      * @options 
      * @return Zend_Form
      */
-    public function getForm($mode = NULL,$options=NULL)
+    public function getForm($mode = NULL,$options=NULL,$module=NULL)
     {
         if ($this->_form === NULL)
         {
             
-
             // check if mode exists
             if (!isset($this->getFormClasses()[$mode]))
             {
@@ -49,12 +48,13 @@ Trait Pepit_Model_Traits_BindForm
             {
                $this->_forms[$mode] = self::loadForm(
                         $this->getFormClasses()[$mode],
-                        $options
+                        $options,
+                        $module
                 ); 
 
             }
 
-            $this->BindToForm($this->_forms[$mode]);
+            $this->bindToForm($this->_forms[$mode]);
         }
         
         return $this->_form;
