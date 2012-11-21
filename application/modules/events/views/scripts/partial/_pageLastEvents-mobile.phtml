@@ -22,7 +22,7 @@
                 $year = $filterYear->filter($event->date);
                 echo '<li data-role="list-divider">'.$month.' '.$year.'</li>';
             }
-            echo $this->eventLine($event);
+            echo $this->event($event)->eventLine();
         }
     }?>
 </ul>

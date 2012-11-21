@@ -8,15 +8,13 @@
                     <?php echo $this->event->date->format('m'); ?> / <?php echo $this->event->date->format('d'); ?>
                 </div>
             </div>
-            <div id="photo" class="ui-block-b">
-                <div class="inside">ytryr</div>
-            </div>
+            <div class="ui-block-b"></div>
             <div id="photo" class="ui-block-c">
-                <div class="inside">ytryr</div>
+                <img src="" alt="event-image"/>
             </div>
         </div>
         <div id="items-central-block" class="row-block">
-            <?php echo (new Events_View_Helper_EventLine($this->event))->renderSpecificProperties($this->event);?>
+            <?php echo $this->event($this->event)->renderSpecificProperties();?>
         </div>
         <div id="buttons-lower-block" class="row-block ui-grid-a">
             <div class="ui-block-a">

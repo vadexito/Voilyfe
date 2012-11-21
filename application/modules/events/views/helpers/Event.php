@@ -1,14 +1,40 @@
 <?php
 
-class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
+/**
+ * 
+ * event view helper with several sub function
+ * 
+ */
+
+
+class Events_View_Helper_Event extends Zend_View_Helper_Abstract
 {
     protected $_pathIconCategory = NULL;
     protected $_pathIconItem = NULL;
     
     protected $_event;
     
-    public function eventLine($event)
+    /**
+     * initialize helper
+     * 
+     * @param Entity $event
+     * @return \Events_View_Helper_Event
+     */
+    public function event($event)
     {
+        $this->_event = $event;
+        return $this;
+    }
+    
+    /**
+     * show single line of event (<li> tag)
+     * 
+     * @return string
+     * @throws Pepit_View_Exception
+     */
+    public function eventLine()
+    {
+        $event = $this->_event;
         if (!is_object($event))
         {
             throw new Pepit_View_Exception('Parameter of helper eventline should be an entity object');
@@ -20,8 +46,8 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         
         return $this->renderLine(
             ucfirst($this->view->translate($categoryName)),
-            $this->renderCommonProperties($event),
-            $this->renderSpecificProperties($event),
+            $this->renderCommonProperties(),
+            $this->renderSpecificProperties(),
             $this->_getHref(),
             $this->_getThumbnailSrc()
         );
@@ -61,6 +87,16 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         }
     }
     
+    /**
+     * pure view helper form rendering line
+     * 
+     * @param string $title
+     * @param string $subTitle
+     * @param string $content
+     * @param string $href
+     * @param string $imgSrc
+     * @return string
+     */
     public function renderLine($title,$subTitle,$content,$href,$imgSrc)
     {
         return '<li class="event-line">
@@ -75,8 +111,9 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
     }
     
     
-    public function renderSpecificProperties($event)
+    public function renderSpecificProperties()
     {
+        $event = $this->_event;
         $properties = array();
         foreach ($event->category->items as $item)
         {
@@ -87,21 +124,32 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         return implode(', ',array_filter($properties));
     }
     
-    
-    
-    public function renderCommonProperties($event)
+    /**
+     * return array from common properties location, persons, date, tasg
+     * 
+     * @param array $array
+     */
+    public function getArrayCommonProperties()
     {
+        $properties = [];
+        
+        $event = $this->_event;
         $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
             'date_format' => Zend_Date::DATE_MEDIUM
         ));
-        $properties = array(
-            $filterDate->filter($event->date),
-            $this->_renderPropertyWithIcon($event,'location'),
-            $this->_renderPropertyWithIcon($event,'persons'),
-            $this->_renderPropertyWithIcon($event,'tags'),
-        );
         
-        return implode(', ',array_filter($properties));
+        $properties['date'] = $filterDate->filter($this->_event->date);
+        
+        foreach (['location','persons','tags'] as $item)
+        {
+            $properties[$item] = Pepit_Doctrine_Tool::toString($this->_event,$item);
+        }
+        
+        return $properties;
+    }
+    public function renderCommonProperties()
+    {
+        return implode(', ',array_filter(array_values($this->getArrayCommonProperties())));
     }
     
     protected function _renderPropertyWithIcon($event,$property)
