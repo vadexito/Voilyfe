@@ -1,9 +1,9 @@
 <?php 
 $this->headLink()->prependStylesheet('/css/lib/datebox.css');
-
 $this->inlineScript()->offsetSetFile(100,'https://www.google.com/jsapi'); 
 $this->inlineScript()->offsetSetFile(101,'/js/lib/jqm-datebox/datebox-core.js');
 $this->inlineScript()->offsetSetFile(102,'/js/lib/jqm-datebox/datebox-core-modeCalbox.js');
+
 if ($this->category->name !=='all')
 {
     $name = 'category_'.$this->category->name;
@@ -42,7 +42,7 @@ $buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" cl
         <?php echo $this->partial('partial/_mobilePage.phtml', array(
             'id'         => 'graphs-page',
             'page'       => 'graphs',
-            'content'    => $this->partial('partial/_pageGraph-mobile.phtml',array('events' => $this->events)),
+            'content'    => $this->partial('partial/_pageGraph-mobile.phtml',['events' => $this->events]),
             'title'      => ucfirst($this->translate($name)),
             'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
             'buttonRight'=> $buttonRight,

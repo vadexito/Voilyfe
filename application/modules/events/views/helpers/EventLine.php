@@ -5,23 +5,38 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
     protected $_pathIconCategory = NULL;
     protected $_pathIconItem = NULL;
     
+    protected $_event;
+    
     public function eventLine($event)
     {
+        if (!is_object($event))
+        {
+            throw new Pepit_View_Exception('Parameter of helper eventline should be an entity object');
+        }
+        $this->_event = $event;
+        
         $this->setPathsIcon();
         $categoryName = 'category_'.$event->category->name;
         
         return $this->renderLine(
-            $this->_getThumbnailSrc($event),
             ucfirst($this->view->translate($categoryName)),
-            $this->_renderCommonProperties($event),
-            $this->_renderSpecificProperties($event),
-            $this->view->url(['date' => $event->date],'event')
+            $this->renderCommonProperties($event),
+            $this->renderSpecificProperties($event),
+            $this->_getHref(),
+            $this->_getThumbnailSrc()
         );
-        
     }
     
-    protected function _getThumbnailSrc($event)
+    protected function _getHref()
     {
+        return $this->view->url(
+            ['action'=>'show','containerId'=>$this->_event->category->id,'containerRowId' => $this->_event->id],
+            'event'
+        );
+    }
+    protected function _getThumbnailSrc()
+    {
+        $event = $this->_event;
         if ($event->image)
         {
             return "/bin/imagesUser.php?image=". APPLICATION_PATH.$event->image ."&width=80&height=80";
@@ -46,21 +61,21 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
         }
     }
     
-    public function renderLine($imgSrc,$title,$subTitle,$subTitle2,$href)
+    public function renderLine($title,$subTitle,$content,$href,$imgSrc)
     {
         return '<li class="event-line">
-        <a class="event-line-link" href="'.$href.'">
+        <a data-ajax="false" class="event-line-link" href="'.$href.'">
             <img src="'.$imgSrc.'" />
             <h3>'. $title .'</h3>
             <p><strong>'.$subTitle.'</strong></p>
-            <p>'.$subTitle2.'</p>
+            <p>'.$content.'</p>
             <p class="ui-li-aside"><strong>3 star</strong></p>
         </a>
     </li>'."\n";
     }
     
     
-    protected function _renderSpecificProperties($event)
+    public function renderSpecificProperties($event)
     {
         $properties = array();
         foreach ($event->category->items as $item)
@@ -74,7 +89,7 @@ class Events_View_Helper_EventLine extends Zend_View_Helper_Abstract
     
     
     
-    protected function _renderCommonProperties($event)
+    public function renderCommonProperties($event)
     {
         $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
             'date_format' => Zend_Date::DATE_MEDIUM

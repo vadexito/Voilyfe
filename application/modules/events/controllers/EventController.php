@@ -34,14 +34,10 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
     {
         //get events for one day
         $date = null;
-        if ($this->getRequest()->getParam('day') && 
-            $this->getRequest()->getParam('month') && 
-            $this->getRequest()->getParam('year'))
+        if ($this->getRequest()->getParam('date'))
         {
-            $day = $this->getRequest()->getParam('day');
-            $month = $this->getRequest()->getParam('month');
-            $year = $this->getRequest()->getParam('year');
-            $date = new \DateTime($year.'-'.$month.'-'.$day);
+            //add date in form yyyy-mm-dd
+            $date = new \DateTime($this->getRequest()->getParam('date')); 
         }
         
         //case for all categories
@@ -140,10 +136,6 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         );
         
         
-        
-        
-        
-        
     } 
     
     public function editAction()
@@ -219,6 +211,12 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
     public function findAction()
     {
         
+    }
+    
+    public function showAction()
+    {
+        $eventId = $this->getRequest()->getParam('containerRowId');
+        $this->view->event = $this->_model->getStorage()->find($eventId);
     }
    
 }

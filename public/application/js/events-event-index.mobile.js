@@ -3,7 +3,6 @@
 load google package for graphs / maps
 ================================================================================
 */
-google.load('visualization', '1.0', {'packages':['corechart']});
 
 $(function(){
     
@@ -20,9 +19,6 @@ get category from server
         
         categoryId = window.location.pathname.replace(pattern1,"$1");
     }
-    
-    console.log(categoryId);
-    
     
 /*
 ================================================================================

@@ -1,11 +1,11 @@
-<?php echo $this->doctype() ?>
+<?php echo $this->doctype()."\n"; ?>
 <?php $this->headScript()->appendFile('https://www.google.com/jsapi');?>
 <?php $this->headScript()->appendFile("http://maps.googleapis.com/maps/api/js?key=AIzaSyCF7ZgOuhe3sg_c1J0F7hpuace2NAv-DVk&sensor=false&libraries=places,geometry");?>
 <?php $this->headScript()->appendFile('/js/underscore.js');?>
 <?php $this->headScript()->appendFile('/js/backbone.js');?>
 <html>
     <head>
-        <?php echo $this->partial('_head.phtml') ?>
+        <?php echo $this->partial('partial/_head.phtml',['indent'=>8]) ;?>
     </head>
     <body>
         <?php echo $this->layout()->content; ?>
