@@ -47,30 +47,95 @@ one event page
 ================================================================================
 */
 
-div.row-block
-{
-    /*border:5px solid blue;*/
-    height: 150px;
-    padding:20px;
-}
-
 div[data-role="page"].ui-page
 {
     background: #F2F2F2;
+    height: 100%;
+}
+
+div[data-role="content"].ui-content
+{
+    height: 90%;
+}
+
+div.row-block
+{
+    height: 30%;
+    padding:1%;
+}
+
+#user-image
+{
+    float: right;
+    width:40%;
+}
+
+.icon-category
+{
+    float:none;
+    position:relative;
+}
+
+#upper-block
+{
+    height:auto;
+}
+
+#items-central-block
+{
+    padding:3%;
+    height:50%
+}
+
+#specific-properties
+{
+    padding: 5% 3% 3% 10%;
+    
 }
 
 .date
 {
    padding: 0;
    margin: 0; 
-   /*border:5px solid purple;*/
    display:inline;
+}
+
+#year-header,#month-header,#day-header
+{
+    display: block;
 }
 
 #day-header
 {
-    font-size: 100px;
-    
+    font-size: 5em;
+    display:inline;
 }
+
+#month-day
+{
+    display:inline-block;
+    text-align: left;
+    margin-left: 1em;
+}
+
+
+
+#month-header,#weekday-header
+{
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#month-header
+{
+    font-size: 1.7em;
+}
+
+#weekday-header
+{
+    font-size: 1em;
+    font-weight: bold;
+}
+
 
 

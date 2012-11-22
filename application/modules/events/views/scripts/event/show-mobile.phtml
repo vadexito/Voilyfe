@@ -1,52 +1,33 @@
 <div data-role="page"> 
     <div data-role="header">...</div> 
     <div data-role="content">
-        <div id="upper-block" class="row-block ui-grid-b">
-            <div id="date-category" class="ui-block-a">
-                <div id="subheader-date"class="inside">
+        <div id="upper-block">
+            <div id="subheader-date"class="inside">
                     <?php echo $this->event($this->event)->subHeaderDate?>
-                </div>
-            </div>
-            <div class="ui-block-b"></div>
-            <div id="logo-category" class="ui-block-c">
-                <small><?php echo ucfirst($this->event->category->name); ?></small>
-                <?php echo $this->event($this->event)->renderLogoCategory('50px'); ?>
             </div>
         </div>
         <div id="items-central-block" class="row-block">
             <div class="ui-grid-b">
-                <div class="ui-block-a">
+                <div id="specific-properties" class="ui-block-a">
                      <?php echo $this->event($this->event)->renderSpecificProperties;?>
                 </div>
                 <div class="ui-block-b"></div>
                 <div class="ui-block-c">
-                    <img id="user-image" src="<?php echo $this->url(['name'=> $this->event->image->path,'controller' => 'image','action' => 'show'],'member'); ?>" alt="event-image"/>
+                    <?php echo $this->event($this->event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']);?>
                 </div>
             </div>
         </div>
         <div id="buttons-lower-block" class="row-block ui-grid-a">
             <div class="ui-block-a">
-                <div class="ui-grid-b">
-                    <div class="ui-block-a"></div>
-                    <div class="ui-block-b">
-                        <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $this->event->id],'event');?>">
-                        <?php echo ucfirst($this->translate('event_edit_button')); ?>
-                        </a>
-                    </div>
-                    <div class="ui-block-c"></div>
-                </div>
+                <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $this->event->id],'event');?>">
+                    <?php echo ucfirst($this->translate('event_edit_button')); ?>
+                </a>
             </div>
             <div class="ui-block-b">
-                <div class="ui-grid-b">
-                    <div class="ui-block-a"></div>
-                    <div class="ui-block-b">
-                        <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $this->event->id],'event'); ?>">
-                            <?php echo ucfirst($this->translate('event_delete_button')); ?>
-                        </a>
-                    </div>
-                    <div class="ui-block-c"></div>
-                </div>
-            </div>
+                <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $this->event->id],'event'); ?>">
+                    <?php echo ucfirst($this->translate('event_delete_button')); ?>
+                </a>
+            </div> 
         </div>
     </div>
     

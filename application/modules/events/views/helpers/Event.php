@@ -48,8 +48,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             ucfirst($this->view->translate($categoryName)),
             $this->renderCommonProperties(),
             $this->renderSpecificProperties(),
-            $this->_getHref(),
-            $this->_getThumbnailSrc()
+            $this->_getHref()
         );
     }
     
@@ -65,7 +64,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         $event = $this->_event;
         if ($event->image)
         {
-            return $this->view->url(['name'=> $this->_event->image->path,'controller' => 'image','action' => 'show'],'member');
+            return $this->view->url(['image'=> $this->_event->image->path,'controller' => 'image','action' => 'show'],'member');
         }
         return sprintf(
             $this->_pathIconCategory,
@@ -116,17 +115,42 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
      * @param string $imgSrc
      * @return string
      */
-    public function renderLine($title,$subTitle,$content,$href,$imgSrc)
+    public function renderLine($title,$subTitle,$content,$href)
     {
         return '<li class="event-line">
-        <a data-ajax="false" class="event-line-link" href="'.$href.'">
-            <img src="'.$imgSrc.'" />
-            <h3>'. $title .'</h3>
+        <a data-ajax="false" class="event-line-link" href="'.$href.'">'
+            .$this->renderUserImageThumbnail()
+            .'<h3>'. $title .'</h3>
             <p><strong>'.$subTitle.'</strong></p>
             <p>'.$content.'</p>
             <p class="ui-li-aside"><strong>3 star</strong></p>
         </a>
     </li>'."\n";
+    }
+    
+    /**
+     * 
+     * @param array $options possible option id and alt
+     * @return string
+     */
+    public function renderUserImageThumbnail($options = NULL)
+    {
+        $idProperty = '';
+        $altProperty = '';
+        if (is_array($options))
+        {
+            if (array_key_exists('id', $options))
+            {
+                $idProperty = ' id="'.$options['id'].'" ';
+            }
+            if (array_key_exists('alt', $options))
+            {
+                $altProperty = ' alt="'.$options['alt'].'" ';
+            }
+        }
+        
+        
+        return '<img '. $idProperty . $altProperty .' src="'.$this->_getThumbnailSrc().'" />';
     }
     
     /**
@@ -235,7 +259,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         .'</p>'
         .'<h1>'.$this->localDate(Zend_Date::DAY).'<h1/>'
         .'<h2>'.$this->localDate(Zend_Date::MONTH_NAME_SHORT).'<h2/>'
-        .'<a/>'."\n"; 
+        .'</a>'."\n"; 
         
         return $badge;
     }
@@ -243,12 +267,14 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     public function subHeaderDate()
     {
         $subHeader = 
-        '<a data-role="button" data-theme="b">'
-        . '<h2 id="year-header" class="date">'.$this->localDate(Zend_Date::YEAR).'</h2>'
-        . '<p id="weekday-header" class="date">'.$this->localDate(Zend_Date::WEEKDAY).'</p>'
-        . '<h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
-        . '<h2 id="month-header" class="date">'.$this->localDate(Zend_Date::MONTH_NAME).'</h2>'
-        . '<a/>' . "\n"; 
+        '<ul data-role="listview" data-theme="d" data-divider-theme="d">'
+        . '<li data-role="list-divider"><h3 id="year-header" class="date">'.$this->localDate(Zend_Date::YEAR).'</h3></li>'
+        . '<li><h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
+        . '<div id="month-day">'
+        .'<h2 id="month-header" class="date">'.$this->localDate(Zend_Date::MONTH_NAME).'</h2>'
+        . '<h3 id="weekday-header" class="date">'.$this->localDate(Zend_Date::WEEKDAY).'</h3>'."\n".'</div>'
+        . $this->renderLogoCategory('50px')
+        . '</li><li data-role="list-divider"></li></ul>' . "\n"; 
         
         return $subHeader;
     }
@@ -261,7 +287,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             ucfirst($this->getEvent()->category->name)
         );
         
-        return '<img src="'.$logoCategorySrc.'" width="' . $width . '"/>'."\n";
+        return '<img class="icon-category" src="'.$logoCategorySrc.'" width="' . $width . '"/>'."\n";
     }
     
     

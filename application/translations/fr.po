@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
 "POT-Creation-Date: 2012-11-21 20:01+0100\n"
-"PO-Revision-Date: 2012-11-21 20:03+0100\n"
+"PO-Revision-Date: 2012-11-22 19:05+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -426,7 +426,7 @@ msgstr "En un clin d'oeil"
 
 #: application/modules/events/views/scripts/event/show-mobile.phtml:21
 msgid "event_edit_button"
-msgstr "Éditer"
+msgstr "Editer"
 
 #: application/modules/events/views/scripts/event/show-mobile.phtml:26
 msgid "event_delete_button"
