@@ -157,7 +157,7 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
-tests/
+tests/log/
 
 #Translations
 *.mo
