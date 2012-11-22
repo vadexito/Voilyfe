@@ -149,9 +149,15 @@ develop-eggs
 # Installer logs
 pip-log.txt
 
+#############
+## PHP
+#############
+
+
 # Unit test / coverage reports
 .coverage
 .tox
+tests/
 
 #Translations
 *.mo
@@ -161,3 +167,10 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+#############
+## DATA Storing
+#############
+data/
+
+
