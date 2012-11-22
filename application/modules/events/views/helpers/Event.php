@@ -41,7 +41,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         }
         $this->_event = $event;
         
-        $this->setPathsIcon();
+        $this->setPathIconCategory()->setPathIconItem();
         $categoryName = 'category_'.$event->category->name;
         
         return $this->renderLine(
@@ -65,7 +65,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         $event = $this->_event;
         if ($event->image)
         {
-            return "/members/image/show?image=".$event->image;
+            return $this->view->url(['name'=> $this->_event->image->path,'controller' => 'image','action' => 'show'],'member');
         }
         return sprintf(
             $this->_pathIconCategory,
@@ -73,20 +73,39 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         );
     }
     
-    public function setPathsIcon()
+    public function setPathIconItem()
+    {
+        if (!$this->_pathIconItem)
+        {
+            $this->_pathIconItem = Zend_Registry::get('config')->public->images
+                                        ->icon->item->inline->path;
+        }
+        return $this;
+    }
+    
+    public function getPathIconItem()
+    {
+        $this->setPathIconItem();
+        return $this->_pathIconItem;
+    }
+    
+    public function setPathIconCategory()
     {
         if (!$this->_pathIconCategory)
         {
             $this->_pathIconCategory = Zend_Registry::get('config')->public->images
                                         ->icon->category->path;
         }
-        if (!$this->_pathIconItem)
-        {
-            $this->_pathIconItem = Zend_Registry::get('config')->public->images
-                                        ->icon->item->inline->path;
-        }
+        return $this;
     }
-    
+
+    public function getPathIconCategory()
+    {
+        $this->setPathIconCategory();
+        return $this->_pathIconCategory;
+    }
+
+
     /**
      * pure view helper form rendering line
      * 
@@ -110,34 +129,54 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     </li>'."\n";
     }
     
-    
-    public function renderSpecificProperties()
+    /**
+     * return array from speicifc properties of the event
+     * 
+     * @param array $array
+     */
+    public function specificProperties()
     {
         $event = $this->_event;
         $properties = array();
         foreach ($event->category->items as $item)
         {
             $property = Events_Model_Events::getPropertyName($event->category->name,$item->name);
-            $properties[]= $this->_renderPropertyWithIcon($event, $property);
+            $properties[$item->name]= $this->_renderPropertyWithIcon($event, $property);
         }
         
-        return implode(', ',array_filter($properties));
+        return $properties;
     }
     
+    
+    public function renderSpecificProperties()
+    {
+        return implode(', ',array_filter(array_values($this->specificProperties())));
+    }
+    
+    
+    public function localDate($format = NULL)
+    {
+        if ($format === NULL)
+        {
+            $format = Zend_Date::DATE_MEDIUM;
+        }
+        
+        $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
+            'date_format' => $format
+        ));
+        
+        return $filterDate->filter($this->_event->date);
+    }
     /**
      * return array from common properties location, persons, date, tasg
      * 
      * @param array $array
      */
-    public function getArrayCommonProperties()
+    public function commonProperties()
     {
         $properties = [];
         
-        $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
-            'date_format' => Zend_Date::DATE_MEDIUM
-        ));
-        
-        $properties['date'] = $filterDate->filter($this->_event->date);
+        $properties['date'] = $this->localDate();
         
         foreach (['location','persons','tags'] as $item)
         {
@@ -146,9 +185,11 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         
         return $properties;
     }
+    
+    
     public function renderCommonProperties()
     {
-        return implode(', ',array_filter(array_values($this->getArrayCommonProperties())));
+        return implode(', ',array_filter(array_values($this->commonProperties())));
     }
     
     protected function _renderPropertyWithIcon($event,$property)
@@ -160,7 +201,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         }
         
         //try with the property name (specific property)
-        $relativePath = sprintf($this->_pathIconItem,ucfirst($property));
+        $relativePath = sprintf($this->getPathIconItem(),ucfirst($property));
         $iconFile = APPLICATION_PATH.'/../public'.$relativePath;
         if (file_exists($iconFile))
         {
@@ -170,7 +211,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         else
         {
             $property = preg_replace('#^(.*)_(.*)$#','$2',$property);
-            $src = sprintf($this->_pathIconItem,$property);
+            $src = sprintf($this->getPathIconItem(),$property);
         }
         
         return '<img src="'
@@ -178,6 +219,51 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             .'" style="width:15px;height:15px;"/> '
             .$string ;
     }
+    
+    public function badgeCatDate()
+    {
+        $logoCategorySrc = sprintf(
+            $this->getPathIconCategory(),
+            ucfirst($this->getEvent()->category->name)
+        );
+        
+        $badge = 
+        '<a data-role="button" data-theme="b">'
+        .'<p>'
+        .'<small>'.$this->getEvent()->category->name.'</small>'
+        .'<img src="'.$logoCategorySrc.'" width="20px"/>'
+        .'</p>'
+        .'<h1>'.$this->localDate(Zend_Date::DAY).'<h1/>'
+        .'<h2>'.$this->localDate(Zend_Date::MONTH_NAME_SHORT).'<h2/>'
+        .'<a/>'."\n"; 
+        
+        return $badge;
+    }
+    
+    public function subHeaderDate()
+    {
+        $subHeader = 
+        '<a data-role="button" data-theme="b">'
+        . '<h2 id="year-header" class="date">'.$this->localDate(Zend_Date::YEAR).'</h2>'
+        . '<p id="weekday-header" class="date">'.$this->localDate(Zend_Date::WEEKDAY).'</p>'
+        . '<h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
+        . '<h2 id="month-header" class="date">'.$this->localDate(Zend_Date::MONTH_NAME).'</h2>'
+        . '<a/>' . "\n"; 
+        
+        return $subHeader;
+    }
+    
+    
+    public function renderLogoCategory($width)
+    {
+        $logoCategorySrc = sprintf(
+            $this->getPathIconCategory(),
+            ucfirst($this->getEvent()->category->name)
+        );
+        
+        return '<img src="'.$logoCategorySrc.'" width="' . $width . '"/>'."\n";
+    }
+    
     
     public function __get($name)
     {
@@ -187,4 +273,11 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         }
         return $this->$name;
     }
+    
+    public function getEvent()
+    {
+        return $this->_event;
+    }
+    
+    
 }

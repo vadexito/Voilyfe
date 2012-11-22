@@ -42,20 +42,35 @@ a.add-event-button
 }
 
 /*
-================================================================
+================================================================================
 one event page
-================================================================
+================================================================================
 */
 
 div.row-block
 {
-    border:5px solid blue;
+    /*border:5px solid blue;*/
     height: 150px;
+    padding:20px;
 }
 
 div[data-role="page"].ui-page
 {
     background: #F2F2F2;
+}
+
+.date
+{
+   padding: 0;
+   margin: 0; 
+   /*border:5px solid purple;*/
+   display:inline;
+}
+
+#day-header
+{
+    font-size: 100px;
+    
 }
 
 

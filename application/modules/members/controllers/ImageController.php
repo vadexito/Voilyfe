@@ -40,7 +40,7 @@ class Members_ImageController extends Pepit_Controller_Abstract_Abstract
             {
                 $this->getResponse()->clearBody ();
                 $this->getResponse()->clearAllHeaders();
-                $this->getResponse()->setHeader('Content-Type', 'image/'.$extMime,true);
+                $this->getResponse()->setHeader('Content-Type', 'image/jpg',true);
                 $this->getResponse()->setHeader('Cache-Control', 'public');
                 $this->getResponse()->setBody($image);
                 
