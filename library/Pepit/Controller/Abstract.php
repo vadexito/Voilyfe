@@ -17,7 +17,7 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
             $submitChecked = $form->getElement('submit_insert')->isChecked();
             //var_dump($form->getErrors());
             //var_dump($userInput);
-            //var_dump($form->getValue('tags'));die;
+            //var_dump($form->getValues());die;
             
             
             
@@ -89,10 +89,10 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
             $form,$messageSuccess,$redirectUrl,$entityId)
     {
         // check if form was sent
-        if ($this->getRequest()->isPost())
+        if ($this->getRequest()->isPost() || $this->getRequest()->isGet() )
         {
             // get row from post
-            $userInput = $this->getRequest()->getPost();
+            $userInput = $this->getRequest()->getParams();
             $valid = $form->isValid($userInput);
             $submitChecked = $form->getElement('submit_delete')->isChecked();
             

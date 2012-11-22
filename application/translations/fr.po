@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-11-21 20:01+0100\n"
-"PO-Revision-Date: 2012-11-22 19:05+0100\n"
+"POT-Creation-Date: 2012-11-22 23:04+0100\n"
+"PO-Revision-Date: 2012-11-22 23:04+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -230,7 +230,7 @@ msgstr "Pas d'événement en mémoire"
 msgid "item_category"
 msgstr "Catégorie"
 
-#: application/modules/members/controllers/UserController.php:53
+#: application/modules/members/controllers/UserController.php:52
 msgid "msg_user_registered"
 msgstr "Félicitations ! Vous êtes membre !"
 
@@ -424,13 +424,37 @@ msgstr "Fréquence"
 msgid "menu_summary_allevents"
 msgstr "En un clin d'oeil"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:21
+#: application/modules/events/views/scripts/event/show-mobile.phtml:23
 msgid "event_edit_button"
 msgstr "Editer"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:26
+#: application/modules/events/views/scripts/event/show-mobile.phtml:28
 msgid "event_delete_button"
 msgstr "effacer"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:35
+msgid "title_question_delete_event"
+msgstr "Effacer"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:38
+msgid "mgs_sure_to_delete?"
+msgstr "Etes-vous bien sûr ?"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:39
+msgid "mgs_no_cancellation_of_action?"
+msgstr "La suppression est définitive"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:41
+msgid "button_cancel"
+msgstr "Annuler"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:43
+msgid "action_delete"
+msgstr "effacer"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:44
+msgid "button_confirm?"
+msgstr "Confirmer"
 
 #: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
 msgid "menu_list_category_to_add_new_events"
@@ -737,14 +761,8 @@ msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
 #~ msgid "action_edit"
 #~ msgstr "Mettre à jour"
 
-#~ msgid "action_delete"
-#~ msgstr "effacer"
-
 #~ msgid "msg_no_performance_available"
 #~ msgstr "Pas de résultat disponible"
-
-#~ msgid "button_see_more"
-#~ msgstr "Voir plus"
 
 #~ msgid "'%hostname%' is no valid hostname for email address '%value%'"
 #~ msgstr ""

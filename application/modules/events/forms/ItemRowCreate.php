@@ -26,7 +26,7 @@ class Events_Form_ItemRowCreate extends Zend_Form
         $container = $this->_model->getEntityManager()
                             ->getRepository('ZC\Entity\Item')
                             ->find($this->_containerId);
-        
+                    
         $textElement->setLabel($container->name);
         
         

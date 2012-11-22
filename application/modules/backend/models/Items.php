@@ -104,7 +104,7 @@ class Backend_Model_Items extends Pepit_Model_Doctrine2 implements Backend_Model
         $item->addItem($item);
         
         //hydrate entity
-        return $this->_saveEntityFromForm($formValues, $item);
+        return $this->_saveEntityFromForm($item);
     }
     
     public function updateEntityFromForm(array $formValues,$itemId)

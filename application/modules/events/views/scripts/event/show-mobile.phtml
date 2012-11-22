@@ -1,5 +1,13 @@
 <div data-role="page"> 
-    <div data-role="header">...</div> 
+    <div data-role="header">
+        <?php $btnLeft = $this->htmlMobileButtonNavBar(['position'=>'left','type'=> Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK]);
+            $btnRight = $this->htmlMobileButtonNavBar(
+                ['position' => 'right','type'=>  Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_ADD_NEW_EVENT],
+                ['href' => $this->url(['containedId' => $this->event->category->id,'action' => 'create'],'event')]
+            );
+            echo $this->mobilePage()->renderHeader($btnLeft,$btnRight,''); 
+        ?>
+    </div> 
     <div data-role="content">
         <div id="upper-block">
             <div id="subheader-date"class="inside">
@@ -19,16 +27,31 @@
         </div>
         <div id="buttons-lower-block" class="row-block ui-grid-a">
             <div class="ui-block-a">
-                <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $this->event->id],'event');?>">
+                <a data-role="button" data-theme="a" data-ajax="false" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $this->event->id],'event');?>">
                     <?php echo ucfirst($this->translate('event_edit_button')); ?>
                 </a>
             </div>
             <div class="ui-block-b">
-                <a data-role="button" data-theme="a" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $this->event->id],'event'); ?>">
+                <a data-rel="popup" data-position-to="window" data-role="button" data-theme="a" href="#popupDelete">
                     <?php echo ucfirst($this->translate('event_delete_button')); ?>
                 </a>
             </div> 
         </div>
     </div>
-    
+    <div data-role="popup" id="popupDelete" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+                <h1><?php echo $this->translate('title_question_delete_event'); ?></h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                <h3 class="ui-title"><?php echo $this->translate('mgs_sure_to_delete?'); ?></h3>
+                <p><?php echo $this->translate('mgs_no_cancellation_of_action?'); ?></p>
+                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+                    <?php echo $this->translate('button_cancel');?>
+                </a>    
+                <a data-ajax="false" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $this->event->id],'event').'?submit_delete='.$this->translate('action_delete'); ?>" data-role="button" data-inline="true" data-theme="b">
+                    <?php echo $this->translate('button_confirm?');?>
+                </a>  
+        </div>
+    </div>
 </div>
+
