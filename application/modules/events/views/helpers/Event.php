@@ -65,7 +65,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         $event = $this->_event;
         if ($event->image)
         {
-            return "/bin/imagesUser.php?image=". APPLICATION_PATH.$event->image ."&width=80&height=80";
+            return "/members/image/show?image=".$event->image;
         }
         return sprintf(
             $this->_pathIconCategory,
@@ -133,7 +133,6 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     {
         $properties = [];
         
-        $event = $this->_event;
         $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
             'date_format' => Zend_Date::DATE_MEDIUM
         ));
@@ -178,5 +177,14 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             . $src 
             .'" style="width:15px;height:15px;"/> '
             .$string ;
+    }
+    
+    public function __get($name)
+    {
+        if (method_exists($this,$name))
+        {
+            return $this->$name();
+        }
+        return $this->$name;
     }
 }

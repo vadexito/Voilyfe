@@ -70,17 +70,17 @@ class Pepit_Form_Element_Image extends Zend_Form_Element_File
         $id = $image->id;
         
         
-        $path = $dir.$this->_getNewFileName(
+        $imageName = $this->_getNewFileName(
                 $id, 
                 Zend_Auth::getInstance()->getIdentity()->id, 
                 $extension
         );
         
-        //storing the relative path to APPLICATION_PATH constant
-        $image->path = $path;
+        //storing the name in the storeage directory
+        $image->path = $imageName;
         $this->getEntityManager()->flush($image);
         
-        $adapter->addFilter('Rename',array('target' => APPLICATION_PATH.$path));
+        $adapter->addFilter('Rename',array('target' => APPLICATION_PATH.$dir.$imageName));
         
         //create file
         $adapter->receive();

@@ -26,7 +26,7 @@
             <h2>Class Coverage Distribution</h2>
             <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
             <script>
-            var ccd = new RGraph.Bar('classCoverageDistribution', [14,2,1,0,0,0,0,0,1,0,0,7]);
+            var ccd = new RGraph.Bar('classCoverageDistribution', [15,2,1,0,0,0,0,0,1,0,0,6]);
             ccd.Set('chart.background.barcolor1', 'white');
             ccd.Set('chart.background.barcolor2', 'white');
             ccd.Set('chart.colors', ['blue']);
@@ -43,7 +43,7 @@
             <h2>Class Complexity</h2>
             <canvas id="classComplexity" width="475" height="200"></canvas>
             <script>
-            var cc = new RGraph.Scatter('classComplexity', [[100,0,"blue","Default_Bootstrap"],[100,2,"blue","Application_Acl_Acl"],[75,3,"blue","Application_Acl_MemberRole"],[100,3,"blue","Application_Acl_OwnerAssertion"],[100,0,"blue","Application_Acl_Resources"],[100,0,"blue","Application_Acl_Roles"],[100,1,"blue","Application_Acl_UserResource"],[100,2,"blue","Application_Acl_WithOwnerResource"],[0,12,"blue","ErrorController"],[0,2,"blue","IndexController"],[0,1,"blue","LocaleController"],[0,3,"blue","StaticContentController"],[0,3,"blue","Application_Controller_Action_Helper_AclAuthor"],[0,4,"blue","Application_Controller_Action_Helper_DispatchToMobileFile"],[2.1276595744681,12,"blue","Application_Controller_Plugin_Layout"],[12,14,"blue","Application_Controller_Plugin_MobileInit"],[1.4925373134328,9,"blue","Application_Controller_Plugin_Navmenu"],[0,2,"blue","Application_View_Helper_DeviceType"],[0,1,"blue","Application_View_Helper_EntityManager"],[0,4,"blue","Application_View_Helper_FlashMessages"],[0,8,"blue","Application_View_Helper_LanguageBar"],[0,3,"blue","Application_View_Helper_Member"],[0,5,"blue","Application_View_Helper_NavigBar"],[0,3,"blue","Application_View_Helper_ScriptFileExists"],[0,1,"blue","Application_View_Helper_Widget"]]);
+            var cc = new RGraph.Scatter('classComplexity', [[100,0,"blue","Default_Bootstrap"],[100,2,"blue","Application_Acl_Acl"],[75,3,"blue","Application_Acl_MemberRole"],[100,3,"blue","Application_Acl_OwnerAssertion"],[100,0,"blue","Application_Acl_Resources"],[100,0,"blue","Application_Acl_Roles"],[100,2,"blue","Application_Acl_WithOwnerResource"],[0,12,"blue","ErrorController"],[0,2,"blue","IndexController"],[0,1,"blue","LocaleController"],[0,3,"blue","StaticContentController"],[0,3,"blue","Application_Controller_Action_Helper_AclAuthor"],[0,4,"blue","Application_Controller_Action_Helper_DispatchToMobileFile"],[1.2658227848101,18,"blue","Application_Controller_Plugin_Layout"],[13.04347826087,14,"blue","Application_Controller_Plugin_MobileInit"],[1.4925373134328,9,"blue","Application_Controller_Plugin_Navmenu"],[0,3,"blue","Application_View_Helper_DataPrefetch"],[0,2,"blue","Application_View_Helper_DeviceType"],[0,1,"blue","Application_View_Helper_EntityManager"],[0,4,"blue","Application_View_Helper_FlashMessages"],[0,8,"blue","Application_View_Helper_LanguageBar"],[0,3,"blue","Application_View_Helper_Member"],[0,3,"blue","Application_View_Helper_NavigBar"],[0,3,"blue","Application_View_Helper_ScriptFileExists"],[0,1,"blue","Application_View_Helper_Widget"]]);
             cc.Set('chart.xmax', 100);
             cc.Set('chart.background.barcolor1', 'white');
             cc.Set('chart.background.barcolor2', 'white');
@@ -59,13 +59,13 @@
           <td valign="top">
             <h2>Top Project Risks</h2>
             <ul>
-              <li><a href="application_modules_default_views_helpers_LanguageBar.php.html#3">Application_View_Helper_LanguageBar</a> (72)</li>
-              <li><a href="application_modules_default_views_helpers_NavigBar.php.html#3">Application_View_Helper_NavigBar</a> (30)</li>
-              <li><a href="application_modules_default_controllers_helpers_dispatchToMobileFile.php.html#4">Application_Controller_Action_Helper_DispatchToMobileFile</a> (20)</li>
+              <li><a href="application_modules_default_controllers_helpers_DispatchToMobileFile.php.html#4">Application_Controller_Action_Helper_DispatchToMobileFile</a> (20)</li>
               <li><a href="application_modules_default_views_helpers_FlashMessages.php.html#3">Application_View_Helper_FlashMessages</a> (20)</li>
+              <li><a href="application_modules_default_controllers_helpers_AclAuthor.php.html#10">Application_Controller_Action_Helper_AclAuthor</a> (12)</li>
               <li><a href="application_modules_default_controllers_StaticContentController.php.html#3">StaticContentController</a> (12)</li>
               <li><a href="application_modules_default_views_helpers_ScriptFileExists.php.html#3">Application_View_Helper_ScriptFileExists</a> (12)</li>
-              <li><a href="application_modules_default_controllers_helpers_AclAuthor.php.html#10">Application_Controller_Action_Helper_AclAuthor</a> (12)</li>
+              <li><a href="application_modules_default_views_helpers_NavigBar.php.html#3">Application_View_Helper_NavigBar</a> (12)</li>
+              <li><a href="application_modules_default_views_helpers_DataPrefetch.php.html#3">Application_View_Helper_DataPrefetch</a> (12)</li>
               <li><a href="application_modules_default_views_helpers_Member.php.html#3">Application_View_Helper_Member</a> (12)</li>
               <li><a href="application_modules_default_views_helpers_DeviceType.php.html#3">Application_View_Helper_DeviceType</a> (6)</li>
               <li><a href="application_modules_default_acls_MemberRole.php.html#9">Application_Acl_MemberRole</a> (3)</li>
@@ -76,16 +76,16 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
+              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#84">Application_Controller_Plugin_Navmenu::_createUserMenu</a> (0%)</li>
+              <li><a href="application_modules_default_views_helpers_DataPrefetch.php.html#5">Application_View_Helper_DataPrefetch::dataPrefetch</a> (0%)</li>
+              <li><a href="application_modules_default_views_helpers_DeviceType.php.html#5">Application_View_Helper_DeviceType::deviceType</a> (0%)</li>
+              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#28">Application_Controller_Plugin_Navmenu::_createCategoryMenu</a> (0%)</li>
+              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#9">Application_Controller_Plugin_Navmenu::dispatchLoopStartup</a> (0%)</li>
+              <li><a href="application_modules_default_controllers_plugins_MobileInit.php.html#91">Application_Controller_Plugin_MobileInit::_initCss</a> (0%)</li>
+              <li><a href="application_modules_default_controllers_plugins_MobileInit.php.html#113">Application_Controller_Plugin_MobileInit::_initJs</a> (0%)</li>
+              <li><a href="application_modules_default_controllers_plugins_MobileInit.php.html#134">Application_Controller_Plugin_MobileInit::_initMeta</a> (0%)</li>
               <li><a href="application_modules_default_views_helpers_EntityManager.php.html#5">Application_View_Helper_EntityManager::entityManager</a> (0%)</li>
               <li><a href="application_modules_default_views_helpers_FlashMessages.php.html#5">Application_View_Helper_FlashMessages::flashMessages</a> (0%)</li>
-              <li><a href="application_modules_default_views_helpers_FlashMessages.php.html#21">Application_View_Helper_FlashMessages::render</a> (0%)</li>
-              <li><a href="application_modules_default_views_helpers_DeviceType.php.html#5">Application_View_Helper_DeviceType::deviceType</a> (0%)</li>
-              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#84">Application_Controller_Plugin_Navmenu::_createUserMenu</a> (0%)</li>
-              <li><a href="application_modules_default_controllers_plugins_MobileInit.php.html#143">Application_Controller_Plugin_MobileInit::_initMeta</a> (0%)</li>
-              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#9">Application_Controller_Plugin_Navmenu::dispatchLoopStartup</a> (0%)</li>
-              <li><a href="application_modules_default_controllers_plugins_Navmenu.php.html#28">Application_Controller_Plugin_Navmenu::_createCategoryMenu</a> (0%)</li>
-              <li><a href="application_modules_default_views_helpers_LanguageBar.php.html#7">Application_View_Helper_LanguageBar::setView</a> (0%)</li>
-              <li><a href="application_modules_default_views_helpers_LanguageBar.php.html#12">Application_View_Helper_LanguageBar::getView</a> (0%)</li>
 
             </ul>
           </td>
@@ -97,7 +97,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.5.15 at Mon Nov 19 12:14:31 CET 2012.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.5.15 at Thu Nov 22 9:31:29 CET 2012.</td></tr>
     </table>
 
     <br/>
