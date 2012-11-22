@@ -27,8 +27,7 @@ class Application_Acl_Acl extends Zend_Acl
             ->addResource('error',Application_Acl_Resources::PUBLICPAGE)
             ->addResource('static-content',Application_Acl_Resources::PUBLICPAGE)
             
-            ->addResource(new Application_Acl_WithOwnerResource('members:user'))
-            ->addResource(new Application_Acl_WithOwnerResource('members:image'))
+            ->addResource(new Application_Acl_UserResource())
             ->addResource(new Application_Acl_WithOwnerResource('events:event'))
             ->addResource(new Application_Acl_WithOwnerResource('events:itemgrouprow'))
             ->addResource(new Application_Acl_WithOwnerResource('events:itemrow'))
@@ -60,7 +59,6 @@ class Application_Acl_Acl extends Zend_Acl
             ->allow(Application_Acl_Roles::MEMBER,'access:access',['logout'])   
             ->deny(Application_Acl_Roles::MEMBER,'access:access',['index','login'])   
             ->allow(Application_Acl_Roles::MEMBER,'members:user',['index','edit','delete'])   
-            ->allow(Application_Acl_Roles::MEMBER,'members:image',['show'])   
             ->allow(Application_Acl_Roles::MEMBER,'members:settings',['index','setpreferences'])   
                 
             ->allow(Application_Acl_Roles::MEMBER,['events:event','events:itemgrouprow','events:itemrow'],['index','create','delete','edit','showall','show']);
@@ -75,7 +73,6 @@ class Application_Acl_Acl extends Zend_Acl
         $this->allow(Application_Acl_Roles::MEMBER,'events:itemgrouprow',['edit','delete'],new Application_Acl_OwnerAssertion());
         $this->allow(Application_Acl_Roles::MEMBER,'events:itemrow',['edit','delete'],new Application_Acl_OwnerAssertion());
         $this->allow(Application_Acl_Roles::MEMBER,'members:user',['edit','delete'],new Application_Acl_OwnerAssertion());
-        $this->allow(Application_Acl_Roles::MEMBER,'members:image',['show'],new Application_Acl_OwnerAssertion());
       
     }
     

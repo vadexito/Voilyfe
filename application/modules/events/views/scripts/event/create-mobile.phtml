@@ -1,16 +1,13 @@
-<?php   $this->inlineScript()->offsetSetFile(200,'/js/lib/jquery_mobile/jqm.autoComplete.js');
-        $this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
-        $this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
-            
-        $this->inlineScript()->offsetSetFile(150,'/js/mvc/models/tag.js');
-        $this->inlineScript()->offsetSetFile(151,'/js/mvc/views/tagView.js');
-        $this->inlineScript()->offsetSetFile(152,'/js/mvc/models/input.js');
-        $this->inlineScript()->offsetSetFile(153,'/js/mvc/models/tags.js');
-        $this->inlineScript()->offsetSetFile(154,'/js/mvc/views/inputView.js');
-        $this->inlineScript()->offsetSetFile(155,'/js/mvc/views/subformView.js');
-        $this->inlineScript()->offsetSetFile(156,'/js/mvc/views/hiddenFormView.js');
-        $this->inlineScript()->offsetSetFile(157,'/js/mvc/views/hiddenTagSimpleFormView.js');
-        $this->inlineScript()->offsetSetFile(158,'/js/mvc/utils/close.js');?>
+<?php $this->headScript()->appendFile('/jquery_mobile/jqm.autoComplete.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/models/tag.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/views/tagView.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/models/input.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/models/tags.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/views/inputView.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/views/subformView.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/views/hiddenFormView.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/views/hiddenTagSimpleFormView.js');?>
+<?php $this->headScript()->appendFile('/js/mvc/utils/close.js');?>
 
 <form enctype="multipart/form-data" id="add_event" data-ajax="false" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
 <?php 

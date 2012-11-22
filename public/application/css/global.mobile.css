@@ -244,4 +244,19 @@ img.button-option-plus
     max-width: 25px;
 }
 
+/*
+================================================================
+one event page
+================================================================
+*/
 
+div.row-block
+{
+    border:5px solid blue;
+    height: 150px;
+}
+
+div[data-role="page"].ui-page
+{
+    background: #F2F2F2;
+}
