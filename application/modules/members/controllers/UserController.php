@@ -9,11 +9,10 @@ class Members_UserController extends Pepit_Controller_Abstract_Abstract
     {
         parent::preDispatch();
         
-        $resource = new Application_Acl_UserResource();
-        if ($this->getRequest()->getParam('memberId'))
-        {
-            $resource->ownerId = $this->getRequest()->getParam('memberId');
-        }
+        $resource = new Application_Acl_WithOwnerResource(
+                'members:user',
+                Zend_Auth::getInstance()->getIdentity()->id 
+        );
         $this->_helper->aclAuthor($resource);
         
     }

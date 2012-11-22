@@ -26,7 +26,7 @@
             <h2>Class Coverage Distribution</h2>
             <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
             <script>
-            var ccd = new RGraph.Bar('classCoverageDistribution', [6,0,0,0,0,0,0,0,0,0,0,1]);
+            var ccd = new RGraph.Bar('classCoverageDistribution', [7,0,0,0,0,0,0,0,0,0,0,1]);
             ccd.Set('chart.background.barcolor1', 'white');
             ccd.Set('chart.background.barcolor2', 'white');
             ccd.Set('chart.colors', ['blue']);
@@ -43,7 +43,7 @@
             <h2>Class Complexity</h2>
             <canvas id="classComplexity" width="475" height="200"></canvas>
             <script>
-            var cc = new RGraph.Scatter('classComplexity', [[100,0,"blue","Members_Bootstrap"],[0,3,"blue","Members_SettingsController"],[0,16,"blue","Members_UserController"],[0,0,"blue","Members_Form_UserDelete"],[0,4,"blue","Members_Form_UserRegister"],[0,1,"blue","Members_Form_UserUpdate"],[0,13,"blue","Members_Model_Users"]]);
+            var cc = new RGraph.Scatter('classComplexity', [[100,0,"blue","Members_Bootstrap"],[0,4,"blue","Members_ImageController"],[0,3,"blue","Members_SettingsController"],[0,15,"blue","Members_UserController"],[0,0,"blue","Members_Form_UserDelete"],[0,6,"blue","Members_Form_UserRegister"],[0,1,"blue","Members_Form_UserUpdate"],[0,13,"blue","Members_Model_Users"]]);
             cc.Set('chart.xmax', 100);
             cc.Set('chart.background.barcolor1', 'white');
             cc.Set('chart.background.barcolor2', 'white');
@@ -59,9 +59,10 @@
           <td valign="top">
             <h2>Top Project Risks</h2>
             <ul>
-              <li><a href="application_modules_members_controllers_UserController.php.html#3">Members_UserController</a> (272)</li>
+              <li><a href="application_modules_members_controllers_UserController.php.html#3">Members_UserController</a> (240)</li>
               <li><a href="application_modules_members_models_Users.php.html#3">Members_Model_Users</a> (182)</li>
-              <li><a href="application_modules_members_forms_UserRegister.php.html#3">Members_Form_UserRegister</a> (20)</li>
+              <li><a href="application_modules_members_forms_UserRegister.php.html#3">Members_Form_UserRegister</a> (42)</li>
+              <li><a href="application_modules_members_controllers_ImageController.php.html#3">Members_ImageController</a> (20)</li>
 
             </ul>
           </td>
@@ -69,16 +70,16 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
-              <li><a href="application_modules_members_forms_UserUpdate.php.html#6">Members_Form_UserUpdate::init</a> (0%)</li>
               <li><a href="application_modules_members_forms_UserRegister.php.html#6">Members_Form_UserRegister::init</a> (0%)</li>
+              <li><a href="application_modules_members_controllers_UserController.php.html#135">Members_UserController::deleteAction</a> (0%)</li>
+              <li><a href="application_modules_members_controllers_UserController.php.html#77">Members_UserController::editAction</a> (0%)</li>
+              <li><a href="application_modules_members_forms_UserUpdate.php.html#6">Members_Form_UserUpdate::init</a> (0%)</li>
               <li><a href="application_modules_members_models_Users.php.html#26">Members_Model_Users::createEntityFromForm</a> (0%)</li>
-              <li><a href="application_modules_members_models_Users.php.html#57">Members_Model_Users::updateEntityFromForm</a> (0%)</li>
               <li><a href="application_modules_members_models_Users.php.html#64">Members_Model_Users::_saveEntityFromForm</a> (0%)</li>
-              <li><a href="application_modules_members_controllers_UserController.php.html#157">Members_UserController::deleteAction</a> (0%)</li>
-              <li><a href="application_modules_members_controllers_UserController.php.html#99">Members_UserController::editAction</a> (0%)</li>
-              <li><a href="application_modules_members_controllers_SettingsController.php.html#18">Members_SettingsController::setpreferencesAction</a> (0%)</li>
-              <li><a href="application_modules_members_controllers_SettingsController.php.html#13">Members_SettingsController::indexAction</a> (0%)</li>
-              <li><a href="application_modules_members_controllers_UserController.php.html#12">Members_UserController::preDispatch</a> (0%)</li>
+              <li><a href="application_modules_members_models_Users.php.html#57">Members_Model_Users::updateEntityFromForm</a> (0%)</li>
+              <li><a href="application_modules_members_controllers_UserController.php.html#27">Members_UserController::registerAction</a> (0%)</li>
+              <li><a href="application_modules_members_controllers_UserController.php.html#21">Members_UserController::init</a> (0%)</li>
+              <li><a href="application_modules_members_controllers_ImageController.php.html#35">Members_ImageController::showAction</a> (0%)</li>
 
             </ul>
           </td>
@@ -90,7 +91,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.5.15 at Mon Nov 19 12:14:31 CET 2012.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.5.15 at Thu Nov 22 9:31:29 CET 2012.</td></tr>
     </table>
 
     <br/>

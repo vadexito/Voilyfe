@@ -32,16 +32,19 @@ class AclDynamictest extends Pepit_Test_ControllerTestCase
         $this->assertTrue($this->_acl->has('events:event'));
         $this->assertTrue($this->_acl->has('events:itemgrouprow'));
         $this->assertTrue($this->_acl->has('members:user'));
+        $this->assertTrue($this->_acl->has('members:image'));
         
     }
     
     public function providerResourceIds()
     {
-        return array(
-            array('events:event'),
-            array('events:itemgrouprow'),
-            array('events:itemrow'),
-        );
+        return [
+            ['events:event','protectedPriv'=>['edit','delete'],'allowedPriv'=>['create']],
+            ['events:itemgrouprow','protectedPriv'=>['edit','delete'],'allowedPriv'=>['create']],
+            ['events:itemrow','protectedPriv'=>['edit','delete'],'allowedPriv'=>['create']],
+            ['members:user','protectedPriv'=>['edit','delete'],'allowedPriv'=>['register']],
+            ['members:image','protectedPriv'=>['show'],'allowedPriv'=>[]]
+        ];
         
     }
     
@@ -49,87 +52,63 @@ class AclDynamictest extends Pepit_Test_ControllerTestCase
      *
      * @dataProvider providerResourceIds 
      */
-    public function testRulesMemberAuthorIsAuthoritzed($resourceId)
+    public function testRulesProtectedPrivilegeForGuestAndAdmin($resourceId,$protectedPriv)
     {
-        $resource = new Application_Acl_WithOwnerResource($resourceId);
-        $resource->ownerId = 1;
+        $resource = new Application_Acl_WithOwnerResource($resourceId,1);
         
-        $memberRole = new Application_Acl_MemberRole();
-        $memberRole->memberId = 1;
-        
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,'edit'));
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,'delete'));
-        
-        $this->assertFalse($this->_acl->isAllowed(Application_Acl_Roles::GUEST,$resourceId,'edit'));
-        $this->assertFalse($this->_acl->isAllowed(Application_Acl_Roles::GUEST,$resourceId,'delete'));
-        
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,$resourceId,'edit'));
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,$resourceId,'delete'));
-        
+        foreach ($protectedPriv as $privilege)
+        {
+            $this->assertFalse($this->_acl->isAllowed(Application_Acl_Roles::GUEST,$resource,$privilege));
+            $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,$resource,$privilege));
+        }
     }
-    
     
      /**
      *
      * @dataProvider providerResourceIds 
      */
-    public function testRulesMemberAuthorNotAuthoritzed($resourceId)
+    public function testRulesMemberNotAuthor($resourceId,$protectedPriv,$allowedPriv)
     {
         
-        $resource = new Application_Acl_WithOwnerResource($resourceId);
-        $resource->ownerId = 2;
+        $resource = new Application_Acl_WithOwnerResource($resourceId,2);
         
         $memberRole = new Application_acl_MemberRole();
         $memberRole->memberId = 1;
         
-        $this->assertFalse($this->_acl->isAllowed($memberRole,$resource,'edit'));
-        $this->assertFalse($this->_acl->isAllowed($memberRole,$resource,'delete'));
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,'create'));
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,'index'));
         
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,$resourceId,'edit'));
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,$resourceId,'delete'));
+        foreach ($protectedPriv as $privilege)
+        {
+            $this->assertFalse($this->_acl->isAllowed($memberRole,$resource,$privilege));
+        }
+        
+        foreach ($allowedPriv as $privilege)
+        {
+            $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,$privilege));
+        }
     }
     
-   
-    public function testRulesMemberOwnerIsAuthoritzed()
+     /**
+     *
+     * @dataProvider providerResourceIds 
+     */
+    public function testRulesMemberAuthor($resourceId,$protectedPriv,$allowedPriv)
     {
         
-        $userResource = new Application_acl_UserResource();
-        $userResource->ownerId = 1;
+        $resource = new Application_Acl_WithOwnerResource($resourceId,1);
         
         $memberRole = new Application_acl_MemberRole();
         $memberRole->memberId = 1;
         
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$userResource,'edit'));
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$userResource,'delete'));
         
-        $this->assertFalse($this->_acl->isAllowed(Application_Acl_Roles::GUEST,'events:event','edit'));
-        $this->assertFalse($this->_acl->isAllowed(Application_Acl_Roles::GUEST,'events:event','delete'));
+        foreach ($protectedPriv as $privilege)
+        {
+            $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,$privilege));
+        }
         
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,'events:event','edit'));
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,'events:event','delete'));
-        
+        foreach ($allowedPriv as $privilege)
+        {
+            $this->assertTrue($this->_acl->isAllowed($memberRole,$resource,$privilege));
+        }
     }
-    
-    public function testRulesMemberOwnerNotAuthoritzed()
-    {
-        
-        $userResource = new Application_acl_UserResource();
-        $userResource->ownerId = 2;
-        
-        $memberRole = new Application_acl_MemberRole();
-        $memberRole->memberId = 1;
-        
-        $this->assertFalse($this->_acl->isAllowed($memberRole,$userResource,'edit'));
-        $this->assertFalse($this->_acl->isAllowed($memberRole,$userResource,'delete'));
-        $this->assertTrue($this->_acl->isAllowed($memberRole,$userResource,'index'));
-        
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,'members:user','edit'));
-        $this->assertTrue($this->_acl->isAllowed(Application_Acl_Roles::ADMIN,'members:user','delete'));
-        
-    }
-    
-   
 }
     
