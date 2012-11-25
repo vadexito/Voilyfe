@@ -29,10 +29,7 @@ class Members_ImageController extends Pepit_Controller_Abstract_Abstract
         $dirPath = Zend_Registry::get('config') ->storage
                                                 ->images->members
                                                 ->directoryPath;
-        $image = file_get_contents(
-                        $dirPath.$imagePath,
-                        FILE_USE_INCLUDE_PATH
-                );
+        $image = file_get_contents(APPLICATION_PATH.$dirPath.$imagePath);
         $extension = Pepit_File_Tool::getExtension($imagePath);
         $authorizedExtension=['jpeg' => ['jpeg','jpg'],'png' => ['png'],'gif' => ['gif']];
         foreach ($authorizedExtension as $extMime => $extensions)

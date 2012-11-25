@@ -174,4 +174,11 @@ tests/log/
 data/
 docs/
 
-
+#############
+## Libraries
+#############
+library/Zend
+library/Doctrine2
+library/Symphony
+library/Terawurfl
+library/vfsStream

@@ -45,6 +45,7 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         {
             $memberId = Zend_Auth::getInstance()->getIdentity()->id;
             $events = $this->_model->findEventsByMemberIdOrderByDateDesc($memberId);
+            $this->view->allOption = 'all';
         }
         else
         //only one choosen category    
@@ -87,21 +88,30 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         
         //sent to the view
         $this->view->events = $events;
-        $this->view->paginatorEvents = $this->_initPaginator($events);
+        $this->view->paginatorEvents = $this->_getPaginator($events);
     }
 
     
     
-    protected function _initPaginator($events)
+    protected function _getPaginator($events,$itemPerPage = NULL,$firstPage=1)
     {
+        if ($itemPerPage === NULL)
+        {
+            $itemPerPage = $this->_config->events
+                ->index->paginator->itemCountPerPage;
+        }
+        
         $paginator = Zend_Paginator::factory($events);
+        $paginator->setItemCountPerPage($itemPerPage);
         
-        $paginator->setItemCountPerPage($this->_config->events
-                ->index->paginator->itemCountPerPage);
-        
-        $paginator->setCurrentPageNumber($this->_getParam('page'),1);
-        
-        
+        if ($this->_getParam('page'))
+        {
+            $paginator->setCurrentPageNumber($this->_getParam('page'));
+        }
+        else 
+        {
+            $paginator->setCurrentPageNumber($firstPage);
+        }
         
         return $paginator;
     }
@@ -216,7 +226,27 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
     public function showAction()
     {
         $eventId = $this->getRequest()->getParam('containerRowId');
-        $this->view->event = $this->_model->getStorage()->find($eventId);
+        $allOption = $this->getRequest()->getParam('all');
+        
+        $events = $this->_model->findEventsByCategoryByMemberIdOrderByDateDesc(
+            $this->_userId,
+            $this->_category
+        );
+        
+        foreach ($events as $key => $event)
+        {
+            if ($event->id == $eventId)
+            {
+                $page = $key+1;
+            }
+        }
+        
+        $paginator = $this->_getPaginator($events,1,$page);
+        
+        $this->view->allOption = $allOption;
+        $this->view->paginatorEvents = $paginator;
+        $this->view->eventBefore = '';
+        $this->view->eventAfter = '';
     }
    
 }

@@ -66,14 +66,18 @@ div.row-block
 
 #user-image
 {
-    float: right;
-    width:40%;
+    width:70%;
+    min-width: 90px;
+    max-width: 250px;
+    float:right;
 }
 
 .icon-category
 {
     float:none;
     position:relative;
+    max-width: 20px;
+    margin-left:10px
 }
 
 #upper-block
@@ -89,7 +93,7 @@ div.row-block
 
 #specific-properties
 {
-    padding: 5% 3% 3% 10%;
+    padding: 5% 3% 3% 2%;
     
 }
 
@@ -107,8 +111,8 @@ div.row-block
 
 #day-header
 {
-    font-size: 5em;
     display:inline;
+    font-size: 3em;
 }
 
 #month-day
@@ -119,7 +123,6 @@ div.row-block
 }
 
 
-
 #month-header,#weekday-header
 {
     margin-top: 0.2em;
@@ -128,14 +131,27 @@ div.row-block
 
 #month-header
 {
-    font-size: 1.7em;
+    font-size: 1.2em;
 }
 
 #weekday-header
 {
     font-size: 1em;
-    font-weight: bold;
+    font-style: italic;
 }
 
 
 
+/* Large desktop 
+@media (min-width: 1200px) { div,h1{border:5px solid blue;} }
+
+/* Portrait tablet to landscape and desktop 
+@media (min-width: 768px) { div,h1{border:5px solid green;} }
+
+/* Landscape phone to portrait tablet 
+@media (max-width: 767px) { div,h1{border:5px solid red;} }
+
+/* Landscape phones and down 
+@media (max-width: 480px) { div,h1{border:5px solid black;} }
+
+*/

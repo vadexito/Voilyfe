@@ -43,19 +43,28 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         
         $this->setPathIconCategory()->setPathIconItem();
         $categoryName = 'category_'.$event->category->name;
-        
+   
         return $this->renderLine(
             ucfirst($this->view->translate($categoryName)),
             $this->renderCommonProperties(),
             $this->renderSpecificProperties(),
-            $this->_getHref()
+            $this->_getHref($this->view->all)
         );
     }
     
-    protected function _getHref()
+    protected function _getHref($allOption)
     {
+        $options = [
+            'action'=>'show','containerId'=>$this->_event->category->id,
+            'containerRowId' => $this->_event->id
+        ];
+        if ($allOption)
+        {
+            $options['all'] = $allOption;
+        }
+        
         return $this->view->url(
-            ['action'=>'show','containerId'=>$this->_event->category->id,'containerRowId' => $this->_event->id],
+            $options,
             'event'
         );
     }
@@ -268,12 +277,14 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     {
         $subHeader = 
         '<ul data-role="listview" data-theme="d" data-divider-theme="d">'
-        . '<li data-role="list-divider"><h3 id="year-header" class="date">'.$this->localDate(Zend_Date::YEAR).'</h3></li>'
-        . '<li><h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
+        . '<li data-role="list-divider"><h3 id="year-header" class="date">'
+        .$this->localDate(Zend_Date::YEAR)
+        . $this->renderLogoCategory('50px')
+        .'</h3></li>'
+        . '<li class="lineWithCatIcon"><h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
         . '<div id="month-day">'
         .'<h2 id="month-header" class="date">'.$this->localDate(Zend_Date::MONTH_NAME).'</h2>'
         . '<h3 id="weekday-header" class="date">'.$this->localDate(Zend_Date::WEEKDAY).'</h3>'."\n".'</div>'
-        . $this->renderLogoCategory('50px')
         . '</li><li data-role="list-divider"></li></ul>' . "\n"; 
         
         return $subHeader;

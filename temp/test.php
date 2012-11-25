@@ -1,26 +1,33 @@
 <?php
-class Form
+
+$a = array('un','hoiuoi','huihuh','poip');
+reset($a);
+
+while ($val = current($a))
 {
-    public $a=4;
-}
-class Model
-{
-public $form;
+    if ($val === 'poip')
+    {
+        
+        if (!prev($a))
+        {
+            reset($a);
+            $prev = NULL;
+        }
+        else
+        {
+            $prev = prev($a);
+            next($a);
+        }
+        $key = key($a);
+        $next = next($a);
+        
+    }
+    next($a); 
+} 
 
-public function __construct()
-{
-    $this->form = new Form();
-}
-
-public function getForm($f)
-{
-$f->a=10;
-}
-}
-
-$model = new Model();
-$model ->getForm($model->form);
-
-echo $model->form->a;
-
-?>
+    
+    
+    
+echo 'previous element : '.$prev.'<br/>';
+echo 'researched element : '.$key.'<br/>';
+echo 'next element : '.$next.'<br/>';

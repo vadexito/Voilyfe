@@ -1,0 +1,17 @@
+<?php if ($this->pageCount): ?>
+<!-- Previous page link -->
+<li><?php if (isset($this->previous)): ?>
+<a href="<?php echo $this->url(array('page' => $this->previous)); ?>" data-icon="arrow-l" data-prefetch data-ajax="false"></a>
+<?php else: ?>
+<a></a>
+<?php endif; ?>
+</li>
+<li>
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+<a href="<?php echo $this->url(array('page' => $this->next)); ?>" data-icon="arrow-r" data-prefetch data-ajax="false"></a>
+<?php else: ?>
+<a></a>
+<?php endif; ?>
+</li>
+<?php endif; ?>

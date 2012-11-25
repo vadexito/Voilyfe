@@ -7,6 +7,7 @@ class Pepit_View_Helper_HtmlMobileButtonNavBar extends Zend_View_Helper_HtmlElem
     
     const TYPE_BUTTON_BACK = 1;
     const TYPE_BUTTON_ADD_NEW_EVENT = 2;
+    const TYPE_BUTTON_PLAIN = 3;
 
 
     public function htmlMobileButtonNavBar($options,$attribs = [],$content='')
@@ -30,6 +31,8 @@ class Pepit_View_Helper_HtmlMobileButtonNavBar extends Zend_View_Helper_HtmlElem
                     return '<a data-theme="b" data-iconpos="notext" data-icon="plus" class="ui-btn-'
                     .$this->getPosition()
                     .'" '. $this->_htmlAttribs($attribs).' ></a>';
+                case self::TYPE_BUTTON_PLAIN :
+                    return ;
                 case self::TYPE_BUTTON_BACK :
                 default :
                     return '<a data-theme="b" data-rel="back" data-icon="arrow-l" class="ui-btn-'

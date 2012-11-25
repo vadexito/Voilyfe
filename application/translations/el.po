@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-11-20 18:27+0100\n"
-"PO-Revision-Date: 2012-11-20 18:27+0100\n"
+"POT-Creation-Date: 2012-11-23 01:09+0100\n"
+"PO-Revision-Date: 2012-11-23 01:10+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: greek\n"
@@ -17,36 +17,36 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:171
+#: application/Bootstrap.php:172
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
 #: application/modules/access/views/scripts/access/login-mobile.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr ""
 
-#: application/Bootstrap.php:180
+#: application/Bootstrap.php:181
 msgid "menu_event"
 msgstr ""
 
-#: application/Bootstrap.php:190
+#: application/Bootstrap.php:191
 msgid "menu_event_add"
 msgstr " νέο συμβάν"
 
-#: application/Bootstrap.php:198
+#: application/Bootstrap.php:199
 msgid "menu_metaCategory"
 msgstr ""
 
-#: application/Bootstrap.php:208
+#: application/Bootstrap.php:209
 #, fuzzy
 msgid "menu_user"
 msgstr "Γλώσσα:"
 
-#: application/Bootstrap.php:218
+#: application/Bootstrap.php:219
 #, fuzzy
 msgid "menu_logout"
 msgstr "Γλώσσα:"
 
-#: application/Bootstrap.php:226
+#: application/Bootstrap.php:227
 #, fuzzy
 msgid "menu_set_preferences"
 msgstr "Γλώσσα:"
@@ -58,6 +58,10 @@ msgstr ""
 #: application/modules/access/forms/UserLogin.php:15
 msgid "action_login"
 msgstr "Σύνδεση"
+
+#: application/modules/access/forms/UserLogin.php:34
+msgid "sign-in_to_mylife"
+msgstr ""
 
 #: application/modules/access/forms/Elements/RememberMe.php:20
 msgid "user_rememberMe"
@@ -115,23 +119,23 @@ msgstr "Γλώσσα:"
 msgid "menu_language"
 msgstr "Γλώσσα:"
 
-#: application/modules/events/controllers/AjaxController.php:45
+#: application/modules/events/controllers/AjaxController.php:56
 msgid "legend_all_events"
 msgstr ""
 
-#: application/modules/events/controllers/AjaxController.php:153
+#: application/modules/events/controllers/AjaxController.php:164
 msgid "category_unknown"
 msgstr ""
 
-#: application/modules/events/controllers/EventController.php:152
+#: application/modules/events/controllers/EventController.php:129
 msgid "msg_event_created"
 msgstr "Δημιουργήσατε νέο συμβάν"
 
-#: application/modules/events/controllers/EventController.php:192
+#: application/modules/events/controllers/EventController.php:165
 msgid "msg_event_updated"
 msgstr ""
 
-#: application/modules/events/controllers/EventController.php:224
+#: application/modules/events/controllers/EventController.php:197
 msgid "msg_event_deleted"
 msgstr "Το συμβάν διαγράφηκε"
 
@@ -232,7 +236,7 @@ msgstr "Δεν βρέθηκε κανένα συμβάν"
 msgid "item_category"
 msgstr "Κατηγορία"
 
-#: application/modules/members/controllers/UserController.php:53
+#: application/modules/members/controllers/UserController.php:52
 msgid "msg_user_registered"
 msgstr "Συγχαρητήρια! Είστε μέλος !"
 
@@ -288,7 +292,7 @@ msgid "menu_find_event"
 msgstr ""
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:59
+#: application/modules/events/views/scripts/event/index-mobile.phtml:61
 #, fuzzy
 msgid "menu_see_categories"
 msgstr "Γλώσσα:"
@@ -401,19 +405,19 @@ msgstr "Σελίδα"
 msgid "msg_questionSureToDelete"
 msgstr "Επιβεβαιώνετε?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:26
-#: application/modules/events/views/scripts/event/index-mobile.phtml:36
-#: application/modules/events/views/scripts/event/index-mobile.phtml:45
-#: application/modules/events/views/scripts/event/index-mobile.phtml:53
-#: application/modules/events/views/scripts/event/index-mobile.phtml:68
+#: application/modules/events/views/scripts/event/index-mobile.phtml:28
+#: application/modules/events/views/scripts/event/index-mobile.phtml:38
+#: application/modules/events/views/scripts/event/index-mobile.phtml:47
+#: application/modules/events/views/scripts/event/index-mobile.phtml:55
+#: application/modules/events/views/scripts/event/index-mobile.phtml:70
 msgid "menu_short_categories"
 msgstr ""
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:52
+#: application/modules/events/views/scripts/event/index-mobile.phtml:54
 msgid "menu_add_event"
 msgstr " νέο συμβάν"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:67
+#: application/modules/events/views/scripts/event/index-mobile.phtml:69
 #, fuzzy
 msgid "menu_settings"
 msgstr "Γλώσσα:"
@@ -425,6 +429,42 @@ msgstr ""
 #: application/modules/events/views/scripts/event/index.phtml:30
 msgid "menu_summary_allevents"
 msgstr "Με μια ματιά"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:31
+msgid "event_edit_button"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:36
+#, fuzzy
+msgid "event_delete_button"
+msgstr "Το συμβάν διαγράφηκε"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:43
+msgid "title_question_delete_event"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:46
+#, fuzzy
+msgid "mgs_sure_to_delete?"
+msgstr "Το συμβάν διαγράφηκε"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:47
+msgid "mgs_no_cancellation_of_action?"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:49
+#, fuzzy
+msgid "button_cancel"
+msgstr "Γλώσσα:"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:51
+#, fuzzy
+msgid "action_delete"
+msgstr "Δημιουργία"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:52
+msgid "button_confirm?"
+msgstr ""
 
 #: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
 msgid "menu_list_category_to_add_new_events"

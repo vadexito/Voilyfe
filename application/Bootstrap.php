@@ -33,6 +33,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         // get view
         $view = $this->getPluginResource('view')->getView();
         
+        //set meta for encoding
+        $view->setEncoding('UTF-8');
+        
         // add title;
         $view->headTitle('Mylife');
  

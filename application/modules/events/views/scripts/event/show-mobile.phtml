@@ -1,9 +1,18 @@
+<?php foreach ($this->paginatorEvents as $event) :?>
 <div data-role="page"> 
     <div data-role="header">
-        <?php $btnLeft = $this->htmlMobileButtonNavBar(['position'=>'left','type'=> Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK]);
+        <?php 
+            if ($this->allOption == 'all') : $urlBtnLeft = $this->url(['action'=>'index'],'event') ; $cat = $this->translate('menu_events'); else : 
+                $urlBtnLeft = $this->url(['action'=> 'index','containerId' => $event->category->id],'event'); $cat = 'category_'.$event->category->name; endif;
+            
+            $btnLeft = $this->htmlMobileButtonNavBar(
+                ['position'=>'left'],
+                ['href' => $urlBtnLeft],
+                ucfirst($this->translate($cat))
+            );
             $btnRight = $this->htmlMobileButtonNavBar(
                 ['position' => 'right','type'=>  Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_ADD_NEW_EVENT],
-                ['href' => $this->url(['containedId' => $this->event->category->id,'action' => 'create'],'event')]
+                ['href' => $this->url(['containedId' => $event->category->id,'action' => 'create'],'event')]
             );
             echo $this->mobilePage()->renderHeader($btnLeft,$btnRight,''); 
         ?>
@@ -11,23 +20,23 @@
     <div data-role="content">
         <div id="upper-block">
             <div id="subheader-date"class="inside">
-                    <?php echo $this->event($this->event)->subHeaderDate?>
+                    <?php echo $this->event($event)->subHeaderDate?>
             </div>
         </div>
         <div id="items-central-block" class="row-block">
             <div class="ui-grid-b">
                 <div id="specific-properties" class="ui-block-a">
-                     <?php echo $this->event($this->event)->renderSpecificProperties;?>
+                     <?php echo $this->event($event)->renderSpecificProperties;?>
                 </div>
                 <div class="ui-block-b"></div>
                 <div class="ui-block-c">
-                    <?php echo $this->event($this->event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']);?>
+                    <?php echo $this->event($event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']);?>
                 </div>
             </div>
         </div>
         <div id="buttons-lower-block" class="row-block ui-grid-a">
             <div class="ui-block-a">
-                <a data-role="button" data-theme="a" data-ajax="false" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $this->event->id],'event');?>">
+                <a data-role="button" data-theme="a" data-ajax="false" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $event->id],'event');?>">
                     <?php echo ucfirst($this->translate('event_edit_button')); ?>
                 </a>
             </div>
@@ -48,10 +57,16 @@
                 <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
                     <?php echo $this->translate('button_cancel');?>
                 </a>    
-                <a data-ajax="false" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $this->event->id],'event').'?submit_delete='.$this->translate('action_delete'); ?>" data-role="button" data-inline="true" data-theme="b">
+                <a data-ajax="false" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $event->id],'event').'?submit_delete='.$this->translate('action_delete'); ?>" data-role="button" data-inline="true" data-theme="b">
                     <?php echo $this->translate('button_confirm?');?>
                 </a>  
         </div>
     </div>
+    <div data-role="footer" data-position="fixed" data-id="footer">
+        <div data-role="navbar">
+            <ul><?php echo $this->paginationControl($this->paginatorEvents,'Sliding','_pagination-mobile.phtml')?></ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
 </div>
+<?php endforeach; ?>
 

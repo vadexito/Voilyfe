@@ -17,6 +17,7 @@ class Access_Form_Elements_UserName extends Pepit_Form_Element_Text
                     ->addValidators(array('NotEmpty'))
                     ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('user_name')));
         
+        parent::init();
         
         $session = new Zend_Session_Namespace('mylife_device_info');
         if ($session->deviceType === Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE)
@@ -28,7 +29,7 @@ class Access_Form_Elements_UserName extends Pepit_Form_Element_Text
             $this->setHorizontal(false);
         }
         
-        parent::init();
+        
         
     }
 }

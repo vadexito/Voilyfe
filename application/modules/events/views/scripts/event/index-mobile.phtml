@@ -11,7 +11,7 @@ if ($this->category->name !=='all')
 }
 else
 {
-    $name = 'name_site';
+    $name = 'menu_events';
     $hrefButtonAdd = '#list_singleCategories';
 }
 
@@ -23,7 +23,7 @@ $buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" cl
      echo $this->partial('partial/_mobilePage.phtml', array(
            'id'         => 'last-events-page',
            'page'       => 'last-events',
-           'content'    => $this->partial('partial/_pageLastEvents-mobile.phtml',['events' => $this->events]),
+           'content'    => $this->partial('partial/_pageLastEvents-mobile.phtml',['events' => $this->events,'all'=>$this->allOption]),
            'title'      =>  ucfirst($this->translate($name)),
            'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
            'buttonRight'=> $buttonRight,
