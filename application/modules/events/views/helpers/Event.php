@@ -213,7 +213,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         
         foreach (['location','persons','tags'] as $item)
         {
-            $properties[$item] = Pepit_Doctrine_Tool::toString($this->_event,$item);
+            $properties[$item]= $this->_renderPropertyWithIcon($this->_event,$item);
         }
         
         return $properties;

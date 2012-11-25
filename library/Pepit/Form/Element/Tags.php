@@ -38,7 +38,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         
         parent::init();
         
-        $this   
+        $this   ->setAttrib('data-containerId', $this->_containerId)
                 ->setAttrib('placeholder',$this->getTranslator()->translate('msg_press_return_to_save'))
                 ->_initAutocomplete($this->_tagEntity,$this->_propertyAutocomplete)
                 ->setAttrib(

@@ -6,7 +6,7 @@ class Pepit_File_Tool
     {
         $names= explode(".", $name);
         
-        return $names[count($names)-1];
+        return strtolower($names[count($names)-1]);
     }
     
 }

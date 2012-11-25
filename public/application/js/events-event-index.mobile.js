@@ -11,18 +11,7 @@ $(function(){
 get category from server
 ================================================================================
 */
-    var categoryId;
-    
-    //get category from url for ajax calls if categoryId sent through url
-    var pattern1 = /.*container\/(\d+).*/;
-    if (window.location.pathname.match(pattern1)){
-        
-        categoryId = window.location.pathname.replace(pattern1,"$1");
-    } else {
-        categoryId = 'all';
-    }
-        
-    
+    var categoryId= $('#dataToClientSide').attr('data-categoryId');
 /*
 ================================================================================
 SUBPAGE GRAPHS : draw graphs from google chart
@@ -80,7 +69,7 @@ SUBPAGE CALENDAR : draw calendar
         addLinkToCalEvent();
         
         
-        console.log(categoryId);
+        
         $('#calendar-widget').bind('datebox', function (e, passed) { 
             if ( passed.method === 'set') {
                 var theDate = $(this).data('datebox').theDate;
@@ -89,7 +78,7 @@ SUBPAGE CALENDAR : draw calendar
                 var year = theDate.getFullYear();
 
                 window.location = '/events/event/index/containerId/'
-                    +$('#calendar-widget').attr('data-categoryId')
+                    +categoryId
                     +'/date/'+year+'-'+month+'-'+day
                 
             }

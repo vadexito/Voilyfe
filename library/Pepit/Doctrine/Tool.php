@@ -40,7 +40,7 @@ class Pepit_Doctrine_Tool
     {
         if (!property_exists($event,$property))
         {
-            throw new Pepit_Model_Exception("Property doesn't exist");
+            throw new Pepit_Model_Exception("Property $property doesn't exist");
         }
         $element = $event->$property;
         if ($element instanceof \Doctrine\ORM\PersistentCollection ||
