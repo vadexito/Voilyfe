@@ -38,6 +38,7 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         {
             //add date in form yyyy-mm-dd
             $date = new \DateTime($this->getRequest()->getParam('date')); 
+            
         }
         
         //case for all categories

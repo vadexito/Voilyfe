@@ -33,7 +33,7 @@ $buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" cl
         <?php echo $this->partial('partial/_mobilePage.phtml', array(
             'id'         => 'calendar-page',
             'page'       => 'calendar',
-            'content'    => $this->partial('partial/_pageCalendar-mobile.phtml',['events' => $this->events,'eventsPerDay' => $this->eventsPerDay]),
+            'content'    => $this->partial('partial/_pageCalendar-mobile.phtml',['events' => $this->events,'eventsPerDay' => $this->eventsPerDay,'categoryId' => $this->category->id]),
             'title'      => ucfirst($this->translate($name)),
             'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
             'buttonRight'=> $buttonRight,
