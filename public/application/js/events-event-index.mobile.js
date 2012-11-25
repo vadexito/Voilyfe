@@ -73,13 +73,11 @@ SUBPAGE CALENDAR : draw calendar
         $('#calendar-widget').bind('datebox', function (e, passed) { 
             if ( passed.method === 'set') {
                 var theDate = $(this).data('datebox').theDate;
-                var day = theDate.getDate();
                 var month = theDate.getMonth()+1;
-                var year = theDate.getFullYear();
-
+                
                 window.location = '/events/event/index/containerId/'
                     +categoryId
-                    +'/date/'+year+'-'+month+'-'+day
+                    +'/date/'+theDate.getFullYear()+'-'+month+'-'+theDate.getDate()
                 
             }
 

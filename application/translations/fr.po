@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-11-25 19:01+0100\n"
-"PO-Revision-Date: 2012-11-25 19:02+0100\n"
+"POT-Creation-Date: 2012-11-25 20:16+0100\n"
+"PO-Revision-Date: 2012-11-25 20:17+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -123,15 +123,15 @@ msgstr "Tous mes événements"
 msgid "category_unknown"
 msgstr "Catégorie inconnue"
 
-#: application/modules/events/controllers/EventController.php:139
+#: application/modules/events/controllers/EventController.php:140
 msgid "msg_event_created"
 msgstr "Voila ! Un nouvel événement a été créé"
 
-#: application/modules/events/controllers/EventController.php:175
+#: application/modules/events/controllers/EventController.php:176
 msgid "msg_event_updated"
 msgstr "Voilà ! Votre événement est bien mis à jour !"
 
-#: application/modules/events/controllers/EventController.php:207
+#: application/modules/events/controllers/EventController.php:208
 msgid "msg_event_deleted"
 msgstr "Votre événement a été effacé."
 

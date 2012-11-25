@@ -45,7 +45,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         $categoryName = 'category_'.$event->category->name;
    
         return $this->renderLine(
-            ucfirst($this->view->translate($categoryName)),
+            $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL,
             $this->renderCommonProperties(),
             $this->renderSpecificProperties(),
             $this->_getHref($this->view->all)
@@ -129,8 +129,8 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         return '<li class="event-line">
         <a data-ajax="false" class="event-line-link" href="'.$href.'">'
             .$this->renderUserImageThumbnail()
-            .'<h3>'. $title .'</h3>
-            <p><strong>'.$subTitle.'</strong></p>
+            .'<h4>'. rtrim(implode(' - ',[$this->localDate(),$title]),' - ') .'</h4>'
+            .'<p><strong>&nbsp '.$subTitle.'</strong></p>
             <p>'.$content.'</p>
             <p class="ui-li-aside"><strong>3 star</strong></p>
         </a>
@@ -219,10 +219,11 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         return $properties;
     }
     
-    
     public function renderCommonProperties()
     {
-        return implode(', ',array_filter(array_values($this->commonProperties())));
+        $commonProperty = $this->commonProperties();
+        unset($commonProperty['date']);
+        return implode(', ',array_filter(array_values($commonProperty)));
     }
     
     protected function _renderPropertyWithIcon($event,$property)
