@@ -71,6 +71,7 @@ SUBPAGE CALENDAR : draw calendar
         
         
         $('#calendar-widget').bind('datebox', function (e, passed) { 
+            
             if ( passed.method === 'set') {
                 var theDate = $(this).data('datebox').theDate;
                 var month = theDate.getMonth()+1;
@@ -88,4 +89,4 @@ SUBPAGE CALENDAR : draw calendar
 
         
     }
-}); 
+}); 				
