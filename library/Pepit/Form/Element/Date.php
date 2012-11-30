@@ -51,4 +51,20 @@ class Pepit_Form_Element_Date extends Pepit_Form_Element_Xhtml
         
         return $filter->filter($formValue,Pepit_Date::MYSQL_DATE);
     }
+    
+    public function dataChart($events)
+    {
+        $options = [
+            'title' => ucfirst($this->getTranslator()->translate('item_frequency')),
+            'type' => 'frequency',
+            'periodNb' => 6,
+            'timeUnitNb' => 1,
+            'timeUnit' => 'month'
+        ];
+        
+        return [
+            'type' => 'google_chart',
+            'data' => (new Pepit_Widget_Chart($events,$options))->dataForGoogleCharts()
+        ];
+    }
 }

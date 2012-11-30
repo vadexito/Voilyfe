@@ -29,6 +29,8 @@ class Events_Form_Elements_Tags extends Pepit_Form_Element_Tags
         
         
     }
+    
+    
 
 
 }

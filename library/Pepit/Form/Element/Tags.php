@@ -40,7 +40,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         
         $this   ->setAttrib('data-containerId', $this->_containerId)
                 ->setAttrib('placeholder',$this->getTranslator()->translate('msg_press_return_to_save'))
-                ->_initAutocomplete($this->_tagEntity,$this->_propertyAutocomplete)
+                ->_initAutocomplete()
                 ->setAttrib(
                     'class',
                     (($this->_containerType === 'itemGroup') ?
@@ -129,25 +129,15 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         return $this;
     }
     
-    protected function _initAutocomplete($entityName,$property)
+    protected function _initAutocomplete()
     {
-        $repository = $this->getEntityManager()
-                                    ->getRepository($entityName);
-        if ($this->_containerType === 'itemGroup')
-        {
-            $entities = $repository->findAll();
-        }
-        else
-        {
-            $entities = $repository->findItemRowsByItemId($this->_containerId);
-        }
-                                    
+        $entities = $this->_getEntities();                 
         array_walk($entities, function (&$value,$key,$prop){
             $value = array(
                 'value' => $value->id,
                 'label' => $value->$prop
             );
-        },$property);
+        },$this->_propertyAutocomplete);
         
  
         $this->setAttrib(
@@ -156,6 +146,39 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         );
         
         return $this;
+    }
+    
+    
+//    public function dataChart()
+//    {
+//        $repository = $this->getEntityManager()
+//                                    ->getRepository($this->_tagEntity);
+//        if ($this->_containerType === 'itemGroup')
+//        {
+//            $entities = $repository->findOrderedTagsCountsByMember();
+//        }
+//        else
+//        {
+//            $entities = $repository->findOrderedTagsCountsByMember($this->_containerId);
+//        }
+//        
+//        return $entities;
+//    }
+    
+    protected function _getEntities()
+    {
+        $repository = $this->getEntityManager()
+                                    ->getRepository($this->_tagEntity);
+        if ($this->_containerType === 'itemGroup')
+        {
+            $entities = $repository->findAll();
+        }
+        else
+        {
+            $entities = $repository->findItemRowsByItemId($this->_containerId);
+        }
+        
+        return $entities;
     }
     
     

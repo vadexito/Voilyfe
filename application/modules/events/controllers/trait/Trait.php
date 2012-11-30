@@ -17,6 +17,7 @@ trait Events_Controllers_Trait
             $categoryAll = new stdClass();
             $categoryAll->name = 'all';
             $categoryAll->categories = NULL;
+            $categoryAll->id = '0';
             return $categoryAll;
         }
     }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-11-25 20:16+0100\n"
-"PO-Revision-Date: 2012-11-25 20:17+0100\n"
+"POT-Creation-Date: 2012-11-29 23:15+0100\n"
+"PO-Revision-Date: 2012-11-29 23:15+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -115,11 +115,11 @@ msgstr "Mon profil"
 msgid "menu_language"
 msgstr "langue :"
 
-#: application/modules/events/controllers/AjaxController.php:56
+#: application/modules/events/controllers/AjaxController.php:55
 msgid "legend_all_events"
 msgstr "Tous mes événements"
 
-#: application/modules/events/controllers/AjaxController.php:164
+#: application/modules/events/controllers/AjaxController.php:162
 msgid "category_unknown"
 msgstr "Catégorie inconnue"
 
@@ -194,6 +194,10 @@ msgstr "Numéro de téléphone"
 #: application/translations/_XMLforPoedit/categories.xml:31
 msgid "item_price"
 msgstr "prix"
+
+#: application/modules/events/forms/Elements/Price.php:40
+msgid "title_amount"
+msgstr "Montant"
 
 #: application/modules/events/forms/Elements/Tags.php:22
 msgid "item_tags"

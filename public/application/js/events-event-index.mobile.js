@@ -18,35 +18,27 @@ SUBPAGE GRAPHS : draw graphs from google chart
 ================================================================================
 */
 
-    if ($('#chart_div').length >0){
+    $('.visual-rep').each(function(){
         
-        function success(input){
-            
-            function drawVisualization() {
-                
-                var data = google.visualization.arrayToDataTable(input.dataChart.values);
-                var options = {
-                    'title':input.dataChart.options.title,
-                    'width':input.dataChart.options.width,
-                    'height':input.dataChart.options.height,
-                    'hAxis': {'title': input.dataChart.options.hAxisTitle},
-                    'vAxis': {'title': input.dataChart.options.vAxisTitle},
-                    'legend': input.dataChart.options.legend
-                };
-
-                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-                chart.draw(data, options);
-
-            }
-            
-            google.load('visualization', '1.0', {'callback':drawVisualization,'packages':['corechart']}); 
-            
+        var input = $.parseJSON($(this).attr('data-visual'));
+        var self = this;
+        function drawVisualization(){
+            var data = google.visualization.arrayToDataTable(input.values);
+        
+            var options = {
+                'title':input.options.title,
+                'width':input.options.width,
+                'height':input.options.height,
+                'hAxis': {'title': input.options.hAxisTitle},
+                'vAxis': {'title': input.options.vAxisTitle},
+                'legend': input.options.legend
+            };
+            new google.visualization.ColumnChart(self).draw(data,options);
         }
         
-        $.get('/events/ajax/widgetchart/containerId/'
-                        +categoryId
-                        +'/parameter/frequency/format/json',success,'json');
-    }
+        google.load('visualization', '1.0', {'callback':drawVisualization,'packages':['corechart']}); 
+    });
+    
     
 /*
 ================================================================================

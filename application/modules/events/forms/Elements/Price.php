@@ -33,5 +33,20 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
             'step' => '2',
         ));
     }
+    
+    public function dataChart($events)
+    {
+        $options = [
+            'title' => ucfirst($this->getTranslator()->translate('title_amount')),
+            'type' => 'sum',
+            'propertyForAdding' => $this->getName(),
+            'unit' => '€'
+        ];
+        
+        return [
+            'type' => 'google_chart',
+            'data' => (new Pepit_Widget_Chart($events,$options))->dataForGoogleCharts()
+        ];
+    }
 }
 

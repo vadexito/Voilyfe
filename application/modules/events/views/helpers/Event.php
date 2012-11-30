@@ -13,6 +13,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     protected $_pathIconItem = NULL;
     
     protected $_event;
+    protected $_model;
     
     /**
      * initialize helper
@@ -25,6 +26,20 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         $this->_event = $event;
         return $this;
     }
+    
+    public function getForm()
+    {
+        $this->_initModel();
+        
+        return $this->_model->getForm('insert',array(
+            'containerId' => $this->_event->category->id,
+            'containerType' => 'category',
+            'model'         => $this->_model
+        ));
+    }
+    
+    
+    
     
     /**
      * show single line of event (<li> tag)
@@ -51,6 +66,13 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             $this->_getHref($this->view->all)
         );
     }
+    
+    
+    protected function _initModel()
+    {
+        $this->_model = new Events_Model_Events();
+    }
+    
     
     protected function _getHref($allOption)
     {

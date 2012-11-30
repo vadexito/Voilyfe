@@ -31,11 +31,10 @@ class Events_AjaxController extends Zend_Controller_Action
     public function widgetchartAction()
     {
         $optionWidget = [];
-        $parameter = 'frequency';
         if ($this->getRequest()->getParam('parameter'))
         {
             $parameter = $this->getRequest()->getParam('parameter');
-            $optionWidget[] = $parameter;
+            $optionWidget['parameter'] = $parameter;
         }
         
         
@@ -56,12 +55,11 @@ class Events_AjaxController extends Zend_Controller_Action
             $categoryName = $this->view->translate('legend_all_events');
         }
         
-        $chart = new Pepit_Widget_Chart($events,$categoryName);
+        $chart = new Pepit_Widget_Chart($events,['titleYAxis'=>$categoryName]);
         
-        $this->view->dataChart = call_user_func_array(
-                    array($chart,'dataForGoogleCharts'),
-                    $optionWidget
-        );
+        
+        $this->view->dataChart = $chart->dataForGoogleCharts($optionWidget);
+        
     }
     
     public function eventcalendarAction()

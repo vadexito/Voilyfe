@@ -8,84 +8,155 @@ class Pepit_Widget_Chart
 {
     
     protected $_events;
+    protected $_titleYAxis = NULL;
+    protected $_width = NULL;
+    protected $_height = NULL;
+    protected $_desc = false;
+    protected $_periodNb = 6;
+    protected $_type = 'frequency';
+    protected $_propertyForAdding = NULL;
+    protected $_unit = NULL;
+    protected $_legend= 'left';
+    protected $_title = NULL;
+    protected $_timeUnit = 'month';
+    protected $_timeUnitNb = 1;
+            
     
-    protected $_categoryName;
     
-    
-    public function __construct($events,$categoryName)
+    public function __construct($events,$options = NULL)
     {
         $this->_events= $events;
-        $this->_categoryName= $categoryName;
-        
+        $this->setOptions($options);
     }
     
-    public function dataForGoogleCharts($parameter='frequency',
-            $periodLength=6,$width=null,$height=null,$desc = false)
+    public function setOptions($options)
     {
-        $categoryName = $this->_categoryName;
+        $properties = ['titleYAxis','width','height','desc','periodNb',
+            'type','propertyForAdding','unit','legend','title','timeUnit','timeUnitNb'];
+        foreach ($properties as $property)
+        {
+            $protectedProp = '_'.$property;
+            if (key_exists($property,$options))
+            {
+                $this->$protectedProp = $options[$property];
+            }    
+        }
+    }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function dataForGoogleCharts()
+    {
         
-        $dataChart = $this->createPeriod($periodLength,$desc);
-        $dataChart = $this->addValues($parameter,$dataChart);
+        $dataChart = $this->addValues();
         
-        $dataChartFinal = array(array('month',$categoryName));
+        $dataChartFinal = [['month',$this->_titleYAxis]];
         foreach($dataChart as $namePeriod => $timePeriod)
         {
-            $dataChartFinal[] = array($namePeriod,$timePeriod['parameterValue']);
+            $dataChartFinal[] = [$namePeriod,$timePeriod['parameterValue']];
         }
         
-        $unit = '';
-        
-        return array(
+        return [
             'values' => $dataChartFinal,
-            'options' => array(
-                'title'         => null,
-                'width'         => $width,
-                'height'        => $height,
+            'options' => [
+                'title'         => $this->_title,
+                'width'         => $this->_width,
+                'height'        => $this->_height,
                 'hAxisTitle'    => 'month',
-                'vAxisTitle'    => $unit,
-                'legend'        => 'left'
-        ));
+                'vAxisTitle'    => $this->_unit,
+                'legend'        => $this->_legend
+        ]];
     }
     
-    protected function createPeriod($periodLength,$desc=false)
+    protected function _createPeriods()
     {
         $now = new Zend_Date();
-        $date = $now;
-        $dataChart = array();
+        $currentMonth = $now->toString(Zend_Date::MONTH);
+        $currentYear = $now->toString(Zend_Date::YEAR);
         
-        //create the periods
-        for($i=0;$i<$periodLength;$i++)
+        switch ($this->_timeUnit)
         {
-            $periodName = $date->toString(Zend_Date::MONTH_NAME_SHORT.' '.Zend_date::YEAR_SHORT);
-            $dataChart[$periodName] = array(
-                'parameterValue' => 0,
-                'end'     => $date->toString(Zend_Date::TIMESTAMP),
-                'begin'     => $date->sub(1,Zend_Date::MONTH)->toString(Zend_Date::TIMESTAMP),
-            );
+            case 'year' : 
+                $yearBegin = $currentYear;
+                $monthBegin = 12;
+                $dayBegin = cal_days_in_month(
+                        CAL_GREGORIAN,
+                        $monthBegin,
+                        $yearBegin
+                );
+                $periodNameFormat = ' '.Zend_date::YEAR;
+                $periodLength = ['unit' => Zend_Date::MONTH,'nb' =>  12 * $this->_timeUnitNb];
+            break;
+            
+            case 'month':
+            default:
+                $yearBegin = $currentYear;
+                $monthBegin = $currentMonth;
+                $dayBegin = cal_days_in_month(
+                        CAL_GREGORIAN,
+                        $monthBegin,
+                        $yearBegin
+                );
+                $periodNameFormat = Zend_Date::MONTH_NAME_SHORT.' '.Zend_date::YEAR_SHORT;
+                $periodLength = ['unit' => Zend_Date::MONTH,'nb' => $this->_timeUnitNb];
         }
         
-        if (!$desc)
+        $begin = new Zend_Date($yearBegin.'-'.$monthBegin.'-'.$dayBegin);
+        
+        $date = $begin;
+        $dataChart = [];
+        
+        //create the periods
+        for($i=0; $i < $this->_periodNb; $i++)
+        {
+            $periodName = $date->toString($periodNameFormat);
+            $dataChart[$periodName] = [
+                'parameterValue' => 0,
+                'end'       => $date->toString(Zend_Date::TIMESTAMP),
+                'begin'     => $date->sub($periodLength['nb'],$periodLength['unit'])
+                                    ->toString(Zend_Date::TIMESTAMP),
+            ];
+        }
+        
+        if (!$this->_desc)
         {
             return array_reverse($dataChart);
         }
+        
         return $dataChart;
     }
     
-    protected function addValues($parameter,$dataChart)
+    protected function addValues()
     {
+        $dataChart = $this->_createPeriods();
         //adding of the number of times in each period
+        $incrementValueFunc = $this->getIncrementValueFunc();
         foreach ($this->_events as $event)
         {
             $date = $event->date->getTimeStamp();
-            foreach($dataChart as $key => $period)
+            $delta = NULL;
+            if ($this->_propertyForAdding && property_exists($event,$this->_propertyForAdding))
+            {
+                $property = $this->_propertyForAdding;
+                $delta = $event->$property;
+            }
+            elseif ($this->_propertyForAdding)
+            {
+                throw new Pepit_Model_Exception('The event '
+                        .get_class($event).' does not have the property :'
+                        .$this->_propertyForAdding);
+            }
+            
+            foreach($dataChart as $periodIndex => $period)
             {
                 if ($date>=$period['begin'] && $date<=$period['end'])
                 {
-                    $dataChart[$key]['parameterValue'] = 
-                        $this->incrementValueforChart(
-                                $dataChart[$key]['parameterValue'],
-                                $event,
-                                $parameter
+                    $dataChart[$periodIndex]['parameterValue'] = 
+                    call_user_func_array(
+                            $incrementValueFunc,
+                            [$dataChart[$periodIndex]['parameterValue'],$delta]
                     );
                 }
             }
@@ -94,15 +165,24 @@ class Pepit_Widget_Chart
         return $dataChart;
     }
     
-    protected function incrementValueforChart($initValue,$event,$parameter)
+    protected function getIncrementValueFunc()
     {
-        switch($parameter)
+        $addUnit = function ($init){
+            
+            return $init+1;
+        };
+            
+        $sumFunc = function($init,$delta){
+            return $init+$delta;
+        };
+        
+        switch($this->_type)
         {
+            case 'sum' :
+                return $sumFunc;
             case 'frequency':
-                return $initValue+1;
             default:
-                return $initValue + $event->$parameter;
+                return $addUnit;
         }
     }
-
 }

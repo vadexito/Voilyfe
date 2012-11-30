@@ -86,6 +86,21 @@ class EventRepository extends GeneralizedItemRowRepositoryAbstract
                     ->getResult();
     }
     
+    public function findOrderedTagsCountsByMember($memberId)
+    {
+        $qb = $this->createQueryBuilder('e');
+        return  $qb ->select($qb->expr()->count('e').'as total_events')
+                    ->join('e.member','m')
+                    ->join('e.tags','t')
+                    ->where('m.id = :idMemb')
+                    ->setParameter('idMemb',$memberId)
+                    ->addSelect('c.id as category_id')
+                    ->groupBy('category_id')
+                    ->orderBy('total_events','desc') //meta category have no direct event
+                    ->getQuery()
+                    ->getResult();
+    }
+    
     public function findBestCategoryCount($categoryId)
     {
         $qb = $this->createQueryBuilder('e');
