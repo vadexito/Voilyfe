@@ -149,8 +149,8 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     }
     
     
-//    public function dataChart()
-//    {
+    public function dataChart()
+    {
 //        $repository = $this->getEntityManager()
 //                                    ->getRepository($this->_tagEntity);
 //        if ($this->_containerType === 'itemGroup')
@@ -163,7 +163,20 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
 //        }
 //        
 //        return $entities;
-//    }
+        
+        $entities = [
+            ['value' => 'jlkj','freqValue' => 45],
+            ['value' => 'jlukj','freqValue' => 4],
+            ['value' => 'jlcbvcvbckj','freqValue' => 2],
+        ];
+        
+        return [
+            'type'  =>'winner_list',
+            'title' => ucfirst($this->getLabel()),
+            'values'=> $entities
+        ];
+        
+    }
     
     protected function _getEntities()
     {

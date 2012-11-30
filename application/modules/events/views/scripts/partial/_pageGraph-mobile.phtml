@@ -12,9 +12,8 @@
 </div>
 
 <?php 
-    //$items=['date','location','tags','restaurant_price'];
-    $form = $this->event($this->events[0])->getForm();
     
+    $form = $this->event($this->events[0])->getForm();
     foreach ($form->getElements() as $formElement)
     {
         echo $this->visualRep($formElement,$this->events);
