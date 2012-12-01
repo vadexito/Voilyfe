@@ -1,3 +1,7 @@
+<?php $this->inlineScript()->offsetSetFile(180,'/js/lib/simple-plugin/jquery.sudoSlider.js');
+      $this->inlineScript()->offsetSetFile(181,'/js/lib/simple-plugin/jquery.touchSwipe-1.2.4.js');
+      $this->headLink()->prependStylesheet('/css/simple-plugin.css'); ?>
+
 <div data-role="controlgroup" data-type="horizontal">
     <a href="#choice-param" data-role="button" data-rel="popup" data-position-to="window">Bar</a>
     <a href="#choice-param" data-role="button" data-rel="popup" data-position-to="window">Pie</a>
@@ -10,16 +14,27 @@
                 <li><a href="">Price</a></li>
         </ul>
 </div>
+<div id="container">
+	<div style="position:relative;">
+            <div id="containerslider">
+                    <div id="slider">
+                            <ul>
+                            <?php 
 
-<?php 
-    
-    $form = $this->event($this->events[0])->getForm();
-    foreach ($form->getElements() as $formElement)
-    {
-        echo $this->visualRep($formElement,$this->events);
-    }
-
-
-
-
-
+                                $form = $this->event($this->events[0])->getForm();
+                                $commonElement=['date','location','image','tags','persons'];
+                                foreach ($form->getElements() as $formElement)
+                                {
+                                    //if no category is choosen show only fot the common properties
+                                    if ((!$this->all || in_array($formElement->getId(),$commonElement)))
+                                    {
+                                        echo $this->visualRep($formElement,$this->events,['wrapper' => 'li','htmlTag' => 'div']);
+                                    }
+                                }
+                            ?>			
+                            </ul>
+                    </div>
+            </div>
+	</div>
+	<a href="#" class="previousclass" >Previous</a> - <a href="#" class="nextclass" >Next</a></p>
+</div>

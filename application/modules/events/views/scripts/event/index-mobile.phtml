@@ -42,7 +42,7 @@ $buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" cl
         <?php echo $this->partial('partial/_mobilePage.phtml', array(
             'id'         => 'graphs-page',
             'page'       => 'graphs',
-            'content'    => $this->partial('partial/_pageGraph-mobile.phtml',['events' => $this->events]),
+            'content'    => $this->partial('partial/_pageGraph-mobile.phtml',['events' => $this->events,'all'=>$this->allOption]),
             'title'      => ucfirst($this->translate($name)),
             'buttonLeft' => $buttonLeft.$this->translate('menu_short_categories').'</a>',
             'buttonRight'=> $buttonRight,

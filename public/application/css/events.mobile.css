@@ -181,3 +181,16 @@ div.row-block
 @media (max-width: 480px) { div,h1{border:5px solid black;} }
 
 */
+/*
+================================================================================
+event index : graphs
+================================================================================
+*/
+
+#containerslider
+{
+    height: 300px; 
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

@@ -149,27 +149,36 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     }
     
     
-    public function dataChart()
+    public function dataChart($events)
     {
-//        $repository = $this->getEntityManager()
-//                                    ->getRepository($this->_tagEntity);
-//        if ($this->_containerType === 'itemGroup')
-//        {
-//            $entities = $repository->findOrderedTagsCountsByMember();
-//        }
-//        else
-//        {
-//            $entities = $repository->findOrderedTagsCountsByMember($this->_containerId);
-//        }
-//        
-//        return $entities;
+                
+        $tags = [];
+        $property = $this->getAttrib('data-property-name');
         
-        $entities = [
-            ['value' => 'jlkj','freqValue' => 45],
-            ['value' => 'jlukj','freqValue' => 4],
-            ['value' => 'jlcbvcvbckj','freqValue' => 2],
-        ];
+        $propertyTag = $this->_containerType === 'itemGroup' ? 
+            $this->_itemName.'_name' : 'value';
         
+        foreach ($events as $event)
+        {
+            if ($event->$property)
+            {
+                if (!method_exists($event->$property,'count'))
+                {
+                    $tags[] = $event->$property->$propertyTag;
+                }
+                else
+                {
+                    foreach ($event->$property as $tag)
+                    {
+                        $tags[] = $tag->$propertyTag;
+                    }
+                }
+            }
+            
+        }
+        $entities = array_count_values($tags);
+        arsort($entities);
+      
         return [
             'type'  =>'winner_list',
             'title' => ucfirst($this->getLabel()),

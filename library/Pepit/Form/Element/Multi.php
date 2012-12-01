@@ -120,4 +120,40 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     {
         $this->_storage = $entity;
     }
+    
+    public function dataChart($events)
+    {
+                
+        $tags = [];
+        $property = $this->getAttrib('data-property-name');
+        $propertyTag = 'value';
+        
+        foreach ($events as $event)
+        {
+            if ($event->$property)
+            {
+                if (!method_exists($event->$property,'count'))
+                {
+                    $tags[] = $event->$property->$propertyTag;
+                }
+                else
+                {
+                    foreach ($event->$property as $tag)
+                    {
+                        $tags[] = $tag->$propertyTag;
+                    }
+                }
+            }
+            
+        }
+        $entities = array_count_values($tags);
+        arsort($entities);
+      
+        return [
+            'type'  =>'winner_list',
+            'title' => ucfirst($this->getLabel()),
+            'values'=> $entities
+        ];
+        
+    }
 }
