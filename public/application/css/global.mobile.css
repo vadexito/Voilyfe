@@ -71,13 +71,13 @@ custom icons
     border-radius: 0 !important;
 }
 
-.ui-icon-mylife-graphs,.ui-icon-mylife-calendar,.ui-icon-mylife-last-events,
+/*.ui-icon-mylife-graphs,.ui-icon-mylife-calendar,.ui-icon-mylife-last-events,
 .ui-icon-mylife-options,
 .ui-icon-mylife-location,.ui-icon-mylife-persons,.ui-icon-mylife-tags,
 .ui-icon-mylife-image,
 .ui-icon-mylife-price,.ui-icon-mylife-meals,.ui-icon-mylife-restaurants,.ui-icon-mylife-mealtype
 .ui-icon-mylife-quantity,.ui-icon-mylife-medicine,.ui-icon-mylife-duration,.ui-icon-mylife-typeswimming,
-.ui-icon-mylife-swimming_location
+.ui-icon-mylife-swimming_location,.ui-icon-mylife-subcategory
 { 
     background-size: 24px 22px; 
 }
@@ -103,6 +103,7 @@ custom icons
 .ui-icon-mylife-duration{background:url('/images/icons/nav_bar/duration.png') 50% 50% no-repeat;} 
 .ui-icon-mylife-typeswimming{background:url('/images/icons/nav_bar/typeswimming.png') 50% 50% no-repeat;} 
 .ui-icon-mylife-swimming_location{background:url('/images/icons/nav_bar/swimming_location.png') 50% 50% no-repeat;} 
+.ui-icon-mylife-subcategory{background:url('/images/icons/nav_bar/subcategory.png') 50% 50% no-repeat;} */
 
 
 

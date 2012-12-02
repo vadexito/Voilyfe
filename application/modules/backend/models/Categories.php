@@ -98,12 +98,14 @@ class Backend_Model_Categories extends Backend_Model_Abstract_Container
         $category = new ZC\Entity\Category();
         $category->name = $formValues['name'];
         
-        return $this->_saveEntityFromForm($formValues, $category);
+        return $this->_saveEntityFromForm($category);
        
     }
     
-    public function updateEntityFromForm(array $formValues, $entityId)
+    public function updateEntityFromForm(array $formValues,$entityId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         $category = $this->getStorage()->find($entityId);
         
         return $this->_saveEntityFromForm($formValues, $category);

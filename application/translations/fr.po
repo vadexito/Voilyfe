@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-11-29 23:16+0100\n"
-"PO-Revision-Date: 2012-12-01 00:47+0100\n"
+"POT-Creation-Date: 2012-12-01 23:05+0100\n"
+"PO-Revision-Date: 2012-12-01 23:05+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -52,13 +52,13 @@ msgstr "Préférences"
 msgid "menu_back_to_previous_page"
 msgstr "Retour"
 
+#: application/modules/access/controllers/AccessController.php:43
+msgid "sign-in_to_mylife"
+msgstr "Connection"
+
 #: application/modules/access/forms/UserLogin.php:15
 msgid "action_login"
 msgstr "Connexion"
-
-#: application/modules/access/forms/UserLogin.php:34
-msgid "sign-in_to_mylife"
-msgstr "Connection"
 
 #: application/modules/access/forms/Elements/RememberMe.php:20
 msgid "user_rememberMe"
@@ -99,7 +99,7 @@ msgstr "Créer"
 
 #: application/modules/backend/forms/Elements/Category.php:22
 #: application/modules/events/forms/Elements/Address.php:22
-#: application/translations/_XMLforPoedit/categories.xml:29
+#: application/translations/_XMLforPoedit/categories.xml:30
 msgid "item_address"
 msgstr "adresse"
 
@@ -136,7 +136,7 @@ msgid "msg_event_deleted"
 msgstr "Votre événement a été effacé."
 
 #: application/modules/events/forms/Elements/CuisineType.php:21
-#: application/translations/_XMLforPoedit/categories.xml:33
+#: application/translations/_XMLforPoedit/categories.xml:34
 msgid "item_cuisineType"
 msgstr "Type de cuisine"
 
@@ -148,7 +148,7 @@ msgid "item_date"
 msgstr "date"
 
 #: application/modules/events/forms/Elements/Duration.php:19
-#: application/translations/_XMLforPoedit/categories.xml:38
+#: application/translations/_XMLforPoedit/categories.xml:39
 msgid "item_duration"
 msgstr "durée"
 
@@ -157,27 +157,27 @@ msgid "item_image"
 msgstr "Image"
 
 #: application/modules/events/forms/Elements/Location.php:19
-#: application/translations/_XMLforPoedit/categories.xml:37
+#: application/translations/_XMLforPoedit/categories.xml:38
 msgid "item_location"
 msgstr "lieu"
 
 #: application/modules/events/forms/Elements/Meals.php:22
-#: application/translations/_XMLforPoedit/categories.xml:30
+#: application/translations/_XMLforPoedit/categories.xml:31
 msgid "item_meals"
 msgstr "plats"
 
 #: application/modules/events/forms/Elements/Mealtype.php:21
-#: application/translations/_XMLforPoedit/categories.xml:32
+#: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr "type de repas"
 
 #: application/modules/events/forms/Elements/Name.php:22
-#: application/translations/_XMLforPoedit/categories.xml:28
+#: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
 msgstr "nom"
 
 #: application/modules/events/forms/Elements/Persons.php:23
-#: application/translations/_XMLforPoedit/categories.xml:40
+#: application/translations/_XMLforPoedit/categories.xml:41
 msgid "item_persons"
 msgstr "participants"
 
@@ -186,12 +186,12 @@ msgid "msg_press_return_to_save"
 msgstr "Appuyer sur entrée pour valider le 'tag'"
 
 #: application/modules/events/forms/Elements/PhoneNumber.php:22
-#: application/translations/_XMLforPoedit/categories.xml:27
+#: application/translations/_XMLforPoedit/categories.xml:28
 msgid "item_phoneNumber"
 msgstr "Numéro de téléphone"
 
 #: application/modules/events/forms/Elements/Price.php:28
-#: application/translations/_XMLforPoedit/categories.xml:31
+#: application/translations/_XMLforPoedit/categories.xml:32
 msgid "item_price"
 msgstr "prix"
 
@@ -199,12 +199,23 @@ msgstr "prix"
 msgid "title_amount"
 msgstr "Montant"
 
+#: application/modules/events/forms/Elements/Subcategory.php:22
+#: application/translations/_XMLforPoedit/categories.xml:43
+msgid "item_subcategory"
+msgstr "Sous catégorie"
+
 #: application/modules/events/forms/Elements/Tags.php:22
+#: application/translations/_XMLforPoedit/categories.xml:42
 msgid "item_tags"
 msgstr "Mots-clés"
 
+#: application/modules/events/forms/Elements/Type.php:22
+#: application/translations/_XMLforPoedit/categories.xml:44
+msgid "item_type"
+msgstr "type"
+
 #: application/modules/events/forms/Elements/Typeswimming.php:19
-#: application/translations/_XMLforPoedit/categories.xml:39
+#: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_typeswimming"
 msgstr "Type de nage"
 
@@ -569,54 +580,58 @@ msgid "category_music"
 msgstr "Musique"
 
 #: application/translations/_XMLforPoedit/categories.xml:18
+msgid "category_present"
+msgstr "Cadeaux"
+
+#: application/translations/_XMLforPoedit/categories.xml:19
 msgid "category_restaurant"
 msgstr "Restaurants"
 
-#: application/translations/_XMLforPoedit/categories.xml:19
+#: application/translations/_XMLforPoedit/categories.xml:20
 msgid "category_running"
 msgstr "Course à pied"
 
-#: application/translations/_XMLforPoedit/categories.xml:20
+#: application/translations/_XMLforPoedit/categories.xml:21
 msgid "category_social"
 msgstr "Activités sociales"
 
-#: application/translations/_XMLforPoedit/categories.xml:21
+#: application/translations/_XMLforPoedit/categories.xml:22
 msgid "category_sport"
 msgstr "Sport"
 
-#: application/translations/_XMLforPoedit/categories.xml:22
+#: application/translations/_XMLforPoedit/categories.xml:23
 msgid "category_swimming"
 msgstr "Natation"
 
-#: application/translations/_XMLforPoedit/categories.xml:23
+#: application/translations/_XMLforPoedit/categories.xml:24
 msgid "category_trip"
 msgstr "Voyages"
 
-#: application/translations/_XMLforPoedit/categories.xml:24
+#: application/translations/_XMLforPoedit/categories.xml:25
 msgid "category_work"
 msgstr "Travail"
 
-#: application/translations/_XMLforPoedit/categories.xml:34
+#: application/translations/_XMLforPoedit/categories.xml:35
 msgid "item_medicine"
 msgstr "médicament"
 
-#: application/translations/_XMLforPoedit/categories.xml:35
+#: application/translations/_XMLforPoedit/categories.xml:36
 msgid "item_quantity"
 msgstr "quantité"
 
-#: application/translations/_XMLforPoedit/categories.xml:36
+#: application/translations/_XMLforPoedit/categories.xml:37
 msgid "item_opinion"
 msgstr "Avis"
 
-#: application/translations/_XMLforPoedit/categories.xml:43
+#: application/translations/_XMLforPoedit/categories.xml:47
 msgid "item_company"
 msgstr "société"
 
-#: application/translations/_XMLforPoedit/categories.xml:44
+#: application/translations/_XMLforPoedit/categories.xml:48
 msgid "item_restaurant"
 msgstr "restaurant"
 
-#: application/translations/_XMLforPoedit/categories.xml:45
+#: application/translations/_XMLforPoedit/categories.xml:49
 msgid "item_restaurants"
 msgstr "restaurants"
 

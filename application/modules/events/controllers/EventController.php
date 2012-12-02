@@ -28,6 +28,8 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         
         //initialize calendar widget for localization
         $this->_helper->calendar($this->view);
+        
+        $this->_initIconsCss();
     }
      
     public function indexAction()
@@ -248,6 +250,25 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
         $this->view->paginatorEvents = $paginator;
         $this->view->eventBefore = '';
         $this->view->eventAfter = '';
+    }
+    
+    protected function _initIconsCss()
+    {
+        $dir = APPLICATION_PATH.'/../public/images/icons/nav_bar/';
+        $this->view->headStyle()->captureStart();
+        $pattern = '#^([a-zA-Z0-9\-_]*).png$#';
+        foreach (scandir($dir) as $icon)
+        {
+            if (preg_match($pattern,$icon))
+            {
+                $icon = preg_replace($pattern,'$1',$icon);
+                echo '.ui-icon-mylife-'.$icon.'{'
+                .'background:url("/images/icons/nav_bar/'.$icon.'.png") 50% 50% no-repeat;'
+                .'background-size: 24px 22px;}'."\n";
+            }
+            
+        }
+        $this->view->headStyle()->captureEnd();
     }
    
 }

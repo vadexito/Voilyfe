@@ -26,7 +26,7 @@ class Application_Controller_Action_Helper_AclAuthor
         if (!$this->_acl->isAllowed($role,$resource,$action))
         {
             Zend_Auth::getInstance()->clearIdentity();
-            return $this->_redirect(
+            return $this->getActionController()->_redirect(
                 $this->view->url(['action' => 'login'],'access')
             );
         }

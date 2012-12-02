@@ -15,6 +15,7 @@
     <translate>category_leisure</translate>
     <translate>category_medicine</translate>
     <translate>category_music</translate>
+    <translate>category_present</translate>
     <translate>category_restaurant</translate>
     <translate>category_running</translate>
     <translate>category_social</translate>
@@ -38,6 +39,9 @@
     <translate>item_duration</translate>
     <translate>item_typeswimming</translate>
     <translate>item_persons</translate>
+    <translate>item_tags</translate>
+    <translate>item_subcategory</translate>
+    <translate>item_type</translate>
   </items>
   <itemgroups>
     <translate>item_company</translate>

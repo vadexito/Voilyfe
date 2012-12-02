@@ -39,7 +39,8 @@ class Access_AccessController extends Pepit_Controller_Abstract_Abstract
         $form = $this->_model->getForm('login');
         $form->setAction($this->view->url(array(
             'action' => 'login'
-        ),'access'));
+        ),'access'))
+             ->setLegend($form->getTranslator()->translate('sign-in_to_mylife'));
  
         if ($this->getRequest()->isPost())
         {

@@ -1,33 +1,6 @@
 <?php
 
-$a = array('un','hoiuoi','huihuh','poip');
-reset($a);
+$a = array('rtr'=> 'un','hoiuoi','huihuh','poip');
+$b = array('rtr'=> 'un','hoieterteuoi','huihuh','poip');
 
-while ($val = current($a))
-{
-    if ($val === 'poip')
-    {
-        
-        if (!prev($a))
-        {
-            reset($a);
-            $prev = NULL;
-        }
-        else
-        {
-            $prev = prev($a);
-            next($a);
-        }
-        $key = key($a);
-        $next = next($a);
-        
-    }
-    next($a); 
-} 
-
-    
-    
-    
-echo 'previous element : '.$prev.'<br/>';
-echo 'researched element : '.$key.'<br/>';
-echo 'next element : '.$next.'<br/>';
+var_dump($a===$b);

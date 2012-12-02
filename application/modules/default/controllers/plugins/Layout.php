@@ -71,7 +71,7 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
         
         foreach ($this->_changesToDefault as $mvcPath)
         {
-            if($mvcPath['from'] === $mvcDefault);
+            if ($mvcPath['from'] === $mvcDefault)
             {
                 $mvc = [];
                 foreach ($mvcDefault as $key => $value)

@@ -4,25 +4,20 @@
     $filterYear = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::YEAR));
     
     $events = $this->events;
-    if (!$events)
+    
+    $month = null;
+    $year = null;
+    foreach ($this->events as $event)
     {
-        echo 'In order to add some events press the plus button';
-    }
-    else
-    {
-        $month = null;
-        $year = null;
-        foreach ($this->events as $event)
+        //we put a divider each month
+        if (!($filterMonth->filter($event->date) === $month &&
+                $filterYear->filter($event->date) === $year))
         {
-            //we put a divider each month
-            if (!($filterMonth->filter($event->date) === $month &&
-                    $filterYear->filter($event->date) === $year))
-            {
-                $month = $filterMonth->filter($event->date);
-                $year = $filterYear->filter($event->date);
-                echo '<li data-role="list-divider">'.$month.' '.$year.'</li>';
-            }
-            echo $this->event($event)->eventLine();
+            $month = $filterMonth->filter($event->date);
+            $year = $filterYear->filter($event->date);
+            echo '<li data-role="list-divider">'.$month.' '.$year.'</li>';
         }
+        echo $this->event($event)->eventLine();
+        
     }?>
 </ul>

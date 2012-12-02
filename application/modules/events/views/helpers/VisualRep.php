@@ -50,11 +50,11 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
         $htmlTag = $this->_options['htmlTag'];
 
         return
-        '<'.$this->_wrapper.'>'
+        ($this->_wrapper ? '<'.$this->_wrapper.'>' : '')
         . '<'.$htmlTag." id='".$this->getId()."' class='google-chart visual-rep' data-visual='"
         .  Zend_Json::encode($dataChart['data'])
         . "'></".$htmlTag.'>'."\n"
-        . '</'.$this->_wrapper.'>'."\n";
+        . ($this->_wrapper ? '</'.$this->_wrapper.'>'."\n" : '');
     }
     
     protected function _getWinnerList(array $dataChart)
@@ -75,7 +75,7 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
                 . "\t".'</li>'."\n";
         }
         
-        return '<'.$this->_wrapper.'>'
+        return ($this->_wrapper ? '<'.$this->_wrapper.'>' : '')
             .'<'.$htmlTag.' class="visual-rep" id="'
             . $this->getId().'"><h2>'
             . $title
@@ -83,7 +83,7 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
             . $this->getId().'-list'
             . '" data-role="listview">'.$list
             . '</ul></'.$htmlTag.'>'
-            . '</'.$this->_wrapper.'>'."\n";
+            . ($this->_wrapper ? '</'.$this->_wrapper.'>'."\n" : '');
     }
     
     

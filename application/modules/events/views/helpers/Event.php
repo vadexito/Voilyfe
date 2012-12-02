@@ -63,7 +63,8 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL,
             $this->renderCommonProperties(),
             $this->renderSpecificProperties(),
-            $this->_getHref($this->view->all)
+            $this->_getHref($this->view->all),
+            ''
         );
     }
     
@@ -146,7 +147,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
      * @param string $imgSrc
      * @return string
      */
-    public function renderLine($title,$subTitle,$content,$href)
+    public function renderLine($title,$subTitle,$content,$href,$aside)
     {
         return '<li class="event-line">
         <a data-ajax="false" class="event-line-link" href="'.$href.'">'
@@ -154,7 +155,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             .'<h4>'. rtrim(implode(' - ',[$this->localDate(),$title]),' - ') .'</h4>'
             .'<p><strong>&nbsp '.$subTitle.'</strong></p>
             <p>'.$content.'</p>
-            <p class="ui-li-aside"><strong>3 star</strong></p>
+            <p class="ui-li-aside">'. $aside .'<strong></strong></p>
         </a>
     </li>'."\n";
     }

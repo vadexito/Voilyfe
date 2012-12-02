@@ -20,27 +20,29 @@ class Backend_Form_CategoryCreate extends Backend_Form_GeneralizedItemCreateAbst
         ));
         
         //define validator for uniqueness
-        $categories = $this ->_em->getRepository('ZC\Entity\Category')
+        $categoriesDb = $this ->_em->getRepository('ZC\Entity\Category')
                             ->findAll();
-        $validUnique = new Pepit_Validate_NotInDoctrineArray($categories,'name');       
+        $validUnique = new Pepit_Validate_NotInDoctrineArray($categoriesDb,'name');       
         
         $nameCategory   ->setRequired('true')
                         ->addFilters(array('StringTrim','StripTags',
                             'StringToLower','Alnum'))
-                        ->addValidators(array('notempty',$validUnique));
-        $this->addElement($nameCategory);
+                        ->addValidators(array('notempty',$validUnique))
+                        ->addDecorator('label');
         
-        $this->_initItemsOptions();
         
-        $categories = new Pepit_Form_Element_MultiCheckbox('categoryIds',array(
+        
+        
+        $categoriesRaw = new Pepit_Form_Element_MultiCheckbox('categoryIds',array(
             'label' => 'Generalized categories (meta and simple categories): '
         ));
+        
         $categories = Pepit_Form_Element::initMultioptions(
-                $categories,
+                $categoriesRaw->addDecorator('label'),
                 'ZC\Entity\Category',
                 'id', 'name', $this->_em
         );
-        $this->addElement($categories);
+        
         
        
         //create submit element        
@@ -48,8 +50,12 @@ class Backend_Form_CategoryCreate extends Backend_Form_GeneralizedItemCreateAbst
             'label' => 'action_create'
         ));
         
-        
+        $this->addElement($nameCategory);
+        $this->_initItemsOptions();
+        $this->addElement($categories);
         $this->addElement($submit);
+        
+        
     }
 }
 
