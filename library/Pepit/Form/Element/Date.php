@@ -59,7 +59,8 @@ class Pepit_Form_Element_Date extends Pepit_Form_Element_Xhtml
             'type' => 'frequency',
             'periodNb' => 6,
             'timeUnitNb' => 1,
-            'timeUnit' => 'month'
+            'timeUnit' => 'month',
+            'hAxisTitle' => ucfirst($this->getTranslator()->translate('unit_month')),
         ];
         
         return [

@@ -51,7 +51,6 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_Abstract
                 $href = $this->_getId($formElement);
                 $label = ucfirst($formElement->getLabel());
             }
-            
 
             //if no category is choosen show only fot the common properties
             if (method_exists($formElement,'dataChart') &&

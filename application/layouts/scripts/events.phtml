@@ -1,13 +1,13 @@
 <?php echo $this->doctype() ?>
 <html>
     <head>
-        <?php echo $this->partial('_head.phtml') ?>
+        <?php echo $this->partial('partial/_head.phtml') ?>
     </head>
     <body> 
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <?php echo $this->partial('_hNav.phtml') ?>
+                    <?php echo $this->partial('partial/_hNav.phtml') ?>
                 </div>
             </div>
         </nav>
@@ -15,7 +15,7 @@
             <div class="row-fluid">
                 <div id="side-menu" class="span3">
                     <div class="row-fluid">
-                        <?php echo $this->partial('_vNav.phtml') ?>
+                        <?php echo $this->partial('partial/_vNav.phtml') ?>
                     </div>
                     <?php if (!isset($this->form) && ($this->category->name != 'all') && ($this->category->categories->count()=== 0)) : ?>
                     <div class="row-fluid">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <footer class="footer">
-                <?php echo $this->partial('_footer.phtml'); ?>
+                <?php echo $this->partial('partial/_footer.phtml'); ?>
             </footer>
         </div>
         <?php echo $this->inlineScript(); ?>

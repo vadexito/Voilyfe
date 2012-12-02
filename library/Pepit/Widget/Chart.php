@@ -20,6 +20,7 @@ class Pepit_Widget_Chart
     protected $_title = NULL;
     protected $_timeUnit = 'month';
     protected $_timeUnitNb = 1;
+    protected $_hAxisTitle = 'month';
             
     
     
@@ -32,7 +33,8 @@ class Pepit_Widget_Chart
     public function setOptions($options)
     {
         $properties = ['titleYAxis','width','height','desc','periodNb',
-            'type','propertyForAdding','unit','legend','title','timeUnit','timeUnitNb'];
+            'type','propertyForAdding','unit','legend','title','timeUnit',
+            'timeUnitNb','hAxisTitle'];
         foreach ($properties as $property)
         {
             $protectedProp = '_'.$property;
@@ -64,7 +66,7 @@ class Pepit_Widget_Chart
                 'title'         => $this->_title,
                 'width'         => $this->_width,
                 'height'        => $this->_height,
-                'hAxisTitle'    => 'month',
+                'hAxisTitle'    => $this->_hAxisTitle,
                 'vAxisTitle'    => $this->_unit,
                 'legend'        => $this->_legend
         ]];

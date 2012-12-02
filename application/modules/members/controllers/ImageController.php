@@ -29,21 +29,26 @@ class Members_ImageController extends Pepit_Controller_Abstract_Abstract
         $dirPath = Zend_Registry::get('config') ->storage
                                                 ->images->members
                                                 ->directoryPath;
-        $image = file_get_contents(APPLICATION_PATH.$dirPath.$imagePath);
-        $extension = Pepit_File_Tool::getExtension($imagePath);
-        $authorizedExtension=['jpeg' => ['jpeg','jpg'],'png' => ['png'],'gif' => ['gif']];
-        foreach ($authorizedExtension as $extMime => $extensions)
+        $file = APPLICATION_PATH.$dirPath.$imagePath;
+        if (file_exists($file))
         {
-            if (in_array($extension,$extensions))
+            $extension = Pepit_File_Tool::getExtension($imagePath);
+            $authorizedExtension=['jpeg' => ['jpeg','jpg'],'png' => ['png'],'gif' => ['gif']];
+            foreach ($authorizedExtension as $extMime => $extensions)
             {
-                $this->getResponse()->clearBody ();
-                $this->getResponse()->clearAllHeaders();
-                $this->getResponse()->setHeader('Content-Type', 'image/'.$extMime,true);
-                $this->getResponse()->setHeader('Cache-Control', 'public');
-                $this->getResponse()->setBody($image);
-                
+                if (in_array($extension,$extensions))
+                {
+                    $this->getResponse()->clearBody ();
+                    $this->getResponse()->clearAllHeaders();
+                    $this->getResponse()->setHeader('Content-Type', 'image/'.$extMime,true);
+                    $this->getResponse()->setHeader('Cache-Control', 'public');
+                    $this->getResponse()->setBody(file_get_contents($file));
+                }
             }
         }
+        
+        
+        
         
     }
     

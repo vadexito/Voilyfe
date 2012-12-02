@@ -66,13 +66,16 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
         $title = key_exists('title',$dataChart) ? $dataChart['title'] : '';
         foreach ($dataChart['values'] as $value => $freq)
         {
-            $href='#';
-            $list .= '<li>
-                <a href="'.$href.'" data-ajax="false">
-                <h3>'.$value. '</h3>'."\n"
-                . '<span class="ui-li-count">'.$freq.'</span>'."\n"
-                . "\t". '</a>'."\n"
-                . "\t".'</li>'."\n";
+            if ($value)
+            {
+                $href='#';
+                $list .= '<li>
+                    <a href="'.$href.'" data-ajax="false">
+                    <h3>'.$value. '</h3>'."\n"
+                    . '<span class="ui-li-count">'.$freq.'</span>'."\n"
+                    . "\t". '</a>'."\n"
+                    . "\t".'</li>'."\n";
+            }
         }
         
         return ($this->_wrapper ? '<'.$this->_wrapper.'>' : '')

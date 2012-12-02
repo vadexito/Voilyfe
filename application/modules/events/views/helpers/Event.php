@@ -94,7 +94,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     protected function _getThumbnailSrc()
     {
         $event = $this->_event;
-        if ($event->image)
+        if ($event->image && $event->image->path)
         {
             return $this->view->url(['image'=> $this->_event->image->path,'controller' => 'image','action' => 'show'],'member');
         }

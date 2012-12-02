@@ -35,10 +35,11 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
             if (file_exists($layoutFile))
             {
                 $this->_layout->setLayout($prefix.$this->_suffix);
-                return;
+                return $prefix.$this->_suffix;
             }
         }
         $this->_layout->setLayout($this->_defaultLayout);
+        return $this->_defaultLayout;
     }
     
     protected function _setPrefixDevice()
@@ -86,9 +87,9 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
                     }
                 }
                 return $mvc;
-                
             }
         }
+        return $mvcDefault;
     }
     
     
@@ -140,5 +141,10 @@ class Application_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
                 break;
             }
         }
+    }
+    
+    public function getLayout()
+    {
+        return $this->_layout;
     }
 }

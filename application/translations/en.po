@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-11-25 20:17+0100\n"
-"PO-Revision-Date: 2012-11-25 20:17+0100\n"
+"POT-Creation-Date: 2012-12-02 16:40+0100\n"
+"PO-Revision-Date: 2012-12-02 16:40+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: english\n"
@@ -52,13 +52,13 @@ msgstr "Preferences"
 msgid "menu_back_to_previous_page"
 msgstr "Back"
 
+#: application/modules/access/controllers/AccessController.php:43
+msgid "sign-in_to_mylife"
+msgstr "Sign-in to Mylife"
+
 #: application/modules/access/forms/UserLogin.php:15
 msgid "action_login"
 msgstr "sign in"
-
-#: application/modules/access/forms/UserLogin.php:34
-msgid "sign-in_to_mylife"
-msgstr "Sign-in to Mylife"
 
 #: application/modules/access/forms/Elements/RememberMe.php:20
 msgid "user_rememberMe"
@@ -99,7 +99,7 @@ msgstr "Create"
 
 #: application/modules/backend/forms/Elements/Category.php:22
 #: application/modules/events/forms/Elements/Address.php:22
-#: application/translations/_XMLforPoedit/categories.xml:29
+#: application/translations/_XMLforPoedit/categories.xml:30
 msgid "item_address"
 msgstr "address"
 
@@ -115,28 +115,28 @@ msgstr "My profile"
 msgid "menu_language"
 msgstr "Language :"
 
-#: application/modules/events/controllers/AjaxController.php:56
+#: application/modules/events/controllers/AjaxController.php:55
 msgid "legend_all_events"
 msgstr "all events"
 
-#: application/modules/events/controllers/AjaxController.php:164
+#: application/modules/events/controllers/AjaxController.php:162
 msgid "category_unknown"
 msgstr "Unknown"
 
-#: application/modules/events/controllers/EventController.php:140
+#: application/modules/events/controllers/EventController.php:142
 msgid "msg_event_created"
 msgstr "Your event was successfully created"
 
-#: application/modules/events/controllers/EventController.php:176
+#: application/modules/events/controllers/EventController.php:178
 msgid "msg_event_updated"
 msgstr "Your event was successfully updated"
 
-#: application/modules/events/controllers/EventController.php:208
+#: application/modules/events/controllers/EventController.php:210
 msgid "msg_event_deleted"
 msgstr "your event was successfully deleted"
 
 #: application/modules/events/forms/Elements/CuisineType.php:21
-#: application/translations/_XMLforPoedit/categories.xml:33
+#: application/translations/_XMLforPoedit/categories.xml:34
 msgid "item_cuisineType"
 msgstr "cuisine type"
 
@@ -148,7 +148,7 @@ msgid "item_date"
 msgstr "date"
 
 #: application/modules/events/forms/Elements/Duration.php:19
-#: application/translations/_XMLforPoedit/categories.xml:38
+#: application/translations/_XMLforPoedit/categories.xml:39
 msgid "item_duration"
 msgstr "duration"
 
@@ -157,27 +157,27 @@ msgid "item_image"
 msgstr "image"
 
 #: application/modules/events/forms/Elements/Location.php:19
-#: application/translations/_XMLforPoedit/categories.xml:37
+#: application/translations/_XMLforPoedit/categories.xml:38
 msgid "item_location"
 msgstr "location"
 
 #: application/modules/events/forms/Elements/Meals.php:22
-#: application/translations/_XMLforPoedit/categories.xml:30
+#: application/translations/_XMLforPoedit/categories.xml:31
 msgid "item_meals"
 msgstr "meals"
 
 #: application/modules/events/forms/Elements/Mealtype.php:21
-#: application/translations/_XMLforPoedit/categories.xml:32
+#: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr "meal type"
 
 #: application/modules/events/forms/Elements/Name.php:22
-#: application/translations/_XMLforPoedit/categories.xml:28
+#: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
 msgstr "name"
 
 #: application/modules/events/forms/Elements/Persons.php:23
-#: application/translations/_XMLforPoedit/categories.xml:40
+#: application/translations/_XMLforPoedit/categories.xml:41
 msgid "item_persons"
 msgstr "persons"
 
@@ -186,21 +186,36 @@ msgid "msg_press_return_to_save"
 msgstr "Press return to tag"
 
 #: application/modules/events/forms/Elements/PhoneNumber.php:22
-#: application/translations/_XMLforPoedit/categories.xml:27
+#: application/translations/_XMLforPoedit/categories.xml:28
 msgid "item_phoneNumber"
 msgstr "phone number"
 
 #: application/modules/events/forms/Elements/Price.php:28
-#: application/translations/_XMLforPoedit/categories.xml:31
+#: application/translations/_XMLforPoedit/categories.xml:32
 msgid "item_price"
 msgstr "price"
 
+#: application/modules/events/forms/Elements/Price.php:40
+msgid "title_amount"
+msgstr "amout"
+
+#: application/modules/events/forms/Elements/Subcategory.php:22
+#: application/translations/_XMLforPoedit/categories.xml:43
+msgid "item_subcategory"
+msgstr "subcategory"
+
 #: application/modules/events/forms/Elements/Tags.php:22
+#: application/translations/_XMLforPoedit/categories.xml:42
 msgid "item_tags"
 msgstr "tags"
 
+#: application/modules/events/forms/Elements/Type.php:22
+#: application/translations/_XMLforPoedit/categories.xml:44
+msgid "item_type"
+msgstr "type"
+
 #: application/modules/events/forms/Elements/Typeswimming.php:19
-#: application/translations/_XMLforPoedit/categories.xml:39
+#: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_typeswimming"
 msgstr "type of swimming"
 
@@ -219,6 +234,36 @@ msgstr "back"
 #: application/modules/events/views/helpers/ButtonNewEvent.php:18
 msgid "menu_createNewEvent"
 msgstr "Create new event"
+
+#: application/modules/events/views/helpers/Graphs.php:47
+#: application/modules/events/views/scripts/event/index.phtml:19
+msgid "item_frequency"
+msgstr "frequency"
+
+#: application/modules/events/views/helpers/SubPageIndex.php:27
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:35
+msgid "menu_short_categories"
+msgstr "Cat"
+
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:70
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:6
+msgid "menu_last_events"
+msgstr "Last events"
+
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:71
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:7
+msgid "menu_calendar"
+msgstr "Calendar"
+
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:72
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:8
+msgid "menu_graphs"
+msgstr "Stats"
+
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:73
+#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:9
+msgid "menu_options"
+msgstr "Preferences"
 
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:25
 #: application/modules/events/views/helpers/EventTable/TableCategory.php:32
@@ -286,7 +331,7 @@ msgid "menu_find_event"
 msgstr "Find event"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:61
+#: application/modules/events/views/scripts/event/index-mobile.phtml:36
 msgid "menu_see_categories"
 msgstr "Categories"
 
@@ -402,25 +447,17 @@ msgstr "page"
 msgid "msg_questionSureToDelete"
 msgstr "Can you confirm this?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:28
-#: application/modules/events/views/scripts/event/index-mobile.phtml:38
-#: application/modules/events/views/scripts/event/index-mobile.phtml:47
-#: application/modules/events/views/scripts/event/index-mobile.phtml:55
-#: application/modules/events/views/scripts/event/index-mobile.phtml:70
-msgid "menu_short_categories"
-msgstr "Cat"
+#: application/modules/events/views/scripts/event/index-mobile.phtml:22
+msgid "In order to add some events press the plus button"
+msgstr "In order to add some events press the plus button"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:54
+#: application/modules/events/views/scripts/event/index-mobile.phtml:30
 msgid "menu_add_event"
 msgstr "new event"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:69
+#: application/modules/events/views/scripts/event/index-mobile.phtml:44
 msgid "menu_settings"
 msgstr "Settings"
-
-#: application/modules/events/views/scripts/event/index.phtml:19
-msgid "item_frequency"
-msgstr "frequency"
 
 #: application/modules/events/views/scripts/event/index.phtml:30
 msgid "menu_summary_allevents"
@@ -480,22 +517,6 @@ msgstr "Categories"
 #: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:47
 msgid "menu_list_meta_category"
 msgstr "Families of categories"
-
-#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:6
-msgid "menu_last_events"
-msgstr "Last events"
-
-#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:7
-msgid "menu_calendar"
-msgstr "Calendar"
-
-#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:8
-msgid "menu_graphs"
-msgstr "Stats"
-
-#: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:9
-msgid "menu_options"
-msgstr "Preferences"
 
 #: application/modules/events/views/scripts/partial/_pageEventForm.phtml:8
 #: application/modules/events/views/scripts/partial/_pageItemGroupForm.phtml:3
@@ -567,54 +588,58 @@ msgid "category_music"
 msgstr "music"
 
 #: application/translations/_XMLforPoedit/categories.xml:18
+msgid "category_present"
+msgstr "presents"
+
+#: application/translations/_XMLforPoedit/categories.xml:19
 msgid "category_restaurant"
 msgstr "restaurant"
 
-#: application/translations/_XMLforPoedit/categories.xml:19
+#: application/translations/_XMLforPoedit/categories.xml:20
 msgid "category_running"
 msgstr "running"
 
-#: application/translations/_XMLforPoedit/categories.xml:20
+#: application/translations/_XMLforPoedit/categories.xml:21
 msgid "category_social"
 msgstr "social activities"
 
-#: application/translations/_XMLforPoedit/categories.xml:21
+#: application/translations/_XMLforPoedit/categories.xml:22
 msgid "category_sport"
 msgstr "sport"
 
-#: application/translations/_XMLforPoedit/categories.xml:22
+#: application/translations/_XMLforPoedit/categories.xml:23
 msgid "category_swimming"
 msgstr "swimming"
 
-#: application/translations/_XMLforPoedit/categories.xml:23
+#: application/translations/_XMLforPoedit/categories.xml:24
 msgid "category_trip"
 msgstr "trip"
 
-#: application/translations/_XMLforPoedit/categories.xml:24
+#: application/translations/_XMLforPoedit/categories.xml:25
 msgid "category_work"
 msgstr "work"
 
-#: application/translations/_XMLforPoedit/categories.xml:34
+#: application/translations/_XMLforPoedit/categories.xml:35
 msgid "item_medicine"
 msgstr "medicine"
 
-#: application/translations/_XMLforPoedit/categories.xml:35
+#: application/translations/_XMLforPoedit/categories.xml:36
 msgid "item_quantity"
 msgstr "quantity"
 
-#: application/translations/_XMLforPoedit/categories.xml:36
+#: application/translations/_XMLforPoedit/categories.xml:37
 msgid "item_opinion"
 msgstr "opinion"
 
-#: application/translations/_XMLforPoedit/categories.xml:43
+#: application/translations/_XMLforPoedit/categories.xml:47
 msgid "item_company"
 msgstr "company"
 
-#: application/translations/_XMLforPoedit/categories.xml:44
+#: application/translations/_XMLforPoedit/categories.xml:48
 msgid "item_restaurant"
 msgstr "restaurant"
 
-#: application/translations/_XMLforPoedit/categories.xml:45
+#: application/translations/_XMLforPoedit/categories.xml:49
 msgid "item_restaurants"
 msgstr "restaurants"
 
