@@ -64,7 +64,7 @@ class Zend_View_Helper_FormText extends Zend_View_Helper_FormElement
             // disabled
             $disabled = ' disabled="disabled"';
         }
-
+        
         $xhtml = '<input type="text"'
                 . ' name="' . $this->view->escape($name) . '"'
                 . ' id="' . $this->view->escape($id) . '"'

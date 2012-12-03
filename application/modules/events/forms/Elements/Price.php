@@ -22,7 +22,6 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
         $this->_id = 5;
         $this->setOptions(array(
         "required" => false,
-        "filters" => array(),
         "validators" => array('Float'),
         "value" => 10
         ))->setLabel('item_price');

@@ -14,12 +14,11 @@ class Events_Form_Elements_Name extends Pepit_Form_Element_Text
     public function init()
     {
         $this->_id = 2;
-        $this->setOptions(array(
-        "required" => true,
-        "filters" => array('HtmlEntities','StringTrim',),
-        "validators" => array(),
-        "multioptions" => array(),
-        ))->setLabel('item_name');
+        $this   ->setOptions([
+                    "required" => true,
+                    "filters" => ['StringTrim'],
+                ])
+                ->setLabel('item_name');
         
         parent::init();
     }

@@ -16,7 +16,7 @@ class Events_Form_Elements_Name2 extends Pepit_Form_Element_Text
         $this->_id = 2;
         $this->setOptions(array(
         "required" => false,
-        "filters" => array('HtmlEntities','StringTrim',),
+        "filters" => array('StringTrim',),
         "validators" => array(),
         "multioptions" => array(),
         ));

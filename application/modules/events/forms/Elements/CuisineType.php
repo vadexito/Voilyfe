@@ -15,9 +15,7 @@ class Events_Form_Elements_CuisineType extends Pepit_Form_Element_Select
     {
         $this->setOptions(array(
         "required" => false,
-        "idDB" => 8,
-        "filters" => array(),
-        "validators" => array(),
+        "idDB" => 8
         ))->setLabel('item_cuisineType');
         parent::init();
     }

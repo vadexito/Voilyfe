@@ -13,7 +13,7 @@ class Events_Form_Elements_Opinion extends Pepit_Form_Element_Textarea
     {
         $this->setOptions(array(
         "required" => false,
-        "filters" => array('HtmlEntities','StripTags','StringTrim',),
+        "filters" => array('StripTags','StringTrim',),
         "validators" => array(),
         "multioptions" => array(),
         ));

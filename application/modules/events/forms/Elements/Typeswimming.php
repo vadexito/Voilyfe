@@ -14,7 +14,7 @@ class Events_Form_Elements_Typeswimming extends Pepit_Form_Element_Select
         $this->setOptions(array(
         "required" => false,
         "idDB" => 17,
-        "filters" => array('HtmlEntities','StripTags','StringTrim',),
+        "filters" => array('StripTags','StringTrim',),
         "validators" => array(),
         ))->setLabel('item_typeswimming');
         parent::init();

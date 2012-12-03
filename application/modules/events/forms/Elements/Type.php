@@ -17,7 +17,7 @@ class Events_Form_Elements_Type extends Pepit_Form_Element_Select
         "required" => false,
         "idDB" => 21,
         "multioptionTarget" => 'ZC\Entity\ItemRow',
-        "filters" => array('HtmlEntities','StringTrim',),
+        "filters" => array('StringTrim',),
         ))
         ->setLabel('item_type')
         ->setStorageEntity('ZC\Entity\ItemRow');

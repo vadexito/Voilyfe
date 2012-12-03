@@ -13,7 +13,7 @@ class Events_Form_Elements_Duration extends Pepit_Form_Element_Text
     {
         $this->setOptions(array(
         "required" => false,
-        "filters" => array('HtmlEntities','StripTags','StringTrim',),
+        "filters" => array('StripTags','StringTrim',),
         "validators" => array('Float',),
         "multioptions" => array()
         ))->setLabel('item_duration');
