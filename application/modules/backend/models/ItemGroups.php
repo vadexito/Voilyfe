@@ -135,8 +135,10 @@ class Backend_Model_ItemGroups extends Backend_Model_Abstract_Container
         return $this->_saveEntityFromForm($formValues,$itemGroup);
     }
     
-    public function updateEntityFromForm(array $formValues,$itemId)
+    public function updateEntityFromForm($itemId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         // create new category
         $item = $this->_repository->find($itemId);
         

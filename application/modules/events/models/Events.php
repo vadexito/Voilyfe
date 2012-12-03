@@ -59,8 +59,10 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
     
     
     
-    public function updateEntityFromForm(Array $formValues,$eventId)
+    public function updateEntityFromForm($eventId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         $event = $this->saveEntityFromForm(
                 $formValues,
                 $this->getStorage()->find($eventId)
@@ -74,20 +76,6 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
         $event->date = $date;
         
         return $event;
-    }
-    
-    public function getArrayForFormUpdateFromEntity($eventId)
-    {
-        $arrayResult = parent::getArrayForFormUpdateFromEntity($eventId);
-        $event = $this->getStorage()->find($eventId);
-        
-        //initialize date
-        $filter = new Pepit_Filter_DateTimeToDateForm(array(
-            'date_format' => Pepit_Date::MYSQL_DATE
-        ));
-        $arrayResult['date'] = $filter->filter($event->date);
-        
-        return $arrayResult;
     }
     
     /**

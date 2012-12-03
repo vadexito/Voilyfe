@@ -35,13 +35,20 @@ class Pepit_View_Helper_FormTags extends Zend_View_Helper_FormElement
         $helper = new Zend_View_Helper_FormText();
         $helper->setView($this->view);
         
-        $visible = '';
+        $helperHidden = new Zend_View_Helper_FormHidden();
+        $helperHidden->setView($this->view);
+        
         if (is_array($value))
         {
-            $visible = (isset($value['visible']) ? $value['visible']: '');
+            $i = 0;
+            foreach ($value as $tag)
+            {
+                $html .= $helperHidden->formHidden($name.'['.$i.'][id]',$tag['id'],[]);
+                $i++;
+            }
         }
         
-        $html .= $helper->formText($name.'[visible]',$visible,$attribs)."\n";
+        $html .= $helper->formText($name.'[visible]','',$attribs)."\n";
          
         return $html;
     }

@@ -10,6 +10,9 @@
 abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     implements Pepit_Form_Element_Interface_Interface
 {
+    use Pepit_Form_Element_Trait_Trait,Pepit_Doctrine_Trait;
+    
+    
     /**
      * id of the corresponding item in database
      * @var integer
@@ -18,20 +21,11 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     
     protected $_multioptionTarget = NULL;
     
-    protected $_em = null;
-    
-    protected $_storage = null;
-    /**
-     *
-     * @var boolean true if the rendering should be horizontal
-     */
-    protected $_horizontal = false;
-
     public function init()
     {
         if ($this->getStorageEntity())
         {
-            $itemRows = Zend_Registry::get('entitymanager')
+            $itemRows = $this->getEntityManager()
                         ->getRepository($this->getStorageEntity())
                         ->findByItem($this->getIdDB());
                         
@@ -82,13 +76,6 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         return $this;
     }
     
-    public function setHorizontal($horizontal)
-    {
-        $this->_horizontal = $horizontal;
-        
-        return $this;
-    }
-    
     public function mapElement()
     {
         $formValue = $this->getValue();
@@ -101,24 +88,14 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         return $formValue;
     }
     
-    public function getEntityManager()
+    public function populate($entity)
     {
-        if ($this->_em === NULL)
+        $property = $this->getAttrib('data-property-name');
+        if ($property && property_exists($entity,$property))
         {
-            return Zend_Registry::get('entitymanager');
+            return $entity->$property->id;
         }
-        return $this->_em;
-        
-    }
-    
-    public function getStorageEntity()
-    {
-        return $this->_storage;
-    }
-    
-    public function setStorageEntity($entity)
-    {
-        $this->_storage = $entity;
+        return false;
     }
     
     public function dataChart($events)

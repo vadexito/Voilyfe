@@ -1,0 +1,69 @@
+<?php   $this->inlineScript()->offsetSetFile(200,'/js/lib/jquery_mobile/jqm.autoComplete.js');
+        $this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
+        $this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
+            
+        $this->inlineScript()->offsetSetFile(150,'/js/mvc/models/tag.js');
+        $this->inlineScript()->offsetSetFile(151,'/js/mvc/views/tagView.js');
+        $this->inlineScript()->offsetSetFile(152,'/js/mvc/models/input.js');
+        $this->inlineScript()->offsetSetFile(153,'/js/mvc/models/tags.js');
+        $this->inlineScript()->offsetSetFile(154,'/js/mvc/views/inputView.js');
+        $this->inlineScript()->offsetSetFile(155,'/js/mvc/views/subformView.js');
+        $this->inlineScript()->offsetSetFile(156,'/js/mvc/views/hiddenFormView.js');
+        $this->inlineScript()->offsetSetFile(157,'/js/mvc/views/hiddenTagSimpleFormView.js');
+        $this->inlineScript()->offsetSetFile(158,'/js/mvc/utils/close.js');?>
+
+<form enctype="multipart/form-data" id="add_event" data-ajax="false" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
+<?php 
+    echo $this->form->categoryId;
+    echo $this->form->date;
+    $this->form->removeElement('categoryId');
+    $submit = $this->submit;
+    echo $this->form->$submit;
+    $this->form->removeElement($submit);
+    
+    $date = new Zend_Date($this->form->getElement('date')->getValue(),Pepit_Date::MYSQL_DATE);
+    $dateShow = $date->toString(Zend_Date::DATE_MEDIUM);
+    $this->form->removeElement('date');
+    
+    $name = 'category_'.$this->category->name ;
+   
+    foreach ($this->form->getElements() as $formElement)
+    {
+        //take only the item parameters, except date element
+        $propertyName = $formElement->getAttrib('data-property-name');
+        
+        if ($propertyName)
+        {
+            echo $this->partial('partial/_pageEventForm.phtml', array(
+                'id'             => $propertyName.'_page',
+                'propertyName'   => $propertyName,
+                'class'          => 'item_page',
+                'title'          => ucfirst($this->translate($name)),
+                'date'           => $dateShow,
+                'form'           => $this->form,
+                'content'        => $this->partial(
+                        'partial/_formElement.phtml',
+                        array('formElement'=> $formElement)),
+            )) ;
+            
+            //adding another formular for item group elements 
+            //(element with more than one field
+            
+            if ($formElement->getAttrib('data-item-type') 
+                === \ZC\Entity\GeneralizedItem::GENERALIZED_ITEM_ITEM_GROUP)
+            {
+                echo $this->partial('partial/_pageItemGroupForm.phtml', array(
+                'id'             => $propertyName.'_itemGroup_form_page',
+                'propertyName'   => $propertyName,
+                'class'          => 'item_group_form_page',
+                'title'          => ucfirst($this->translate($name)),
+                'date'           => $dateShow,
+                'form'           => $this->form,
+                'content'        => $this->action('create','itemgrouprow','events',array(
+                                    'containerId' => $formElement->getAttrib('itemGroupId'))),
+                ));
+            }
+        }
+    }
+?>
+</form>

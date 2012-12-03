@@ -9,13 +9,11 @@
 class Pepit_Form_Element_Image extends Zend_Form_Element_File 
     implements Pepit_Form_Element_Interface_Interface
 {
+    use Pepit_Form_Element_Trait_Trait, Pepit_Doctrine_Trait;
+    
     protected $_target;
     
     protected $_keepExtension;
-    
-    protected $_horizontal;
-    
-    protected $_em = null;
     
     public function init()
     {
@@ -44,13 +42,6 @@ class Pepit_Form_Element_Image extends Zend_Form_Element_File
         $this->setLabel('item_image');
         
         parent::init();
-    }
-    
-    public function setHorizontal($option)
-    {
-        $this->_horizontal = $option;
-        
-        return $this;
     }
     
     public function mapElement()
@@ -89,21 +80,14 @@ class Pepit_Form_Element_Image extends Zend_Form_Element_File
         
     }
     
+    public function populate($entity)
+    {
+        return false;
+    }
+    
     protected function _getNewFileName($imageId,$memberId,$fileExtension)
     {
         return 'img'.$imageId.'_member'.$memberId.$fileExtension;
     }
-    
-    
-    public function getEntityManager()
-    {
-        if ($this->_em === NULL)
-        {
-            return Zend_Registry::get('entitymanager');
-        }
-        return $this->_em;
-        
-    }
-    
     
 }

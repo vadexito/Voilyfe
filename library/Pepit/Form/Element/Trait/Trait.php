@@ -29,8 +29,5 @@ trait Pepit_Form_Element_Trait_Trait
     {
         return $this->_horizontal;
     }
-    
-    
-
 }
 

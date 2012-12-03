@@ -28,4 +28,14 @@ class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml
     {
         return $this->getValue();
     }
+    
+    public function populate($entity)
+    {
+        $property = $this->getAttrib('data-property-name');
+        if ($property && property_exists($entity,$property) && $entity->$property)
+        {
+            return $entity->$property;
+        }
+        return false;
+    }
 }

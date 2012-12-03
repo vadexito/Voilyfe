@@ -9,5 +9,6 @@
 interface Pepit_Form_Element_Interface_Interface
 {
     public function mapElement();
+    public function populate($entity);
 }
 

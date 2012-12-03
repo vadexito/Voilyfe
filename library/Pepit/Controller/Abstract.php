@@ -78,6 +78,7 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
             $form->populate(
                     $this->_model->getArrayForFormUpdateFromEntity($entityId)
             );
+            //var_dump($this->_model->getArrayForFormUpdateFromEntity($entityId));die;
         }
         
         

@@ -164,7 +164,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
      */
     
     abstract public function createEntityFromForm();    
-    abstract public function updateEntityFromForm(Array $formValues,$entityId);
+    abstract public function updateEntityFromForm($entityId);
     
     
     /**
@@ -283,12 +283,24 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
     {
         $entity = $this->getStorage()->find($entityId);
         
+        $arrayResult = [];
+        foreach ($this->getForm()->getElements() as $formElement)
+        {
+            if (method_exists($formElement,'populate'))
+            {
+               $arrayResult[$formElement->getId()] = $formElement->populate(
+                    $entity
+                );                
+            }
+        }
+        //var_dump($arrayResult);die;
+        return $arrayResult;
         
-        return $this->getArrayForFormFromEntityWithSingleValueFields(
-                $this->_em,
-                $entity,
-                array_keys($this->getForm('update')->getElements())
-        );     
+//        return $this->getArrayForFormFromEntityWithSingleValueFields(
+//                $this->_em,
+//                $entity,
+//                array_keys($this->getForm('update')->getElements())
+//        );     
     }
     
     /**

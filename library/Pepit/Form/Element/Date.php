@@ -68,4 +68,17 @@ class Pepit_Form_Element_Date extends Pepit_Form_Element_Xhtml
             'data' => (new Pepit_Widget_Chart($events,$options))->dataForGoogleCharts()
         ];
     }
+    
+    
+    public function populate($entity)
+    {
+        $filter = new Pepit_Filter_DateTimeToDateForm(array(
+            'date_format' => Pepit_Date::MYSQL_DATE
+        ));
+        if (property_exists($entity,'date'))
+        {  
+            return $filter->filter($entity->date);
+        }
+        return false;
+    }
 }

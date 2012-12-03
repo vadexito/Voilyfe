@@ -154,11 +154,11 @@ abstract class Events_Model_Abstract_GeneralizedItemRowsAbstract extends Pepit_M
        
         
         
-    public function updateEntityFromForm(Array $formValues,$rowId)
+    public function updateEntityFromForm($rowId)
     {
         $row = $this->_repository->find($rowId);
         
-        return $this->saveEntityFromForm($formValues, $row);
+        return $this->saveEntityFromForm($this->getForm()->getValues(), $row);
     }
     
     static public function getPropertyName($containerName,$itemName)

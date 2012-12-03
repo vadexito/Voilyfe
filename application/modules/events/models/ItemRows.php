@@ -53,8 +53,10 @@ class Events_Model_ItemRows extends Events_Model_Abstract_GeneralizedItemRowsAbs
         return $this->saveEntityFromForm($formValues,$itemRow);
     }
     
-    public function updateEntityFromForm(Array $formValues,$generalizedItemId)
+    public function updateEntityFromForm($generalizedItemId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         $generalizedItem = $this->getStorage()->find($generalizedItemId);
         return $this->saveEntityFromForm($formValues,$generalizedItem);
     }

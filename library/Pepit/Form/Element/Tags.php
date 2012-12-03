@@ -20,7 +20,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     
     protected $_containerId = NULL;
     protected $_itemName;
-    protected $_propertyAutocomplete;
+    protected $_tagIdProperty = NULL;
     protected $_containerType; // category, itemgroup or item
     
     
@@ -34,8 +34,6 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         ));
         
         $this->_initForm();
-        $this->setPropertyAutocomplete();
-        
         parent::init();
         
         $this   ->setAttrib('data-containerId', $this->_containerId)
@@ -103,32 +101,72 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             }
             $tags->add($tag);
         }
-        
-        
         return $tags;
     }
     
-    public function setPropertyAutocomplete($property = NULL)
+    public function populate($entity)
+    {
+        $tags = parent::populate($entity);
+        if ($tags)
+        {
+            $populatedArray = [];
+            $property = $this->getTagIdProperty();
+            $dataPopulate = [];
+
+            if ($this->getMultiTag())
+            {
+                foreach ($tags as $tag)
+                {
+
+                    $populatedArray[] = ['id' => $tag->id ];
+                    $dataPopulate[$tag->id] = $tag->$property;
+                }
+            }
+            else
+            {
+                $populatedArray[] = ['id' => $tags->id ];
+                $dataPopulate[$tags->id] = $tags->$property;
+            }
+
+            $this->setAttrib('data-populate',  Zend_Json::encode($dataPopulate));
+            return $populatedArray;
+        }
+        
+        return $tags;
+        
+    }
+    
+    public function setTagIdProperty($property = NULL)
     {
         if ($property)
         {
-            $this->_propertyAutocomplete = $property;
+            $this->_tagIdProperty = $property;
         }
-        else if (!$this->_propertyAutocomplete)
+        else if (!$this->_tagIdProperty)
         {
             if ($this->_containerType === 'item')
             {
-                $this->_propertyAutocomplete = 'value';
+                $this->_tagIdProperty = 'value';
             }
             else if ($this->_containerType === 'itemGroup')
             {
-                $this->_propertyAutocomplete = $this->_itemName.'_name';
+                $this->_tagIdProperty = $this->_itemName.'_name';
             }
         }
         
         return $this;
     }
     
+    public function getTagIdProperty()
+    {
+        if ($this->_tagIdProperty === NULL)
+        {
+            $this->setTagIdProperty();
+        }
+        return $this->_tagIdProperty;
+    }
+
+
     protected function _initAutocomplete()
     {
         $entities = $this->_getEntities();                 
@@ -137,7 +175,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
                 'value' => $value->id,
                 'label' => $value->$prop
             );
-        },$this->_propertyAutocomplete);
+        },$this->getTagIdProperty());
         
  
         $this->setAttrib(

@@ -107,8 +107,10 @@ class Backend_Model_Items extends Pepit_Model_Doctrine2 implements Backend_Model
         return $this->_saveEntityFromForm($item);
     }
     
-    public function updateEntityFromForm(array $formValues,$itemId)
+    public function updateEntityFromForm($itemId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         // create new category
         $item = $this->_repository->find($itemId);
         

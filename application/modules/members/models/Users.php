@@ -54,8 +54,10 @@ class Members_Model_Users extends Pepit_Model_Doctrine2
         return $this->_saveEntityFromForm($member);
     }
     
-    public function updateEntityFromForm(Array $formValues,$memberId)
+    public function updateEntityFromForm ($memberId)
     {
+        $formValues = $this->getForm()->getValues();  
+        
         $member = $this->_repository->find($memberId);
         
         return $this->_saveEntityFromForm($formValues, $member);

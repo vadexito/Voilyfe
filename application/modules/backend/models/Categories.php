@@ -102,7 +102,7 @@ class Backend_Model_Categories extends Backend_Model_Abstract_Container
        
     }
     
-    public function updateEntityFromForm(array $formValues,$entityId)
+    public function updateEntityFromForm($entityId)
     {
         $formValues = $this->getForm()->getValues();  
         

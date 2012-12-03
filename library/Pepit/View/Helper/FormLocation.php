@@ -33,9 +33,8 @@ class Pepit_View_Helper_FormLocation extends Zend_View_Helper_FormElement
         $html = '';
         
         $helper = new Zend_View_Helper_FormText();
-        $helperHid = new Zend_View_Helper_FormHidden();
         $helper->setView($this->view);
-        $helperHid->setView($this->view);
+        
         
         $address = $latitude = $longitude = '';
         

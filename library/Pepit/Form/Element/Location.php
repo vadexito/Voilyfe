@@ -46,5 +46,18 @@ class Pepit_Form_Element_Location extends Pepit_Form_Element_Xhtml
         }
     }
     
+    public function populate($entity)
+    {
+        if (property_exists($entity,'location'))
+        {
+            return [
+                'address' => $entity->location->address,
+                'longitude' => $entity->location->longitude,
+                'latitude' => $entity->location->latitude,
+            ];
+        }
+        return false;
+    }
+    
     
 }

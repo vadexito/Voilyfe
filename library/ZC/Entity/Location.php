@@ -5,7 +5,7 @@ namespace ZC\Entity;
 class Location extends EntityAbstract
 {
     /** 
-     * @var string $name
+     * @var string $address
      */
     protected $address;
     
