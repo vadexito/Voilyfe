@@ -20,7 +20,7 @@ class Members_Form_UserRegister extends Pepit_Form
         $userUniqueName = new Pepit_Validate_UserUniqueName($this->getEntityManager());
         $userName   ->setRequired('true')
                     ->addFilters(array('StringToLower','StringTrim',
-                        'StripTags','HtmlEntities','Alnum'))
+                        'StripTags','Alnum'))
                     ->addValidators(array($validLengthName,$userUniqueName))
                     ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('user_name')));
         
@@ -68,7 +68,7 @@ class Members_Form_UserRegister extends Pepit_Form
             'label' => ucfirst($this->getTranslator()->translate('item_email'))
         ));
         $email      ->setRequired('true')
-                    ->addFilters(array('StringTrim','StripTags','HtmlEntities'))
+                    ->addFilters(array('StringTrim','StripTags'))
                     ->addValidators(array('EmailAddress'))
                     ->setAttrib(
                             'placeholder', 
@@ -84,7 +84,7 @@ class Members_Form_UserRegister extends Pepit_Form
             'min'   => 1,
             'max'   => 64
         ));
-        $firstName  ->addFilters(array('StringTrim','StripTags','HtmlEntities'))
+        $firstName  ->addFilters(array('StringTrim','StripTags'))
                     ->addValidators(array($validLength))
                     ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_first_name')));
         
@@ -97,7 +97,7 @@ class Members_Form_UserRegister extends Pepit_Form
             'min'   => 1,
             'max'   => 64
         ));
-        $lastName   ->addFilters(array('StringTrim','StripTags','HtmlEntities'))
+        $lastName   ->addFilters(array('StringTrim','StripTags'))
                     ->addValidators(array($validLength))
                     ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_last_name')));
         
