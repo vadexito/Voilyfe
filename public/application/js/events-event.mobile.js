@@ -16,8 +16,10 @@ define tags input (with and without subform)
             model:new Input({
                 'tagsContainer': $('#add_event'),
                 'propertyName':$(this).attr('data-property-name'),
+                'multitag':$(this).attr('data-multitag'),
                 'itemName':$(this).attr('data-item-name'),
                 'itemId':$(this).attr('data-containerId'),
+                'itemGroupForm': $('#'+$(this).attr('data-property-name')+'_itemGroup_form_page'),
                 'formElementName': $(this).attr('id'),
                 'autocomplete':$.parseJSON($(this).attr('data-autocomplete')),
                 'populate':$.parseJSON($(this).attr('data-populate'))

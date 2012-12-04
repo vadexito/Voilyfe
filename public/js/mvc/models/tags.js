@@ -7,14 +7,29 @@ window.Tags = Backbone.Collection.extend({
     
     model: Tag,
     
-    addTag: function(tag,eventToTrigger){
-        this.add(tag);
-        this.trigger(
-            eventToTrigger,
-            tag
-        );
-    }
+    createTag: function(text,valueForInput){
+        
+        if (!(this.validateTag(text))){
+            return false;
+        }
+        
+        var tag = new Tag();
+        tag.set({
+            text:text,
+            id: this.length,
+            valueForInput:valueForInput
+        });
+        
+        return tag;
+    },
     
+    validateTag: function(value){
+        // the value is not already tagged
+        var values = this.pluck("text");
+        
+        return ($.inArray(value.toLowerCase(),
+            values.join("`").toLowerCase().split("`")) === -1);
+    }
 });
 
 

@@ -42,14 +42,15 @@ class Pepit_Form_Element_Date extends Pepit_Form_Element_Xhtml
         parent::init();
     }
     
-    public function mapElement()
+    public function mapElement($entity)
     {
-        $formValue = $this->getValue();
+        $property = $this->getAttrib('data-property-name');
+        $entity->$property = (new Pepit_Filter_DateToDateTime())->filter(
+            $this->getValue(),
+            Pepit_Date::MYSQL_DATE
+        );
         
-        //define the date property
-        $filter = new Pepit_Filter_DateToDateTime();
-        
-        return $filter->filter($formValue,Pepit_Date::MYSQL_DATE);
+        return true;
     }
     
     public function dataChart($events)

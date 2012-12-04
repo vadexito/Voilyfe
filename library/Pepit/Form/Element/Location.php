@@ -25,9 +25,10 @@ class Pepit_Form_Element_Location extends Pepit_Form_Element_Xhtml
         parent::init();
     }
     
-    public function mapElement()
+    public function mapElement($entity)
     {
-        $formValue = $this->getValue();
+         $propertyLocation = $this->getAttrib('data-property-name');
+         $formValue = $this->getValue();
         //location property
         $location = new ZC\Entity\Location();
         
@@ -38,11 +39,15 @@ class Pepit_Form_Element_Location extends Pepit_Form_Element_Xhtml
                 $location->$property = $value;
             }
             Zend_Registry::get('entitymanager')->persist($location);
-            return $location;
+            $entity->$property = $location;
+            
+            return true;
         }
         else
         {
-            return $formValue;
+            $entity->$property = $formValue;
+            
+            return true;
         }
     }
     

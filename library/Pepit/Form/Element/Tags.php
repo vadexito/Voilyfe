@@ -23,7 +23,6 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     protected $_tagIdProperty = NULL;
     protected $_containerType; // category, itemgroup or item
     
-    
     protected $_multiTag = false;
     
     public function init()
@@ -39,6 +38,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         $this   ->setAttrib('data-containerId', $this->_containerId)
                 ->setAttrib('placeholder',$this->getTranslator()->translate('msg_press_return_to_save'))
                 ->_initAutocomplete()
+                ->setAttrib('data-multitag',$this->getMultiTag())
                 ->setAttrib(
                     'class',
                     (($this->_containerType === 'itemGroup') ?
@@ -48,8 +48,9 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     }
     
     
-    public function mapElement()
+    public function mapElement($entity)
     {
+        $property = $this->getAttrib('data-property-name');
         $formValue = $this->getValue();
         
         if ($this->getMultiTag())
@@ -57,14 +58,16 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             $tags = new Doctrine\Common\Collections\ArrayCollection();
             if ($formValue === NULL)
             {
-                return $tags;
+                $entity->$property = $tags;
+                return true;
             }
         }
         else
         {
             if ($formValue === NULL)
             {
-                return NULL;
+                $entity->$property = NULL;
+                return true;
             }
         }
             
@@ -110,12 +113,14 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             }
             if (!$this->getMultiTag())
             {
-                return $tag;
+                $entity->$property = $tag;
+                return true;
             }
             $tags->add($tag);
         }
        
-        return $tags;
+        $entity->$property = $tags;
+        return true;
     }
     
     public function populate($entity)

@@ -2,7 +2,7 @@
 
 
 
-class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml
+class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml implements Pepit_Form_Element_Interface_Interface
 {
     use Pepit_Form_Element_Trait_Trait,Pepit_Doctrine_Trait;
             
@@ -18,9 +18,12 @@ class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml
      * @param type $formValue
      * @return type
      */
-    public function mapElement()
+    public function mapElement($entity)
     {
-        return $this->getValue();
+        $property = $this->getAttrib('data-property-name');
+        $entity->$property = $this->getValue();
+        
+        return true;
     }
     
     public function populate($entity)

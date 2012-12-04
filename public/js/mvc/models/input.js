@@ -11,8 +11,15 @@ window.Input = Backbone.Model.extend({
             'inputTag':''
         },
         
-        isAlreadyTag: function (value){
-            return ($.inArray(value,this.get('autocomplete').data) != -1);
+        getIdTag: function (tag){
+            
+            $.each(this.get('autocomplete').data,function(key,value){
+                if (value.label.toLowerCase() == tag.toLowerCase()){
+                    return key;
+                }
+            });
+            
+            return false;
     }
     });
 

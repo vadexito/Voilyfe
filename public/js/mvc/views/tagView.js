@@ -1,4 +1,5 @@
 window.TagView = Backbone.View.extend({
+    
     tagName: "a",
     className: "li-tags",
     model:Tag,
@@ -7,6 +8,14 @@ window.TagView = Backbone.View.extend({
         'data-theme':"e",
         'data-role':"button"
     },
+    
+    initialize: function(){
+        var self = this;
+        this.model.on('remove',function(){
+            self.close();
+        })
+    },
+    
     events:{
       'click': 'deleteIcon'
     },
@@ -15,7 +24,6 @@ window.TagView = Backbone.View.extend({
         
         if (this.$el.hasClass('hasDeleteButton')){
             this.collection.remove(this.model);
-            this.close();
         } else {
             this.$el.addClass('hasDeleteButton');
             this.$el.buttonMarkup({ icon: "delete" });
@@ -23,8 +31,6 @@ window.TagView = Backbone.View.extend({
         
         return false;
     },
-    
-    
     
     render: function() {
         this.$el.html(this.model.get("text"));

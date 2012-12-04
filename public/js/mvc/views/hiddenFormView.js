@@ -1,4 +1,17 @@
 window.HiddenFormView = Backbone.View.extend({
+    
+    initialize: function(){
+        
+        var self = this;
+        
+        this.$el = $('#'+this.options.input.get('propertyName') 
+              +'_itemGroup_form_page').find('div[data-role=content]').first().clone(),
+        
+        this.model.on('remove',function(){
+            self.close();
+        })
+    },
+    
     model:Tag,
     
     render: function() {
@@ -12,8 +25,9 @@ window.HiddenFormView = Backbone.View.extend({
             
             $(this).attr(
                 'name',
-                self.options.formElementName+'['+self.model.get('id')+'][new]['+$(this).attr('data-property-name')+']'
-            ).removeAttr('class').removeAttr('id');
+                self.options.input.get('formElementName')
+                    +'['+self.model.get('id')+'][new]['+$(this).attr('data-property-name')+']'
+                    ).removeAttr('class').removeAttr('id');
         });
         
         return this.$el;

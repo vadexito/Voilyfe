@@ -44,8 +44,13 @@ class Pepit_Form_Element_Image extends Zend_Form_Element_File
         parent::init();
     }
     
-    public function mapElement()
+    public function mapElement($entity)
     {
+        if ($this->getValue() === NULL)
+        {
+            return false;
+        }
+        
         //define adapter for renaming and saving file
         $adapter= new Zend_File_Transfer_Adapter_Http();
         
@@ -76,8 +81,8 @@ class Pepit_Form_Element_Image extends Zend_Form_Element_File
         //create file
         $adapter->receive();
         
-        return $image;
-        
+        $property = $this->getAttrib('data-property-name');
+        $entity->$property = $image;
     }
     
     public function populate($entity)

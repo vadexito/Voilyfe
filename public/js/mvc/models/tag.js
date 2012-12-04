@@ -10,6 +10,7 @@ window.Tag = Backbone.Model.extend({
         },
         
         validate: function(attributes){
+            
         }
     });
 

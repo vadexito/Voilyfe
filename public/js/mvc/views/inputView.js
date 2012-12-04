@@ -1,66 +1,36 @@
 window.InputView = Backbone.View.extend({
+    
     model:Input,
+    
     initialize: function(){
         
-        if (this.model.get('autocomplete')){
-            this.initAutocomplete();
-        };
+        this.initAutocomplete();
         
-        this.collection.on('addTag:'+this.model.get('propertyName'),function(tag){
+        this.collection.on('add',function(tag){
             this.addTag(tag);
         },this);
         
-        this.collection.on('remove',function(tag){
-            console.log('input[name='
-                +this.model.get('propertyName')
-                +'['+tag.get('id')+'][id]');
-            this.model.get('tagsContainer').find('input[name="'
-                +this.model.get('propertyName')
-                +'['+tag.get('id')+'][id]"]').remove();
-        },this);
+        this.initPopulate();
         
-        if (this.model.get('populate')){
-            this.initPopulate();
-        };
         
-        //case tags with subform
-        var $subforms = $('#'+this.model.get('propertyName')+'_itemGroup_form_page');
-        if ($subforms.length > 0){
-            this.options.subform = new SubformView ({
-                    el : $subforms,
-                    model : this.model,
-                    collection : this.collection
-            });
-        } 
     },
     
     initPopulate: function(){
-        var self = this;
-        $.each(this.model.get('populate'),function(index,value){
-            
-            self.createTag(value,index,false);
-        });
-    },
-    
-    createTag: function(text,valueForInput,isNewTag){
-        
-        if ($.inArray(text,this.collection.pluck("text")) > -1){
-            return;
+        if (this.model.get('populate')){
+            var self = this;
+            $.each(this.model.get('populate'),function(index,value){
+
+                self.createTagAndHiddenTagSimple(value,index,false);
+            });
         }
-        
-        var tag = new Tag();
-        tag.set({
-            text:text,
-            id: this.collection.length,
-            valueForInput:valueForInput
-        });
-        this.collection.addTag(tag,'addTag:'+this.model.get('propertyName'));
-        this.addSingleInputElement({model:tag,'isNewTag': isNewTag});
-        
-        return tag;
     },
     
     initAutocomplete: function(){
+        
+        if (this.model.get('autocomplete')){
+            return;
+        };
+        
         var self = this;
         
         this.$el.autocomplete({
@@ -68,7 +38,7 @@ window.InputView = Backbone.View.extend({
                 source: this.model.get('autocomplete').data,
                 callback: function(e) {
                         var value = $(e.currentTarget).text();
-                        self.createTag(
+                        self.createTagAndHiddenTagSimple(
                             value,
                             $.parseJSON($(e.currentTarget).attr('data-autocomplete')).value,
                             false
@@ -90,54 +60,66 @@ window.InputView = Backbone.View.extend({
     },
     
     events:{
-        'keypress':'validateTagContent'
+        'keypress':'enterTagContent'
     },
     
-    validateTagContent: function(e){
+    
+    
+    createTagAndHiddenTagSimple: function(text,valueForInput,isNewTag){
+        var tag = this.collection.createTag(text,valueForInput);
+        
+        //if only one element is allowed, we replace it if already choosen
+        if ((this.collection.length > 0) && (this.model.get('multitag') == false)){
+            
+            this.collection.remove(this.collection.get(0));
+        }
+        
+        this.collection.add(tag);
+        
+        new HiddenTagSimpleFormView({
+            model:tag,
+            'isNewTag': isNewTag,
+            'formElementName' : this.model.get('formElementName'),
+            'itemId' : this.model.get('itemId'),
+            'tagsContainer' : this.model.get('tagsContainer')
+        });
+    },
+    
+    enterTagContent: function(e){
         
         var value = $(e.currentTarget).val();
         
-        //if enter is pressed
-        if (e.keyCode == 13 && (value)){
+        //if enter is pressed and tag value is valid
+        if (e.keyCode == 13 && (value) && (this.collection.validateTag(value))) {
             
-            //if tag element with subform and new tag
-            if (!this.model.isAlreadyTag(value) && this.options.subform){
+            var id = this.model.getIdTag(value);
+            var $subform = this.model.get('itemGroupForm');
+            if(id){
+                this.createTagAndHiddenTagSimple(value,id,false);
                 
-                this.model.set('inputTag',value);
+            } else if ($subform.length > 0){
                 
-                //go to the subform page
-                $.mobile.changePage('#'+this.options.subform.$el.attr('id'));
-
-            //otherwse if no subform is needed create tag
-            } else if (!this.model.isAlreadyTag(value)){
-                
-                var isNewTag = true;
-                var valueForInput;
-                $.each(this.model.get('autocomplete').data,function(key,value){
-                    if (value.label == value){
-                        isNewTag = false;
-                        valueForInput = value.value;
-                    }
+                var subform = new SubformView ({
+                        el : $subform,
+                        model: this.model,
+                        tag : this.collection.createTag(value,'',true),
+                        collection : this.collection
                 });
                 
-                this.createTag(value,valueForInput,isNewTag);
+                //go to the subform page
+                $.mobile.changePage('#'+subform.$el.attr('id'));
+                
+            //otherwse if no subform is needed create tag
+            } else {
+                
+                this.createTagAndHiddenTagSimple(value,'',true);
             }
             
             return false;
         }
     },
     
-    addSingleInputElement: function(options){
-        
-        //add hidden input with name in order to get through post : 
-        //format : array(property => array(array(new => value,value....)
-        //new => value for new tags
-        options['formElementName'] = this.model.get('formElementName');
-        options['itemId'] = this.model.get('itemId');
-        
-        var hiddenForm = new HiddenTagSimpleFormView(options);
-        this.model.get('tagsContainer').append(hiddenForm.render()).after(hiddenForm.options.hiddenElement);
-    },
+    
     
     addTag:function(tag){
         

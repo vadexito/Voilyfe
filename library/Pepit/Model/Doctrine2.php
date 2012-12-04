@@ -411,8 +411,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
         {
             foreach ($this->getForm()->getValues() as $formElementName => $value)
             {
-                $entity->$formElementName = $this->getForm()->getElement($formElementName)
-                                         ->mapElement();
+                $this->getForm()->getElement($formElementName)->mapElement($entity);
             }
             
             return $entity;

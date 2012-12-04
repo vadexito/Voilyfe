@@ -8,7 +8,7 @@
 
 interface Pepit_Form_Element_Interface_Interface
 {
-    public function mapElement();
+    public function mapElement($entity);
     public function populate($entity);
 }
 

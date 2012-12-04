@@ -2,6 +2,7 @@ window.HiddenTagSimpleFormView = Backbone.View.extend({
     
     initialize: function(){
         
+        var self = this;
         if (this.options.isNewTag){
             var nameprefix = this.options.formElementName
                 +'['+this.model.get('id')+']'
@@ -15,6 +16,12 @@ window.HiddenTagSimpleFormView = Backbone.View.extend({
             this.$el.attr('name',name).val(this.model.get('valueForInput'));
        }
        
+       this.options.tagsContainer.append(this.$el.after(this.options.hiddenElement));
+       
+       this.model.on('remove',function(){
+           self.close();
+       })
+       
     },
     
     model:Tag,
@@ -27,7 +34,6 @@ window.HiddenTagSimpleFormView = Backbone.View.extend({
     render: function() {
         
         this.$el.hide();
-        
         return this.el;
     }
 });

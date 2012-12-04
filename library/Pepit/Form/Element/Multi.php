@@ -76,7 +76,7 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         return $this;
     }
     
-    public function mapElement()
+    public function mapElement($entity)
     {
         $formValue = $this->getValue();
         if ($this->getStorageEntity())
@@ -85,7 +85,11 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
                         ->getRepository($this->getStorageEntity())
                         ->findOneById($formValue);
         }
-        return $formValue;
+        
+        $property = $this->getAttrib('data-property-name');
+        $entity->$property = $formValue;
+        
+        return true;
     }
     
     public function populate($entity)

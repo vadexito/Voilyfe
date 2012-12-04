@@ -1,41 +1,37 @@
 window.SubformView = Backbone.View.extend({
+    
     initialize: function(){
-        this.model.on('change:inputTag',this.updateSubform,this);
+        this.prepareSubform();
         this.$el.find('input').addClass('form-template');
     },
     
     events:{
-        "click a.menu_done": "saveTag"
+        "click a.menu_done": "generateTag"
     },
     
-    updateSubform: function(){
+    prepareSubform: function(){
 
         //reset all input values (not the hidden one)
         this.$el.find('input[type=text]').val('');
-
+        
         //activate readonly and fullfill name input
-        this.$el.find('input[data-item-name=name]').val(this.model.get('inputTag')).attr('readonly','readonly');
+        this.$el.find('input[data-item-name=name]').val(this.options.tag.get('text')).attr('readonly','readonly');
     },
     
-    saveTag: function(){
-        
-        var tag = new Tag({
-            text: this.$el.find('input[data-item-name=name]').val(),
-            id: this.collection.length
-        });
-        
-        this.collection.addTag(
-            tag,
-            'addTag:'+this.model.get('propertyName')
-        );
+    generateTag: function(){
             
+        //if only one element is allowed, we replace it if already choosen
+        if ((this.collection.length > 0) && (this.model.get('multitag') == false)){
             
+            this.collection.remove(this.collection.get(0));
+        }
+        
+        this.collection.add(this.options.tag);
+        
         //adding hidden formular
         this.model.get('tagsContainer').append(new HiddenFormView({
-            model: tag,
-            formElementName: this.model.get('formElementName'),
-            el:$('#'+this.model.get('propertyName') 
-              +'_itemGroup_form_page').find('div[data-role=content]').first().clone()
+            model: this.options.tag,
+            input: this.model
         }).render()); 
     }
 });
