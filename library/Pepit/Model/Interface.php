@@ -31,7 +31,7 @@ interface Pepit_Model_Interface
      * @throws Pepit_Model_Exception 
      * @return boolean
      */
-    public function update(array $data, $id);
+    public function update($id);
     
     /**
      * Delete data

@@ -1,19 +1,27 @@
 window.InputView = Backbone.View.extend({
     model:Input,
-    collection: new Tags(),
     initialize: function(){
         
         if (this.model.get('autocomplete')){
             this.initAutocomplete();
         };
-            
+        
         this.collection.on('addTag:'+this.model.get('propertyName'),function(tag){
             this.addTag(tag);
         },this);
         
         this.collection.on('remove',function(tag){
-            console.log('todo remove hiddenform');
+            console.log('input[name='
+                +this.model.get('propertyName')
+                +'['+tag.get('id')+'][id]');
+            this.model.get('tagsContainer').find('input[name="'
+                +this.model.get('propertyName')
+                +'['+tag.get('id')+'][id]"]').remove();
         },this);
+        
+        if (this.model.get('populate')){
+            this.initPopulate();
+        };
         
         //case tags with subform
         var $subforms = $('#'+this.model.get('propertyName')+'_itemGroup_form_page');
@@ -26,6 +34,32 @@ window.InputView = Backbone.View.extend({
         } 
     },
     
+    initPopulate: function(){
+        var self = this;
+        $.each(this.model.get('populate'),function(index,value){
+            
+            self.createTag(value,index,false);
+        });
+    },
+    
+    createTag: function(text,valueForInput,isNewTag){
+        
+        if ($.inArray(text,this.collection.pluck("text")) > -1){
+            return;
+        }
+        
+        var tag = new Tag();
+        tag.set({
+            text:text,
+            id: this.collection.length,
+            valueForInput:valueForInput
+        });
+        this.collection.addTag(tag,'addTag:'+this.model.get('propertyName'));
+        this.addSingleInputElement({model:tag,'isNewTag': isNewTag});
+        
+        return tag;
+    },
+    
     initAutocomplete: function(){
         var self = this;
         
@@ -34,17 +68,12 @@ window.InputView = Backbone.View.extend({
                 source: this.model.get('autocomplete').data,
                 callback: function(e) {
                         var value = $(e.currentTarget).text();
+                        self.createTag(
+                            value,
+                            $.parseJSON($(e.currentTarget).attr('data-autocomplete')).value,
+                            false
+                        );
                     
-                        //trigger add tag
-                        var tag = new Tag({
-                            text: value,
-                            id: self.collection.length,
-                            valueForInput : $.parseJSON($(e.currentTarget).attr('data-autocomplete')).value
-                        });
-                        
-                        self.collection.addTag(tag,'addTag:'+self.model.get('propertyName')); 
-                        self.addSingleInputElement({model:tag,'isNewTag': false});
-                        
                        //removing value from autocomplete
                         self.model.get('autocomplete').data.splice(
                             $.inArray(value, self.model.get('autocomplete').data)
@@ -61,10 +90,10 @@ window.InputView = Backbone.View.extend({
     },
     
     events:{
-        'keypress':'openSubForm'
+        'keypress':'validateTagContent'
     },
     
-    openSubForm: function(e){
+    validateTagContent: function(e){
         
         var value = $(e.currentTarget).val();
         
@@ -77,21 +106,21 @@ window.InputView = Backbone.View.extend({
                 this.model.set('inputTag',value);
                 
                 //go to the subform page
-                $.mobile.changePage('#'+this.options.subform.$el.attr('id'));                
-            } else if(!this.model.isAlreadyTag(value)){
+                $.mobile.changePage('#'+this.options.subform.$el.attr('id'));
+
+            //otherwse if no subform is needed create tag
+            } else if (!this.model.isAlreadyTag(value)){
                 
-                var tag = new Tag({
-                    text:value,
-                    id:this.collection.length
+                var isNewTag = true;
+                var valueForInput;
+                $.each(this.model.get('autocomplete').data,function(key,value){
+                    if (value.label == value){
+                        isNewTag = false;
+                        valueForInput = value.value;
+                    }
                 });
                 
-                this.addSingleInputElement({model:tag,'isNewTag': true});
-                
-                //add tag to collection and trigger event add
-                this.collection.addTag(
-                    tag,
-                    'addTag:'+this.model.get('propertyName')
-                );
+                this.createTag(value,valueForInput,isNewTag);
             }
             
             return false;

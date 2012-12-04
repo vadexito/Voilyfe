@@ -54,12 +54,18 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
             $userInput = $this->getRequest()->getPost();
             $valid = $form->isValid($userInput);
             $submitChecked = $form->getElement('submit_update')->isChecked();
+            //var_dump($form->getErrors());
+            //var_dump($submitChecked);
+            //var_dump($valid);
+            //var_dump($userInput);die;
+            //var_dump($form->getValues());die;
+            
             
             //check if data is valid
             if ($valid && $submitChecked)
             {
                 // modify entity
-                $this->_model->update($form->getValues(),$entityId);
+                $this->_model->update($entityId);
                 
                 // set saved message
                 $this->getHelper('flashMessenger')->addMessage($messageSuccess);

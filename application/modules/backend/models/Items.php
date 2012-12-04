@@ -33,14 +33,12 @@ class Backend_Model_Items extends Pepit_Model_Doctrine2 implements Backend_Model
     public function insert()
     {
         $newItemId = parent::insert($this->getForm()->getValues());
-        
         $this->_save($newItemId);
     }
     
-     public function update(array $values, $entityId)
+     public function update($entityId)
     {
-        parent::update($values, $entityId);
-        
+        parent::update($entityId);
         $this->_save($entityId);
     }
     

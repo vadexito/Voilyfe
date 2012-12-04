@@ -31,9 +31,9 @@ class Backend_Model_ItemGroups extends Backend_Model_Abstract_Container
         $this->_save($newItemGroupId);
     }
     
-    public function update(array $values, $entityId)
+    public function update($entityId)
     {
-        parent::update($values, $entityId);
+        parent::update($entityId);
         
         $this->_save($entityId);
     }

@@ -55,11 +55,24 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         if ($this->getMultiTag())
         {
             $tags = new Doctrine\Common\Collections\ArrayCollection();
+            if ($formValue === NULL)
+            {
+                return $tags;
+            }
         }
-        if (!is_array($formValue))
+        else
+        {
+            if ($formValue === NULL)
+            {
+                return NULL;
+            }
+        }
+            
+        if (!is_array($formValue) && ($formValue !== NULL))
         {
             throw new Pepit_Form_Exception('The element '.$this->getName().' to map should be an array');
         }
+        
         foreach ($formValue as $tagElement)
         {
             if (!is_array($tagElement))
@@ -101,6 +114,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             }
             $tags->add($tag);
         }
+       
         return $tags;
     }
     

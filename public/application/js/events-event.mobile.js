@@ -12,13 +12,15 @@ define tags input (with and without subform)
         
         new InputView({
             el: this,
+            collection: new Tags,
             model:new Input({
-                'tagsContainer': $("#form_element_item_"+$(this).attr('data-item-name')).parents().find('div').first(),
+                'tagsContainer': $('#add_event'),
                 'propertyName':$(this).attr('data-property-name'),
                 'itemName':$(this).attr('data-item-name'),
                 'itemId':$(this).attr('data-containerId'),
                 'formElementName': $(this).attr('id'),
-                'autocomplete':$.parseJSON($(this).attr('data-autocomplete'))
+                'autocomplete':$.parseJSON($(this).attr('data-autocomplete')),
+                'populate':$.parseJSON($(this).attr('data-populate'))
             })
         });
     });
@@ -53,7 +55,7 @@ event add : give focus to element on changepage
     
 /*
 ================================================================================
-date elemenet
+date element
 ================================================================================
 */
     $('.button_date').each(function(){
@@ -89,19 +91,23 @@ $(document).bind('pageinit',function(e){
    
 /*
 ================================================================================
-header button for saving new event and input hidden to submit_insert post
+header button for saving new event and input hidden to submit post
 ================================================================================
 */
     
-    //input for submit_insert post
-    $('#add_event').append('<input type="hidden" value="'
-        + $('#submit_insert').attr('value')
-        +'" name="' + $('#submit_insert').attr('name')
-        + '"/>');
-    $('#submit_insert').remove();
+    //input for submit post
+    if ($('input[type=submit]').length > 0){
+        $('#add_event').append('<input type="hidden" value="'
+            + $('input[type=submit]').attr('value')
+            +'" name="' + $('input[type=submit]').attr('name')
+            + '"/>');
+        $('input[type=submit]').remove();
+    }
+        
+    
     
     //button save implying submit
-    $('.menu_save').on('click',function(){
+    $('.menu_save').on('click',function(e){
         
         $('#add_event').trigger('submit');
     });

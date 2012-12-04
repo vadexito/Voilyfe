@@ -17,9 +17,9 @@
     echo $this->form->categoryId;
     echo $this->form->date;
     $this->form->removeElement('categoryId');
-    $submit = $this->submit;
-    echo $this->form->$submit;
-    $this->form->removeElement($submit);
+    
+    echo $this->form->getElement($this->submit);
+    $this->form->removeElement($this->submit);
     
     $date = new Zend_Date($this->form->getElement('date')->getValue(),Pepit_Date::MYSQL_DATE);
     $dateShow = $date->toString(Zend_Date::DATE_MEDIUM);

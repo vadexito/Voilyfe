@@ -34,17 +34,15 @@ class Backend_Model_Categories extends Backend_Model_Abstract_Container
    
     public function insert()
     {
-        $formData = $this->getForm()->getValues();
-        
-        $newCategoryId = parent::insert($formData);
+        $newCategoryId = parent::insert($this->getForm()->getValues());
         
         $this->_save($newCategoryId);
           
     }
     
-    public function update(array $values, $categoryId)
+    public function update($categoryId)
     {
-        parent::update($values, $categoryId);
+        parent::update($categoryId);
         
         $this->_save($categoryId);
     }

@@ -47,33 +47,27 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
         $event->creationDate = new \DateTime();
         $event->member = $member;
         
-        return $this->_saveEntityFromForm($event);
+        $this->_saveEntityFromForm($event);
+        
+        return $event;
     }
     
     
     protected function _saveEntityFromForm($event)
     {
         $event->modificationDate = new \DateTime();
-        return parent::_saveEntityFromForm($event);
+        $this->getForm()->removeElement('categoryId');
+        
+        parent::_saveEntityFromForm($event);
+        return $event;
     }
     
     
     
     public function updateEntityFromForm($eventId)
     {
-        $formValues = $this->getForm()->getValues();  
-        
-        $event = $this->saveEntityFromForm(
-                $formValues,
-                $this->getStorage()->find($eventId)
-        );
-        
-        //define the date property
-        $filter = new Pepit_Filter_DateToDateTime();
-        $date = $filter->filter($formValues['date'],Pepit_Date::MYSQL_DATE);
-        unset($formValues['date']);
-        
-        $event->date = $date;
+        $event = $this->getStorage()->find($eventId);
+        $this->_saveEntityFromForm($event);
         
         return $event;
     }

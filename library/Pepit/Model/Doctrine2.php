@@ -112,12 +112,12 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
      */
     
     
-    public function update(Array $values,$entityId)
+    public function update($entityId)
     {
        try
        {
             // create new user from array
-            $this->updateEntityFromForm($values,$entityId);
+            $this->updateEntityFromForm($entityId);
             
             // flush for updating new entity
             $this->getEntityManager()->flush();
@@ -411,11 +411,8 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
         {
             foreach ($this->getForm()->getValues() as $formElementName => $value)
             {
-                if ($value)
-                {
-                    $entity->$formElementName = $this->getForm()->getElement($formElementName)
-                                         ->mapElement($value);
-                }
+                $entity->$formElementName = $this->getForm()->getElement($formElementName)
+                                         ->mapElement();
             }
             
             return $entity;
@@ -425,8 +422,5 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
             throw new Pepit_Model_Exception('The model must be bound with a form. No form registered on the entity '
                 .  get_class($entity));
         }
-        
-        
-        
     }
 }

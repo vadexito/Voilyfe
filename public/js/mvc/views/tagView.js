@@ -11,7 +11,8 @@ window.TagView = Backbone.View.extend({
       'click': 'deleteIcon'
     },
 
-    deleteIcon: function (){
+    deleteIcon: function (e){
+        
         if (this.$el.hasClass('hasDeleteButton')){
             this.collection.remove(this.model);
             this.close();

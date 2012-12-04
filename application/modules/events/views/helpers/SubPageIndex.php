@@ -44,7 +44,7 @@ class Events_View_Helper_SubPageIndex extends Zend_View_Helper_Abstract
                 $this->_name = 'menu_events';
                 $hrefButtonAdd = '#list_singleCategories';
             }
-            $hrefButtonAdd = '';
+            
             $this->_buttonRight = '<a data-theme="b" href="'
             . $hrefButtonAdd 
             .'" data-iconpos="notext" data-icon="plus" data-ajax="false" class="ui-btn-right"></a>';
