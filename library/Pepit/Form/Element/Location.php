@@ -27,25 +27,29 @@ class Pepit_Form_Element_Location extends Pepit_Form_Element_Xhtml
     
     public function mapElement($entity)
     {
-         $propertyLocation = $this->getAttrib('data-property-name');
-         $formValue = $this->getValue();
-        //location property
-        $location = new ZC\Entity\Location();
+        $propertyLocation = $this->getAttrib('data-property-name');
+         
+        $formValue = $this->getValue();
+        
+        
         
         if (is_array($formValue))
         {
+            $location = new ZC\Entity\Location();
+            
             foreach ($formValue as $property => $value)
             {
                 $location->$property = $value;
             }
             Zend_Registry::get('entitymanager')->persist($location);
-            $entity->$property = $location;
+            
+            $entity->$propertyLocation = $location;
             
             return true;
         }
         else
         {
-            $entity->$property = $formValue;
+            $entity->$propertyLocation = $formValue;
             
             return true;
         }

@@ -20,17 +20,17 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
         parent::init();
         
         $this->_id = 5;
-        $this->setOptions(array(
+        $this->setOptions([
         "required" => false,
-        "validators" => array('Float'),
-        "value" => 10
-        ))->setLabel('item_price');
+        "validators" => ['Float'],
+        "value" => 0
+        ])->setLabel('item_price');
         
-        $this->setAttribs(array(
+        $this->setAttribs([
             'min' => '0',
             'max' => '200',
             'step' => '2',
-        ));
+        ]);
     }
     
     public function dataChart($events)

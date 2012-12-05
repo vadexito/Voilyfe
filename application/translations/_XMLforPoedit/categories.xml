@@ -48,4 +48,20 @@
     <translate>item_restaurant</translate>
     <translate>item_restaurants</translate>
   </itemgroups>
+  <itemRows>
+    <translate>item_mealtype_breakfast</translate>
+    <translate>item_mealtype_lunch</translate>
+    <translate>item_mealtype_dinner</translate>
+    <translate>item_mealtype_brunch</translate>
+    <translate>item_cuisineType_French</translate>
+    <translate>item_cuisineType_Italian</translate>
+    <translate>item_cuisineType_Vietnamese</translate>
+    <translate>item_cuisineType_Japanese</translate>
+    <translate>item_cuisineType_indian</translate>
+    <translate>item_paracetamol</translate>
+    <translate>item_aspirine</translate>
+    <translate>item_typeswimming_crawl</translate>
+    <translate>item_typeswimming_breaststroke</translate>
+    <translate>item_typeswimming_back</translate>
+  </itemRows>
 </zend-config>

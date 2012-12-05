@@ -91,13 +91,15 @@ class Backend_Model_Init
         
         
         // Modify a value
-        $config->categories = array();
-        $config->itemgroups = array();
-        $config->items = array();
+        $config->categories = [];
+        $config->itemgroups = [];
+        $config->items = [];
+        $config->itemRows = [];
         
         $config->categories->translate = $this->_getElementsFromDataBase(new Backend_Model_Categories(),'category','name');
         $config->itemgroups->translate =  $this->_getElementsFromDataBase(new Backend_Model_ItemGroups(),'item','name');
         $config->items->translate =  $this->_getElementsFromDataBase(new Backend_Model_Items(),'item','name');
+        $config->itemRows->translate =  $this->_getElementsFromDataBase(new Events_Model_ItemRows(),'','value','#^item_#');
         
         // Write the config file
         $writer = new Zend_Config_Writer_Xml(array('config'   => $config,
@@ -109,13 +111,25 @@ class Backend_Model_Init
     
     
     protected function _getElementsFromDataBase(
-            Pepit_Model_Doctrine2 $model,$nameElementInDataBase,$property)
+        Pepit_Model_Interface $model,$nameElementInDataBase,$property,$regexMatchOnValue=NULL)
     {
         $elementsinDataBase = $model->getStorage()->findAll();
         $elementsForTranslation = array();
         foreach ($elementsinDataBase as $element)
         {
-             $elementsForTranslation[] = $nameElementInDataBase.'_'.$element->$property;
+            $value = $element->$property;
+            if (($regexMatchOnValue && preg_match($regexMatchOnValue,$value))||
+                    !$regexMatchOnValue)
+            {
+                if ($nameElementInDataBase)
+                {
+                    $elementsForTranslation[] = $nameElementInDataBase.'_'.$value;
+                }
+                else
+                {
+                    $elementsForTranslation[] = $value;
+                }
+            }
         }
         return $elementsForTranslation;
     }

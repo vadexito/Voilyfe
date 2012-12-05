@@ -1,6 +1,6 @@
 <?php
 
-class Events_View_Helper_CategoryListLine extends Zend_View_Helper_Abstract
+class Events_View_Helper_CategoryListLine extends Zend_View_Helper_HtmlElement
 {
     
     public function categoryListLine($page,$imgPath,$bubbleCount=true,$lineSplit=false)
@@ -23,13 +23,20 @@ class Events_View_Helper_CategoryListLine extends Zend_View_Helper_Abstract
     protected function _render($href,$imgSrc,$categoryName,
             $nbEvents,$bubbleCount,$lineSplit,$categoryId)
     {
+        $hrefCreate = $this->view->url(array('action' => 'create','containerId' => $categoryId),'event');
+        if (($nbEvents == 0) && $lineSplit)
+        {
+            $href = $hrefCreate;
+        }
+        
         return "\t".'<li>
             <a href="'.$href.'" data-ajax="false">
                 <img src="'. $imgSrc .'"/>
                     <h3>'.$this->view->translate($categoryName). '</h3>'."\n"
+                    .'<p></p>'
                 .($bubbleCount ? '<span class="ui-li-count">'.$nbEvents.'</span>'."\n":null)
-                ."\t". '</a>'."\n"
-                .($lineSplit ? "\t".'<a data-ajax = "false" href="'. $this->view->url(array('action' => 'create','containerId' => $categoryId),'event') .'"></a>'."\n":null)
+                ."\t". '</a>'
+                .($lineSplit ? '<a data-ajax = "false" href="'. $hrefCreate .'"></a>'."\n":null)
                 ."\t".'</li>'."\n";
     }
 }

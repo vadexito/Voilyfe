@@ -79,17 +79,18 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     public function mapElement($entity)
     {
         $formValue = $this->getValue();
+        $property = $this->getAttrib('data-property-name');
         if ($this->getStorageEntity())
         {
-            return $this->getEntityManager()
+            $entity->$property = $this->getEntityManager()
                         ->getRepository($this->getStorageEntity())
                         ->findOneById($formValue);
+            return true;
         }
-        
-        $property = $this->getAttrib('data-property-name');
-        $entity->$property = $formValue;
-        
-        return true;
+        else
+        {
+            parent::mapElement($entity);
+        }
     }
     
     public function populate($entity)

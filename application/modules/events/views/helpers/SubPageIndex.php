@@ -1,6 +1,6 @@
 <?php
 
-class Events_View_Helper_SubPageIndex extends Zend_View_Helper_Abstract
+class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
 {
     
     protected $_name = NULL;
@@ -16,8 +16,10 @@ class Events_View_Helper_SubPageIndex extends Zend_View_Helper_Abstract
     protected $_possibleOptions = ['active','content','footer','title',
             'buttonRight','buttonLeft'];
     
-    public function subPageIndex($category,$id,$options)
+    public function subPageIndex($category,$id = NULL,$options = [])
     {
+        
+         
         if (!is_object($category))
         {
             throw new Pepit_View_Exception('A entity category has to be provided for subpageindex viewer');
@@ -46,26 +48,6 @@ class Events_View_Helper_SubPageIndex extends Zend_View_Helper_Abstract
         );
     }
     
-    protected function _loadOptions($options)
-    {
-        foreach ($this->_possibleOptions as $option)
-        {
-            if (key_exists($option, $options))
-            {
-                $method = 'set'.ucfirst($option);
-                if (method_exists($this,$method))
-                {
-                    $this->$method($options[$option]);
-                }
-                else
-                {
-                    $prop = '_'.$option;
-                    $this->$prop = $options[$option];
-                }
-            }
-        }
-    }
-    
     
     protected function _loadDefaultOptions()
     {
@@ -87,27 +69,25 @@ class Events_View_Helper_SubPageIndex extends Zend_View_Helper_Abstract
                 $hrefButtonAdd = '#list_singleCategories';
             }
             
-            $this->_buttonRight = '<a data-theme="b" href="'
-            . $hrefButtonAdd 
-            .'" data-iconpos="notext" data-icon="plus" data-ajax="false" class="ui-btn-right"></a>';
+            $this->_buttonRight = $this->view->htmlMobileButtonNavBar(['position' => 'right','type' => 2],[
+                    'href' => $hrefButtonAdd]
+            );
+           
         }
         
         if (!$this->_buttonLeft)
         {
-            $this->_buttonLeft = '<a data-theme="b" href="#list_allCategories" data-ajax="false" class="ui-btn-left">'
-                .$this->view->translate('menu_short_categories').'</a>';
+            $this->_buttonLeft = $this->view->htmlMobileButtonNavBar(['position' => 'left'],[
+                    'href' => '#list_allCategories'],
+                    $this->view->translate('menu_short_categories')
+            );
         }
         
-        if (!$this->_title)
+        if ($this->_title === NULL)
         {
             $this->_title = ucfirst($this->view->translate($this->_name));
         }
         
         
-    }
-    
-    public function setButtonLeft($option)
-    {
-        $this->_buttonLeft = $this->view->buttonHeader($option);
     }
 }

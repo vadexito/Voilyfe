@@ -17,7 +17,6 @@ class Events_Form_Elements_Mealtype extends Pepit_Form_Element_Select
         "required" => false,
         "idDB" => 7,
         "filters" => array('StringTrim',),
-        "validators" => array(),
         ))->setLabel('item_mealtype')
         ->setStorageEntity('ZC\Entity\ItemRow');
         

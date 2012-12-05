@@ -1,6 +1,6 @@
 <?php
 
-class Events_View_Helper_Graphs extends Zend_View_Helper_Abstract
+class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
 {
     protected $_events;
     protected $_all;
@@ -22,8 +22,8 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_Abstract
             {
                 $options[] = [
                     'id'        => $this->_getId($formElement),
-                    'buttons'   => $this->_buttonGroup(),
-                    'active'    => $formElement->getId(),
+                    'buttons'   => $this->_buttonGroup($formElement),
+                    'active'    => 'graphs',
                     'graph'     => $this->view->visualRep(
                             $formElement,
                             $events,
@@ -36,30 +36,38 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_Abstract
         return $options;
     }
     
-    protected function _buttonGroup()
+    protected function _buttonGroup($activeElement)
     {
         $buttons = '';
+        
+        
+        
         foreach ($this->_form->getElements() as $formElement)
         {
+            $attribs = ['data-role' => 'button'];
+            
             if ($formElement->getId() === 'date')
             {
-                $href = 'graphs-page';
+                $attribs['href'] = '#graphs-page';
                 $label = $this->view->translate('item_frequency');
             }
             else
             {
-                $href = $this->_getId($formElement);
+                $attribs['href'] = '#'.$this->_getId($formElement);
                 $label = ucfirst($formElement->getLabel());
             }
-
+        
             //if no category is choosen show only fot the common properties
             if (method_exists($formElement,'dataChart') &&
                 (!$this->_all 
                 || in_array($formElement->getId(),$this->_commonElement)))
             {
-                $buttons .='<a href="#'
-                            .$href
-                            .'" data-role="button">'
+                if ($formElement->getId() === $activeElement->getId())
+                {
+                    $attribs['class'] = 'ui-btn-active';
+                }
+
+                $buttons .='<a '.$this->_htmlAttribs($attribs).'>'
                             .$label.'</a>'."\n";
             }
         }

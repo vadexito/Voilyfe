@@ -13,10 +13,13 @@ class Events_Form_Elements_CuisineType extends Pepit_Form_Element_Select
     
     public function init()
     {
-        $this->setOptions(array(
-        "required" => false,
-        "idDB" => 8
-        ))->setLabel('item_cuisineType');
+        $this->setOptions([
+                "required" => false,
+                "idDB" => 8
+            ])
+            ->setLabel('item_cuisineType')
+            ->setStorageEntity('ZC\Entity\ItemRow');
+        
         parent::init();
     }
 

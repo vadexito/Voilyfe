@@ -274,7 +274,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         return '<img src="'
             . $src 
             .'" style="width:15px;height:15px;"/> '
-            .$this->view->escape($string);
+            .$this->view->escape($this->view->translate($string));
     }
     
     public function badgeCatDate()
