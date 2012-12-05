@@ -8,22 +8,18 @@
 
 class Events_Form_Elements_Typeswimming extends Pepit_Form_Element_Select
 {
+    protected $_storage = "ZC\Entity\ItemRow";
     
     public function init()
     {
         $this->setOptions(array(
         "required" => false,
         "idDB" => 17,
-        "filters" => array('StripTags','StringTrim',),
-        "validators" => array(),
-        ))->setLabel('item_typeswimming');
-        parent::init();
+        ))
+          ->setLabel('item_typeswimming')
+          ->setStorageEntity('ZC\Entity\ItemRow');
         
-        $this->setMultiOptions(array(
-            'crawl' => $this->getTranslator()->translate('item_typeswimming_crawl'),
-            'breaststroke' => $this->getTranslator()->translate('item_typeswimming_breaststroke'),
-            'back' => $this->getTranslator()->translate('item_typeswimming_back'),
-        ));
+        parent::init();
     }
 
 

@@ -411,7 +411,16 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
         {
             foreach ($this->getForm()->getValues() as $formElementName => $value)
             {
-                $this->getForm()->getElement($formElementName)->mapElement($entity);
+                if (method_exists($this->getForm()->getElement($formElementName),'mapElement'))
+                {
+                    $this->getForm()->getElement($formElementName)->mapElement($entity);
+                }
+                else
+                {
+                    throw new Pepit_Model_Exception('A mapElement function must be define for element : '
+                            .get_class($this->getForm()->getElement($formElementName)));
+                }
+               
             }
             
             return $entity;

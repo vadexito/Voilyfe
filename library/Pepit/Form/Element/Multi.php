@@ -89,7 +89,8 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         }
         else
         {
-            parent::mapElement($entity);
+            $entity->$property = $formValue;
+            return true;
         }
     }
     
