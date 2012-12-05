@@ -3,7 +3,7 @@
     <div data-role="content">	
         <?php echo $this->content; ?>
     </div><!-- /content -->
-    <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('page' => $this->page)): ''?>
+    <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('active' => $this->active)): ''?>
 </div><!-- end of page -->
 
     

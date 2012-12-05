@@ -8,7 +8,7 @@
         array('name' => 'graphs','translation' => $this->translate('menu_graphs')),
         array('name' => 'options','translation' => $this->translate('menu_options')),
     );
-    foreach ($pages as $page) : $name = $page['name']; $active = ''; if ($name === $this->page) : $active = 'ui-btn-active ui-state-persist'; endif; ?>              
+    foreach ($pages as $page) : $name = $page['name']; $active = ''; if ($name === $this->active) : $active = 'ui-btn-active ui-state-persist'; endif; ?>              
                 <li>
                     <a id="<?php echo $name ?>" href="#<?php echo $name; ?>-page" data-icon="mylife-<?php echo $name; ?>" data-transition="none" class='event-menu <?php echo $active; ?>'>
                         <?php echo ucfirst($page['translation']); ?>

@@ -4,7 +4,7 @@ class Layout_View_Helper_ButtonHeader extends Zend_View_Helper_Abstract
 {
     /**
      *
-     * @param type $type
+     * @param string $type ('back' or other)
      * @param type $position position is equal to right or left
      * @return type 
      */
