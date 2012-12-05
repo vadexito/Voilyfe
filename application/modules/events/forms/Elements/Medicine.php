@@ -8,16 +8,16 @@
 
 class Events_Form_Elements_Medicine extends Pepit_Form_Element_Select
 {
-
+    protected $_storage = "ZC\Entity\ItemRow";
+    
     public function init()
     {
         $this->setOptions(array(
         "required" => true,
         "idDB" => 11,
-        "multioptionTarget" => 'ZC\Entity\ItemRow',
-        "filters" => array('StringTrim',),
-        "validators" => array(),
-        ));
+        ))
+           ->setLabel('item_medicine')     
+           ->setStorageEntity('ZC\Entity\ItemRow');
         parent::init();
     }
 

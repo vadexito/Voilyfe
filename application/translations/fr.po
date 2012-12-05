@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-12-05 23:23+0100\n"
-"PO-Revision-Date: 2012-12-05 23:24+0100\n"
+"POT-Creation-Date: 2012-12-06 00:50+0100\n"
+"PO-Revision-Date: 2012-12-06 00:51+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -175,6 +175,11 @@ msgstr "plats"
 msgid "item_mealtype"
 msgstr "type de repas"
 
+#: application/modules/events/forms/Elements/Medicine.php:19
+#: application/translations/_XMLforPoedit/categories.xml:35
+msgid "item_medicine"
+msgstr "médicament"
+
 #: application/modules/events/forms/Elements/Name.php:21
 #: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
@@ -203,6 +208,10 @@ msgstr "prix"
 msgid "title_amount"
 msgstr "Montant"
 
+#: application/modules/events/forms/Elements/Quantity.php:32
+msgid "title_total_quantity"
+msgstr "Quantité (total)"
+
 #: application/modules/events/forms/Elements/Subcategory.php:22
 #: application/translations/_XMLforPoedit/categories.xml:43
 msgid "item_subcategory"
@@ -222,21 +231,6 @@ msgstr "type"
 #: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_typeswimming"
 msgstr "Type de nage"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:23
-#: application/translations/_XMLforPoedit/categories.xml:63
-msgid "item_typeswimming_crawl"
-msgstr "Crawl"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:24
-#: application/translations/_XMLforPoedit/categories.xml:64
-msgid "item_typeswimming_breaststroke"
-msgstr "Brasse"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:25
-#: application/translations/_XMLforPoedit/categories.xml:65
-msgid "item_typeswimming_back"
-msgstr "Dos"
 
 #: application/modules/events/views/helpers/ButtonNewEvent.php:18
 msgid "menu_createNewEvent"
@@ -440,7 +434,11 @@ msgstr "bienvenue"
 msgid "menu_add_event"
 msgstr "Nouvel événement"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:50
+#: application/modules/events/views/scripts/event/index-mobile.phtml:46
+msgid "menu_back_to_previous_page"
+msgstr "Retour"
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:51
 msgid "menu_settings"
 msgstr "Options"
 
@@ -538,17 +536,19 @@ msgstr "bienvenue à Mylife"
 
 #: application/modules/events/views/scripts/partial/_welcome.phtml:2
 msgid "you want to add a new event, press the plus button"
-msgstr ""
+msgstr "retour"
 
 #: application/modules/events/views/scripts/partial/_welcome.phtml:3
 msgid "you want to choose a category, press the categories button"
-msgstr ""
+msgstr "vous voulez choisir une catégorie, appuyer sur le button catégories"
 
 #: application/modules/events/views/scripts/partial/_welcome.phtml:4
 msgid ""
 "you want to visualize Yourlife : go to the calendar / graph page within a "
 "category or from the starting page"
 msgstr ""
+"vous voulez visualiser votre vie : allez regarder le calendrier ou les "
+"graphiques d'une catégorie ou de la page d'accueil"
 
 #: application/translations/_XMLforPoedit/categories.xml:4
 msgid "category_art"
@@ -638,10 +638,6 @@ msgstr "Voyages"
 msgid "category_work"
 msgstr "Travail"
 
-#: application/translations/_XMLforPoedit/categories.xml:35
-msgid "item_medicine"
-msgstr "médicament"
-
 #: application/translations/_XMLforPoedit/categories.xml:36
 msgid "item_quantity"
 msgstr "quantité"
@@ -705,6 +701,18 @@ msgstr "paracetamol"
 #: application/translations/_XMLforPoedit/categories.xml:62
 msgid "item_aspirine"
 msgstr "aspirine"
+
+#: application/translations/_XMLforPoedit/categories.xml:63
+msgid "item_typeswimming_crawl"
+msgstr "Crawl"
+
+#: application/translations/_XMLforPoedit/categories.xml:64
+msgid "item_typeswimming_breaststroke"
+msgstr "Brasse"
+
+#: application/translations/_XMLforPoedit/categories.xml:65
+msgid "item_typeswimming_back"
+msgstr "Dos"
 
 #: application/translations/_XMLforPoedit/validators/alnum.xml:4
 #: application/translations/_XMLforPoedit/validators/digits.xml:10
@@ -851,9 +859,6 @@ msgstr ""
 #: application/translations/_XMLforPoedit/validators/file/size.xml:10
 msgid "File '%value%' is not readable or does not exist"
 msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
-
-#~ msgid "menu_back_to_previous_page"
-#~ msgstr "Retour"
 
 #~ msgid "action_edit"
 #~ msgstr "Mettre à jour"

@@ -42,7 +42,8 @@ else //if no event to show
         'content'   => $this->listCategories('partial/_categoriesMenu.phtml','metaCategory'),
         'title'     => ucfirst($this->translate('menu_see_categories')),
         'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
-            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK]),
+            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                ucfirst($this->translate('menu_back_to_previous_page'))),
     ]);
     
     echo $this->subPageIndex($this->category,'options-page',[

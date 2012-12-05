@@ -6,18 +6,39 @@
  */
 
 
-class Events_Form_Elements_Quantity extends Pepit_Form_Element_Text
+class Events_Form_Elements_Quantity extends Pepit_Form_Element_Range
 {
 
     public function init()
     {
         $this->setOptions(array(
         "required" => false,
-        "filters" => array('StripTags','StringTrim',),
-        "validators" => array('Float',),
-        "multioptions" => array(),
+        "validators" => ['Float'],
         ));
         parent::init();
+    
+    
+        $this->setAttribs([
+                'min' => '0',
+                'max' => '200',
+                'step' => '2',
+        ]);
+    
+    }
+    
+    public function dataChart($events)
+    {
+        $options = [
+            'title' => ucfirst($this->getTranslator()->translate('title_total_quantity')),
+            'type' => 'sum',
+            'propertyForAdding' => $this->getName(),
+            'unit' => 'mg'
+        ];
+        
+        return [
+            'type' => 'google_chart',
+            'data' => (new Pepit_Widget_Chart($events,$options))->dataForGoogleCharts()
+        ];
     }
 
 

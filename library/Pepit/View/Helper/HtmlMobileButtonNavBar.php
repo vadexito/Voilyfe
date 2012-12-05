@@ -35,7 +35,6 @@ class Pepit_View_Helper_HtmlMobileButtonNavBar extends Zend_View_Helper_HtmlElem
                 case self::TYPE_BUTTON_BACK :
                     $attribs['data-rel'] = 'back';
                     $attribs['data-icon'] = 'arrow-l';
-                    $content = ucfirst($this->view->translate('menu_back_to_previous_page'));
                     break;
                     
                 case self::TYPE_BUTTON_NONE :

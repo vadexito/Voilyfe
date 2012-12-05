@@ -18,7 +18,7 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         foreach ($this->_form->getElements() as $formElement)
         {
             //if no category is choosen show only fot the common properties
-            if ((!$this->_all || in_array($formElement->getId(),$this->_commonElement)))
+            if ($this->_hasShow($formElement))
             {
                 $options[] = [
                     'id'        => $this->_getId($formElement),
@@ -36,12 +36,14 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         return $options;
     }
     
+    protected function _hasShow($formElement)
+    {
+        return (!$this->_all || 
+                in_array($formElement->getId(),$this->_commonElement));
+    }
     protected function _buttonGroup($activeElement)
     {
         $buttons = '';
-        
-        
-        
         foreach ($this->_form->getElements() as $formElement)
         {
             $attribs = ['data-role' => 'button'];
@@ -57,10 +59,9 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
                 $label = ucfirst($formElement->getLabel());
             }
         
-            //if no category is choosen show only fot the common properties
+            //if no category is choosen show only for the common properties
             if (method_exists($formElement,'dataChart') &&
-                (!$this->_all 
-                || in_array($formElement->getId(),$this->_commonElement)))
+                ($this->_hasShow($formElement)))
             {
                 if ($formElement->getId() === $activeElement->getId())
                 {
