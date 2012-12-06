@@ -1,6 +1,6 @@
 <?php
 
-class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
+class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
 {
   
     const VISUAL_TYPE_GOOGLE_CHART = 'google_chart';
@@ -46,19 +46,26 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_Abstract
     protected function _getGoogleChartHtml($dataChart)
     {
         $this->loadDefaultOptionsGoogleChart();
-
         $htmlTag = $this->_options['htmlTag'];
+        $attribs=[
+            'id' => $this->getId(),
+            'class' => 'google-chart visual-rep',
+            'data-visual' => Zend_Json::encode($dataChart['data']),
+        ];
 
         return
         ($this->_wrapper ? '<'.$this->_wrapper.'>' : '')
-        . '<'.$htmlTag." id='".$this->getId()."' class='google-chart visual-rep' data-visual='"
-        .  Zend_Json::encode($dataChart['data'])
-        . "'></".$htmlTag.'>'."\n"
+        . '<'.$htmlTag.$this->_htmlAttribs($attribs). "'></".$htmlTag.'>'."\n"
         . ($this->_wrapper ? '</'.$this->_wrapper.'>'."\n" : '');
     }
     
     protected function _getWinnerList(array $dataChart)
     {
+        if (!$dataChart['values'])
+        {
+            return '';
+        }
+        
         $list = '';
         $htmlTag = key_exists('htmlTag', $this->_options) ? 
             $this->_options['htmlTag'] : 'div';

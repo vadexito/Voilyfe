@@ -221,18 +221,25 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             {
                 if (!method_exists($event->$property,'count'))
                 {
-                    $tags[] = $event->$property->$propertyTag;
+                    if ($event->$property->$propertyTag)
+                    {
+                        $tags[] = $event->$property->$propertyTag;
+                    }
                 }
                 else
+                //case of an array collection
                 {
                     foreach ($event->$property as $tag)
                     {
-                        $tags[] = $tag->$propertyTag;
+                        if ($tag->$propertyTag)
+                        {
+                            $tags[] = $tag->$propertyTag;
+                        }
                     }
                 }
             }
-            
         }
+        
         $entities = array_count_values($tags);
         arsort($entities);
       

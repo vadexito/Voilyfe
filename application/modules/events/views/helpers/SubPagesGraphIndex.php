@@ -33,7 +33,7 @@ class Events_View_Helper_SubPagesGraphIndex extends Pepit_View_Helper_Abstract
             
             if (!key_exists('id',$optionArray))
             {
-                throw new Pepit_View_Exception('You should specify array of array for subPageIndex');
+                throw new Pepit_View_Exception('You should specify array of array with id for subPageIndex');
             }
             $this->_loadOptions($optionArray);
             $this->_loadDefaultOptions();

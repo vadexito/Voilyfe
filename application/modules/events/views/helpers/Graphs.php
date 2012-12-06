@@ -3,11 +3,18 @@
 class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
 {
     protected $_events;
+    
+    /**
+     * @var boolean of a specific category is choosen (false) 
+     * or if all category together are shown
+     */
     protected $_all;
+    
     protected $_commonElement = ['date','location','image','tags','persons'];
     protected $_form;
+    protected $_elementsToShow = NULL;
     
-    
+    protected $_options = [];
     
     public function graphs($events,$all)
     {
@@ -15,36 +22,63 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         $this->_all = $all;
         $this->_form = $this->view->event($this->_events[0])->getForm();
         
-        foreach ($this->_form->getElements() as $formElement)
+        foreach ($this->getElementsToShowAndInitOptions() as $formElement)
         {
-            //if no category is choosen show only fot the common properties
-            if ($this->_hasShow($formElement))
-            {
-                $options[] = [
-                    'id'        => $this->_getId($formElement),
-                    'buttons'   => $this->_buttonGroup($formElement),
-                    'active'    => 'graphs',
-                    'graph'     => $this->view->visualRep(
-                            $formElement,
-                            $events,
-                            ['htmlTag' => 'div']
-                    )
-                ];
-            }
+                        
+            $this->_options[$this->_getId($formElement)]['buttons'] = $this->_buttonGroup($formElement);
         }
-        $options[0]['id'] = 'graphs-page';
+        
+        $this->_options['graph_date']['id'] = 'graphs-page';
+        $options = array_values($this->_options);
         return $options;
     }
     
-    protected function _hasShow($formElement)
+    public function getElementsToShowAndInitOptions()
     {
-        return (!$this->_all || 
-                in_array($formElement->getId(),$this->_commonElement));
+        if ($this->_elementsToShow === NULL)
+        {
+            foreach ($this->_form->getElements() as $formElement)
+            {
+                if (!$this->_all || 
+                    in_array($formElement->getId(),$this->_commonElement)) 
+                    
+                {
+                    $graph = $this->view->visualRep(
+                            $formElement,
+                            $this->_events,
+                            ['htmlTag' => 'div']
+                    );
+                    
+                    if ($graph)
+                    {
+                        $this->_options[$this->_getId($formElement)] = [
+                            'id'        => $this->_getId($formElement),
+                            'active'    => 'graphs',
+                            'graph'     => $graph
+                        ];
+                    } 
+                    else
+                    {
+                        $this->_form->removeElement($formElement->getId());      
+                    }
+                }
+                else
+                {
+                    $this->_form->removeElement($formElement->getId());             
+                }
+            }
+            $this->_elementsToShow = $this->_form->getElements();
+                        
+        }
+        
+        return $this->_elementsToShow;
+        
+        
     }
     protected function _buttonGroup($activeElement)
     {
         $buttons = '';
-        foreach ($this->_form->getElements() as $formElement)
+        foreach ($this->getElementsToShowAndInitOptions() as $formElement)
         {
             $attribs = ['data-role' => 'button'];
             
@@ -59,18 +93,13 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
                 $label = ucfirst($formElement->getLabel());
             }
         
-            //if no category is choosen show only for the common properties
-            if (method_exists($formElement,'dataChart') &&
-                ($this->_hasShow($formElement)))
+            if ($formElement->getId() === $activeElement->getId())
             {
-                if ($formElement->getId() === $activeElement->getId())
-                {
-                    $attribs['class'] = 'ui-btn-active';
-                }
-
-                $buttons .='<a '.$this->_htmlAttribs($attribs).'>'
-                            .$label.'</a>'."\n";
+                $attribs['class'] = 'ui-btn-active';
             }
+
+            $buttons .='<a '.$this->_htmlAttribs($attribs).'>'
+                        .$label.'</a>'."\n";
         }
         
         return $buttons;
