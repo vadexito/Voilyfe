@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-12-07 14:22+0100\n"
-"PO-Revision-Date: 2012-12-07 14:22+0100\n"
+"POT-Creation-Date: 2012-12-07 17:32+0100\n"
+"PO-Revision-Date: 2012-12-07 17:33+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -16,6 +16,7 @@ msgstr ""
 "\\Voilyfe\\Voilyfe\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-1: library/Pepit\n"
 
 #: application/Bootstrap.php:178
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
@@ -53,6 +54,8 @@ msgid "sign-in_to_mylife"
 msgstr "Connection"
 
 #: application/modules/access/forms/UserLogin.php:15
+#: library/Pepit/Test/ControllerTestCase.php:57
+#: library/Pepit/Test/ControllerTestCaseWithDoctrine.php:231
 msgid "action_login"
 msgstr "Connexion"
 
@@ -66,15 +69,15 @@ msgstr "Mot de passe oublié ?"
 
 #: application/modules/access/forms/Elements/UserName.php:14
 #: application/modules/access/forms/Elements/UserName.php:18
-#: application/modules/members/forms/UserRegister.php:14
-#: application/modules/members/forms/UserRegister.php:25
+#: application/modules/members/forms/elements/UserName.php:18
+#: application/modules/members/forms/elements/UserName.php:20
 msgid "user_name"
 msgstr "nom d'utilisateur"
 
 #: application/modules/access/forms/Elements/UserPassword.php:14
 #: application/modules/access/forms/Elements/UserPassword.php:18
-#: application/modules/members/forms/UserRegister.php:30
-#: application/modules/members/forms/UserRegister.php:42
+#: application/modules/members/forms/UserRegister.php:16
+#: application/modules/members/forms/UserRegister.php:28
 msgid "user_password"
 msgstr "Mot de passe"
 
@@ -154,10 +157,12 @@ msgid "title_total_time"
 msgstr "Temps (total)"
 
 #: application/modules/events/forms/Elements/Duration.php:38
+#: library/Pepit/Form/Element/Date.php:64
 msgid "unit_month"
 msgstr "mois"
 
 #: application/modules/events/forms/Elements/Image.php:21
+#: library/Pepit/Form/Element/Image.php:42
 msgid "item_image"
 msgstr "Image"
 
@@ -192,6 +197,7 @@ msgid "item_persons"
 msgstr "participants"
 
 #: application/modules/events/forms/Elements/Persons.php:25
+#: library/Pepit/Form/Element/Tags.php:39
 msgid "msg_press_return_to_save"
 msgstr "Appuyer sur entrée pour valider le 'tag'"
 
@@ -205,7 +211,7 @@ msgstr "Numéro de téléphone"
 msgid "item_price"
 msgstr "prix"
 
-#: application/modules/events/forms/Elements/Price.php:39
+#: application/modules/events/forms/Elements/Price.php:44
 msgid "title_amount"
 msgstr "Montant"
 
@@ -238,6 +244,7 @@ msgid "menu_createNewEvent"
 msgstr "Créer un nouvel événement"
 
 #: application/modules/events/views/helpers/Graphs.php:88
+#: library/Pepit/Form/Element/Date.php:59
 #: application/modules/events/views/scripts/event/index.phtml:19
 msgid "item_frequency"
 msgstr "Fréquence"
@@ -265,37 +272,37 @@ msgstr "Vos options ont été sauvegardées"
 msgid "msg_user_registered"
 msgstr "Félicitations ! Vous êtes membre !"
 
-#: application/modules/members/forms/UserRegister.php:49
-#: application/modules/members/forms/UserRegister.php:61
+#: application/modules/members/forms/UserRegister.php:35
+#: application/modules/members/forms/UserRegister.php:47
 msgid "item_confirmPassword"
 msgstr "Confirmation du mot de passe"
 
-#: application/modules/members/forms/UserRegister.php:68
-#: application/modules/members/forms/UserRegister.php:75
-msgid "item_email"
-msgstr "Adresse email"
-
-#: application/modules/members/forms/UserRegister.php:81
-#: application/modules/members/forms/UserRegister.php:89
+#: application/modules/members/forms/UserRegister.php:54
+#: application/modules/members/forms/UserRegister.php:62
 msgid "item_first_name"
 msgstr "prénom"
 
-#: application/modules/members/forms/UserRegister.php:94
-#: application/modules/members/forms/UserRegister.php:102
+#: application/modules/members/forms/UserRegister.php:68
+#: application/modules/members/forms/UserRegister.php:76
 msgid "item_last_name"
 msgstr "nom"
 
-#: application/modules/members/forms/UserRegister.php:107
-msgid "item_country"
-msgstr "Pays de résidence"
-
-#: application/modules/members/forms/UserRegister.php:133
+#: application/modules/members/forms/UserRegister.php:93
 msgid "item_captcha"
 msgstr "entrer le mot ci-dessus"
 
-#: application/modules/members/forms/UserRegister.php:140
+#: application/modules/members/forms/UserRegister.php:100
 msgid "action_register"
 msgstr "Rejoindre Mylife !"
+
+#: application/modules/members/forms/elements/Country.php:9
+msgid "item_country"
+msgstr "Pays de résidence"
+
+#: application/modules/members/forms/elements/Email.php:12
+#: application/modules/members/forms/elements/Email.php:14
+msgid "item_email"
+msgstr "Adresse email"
 
 #: application/modules/members/forms/elements/SiteVersion.php:18
 msgid "answer_yes"
@@ -308,6 +315,27 @@ msgstr "non"
 #: application/modules/members/forms/elements/SiteVersion.php:23
 msgid "item_mobile_version"
 msgstr "Version mobile"
+
+#: library/Pepit/Form/Element/Multi.php:34
+msgid "msg_pickup_a_value"
+msgstr "Choisir"
+
+#: library/Pepit/View/Helper/EventTable/Abstract.php:71
+msgid "action_edit"
+msgstr "Mettre à jour"
+
+#: library/Pepit/View/Helper/EventTable/Abstract.php:84
+#: application/modules/events/views/scripts/event/show-mobile.phtml:61
+msgid "action_delete"
+msgstr "effacer"
+
+#: library/Pepit/Widget/OverYear.php:21
+msgid "msg_no_performance_available"
+msgstr "Pas de résultat disponible"
+
+#: library/Pepit/Widget/OverYear.php:26
+msgid "button_see_more"
+msgstr "Voir plus"
 
 #: application/layouts/scripts/access.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:6
@@ -497,10 +525,6 @@ msgstr "La suppression est définitive"
 #: application/modules/events/views/scripts/event/show-mobile.phtml:59
 msgid "button_cancel"
 msgstr "Annuler"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:61
-msgid "action_delete"
-msgstr "effacer"
 
 #: application/modules/events/views/scripts/event/show-mobile.phtml:62
 msgid "button_confirm?"
@@ -887,12 +911,6 @@ msgstr ""
 #: application/translations/_XMLforPoedit/validators/file/size.xml:10
 msgid "File '%value%' is not readable or does not exist"
 msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
-
-#~ msgid "action_edit"
-#~ msgstr "Mettre à jour"
-
-#~ msgid "msg_no_performance_available"
-#~ msgstr "Pas de résultat disponible"
 
 #~ msgid "'%hostname%' is no valid hostname for email address '%value%'"
 #~ msgstr ""

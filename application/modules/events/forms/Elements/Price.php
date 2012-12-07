@@ -31,6 +31,8 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
             'max' => '200',
             'step' => '2',
         ]);
+        
+       
     }
     
     public function dataChart($events)

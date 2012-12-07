@@ -29,7 +29,10 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
                         ->getRepository($this->getStorageEntity())
                         ->findByItem($this->getIdDB());
                         
-            //add multioptions 
+            //add multioptions
+            
+            $this->addMultiOption(null,$this->getTranslator()->translate('msg_pickup_a_value'));
+            
             foreach($itemRows as $value)
             {
                 $this->addMultiOption(

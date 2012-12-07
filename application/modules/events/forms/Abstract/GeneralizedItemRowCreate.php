@@ -76,6 +76,11 @@ abstract class Events_Form_Abstract_GeneralizedItemRowCreate extends Pepit_Form
                     ->setAttrib('data-containerId',$container->id)
                     ->setLabel($label);
         
+        if ($this->siteIsMobile())
+        {
+            $formElement->removeDecorator('label');
+        }
+        
         $this->addElement($formElement);
     }
     
