@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-12-07 17:32+0100\n"
-"PO-Revision-Date: 2012-12-07 17:33+0100\n"
+"POT-Creation-Date: 2012-12-07 22:36+0100\n"
+"PO-Revision-Date: 2012-12-07 22:38+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -69,8 +69,8 @@ msgstr "Mot de passe oublié ?"
 
 #: application/modules/access/forms/Elements/UserName.php:14
 #: application/modules/access/forms/Elements/UserName.php:18
-#: application/modules/members/forms/elements/UserName.php:18
-#: application/modules/members/forms/elements/UserName.php:20
+#: application/modules/members/forms/Elements/UserName.php:18
+#: application/modules/members/forms/Elements/UserName.php:20
 msgid "user_name"
 msgstr "nom d'utilisateur"
 
@@ -176,7 +176,7 @@ msgstr "lieu"
 msgid "item_meals"
 msgstr "plats"
 
-#: application/modules/events/forms/Elements/Mealtype.php:20
+#: application/modules/events/forms/Elements/Mealtype.php:19
 #: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr "type de repas"
@@ -215,7 +215,7 @@ msgstr "prix"
 msgid "title_amount"
 msgstr "Montant"
 
-#: application/modules/events/forms/Elements/Quantity.php:32
+#: application/modules/events/forms/Elements/Quantity.php:41
 msgid "title_total_quantity"
 msgstr "Quantité (total)"
 
@@ -268,7 +268,7 @@ msgstr "Catégorie"
 msgid "msg_user_preferences_saved"
 msgstr "Vos options ont été sauvegardées"
 
-#: application/modules/members/controllers/UserController.php:52
+#: application/modules/members/controllers/UserController.php:54
 msgid "msg_user_registered"
 msgstr "Félicitations ! Vous êtes membre !"
 
@@ -295,24 +295,28 @@ msgstr "entrer le mot ci-dessus"
 msgid "action_register"
 msgstr "Rejoindre Mylife !"
 
-#: application/modules/members/forms/elements/Country.php:9
+#: application/modules/members/forms/UserRegister.php:135
+msgid "Terms of Service"
+msgstr "Conditions d'utilisation"
+
+#: application/modules/members/forms/UserRegister.php:138
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+#: application/modules/members/forms/UserRegister.php:141
+msgid "By clicking the button, you agree to the %terms1% and to the %terms2%."
+msgstr "En appuyant sur le button, vous acceptez les %terms1% et la %terms2%."
+
+#: application/modules/members/forms/Elements/Country.php:9
 msgid "item_country"
 msgstr "Pays de résidence"
 
-#: application/modules/members/forms/elements/Email.php:12
-#: application/modules/members/forms/elements/Email.php:14
+#: application/modules/members/forms/Elements/Email.php:12
+#: application/modules/members/forms/Elements/Email.php:14
 msgid "item_email"
 msgstr "Adresse email"
 
-#: application/modules/members/forms/elements/SiteVersion.php:18
-msgid "answer_yes"
-msgstr "oui"
-
-#: application/modules/members/forms/elements/SiteVersion.php:20
-msgid "answer_no"
-msgstr "non"
-
-#: application/modules/members/forms/elements/SiteVersion.php:23
+#: application/modules/members/forms/Elements/SiteVersion.php:24
 msgid "item_mobile_version"
 msgstr "Version mobile"
 
@@ -911,6 +915,12 @@ msgstr ""
 #: application/translations/_XMLforPoedit/validators/file/size.xml:10
 msgid "File '%value%' is not readable or does not exist"
 msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
+
+#~ msgid "answer_yes"
+#~ msgstr "oui"
+
+#~ msgid "answer_no"
+#~ msgstr "non"
 
 #~ msgid "'%hostname%' is no valid hostname for email address '%value%'"
 #~ msgstr ""

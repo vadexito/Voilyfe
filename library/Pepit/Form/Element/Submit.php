@@ -22,10 +22,10 @@ class Pepit_Form_Element_Submit extends Zend_Form_Element_Submit
     
     protected $_decoratorMobile = array(
             array('ViewHelper'),
-            array('Description',array('tag' => 'p','class' => 'description')),
+            array('Description',array('tag' => 'p','class' => 'description','escape' => false)),
             array('HtmlTag',array(
                 'tag' => 'li',
-                'class' => 'ui-body',
+                'class' => 'ui-body'
     )));
     
     protected $_decoratorDefaultHorizontal = array(

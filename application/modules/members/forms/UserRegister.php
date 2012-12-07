@@ -98,6 +98,9 @@ class Members_Form_UserRegister extends Pepit_Form
         $submit = new Pepit_Form_Element_Submit('submit_register');
         $submit->setAttrib('class','btn btn-warning btn-large btn-block');
         $submit->setLabel('action_register');
+        $submit->setDescription($this->getTosAndPP());
+        
+        
         
         $this->addElements(array(
             $userName,
@@ -110,8 +113,9 @@ class Members_Form_UserRegister extends Pepit_Form
         ));
         
 
-        if (Zend_Registry::get('config')->get('register') &&
-            Zend_Registry::get('config')->register->form->element->captcha === 'false')
+        if (!Zend_Registry::get('config')->get('register',false) || 
+           (Zend_Registry::get('config')->get('register',false) &&
+            Zend_Registry::get('config')->register->form->element->captcha === 'false'))
         {
             $this->addElement($captcha);
         }
@@ -122,6 +126,26 @@ class Members_Form_UserRegister extends Pepit_Form
         {
             $this->setAttrib('class','well');
         }
+    }
+    
+    public function getTosAndPP()
+    {
+        $linkTerm = '<a href="'
+            . $this->getView()->url(array('page' => 'terms'),'static-content'). '">'
+            . $this->getTranslator()->translate('Terms of Service'). '</a>';
+        $linkPrivatePolicy = '<a href="'
+            . $this->getView()->url(array('page' => 'privacy'),'static-content'). '">'
+            . $this->getTranslator()->translate('Privacy Policy').'</a>';
+        
+        $tosAndPP = $this->getTranslator()->translate(
+            'By clicking the button, you agree to the %terms1% and to the %terms2%.'
+        );
+        
+        return preg_replace(
+            '#(%terms1%)(.*)(%terms2%)#',
+            $linkTerm.'$2'.$linkPrivatePolicy,
+            $tosAndPP
+        );
     }
 }
 
