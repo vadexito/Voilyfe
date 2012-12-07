@@ -1,0 +1,7 @@
+<?php 
+    echo $this->partial('partial/_mobilePage.phtml',[
+       'id'         => 'settings',
+       'content'    => $this->form,
+       'title'      => $this->translate('menu_settings'),
+       'buttonLeft' => $this->htmlMobileButtonNavBar(['position' => 'left','type' => 1],[],$this->translate('menu_back_to_previous_page'))
+    ]);

@@ -11,7 +11,7 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
      * @var integer / NULL (no forcing type of device, 
      * for production should be on NULL) 
      */
-    protected $_testType = NULL;
+    protected $_deviceChoice = NULL;
     
     protected $_layout;
     
@@ -21,15 +21,9 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
     
     public function __construct()
     {
-        $this->_session = new Zend_Session_Namespace('mylife_device_info');
+        $this->_session = $a = new Zend_Session_Namespace('mylife_device_info');
+        $this->_initDeviceChoice();
         
-        //if there a testing parameter (testing phase)
-        if (isset(Zend_Registry::get('config')->plugin->mobileInit->testType))
-        {
-            $this->_testType = (int)Zend_Registry::get('config')->plugin->mobileInit->testType;
-            $this->_session->deviceType = $this->_testType;
-            $this->_deviceType = $this->_testType;
-        }
     }
     
     public function dispatchLoopStartup(
@@ -46,7 +40,25 @@ class Application_Controller_Plugin_MobileInit extends Zend_Controller_Plugin_Ab
     }
     
     
-     /**
+    protected function _initDeviceChoice()
+    {
+        //if there a testing parameter (testing phase)
+        if (isset(Zend_Registry::get('config')->plugin->mobileInit->testType))
+        {
+            $this->_deviceChoice = (int)Zend_Registry::get('config')->plugin->mobileInit->testType;
+            $this->_session->deviceType = $this->_deviceChoice;
+            $this->_deviceType = $this->_deviceChoice;
+        }
+        else if($this->_session->deviceChoice)
+        {//var_dump($this->_session->deviceChoice);die;
+            $this->_deviceChoice = (int)$this->_session->deviceChoice;
+            $this->_session->deviceType = $this->_deviceChoice;
+            $this->_deviceType = $this->_deviceChoice;
+        }
+    }
+    
+    
+    /**
      *
      * into registry capabilities array
      * parameter 

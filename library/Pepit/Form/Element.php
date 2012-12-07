@@ -29,7 +29,7 @@ class Pepit_Form_Element
             'Errors',
             array('Description',array('tag' => 'p', 'class' => 'description')),
             array('Label',array('escape'=>false,'requiredSuffix' => '<sup class="required">*</sup>')),
-            array('HtmlTag',array('tag' => 'li','data-role' => 'fieldcontain','class'=> 'ui-hide-label')),
+            array('HtmlTag',array('tag' => 'li','data-role' => 'fieldcontain')),
         );
    
     static protected $_decoratorsMobileHorizontal = array(
@@ -37,8 +37,7 @@ class Pepit_Form_Element
             'ViewHelper',
             'Errors',
             array('Description',array('tag' => 'p', 'class' => 'description')),
-            //array('Label',array('escape'=>false,'requiredSuffix' => '<sup class="required">*</sup>')),
-            //array('HtmlTag',array('tag' => 'li','data-role' => 'fieldcontain')),
+            
         );
     
     static protected $_htmlAttribs = array();
@@ -151,5 +150,17 @@ class Pepit_Form_Element
         $errorHelper = $formElement->getView()->getHelper('formErrors');
         $errorHelper->setElementStart('<span class="help-inline">');
         $errorHelper->setElementEnd('</span>');  
+    }
+    
+    public function siteIsMobile()
+    {
+        if ($this->_siteIsMobile === NULL)
+        {
+            $session = new Zend_Session_Namespace('mylife_device_info');
+            $this->_siteIsMobile = ($session->deviceType ===
+                    Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE);
+        }
+        return $this->_siteIsMobile;
+        
     }
 }

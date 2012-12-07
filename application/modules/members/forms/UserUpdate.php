@@ -16,7 +16,7 @@ class Members_Form_UserUpdate extends Members_Form_UserRegister
         
         $submit = new Pepit_Form_Element_Submit('submit_update');
         $submit->setAttrib('class','btn btn-warning btn-large btn-block');
-        $submit->setLabel('action_save');
+        $submit->setLabel(ucfirst($this->getTranslator()->translate('action_save')));
         $this->addElement($submit);
     }
 }

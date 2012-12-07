@@ -10,6 +10,7 @@ class Pepit_Form extends Zend_Form
     use Pepit_Doctrine_Trait;
     
     protected $_model;
+    protected $_siteIsMobile;
     
     public function init()
     {
@@ -25,11 +26,9 @@ class Pepit_Form extends Zend_Form
         ));
         
         
-        $session = new Zend_Session_Namespace('mylife_device_info');
-        if ($session->deviceType ===
-                Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE)
+        if ($this->siteIsMobile())
         {
-            $this->addAttribs(array('data-ajax' => 'false'));
+            $this->addAttribs(['data-role' => 'form','data-ajax' => 'false']);
         
             $this->setDecorators(array(
             'FormElements',
@@ -41,6 +40,19 @@ class Pepit_Form extends Zend_Form
             'Form',
             ));
         }
+    }
+    
+    
+    public function siteIsMobile()
+    {
+        if ($this->_siteIsMobile === NULL)
+        {
+            $session = new Zend_Session_Namespace('mylife_device_info');
+            $this->_siteIsMobile = ($session->deviceType ===
+                    Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE);
+        }
+        return $this->_siteIsMobile;
+        
     }
     
     public function bindToModel($model)

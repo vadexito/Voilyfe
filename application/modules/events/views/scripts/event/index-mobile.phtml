@@ -11,7 +11,7 @@ if ($this->events)
             'partial/_pageLastEvents-mobile.phtml',
             ['events' => $this->events,'all'=>$this->allOption]
         ),
-        'active'    => 'page',
+        'active'    => 'last-events',
     ]);
     
     echo $this->subPageIndex($this->category,'calendar-page',[
@@ -29,7 +29,7 @@ else //if no event to show
 {
     echo $this->subPageIndex($this->category,'last-events-page',[
         'content'   => $this->partial('partial/_welcome.phtml'),
-        'active'    => 'page',
+        'active'    => 'last-events',
         'title'     => ucfirst($this->translate('msg_welcome')),
     ]);
 }
