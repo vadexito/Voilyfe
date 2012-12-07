@@ -101,17 +101,13 @@ class Members_UserController extends Pepit_Controller_Abstract_Abstract
             if ($valid && $submitChecked)
             {
                 // modify user profile
-                $this->_model->update($form->getValues(),$memberId);
+                $this->_model->update($memberId);
                 
                 // set saved message
                 $this->getHelper('flashMessenger')->addMessage('msg_user_updated');
                 
                 //redirection to the index page
-                return $this->_redirect($this->view->url(array(
-                    'controller' => 'user',
-                    'action' => 'index',
-                    'memberId' => $memberId 
-                ),'member'));
+                return $this->_redirect($this->view->url([],'home'));
             }
             else
             {

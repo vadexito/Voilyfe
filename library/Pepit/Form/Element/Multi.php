@@ -99,7 +99,12 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         $property = $this->getAttrib('data-property-name');
         if ($property && property_exists($entity,$property))
         {
-            return $entity->$property->id;
+            if (is_object($entity->$property))
+            {
+                return $entity->$property->id;
+            }
+            return $entity->$property;
+            
         }
         return false;
     }

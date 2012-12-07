@@ -164,7 +164,13 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
      */
     
     abstract public function createEntityFromForm();    
-    abstract public function updateEntityFromForm($entityId);
+    
+    public function updateEntityFromForm ($memberId)
+    {
+        $member = $this->_repository->find($memberId);
+        
+        return $this->_saveEntityFromForm($member);
+    }
     
     
     /**
@@ -293,7 +299,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
                 );                
             }
         }
-        //var_dump($arrayResult);die;
+        
         return $arrayResult;
         
 //        return $this->getArrayForFormFromEntityWithSingleValueFields(

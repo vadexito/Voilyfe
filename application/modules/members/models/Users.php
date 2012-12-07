@@ -54,63 +54,11 @@ class Members_Model_Users extends Pepit_Model_Doctrine2
         return $this->_saveEntityFromForm($member);
     }
     
-    public function updateEntityFromForm ($memberId)
-    {
-        $formValues = $this->getForm()->getValues();  
-        
-        $member = $this->_repository->find($memberId);
-        
-        return $this->_saveEntityFromForm($formValues, $member);
-    }
-    
     protected function _saveEntityFromForm($member)
     {
-        $formValues = $this->getForm()->getValues();
-        
         $member->modificationDate = new \DateTime();
         
-        $validateNotEmpty = new Zend_Validate_EmailAddress();
-        if ($validateNotEmpty->isValid($formValues['email']))
-        {
-            $member->email = $formValues['email'];
-        }
-        else
-        {
-            throw new Pepit_Model_Exception('Invalid email address');
-        }
-        
-        //can be null
-        if (array_key_exists('firstName',$formValues))
-        {
-            $member->firstName = $formValues['firstName'];
-        }
-        if (array_key_exists('lastName',$formValues))
-        {
-            $member->lastName = $formValues['lastName'];
-        }
-        if (array_key_exists('languageId',$formValues) && 
-                                       (int)$formValues['languageId'] > 0)
-        {
-             $member->language = $this->_em
-                            ->getRepository('ZC\Entity\ItemMulti\Language')
-                            ->find($formValues['languageId']);
-             if ($member->language === NULL)
-             {
-                 throw new Pepit_Model_Exception('No language corresponding to id in the database');
-             }
-        }
-        
-        if (array_key_exists('countryId',$formValues) && 
-                                        (int)$formValues['countryId'] > 0)
-        {
-            $member->country = $this->_em
-                            ->getRepository('ZC\Entity\ItemMulti\Country')
-                            ->find($formValues['countryId']);
-            if ($member->country === NULL)
-             {
-                 throw new Pepit_Model_Exception('No country corresponding to id equal to '.$formValues['countryId'].' in the database');
-             }
-        }
+        parent::_saveEntityFromForm($member);
         
         return $member;
     }

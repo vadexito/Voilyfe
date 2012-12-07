@@ -58,7 +58,7 @@ class Member extends EntityAbstract
     
     /**
      * 
-     * @var ZC\Entity\ItemMulti\Country $country
+     * @var string $country
      */
     protected $country;
     
@@ -178,7 +178,11 @@ class Member extends EntityAbstract
                 ->nullable(false)
                 ->build();
         
-        $builder->addManyToOne('country', 'ZC\Entity\ItemMulti\Country');
+        $builder->createField('country', 'string')
+                ->length(20)
+                ->nullable(true)
+                ->build();
+        
         $builder->addManyToOne('language', 'ZC\Entity\ItemMulti\Language');
         
     

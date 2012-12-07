@@ -9,21 +9,7 @@ class Members_Form_UserRegister extends Pepit_Form
         
         $this->setMethod('post');
         
-        /* userName */
-        $userName = new Pepit_Form_Element_Text('userName',array(
-            'label' => ucfirst($this->getTranslator()->translate('user_name'))
-        ));
-        $validLengthName = new Zend_Validate_StringLength(array(
-            'min'   => 4,
-            'max'   => 64
-        ));
-        $userUniqueName = new Pepit_Validate_UserUniqueName($this->getEntityManager());
-        $userName   ->setRequired('true')
-                    ->addFilters(array('StringToLower','StringTrim',
-                        'StripTags','Alnum'))
-                    ->addValidators(array($validLengthName,$userUniqueName))
-                    ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('user_name')));
-        
+        $userName = new Members_Form_Elements_UserName('userName');
         
         /* password */
         $userPassword = new Pepit_Form_Element_Password('userPassword',array(
@@ -61,20 +47,7 @@ class Members_Form_UserRegister extends Pepit_Form
                             ucfirst($this->getTranslator()->translate('item_confirmPassword'))
                     );
        
-        
-        
-        /* email address */
-        $email = new Pepit_Form_Element_Text('email',array(
-            'label' => ucfirst($this->getTranslator()->translate('item_email'))
-        ));
-        $email      ->setRequired('true')
-                    ->addFilters(array('StringTrim','StripTags'))
-                    ->addValidators(array('EmailAddress'))
-                    ->setAttrib(
-                            'placeholder', 
-                            ucfirst($this->getTranslator()->translate('item_email'))
-                    );
-       
+        $email = new Members_Form_Elements_Email('email');
         
         /* first name */
         $firstName = new Pepit_Form_Element_Text('firstName',array(
@@ -86,7 +59,8 @@ class Members_Form_UserRegister extends Pepit_Form
         ));
         $firstName  ->addFilters(array('StringTrim','StripTags'))
                     ->addValidators(array($validLength))
-                    ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_first_name')));
+                    ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_first_name')))
+                    ->setAttrib('data-property-name','firstName');
         
         
         /* last name */
@@ -98,27 +72,13 @@ class Members_Form_UserRegister extends Pepit_Form
             'max'   => 64
         ));
         $lastName   ->addFilters(array('StringTrim','StripTags'))
-                    ->addValidators(array($validLength))
-                    ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_last_name')));
+                    ->addValidator($validLength)
+                    ->setAttrib('placeholder', ucfirst($this->getTranslator()->translate('item_last_name')))
+                    ->setAttrib('data-property-name','lastName');
         
         
-        /* country */
-        $country = new Pepit_Form_Element_Select('countryId');
+        $country =  new Members_Form_Elements_Country('country');
         
-        if ($this->getEntityManager()->getRepository('ZC\Entity\ItemMulti\Country'))
-        {
-            $options = $this->getEntityManager()->getRepository('ZC\Entity\ItemMulti\Country')->findAll();
-            
-            $listCountries = Zend_Locale_Data::getList(Zend_Locale::findLocale(),'territory');
-            
-            foreach ($options as $option)
-            {
-                $country->addMultioption(
-                    $option->id,
-                    $listCountries[$option->value]
-                );
-            }
-        }
         
         /* captcha */
         $captcha = new Pepit_Form_Element_Captcha('captcha',array(
@@ -158,12 +118,7 @@ class Members_Form_UserRegister extends Pepit_Form
         $this->addElement($submit);
         
         
-        $session = new Zend_Session_Namespace('mylife_device_info');
-        if ($session->deviceType === Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE)
-        {
-           
-        }
-        else
+        if (!$this->siteIsMobile())
         {
             $this->setAttrib('class','well');
         }

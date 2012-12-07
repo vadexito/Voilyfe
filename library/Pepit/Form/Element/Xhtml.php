@@ -29,6 +29,10 @@ class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml implements Pepit_
     public function populate($entity)
     {
         $property = $this->getAttrib('data-property-name');
+        if (!$property)
+        {
+            throw new Pepit_Form_Exception('A data-property-name attribute must be defined for the element :'.$this->getId());
+        }
         if ($property && property_exists($entity,$property) && $entity->$property)
         {
             return $entity->$property;

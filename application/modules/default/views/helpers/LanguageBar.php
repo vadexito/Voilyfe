@@ -2,10 +2,10 @@
 
 class Application_View_Helper_LanguageBar extends Zend_View_Helper_Abstract
 {
+    use Pepit_Locale_Trait;
+    
     protected $_indent;
     
-    
-
     public function languageBar($indent = NULL)
     {
         $this->setIndent($indent);
@@ -16,18 +16,8 @@ class Application_View_Helper_LanguageBar extends Zend_View_Helper_Abstract
         );
         $locales = $config->language->type;
         $links = '';
-        $currentLocale = Zend_Registry::get('Zend_Locale')->findLocale();
         
-        //correct zend bug in translation list
-        switch($currentLocale)
-        {
-            case 'fr_FR' :
-                $currentLocale === 'fr';
-                break;
-            case 'zh_CN' :
-                $currentLocale === 'zh';
-                break;
-        }
+        $currentLocale = $this->findLocale();
         
         foreach ($locales as $locale)
         {

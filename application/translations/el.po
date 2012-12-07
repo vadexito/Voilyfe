@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-11-23 01:09+0100\n"
-"PO-Revision-Date: 2012-11-23 01:10+0100\n"
+"POT-Creation-Date: 2012-12-07 14:22+0100\n"
+"PO-Revision-Date: 2012-12-07 14:22+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: greek\n"
@@ -17,51 +17,47 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:172
+#: application/Bootstrap.php:178
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
 #: application/modules/access/views/scripts/access/login-mobile.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr ""
 
-#: application/Bootstrap.php:181
+#: application/Bootstrap.php:187
 msgid "menu_event"
 msgstr ""
 
-#: application/Bootstrap.php:191
+#: application/Bootstrap.php:197
 msgid "menu_event_add"
 msgstr " νέο συμβάν"
 
-#: application/Bootstrap.php:199
+#: application/Bootstrap.php:205
 msgid "menu_metaCategory"
 msgstr ""
 
-#: application/Bootstrap.php:209
+#: application/Bootstrap.php:215
 #, fuzzy
 msgid "menu_user"
 msgstr "Γλώσσα:"
 
-#: application/Bootstrap.php:219
+#: application/Bootstrap.php:225
 #, fuzzy
 msgid "menu_logout"
 msgstr "Γλώσσα:"
 
-#: application/Bootstrap.php:227
+#: application/Bootstrap.php:233
 #, fuzzy
 msgid "menu_set_preferences"
 msgstr "Γλώσσα:"
 
-#: application/layouts/helpers/ButtonHeader.php:18
-msgid "menu_back_to_previous_page"
+#: application/modules/access/controllers/AccessController.php:43
+msgid "sign-in_to_mylife"
 msgstr ""
 
 #: application/modules/access/forms/UserLogin.php:15
 msgid "action_login"
 msgstr "Σύνδεση"
-
-#: application/modules/access/forms/UserLogin.php:34
-msgid "sign-in_to_mylife"
-msgstr ""
 
 #: application/modules/access/forms/Elements/RememberMe.php:20
 msgid "user_rememberMe"
@@ -92,6 +88,7 @@ msgstr "Κωδικός πρόσβασης"
 #: application/modules/events/forms/ItemRowCreate.php:43
 #: application/modules/events/forms/ItemRowUpdate.php:20
 #: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:39
+#: application/modules/members/forms/SettingsUpdate.php:16
 #: application/modules/members/forms/UserUpdate.php:19
 msgid "action_save"
 msgstr "Αποθήκευση"
@@ -101,8 +98,8 @@ msgid "action_create"
 msgstr "Δημιουργία"
 
 #: application/modules/backend/forms/Elements/Category.php:22
-#: application/modules/events/forms/Elements/Address.php:22
-#: application/translations/_XMLforPoedit/categories.xml:29
+#: application/modules/events/forms/Elements/Address.php:21
+#: application/translations/_XMLforPoedit/categories.xml:30
 msgid "item_address"
 msgstr "Διεύθυνση"
 
@@ -115,32 +112,32 @@ msgstr ""
 msgid "menu_user_profile"
 msgstr "Γλώσσα:"
 
-#: application/modules/default/views/helpers/LanguageBar.php:57
+#: application/modules/default/views/helpers/LanguageBar.php:47
 msgid "menu_language"
 msgstr "Γλώσσα:"
 
-#: application/modules/events/controllers/AjaxController.php:56
+#: application/modules/events/controllers/AjaxController.php:55
 msgid "legend_all_events"
 msgstr ""
 
-#: application/modules/events/controllers/AjaxController.php:164
+#: application/modules/events/controllers/AjaxController.php:162
 msgid "category_unknown"
 msgstr ""
 
-#: application/modules/events/controllers/EventController.php:129
+#: application/modules/events/controllers/EventController.php:142
 msgid "msg_event_created"
 msgstr "Δημιουργήσατε νέο συμβάν"
 
-#: application/modules/events/controllers/EventController.php:165
+#: application/modules/events/controllers/EventController.php:178
 msgid "msg_event_updated"
 msgstr ""
 
-#: application/modules/events/controllers/EventController.php:197
+#: application/modules/events/controllers/EventController.php:210
 msgid "msg_event_deleted"
 msgstr "Το συμβάν διαγράφηκε"
 
-#: application/modules/events/forms/Elements/CuisineType.php:21
-#: application/translations/_XMLforPoedit/categories.xml:33
+#: application/modules/events/forms/Elements/CuisineType.php:20
+#: application/translations/_XMLforPoedit/categories.xml:34
 msgid "item_cuisineType"
 msgstr ""
 
@@ -152,9 +149,18 @@ msgid "item_date"
 msgstr "Ημερομηνία"
 
 #: application/modules/events/forms/Elements/Duration.php:19
-#: application/translations/_XMLforPoedit/categories.xml:38
+#: application/translations/_XMLforPoedit/categories.xml:39
 msgid "item_duration"
 msgstr "Διάρκεια"
+
+#: application/modules/events/forms/Elements/Duration.php:32
+#, fuzzy
+msgid "title_total_time"
+msgstr "Mylife"
+
+#: application/modules/events/forms/Elements/Duration.php:38
+msgid "unit_month"
+msgstr ""
 
 #: application/modules/events/forms/Elements/Image.php:21
 #, fuzzy
@@ -162,27 +168,32 @@ msgid "item_image"
 msgstr "email"
 
 #: application/modules/events/forms/Elements/Location.php:19
-#: application/translations/_XMLforPoedit/categories.xml:37
+#: application/translations/_XMLforPoedit/categories.xml:38
 msgid "item_location"
 msgstr "Τόπος"
 
 #: application/modules/events/forms/Elements/Meals.php:22
-#: application/translations/_XMLforPoedit/categories.xml:30
+#: application/translations/_XMLforPoedit/categories.xml:31
 msgid "item_meals"
 msgstr "Γεύματα"
 
-#: application/modules/events/forms/Elements/Mealtype.php:21
-#: application/translations/_XMLforPoedit/categories.xml:32
+#: application/modules/events/forms/Elements/Mealtype.php:20
+#: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr "Είδος γεύματος"
 
-#: application/modules/events/forms/Elements/Name.php:22
-#: application/translations/_XMLforPoedit/categories.xml:28
+#: application/modules/events/forms/Elements/Medicine.php:19
+#: application/translations/_XMLforPoedit/categories.xml:35
+msgid "item_medicine"
+msgstr "Φάρμακα"
+
+#: application/modules/events/forms/Elements/Name.php:21
+#: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
 msgstr "Όνομα"
 
 #: application/modules/events/forms/Elements/Persons.php:23
-#: application/translations/_XMLforPoedit/categories.xml:40
+#: application/translations/_XMLforPoedit/categories.xml:41
 msgid "item_persons"
 msgstr ""
 
@@ -191,40 +202,61 @@ msgid "msg_press_return_to_save"
 msgstr ""
 
 #: application/modules/events/forms/Elements/PhoneNumber.php:22
-#: application/translations/_XMLforPoedit/categories.xml:27
+#: application/translations/_XMLforPoedit/categories.xml:28
 msgid "item_phoneNumber"
 msgstr "Αριθμός τηλεφώνου"
 
-#: application/modules/events/forms/Elements/Price.php:28
-#: application/translations/_XMLforPoedit/categories.xml:31
+#: application/modules/events/forms/Elements/Price.php:27
+#: application/translations/_XMLforPoedit/categories.xml:32
 msgid "item_price"
 msgstr "Τιμή"
 
+#: application/modules/events/forms/Elements/Price.php:39
+#, fuzzy
+msgid "title_amount"
+msgstr "Mylife"
+
+#: application/modules/events/forms/Elements/Quantity.php:32
+#, fuzzy
+msgid "title_total_quantity"
+msgstr "Ποσότητα"
+
+#: application/modules/events/forms/Elements/Subcategory.php:22
+#: application/translations/_XMLforPoedit/categories.xml:43
+#, fuzzy
+msgid "item_subcategory"
+msgstr "Κατηγορία"
+
 #: application/modules/events/forms/Elements/Tags.php:22
+#: application/translations/_XMLforPoedit/categories.xml:42
 #, fuzzy
 msgid "item_tags"
 msgstr "email"
 
+#: application/modules/events/forms/Elements/Type.php:22
+#: application/translations/_XMLforPoedit/categories.xml:44
+#, fuzzy
+msgid "item_type"
+msgstr "Είδος γεύματος"
+
 #: application/modules/events/forms/Elements/Typeswimming.php:19
-#: application/translations/_XMLforPoedit/categories.xml:39
+#: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_typeswimming"
 msgstr "Στυλ κολύμβησης/Τρόπος κολύμβησης"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:23
-msgid "item_typeswimming_crawl"
-msgstr ""
-
-#: application/modules/events/forms/Elements/Typeswimming.php:24
-msgid "item_typeswimming_breaststroke"
-msgstr ""
-
-#: application/modules/events/forms/Elements/Typeswimming.php:25
-msgid "item_typeswimming_back"
-msgstr ""
 
 #: application/modules/events/views/helpers/ButtonNewEvent.php:18
 msgid "menu_createNewEvent"
 msgstr "Δημιουργήστε νέο συμβάν"
+
+#: application/modules/events/views/helpers/Graphs.php:88
+#: application/modules/events/views/scripts/event/index.phtml:19
+msgid "item_frequency"
+msgstr ""
+
+#: application/modules/events/views/helpers/SubPageIndex.php:82
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:86
+msgid "menu_short_categories"
+msgstr ""
 
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:25
 #: application/modules/events/views/helpers/EventTable/TableCategory.php:32
@@ -235,6 +267,11 @@ msgstr "Δεν βρέθηκε κανένα συμβάν"
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:36
 msgid "item_category"
 msgstr "Κατηγορία"
+
+#: application/modules/members/controllers/SettingsController.php:40
+#, fuzzy
+msgid "msg_user_preferences_saved"
+msgstr "Γλώσσα:"
 
 #: application/modules/members/controllers/UserController.php:52
 msgid "msg_user_registered"
@@ -260,6 +297,11 @@ msgstr "Όνομα"
 msgid "item_last_name"
 msgstr "Επώνυμο"
 
+#: application/modules/members/forms/UserRegister.php:107
+#, fuzzy
+msgid "item_country"
+msgstr "email"
+
 #: application/modules/members/forms/UserRegister.php:133
 msgid "item_captcha"
 msgstr "Eισάγετε την ανωτέρω λέξη"
@@ -267,6 +309,19 @@ msgstr "Eισάγετε την ανωτέρω λέξη"
 #: application/modules/members/forms/UserRegister.php:140
 msgid "action_register"
 msgstr "Εγγράψου στο Mylife"
+
+#: application/modules/members/forms/elements/SiteVersion.php:18
+msgid "answer_yes"
+msgstr ""
+
+#: application/modules/members/forms/elements/SiteVersion.php:20
+msgid "answer_no"
+msgstr ""
+
+#: application/modules/members/forms/elements/SiteVersion.php:23
+#, fuzzy
+msgid "item_mobile_version"
+msgstr "Γνώμη"
 
 #: application/layouts/scripts/access.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:6
@@ -292,7 +347,7 @@ msgid "menu_find_event"
 msgstr ""
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:61
+#: application/modules/events/views/scripts/event/index-mobile.phtml:43
 #, fuzzy
 msgid "menu_see_categories"
 msgstr "Γλώσσα:"
@@ -405,64 +460,68 @@ msgstr "Σελίδα"
 msgid "msg_questionSureToDelete"
 msgstr "Επιβεβαιώνετε?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:28
-#: application/modules/events/views/scripts/event/index-mobile.phtml:38
-#: application/modules/events/views/scripts/event/index-mobile.phtml:47
-#: application/modules/events/views/scripts/event/index-mobile.phtml:55
-#: application/modules/events/views/scripts/event/index-mobile.phtml:70
-msgid "menu_short_categories"
+#: application/modules/events/views/scripts/event/index-mobile.phtml:33
+msgid "msg_welcome"
 msgstr ""
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:54
+#: application/modules/events/views/scripts/event/index-mobile.phtml:38
 msgid "menu_add_event"
 msgstr " νέο συμβάν"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:69
+#: application/modules/events/views/scripts/event/index-mobile.phtml:46
+#: application/modules/members/views/scripts/settings/index-mobile.phtml:6
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:6
+msgid "menu_back_to_previous_page"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:51
+#: application/modules/members/views/scripts/settings/index-mobile.phtml:5
 #, fuzzy
 msgid "menu_settings"
 msgstr "Γλώσσα:"
-
-#: application/modules/events/views/scripts/event/index.phtml:19
-msgid "item_frequency"
-msgstr ""
 
 #: application/modules/events/views/scripts/event/index.phtml:30
 msgid "menu_summary_allevents"
 msgstr "Με μια ματιά"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:31
-msgid "event_edit_button"
-msgstr ""
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:36
+#: application/modules/events/views/scripts/event/show-mobile.phtml:5
 #, fuzzy
-msgid "event_delete_button"
-msgstr "Το συμβάν διαγράφηκε"
+msgid "menu_events"
+msgstr " νέο συμβάν"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:43
-msgid "title_question_delete_event"
+#: application/modules/events/views/scripts/event/show-mobile.phtml:41
+msgid "event_edit_button"
 msgstr ""
 
 #: application/modules/events/views/scripts/event/show-mobile.phtml:46
 #, fuzzy
+msgid "event_delete_button"
+msgstr "Το συμβάν διαγράφηκε"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:53
+msgid "title_question_delete_event"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:56
+#, fuzzy
 msgid "mgs_sure_to_delete?"
 msgstr "Το συμβάν διαγράφηκε"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:47
+#: application/modules/events/views/scripts/event/show-mobile.phtml:57
 msgid "mgs_no_cancellation_of_action?"
 msgstr ""
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:49
+#: application/modules/events/views/scripts/event/show-mobile.phtml:59
 #, fuzzy
 msgid "button_cancel"
 msgstr "Γλώσσα:"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:51
+#: application/modules/events/views/scripts/event/show-mobile.phtml:61
 #, fuzzy
 msgid "action_delete"
 msgstr "Δημιουργία"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:52
+#: application/modules/events/views/scripts/event/show-mobile.phtml:62
 msgid "button_confirm?"
 msgstr ""
 
@@ -522,6 +581,29 @@ msgstr "Γλώσσα:"
 msgid "menu_done"
 msgstr "Γλώσσα:"
 
+#: application/modules/events/views/scripts/partial/_welcome.phtml:1
+msgid "Welcome to Mylife"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:2
+msgid "you want to add a new event, press the plus button"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:3
+msgid "you want to choose a category, press the categories button"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:4
+msgid ""
+"you want to visualize Yourlife : go to the calendar / graph page within a "
+"category or from the starting page"
+msgstr ""
+
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:5
+#, fuzzy
+msgid "menu_update_profile"
+msgstr "Γλώσσα:"
+
 #: application/translations/_XMLforPoedit/categories.xml:4
 msgid "category_art"
 msgstr ""
@@ -579,56 +661,119 @@ msgid "category_music"
 msgstr ""
 
 #: application/translations/_XMLforPoedit/categories.xml:18
-msgid "category_restaurant"
+#, fuzzy
+msgid "category_present"
 msgstr "Εστιατόρια"
 
 #: application/translations/_XMLforPoedit/categories.xml:19
+msgid "category_restaurant"
+msgstr "Εστιατόρια"
+
+#: application/translations/_XMLforPoedit/categories.xml:20
 msgid "category_running"
 msgstr "Τρέξιμο"
 
-#: application/translations/_XMLforPoedit/categories.xml:20
+#: application/translations/_XMLforPoedit/categories.xml:21
 msgid "category_social"
 msgstr ""
 
-#: application/translations/_XMLforPoedit/categories.xml:21
+#: application/translations/_XMLforPoedit/categories.xml:22
 msgid "category_sport"
 msgstr ""
 
-#: application/translations/_XMLforPoedit/categories.xml:22
+#: application/translations/_XMLforPoedit/categories.xml:23
 msgid "category_swimming"
 msgstr "Κολύμβηση"
 
-#: application/translations/_XMLforPoedit/categories.xml:23
+#: application/translations/_XMLforPoedit/categories.xml:24
 msgid "category_trip"
 msgstr ""
 
-#: application/translations/_XMLforPoedit/categories.xml:24
+#: application/translations/_XMLforPoedit/categories.xml:25
 msgid "category_work"
 msgstr ""
 
-#: application/translations/_XMLforPoedit/categories.xml:34
-msgid "item_medicine"
-msgstr "Φάρμακα"
-
-#: application/translations/_XMLforPoedit/categories.xml:35
+#: application/translations/_XMLforPoedit/categories.xml:36
 msgid "item_quantity"
 msgstr "Ποσότητα"
 
-#: application/translations/_XMLforPoedit/categories.xml:36
+#: application/translations/_XMLforPoedit/categories.xml:37
 msgid "item_opinion"
 msgstr "Γνώμη"
 
-#: application/translations/_XMLforPoedit/categories.xml:43
+#: application/translations/_XMLforPoedit/categories.xml:47
 #, fuzzy
 msgid "item_company"
 msgstr "email"
 
-#: application/translations/_XMLforPoedit/categories.xml:44
+#: application/translations/_XMLforPoedit/categories.xml:48
 msgid "item_restaurant"
 msgstr ""
 
-#: application/translations/_XMLforPoedit/categories.xml:45
+#: application/translations/_XMLforPoedit/categories.xml:49
 msgid "item_restaurants"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:52
+#, fuzzy
+msgid "item_mealtype_breakfast"
+msgstr "Είδος γεύματος"
+
+#: application/translations/_XMLforPoedit/categories.xml:53
+#, fuzzy
+msgid "item_mealtype_lunch"
+msgstr "Είδος γεύματος"
+
+#: application/translations/_XMLforPoedit/categories.xml:54
+#, fuzzy
+msgid "item_mealtype_dinner"
+msgstr "Είδος γεύματος"
+
+#: application/translations/_XMLforPoedit/categories.xml:55
+#, fuzzy
+msgid "item_mealtype_brunch"
+msgstr "Είδος γεύματος"
+
+#: application/translations/_XMLforPoedit/categories.xml:56
+msgid "item_cuisineType_French"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:57
+msgid "item_cuisineType_Italian"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:58
+msgid "item_cuisineType_Vietnamese"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:59
+msgid "item_cuisineType_Japanese"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:60
+msgid "item_cuisineType_indian"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:61
+#, fuzzy
+msgid "item_paracetamol"
+msgstr "Τιμή"
+
+#: application/translations/_XMLforPoedit/categories.xml:62
+#, fuzzy
+msgid "item_aspirine"
+msgstr "Τιμή"
+
+#: application/translations/_XMLforPoedit/categories.xml:63
+msgid "item_typeswimming_crawl"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:64
+msgid "item_typeswimming_breaststroke"
+msgstr ""
+
+#: application/translations/_XMLforPoedit/categories.xml:65
+msgid "item_typeswimming_back"
 msgstr ""
 
 #: application/translations/_XMLforPoedit/validators/alnum.xml:4

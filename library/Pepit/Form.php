@@ -70,5 +70,4 @@ class Pepit_Form extends Zend_Form
     {
         return $this->model;
     }
-
 }

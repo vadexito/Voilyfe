@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-11-15 12:02+0100\n"
-"PO-Revision-Date: 2012-11-15 12:02+0100\n"
+"POT-Creation-Date: 2012-12-07 14:22+0100\n"
+"PO-Revision-Date: 2012-12-07 14:22+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: polish\n"
@@ -12,71 +12,71 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;setLabel;setValue;setLegend;"
 "_refresh;append;prepend;translate;setMessage;test\n"
-"X-Poedit-Basepath: C:\\Users\\Bacteria\\Documents\\www\\Mylife\n"
+"X-Poedit-Basepath: C:\\Users\\Bacteria\\Documents\\Work\\Programming\\GitHub"
+"\\Voilyfe\\Voilyfe\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:168
-#: application/layouts/scripts/access.mobile.phtml:52
-#: application/layouts/scripts/access.mobile.phtml:60
-#: application/layouts/scripts/layout.mobile.phtml:10
+#: application/Bootstrap.php:178
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
+#: application/modules/access/views/scripts/access/login-mobile.phtml:5
+#: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr "strona główna"
 
-#: application/Bootstrap.php:177
+#: application/Bootstrap.php:187
 msgid "menu_event"
 msgstr "wydarzenie"
 
-#: application/Bootstrap.php:187
+#: application/Bootstrap.php:197
 msgid "menu_event_add"
 msgstr "nowe wydarzenie"
 
-#: application/Bootstrap.php:195
+#: application/Bootstrap.php:205
 msgid "menu_metaCategory"
 msgstr "moje kategorie"
 
-#: application/Bootstrap.php:205
+#: application/Bootstrap.php:215
 msgid "menu_user"
 msgstr "profil użytkownika"
 
-#: application/Bootstrap.php:215
+#: application/Bootstrap.php:225
 msgid "menu_logout"
 msgstr "wyloguj"
 
-#: application/Bootstrap.php:223
+#: application/Bootstrap.php:233
 msgid "menu_set_preferences"
 msgstr "opcje"
 
-#: application/layouts/helpers/ButtonHeader.php:18
-msgid "menu_back_to_previous_page"
-msgstr "powrót"
+#: application/modules/access/controllers/AccessController.php:43
+msgid "sign-in_to_mylife"
+msgstr ""
 
-#: application/modules/access/forms/UserLogin.php:16
-#: application/modules/access/forms/UserLogin.php:21
+#: application/modules/access/forms/UserLogin.php:15
+msgid "action_login"
+msgstr "Zaloguj się"
+
+#: application/modules/access/forms/Elements/RememberMe.php:20
+msgid "user_rememberMe"
+msgstr "zapamiętaj mnie"
+
+#: application/modules/access/forms/Elements/RememberMe.php:28
+msgid "user_forgotten_password"
+msgstr "nie pamiętasz hasła?"
+
+#: application/modules/access/forms/Elements/UserName.php:14
+#: application/modules/access/forms/Elements/UserName.php:18
 #: application/modules/members/forms/UserRegister.php:14
 #: application/modules/members/forms/UserRegister.php:25
 msgid "user_name"
 msgstr "nazwa użytkownika"
 
-#: application/modules/access/forms/UserLogin.php:24
-#: application/modules/access/forms/UserLogin.php:30
+#: application/modules/access/forms/Elements/UserPassword.php:14
+#: application/modules/access/forms/Elements/UserPassword.php:18
 #: application/modules/members/forms/UserRegister.php:30
 #: application/modules/members/forms/UserRegister.php:42
 msgid "user_password"
 msgstr "hasło"
-
-#: application/modules/access/forms/UserLogin.php:38
-msgid "user_rememberMe"
-msgstr "zapamiętaj mnie"
-
-#: application/modules/access/forms/UserLogin.php:49
-msgid "user_forgotten_password"
-msgstr "nie pamiętasz hasła?"
-
-#: application/modules/access/forms/UserLogin.php:54
-msgid "action_login"
-msgstr "Zaloguj się"
 
 #: application/modules/backend/forms/CategoryUpdate.php:21
 #: application/modules/backend/forms/ItemUpdate.php:20
@@ -84,7 +84,8 @@ msgstr "Zaloguj się"
 #: application/modules/events/forms/ItemGroupRowUpdate.php:20
 #: application/modules/events/forms/ItemRowCreate.php:43
 #: application/modules/events/forms/ItemRowUpdate.php:20
-#: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:43
+#: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:39
+#: application/modules/members/forms/SettingsUpdate.php:16
 #: application/modules/members/forms/UserUpdate.php:19
 msgid "action_save"
 msgstr "zapisz"
@@ -92,6 +93,12 @@ msgstr "zapisz"
 #: application/modules/backend/forms/ItemCreate.php:42
 msgid "action_create"
 msgstr "utwórz"
+
+#: application/modules/backend/forms/Elements/Category.php:22
+#: application/modules/events/forms/Elements/Address.php:21
+#: application/translations/_XMLforPoedit/categories.xml:30
+msgid "item_address"
+msgstr "adres"
 
 #: application/modules/default/controllers/ErrorController.php:59
 msgid "no_authorization_view_page"
@@ -101,41 +108,36 @@ msgstr "nie możesz przeglądać tej strony"
 msgid "menu_user_profile"
 msgstr "mój profil"
 
-#: application/modules/default/views/helpers/LanguageBar.php:63
+#: application/modules/default/views/helpers/LanguageBar.php:47
 msgid "menu_language"
 msgstr "język:"
 
-#: application/modules/events/controllers/EventController.php:194
-msgid "msg_event_created"
-msgstr "twoje wydarzenie zostało utworzone"
-
-#: application/modules/events/controllers/EventController.php:234
-msgid "msg_event_updated"
-msgstr "twoje wydarzenie zostało uaktualnione"
-
-#: application/modules/events/controllers/EventController.php:266
-msgid "msg_event_deleted"
-msgstr "twoje wydarzenie zostało usunięte"
-
-#: application/modules/events/controllers/EventController.php:302
+#: application/modules/events/controllers/AjaxController.php:55
 msgid "legend_all_events"
 msgstr "wszystkie wydarzenia"
 
-#: application/modules/events/controllers/EventController.php:416
+#: application/modules/events/controllers/AjaxController.php:162
 msgid "category_unknown"
 msgstr "nieznane"
 
-#: application/modules/events/forms/Elements/Address.php:22
-#: application/translations/_XMLforPoedit/categories.xml:29
-msgid "item_address"
-msgstr "adres"
+#: application/modules/events/controllers/EventController.php:142
+msgid "msg_event_created"
+msgstr "twoje wydarzenie zostało utworzone"
 
-#: application/modules/events/forms/Elements/CuisineType.php:21
-#: application/translations/_XMLforPoedit/categories.xml:33
+#: application/modules/events/controllers/EventController.php:178
+msgid "msg_event_updated"
+msgstr "twoje wydarzenie zostało uaktualnione"
+
+#: application/modules/events/controllers/EventController.php:210
+msgid "msg_event_deleted"
+msgstr "twoje wydarzenie zostało usunięte"
+
+#: application/modules/events/forms/Elements/CuisineType.php:20
+#: application/translations/_XMLforPoedit/categories.xml:34
 msgid "item_cuisineType"
 msgstr "rodzaj kuchni"
 
-#: application/modules/events/forms/Elements/Date.php:25
+#: application/modules/events/forms/Elements/Date.php:23
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:37
 #: application/modules/events/views/helpers/EventTable/TableCategory.php:70
 #: application/modules/events/views/helpers/EventTable/TableUniqueCategory.php:69
@@ -143,80 +145,116 @@ msgid "item_date"
 msgstr "data"
 
 #: application/modules/events/forms/Elements/Duration.php:19
-#: application/translations/_XMLforPoedit/categories.xml:38
+#: application/translations/_XMLforPoedit/categories.xml:39
 msgid "item_duration"
 msgstr "długość trwania"
 
+#: application/modules/events/forms/Elements/Duration.php:32
+#, fuzzy
+msgid "title_total_time"
+msgstr "Mylife"
+
+#: application/modules/events/forms/Elements/Duration.php:38
+msgid "unit_month"
+msgstr ""
+
+#: application/modules/events/forms/Elements/Image.php:21
+#, fuzzy
+msgid "item_image"
+msgstr "strona"
+
+#: application/modules/events/forms/Elements/Location.php:19
+#: application/translations/_XMLforPoedit/categories.xml:38
+msgid "item_location"
+msgstr "miejsce"
+
 #: application/modules/events/forms/Elements/Meals.php:22
-#: application/translations/_XMLforPoedit/categories.xml:30
+#: application/translations/_XMLforPoedit/categories.xml:31
 msgid "item_meals"
 msgstr "dania"
 
-#: application/modules/events/forms/Elements/Mealtype.php:21
-#: application/translations/_XMLforPoedit/categories.xml:32
+#: application/modules/events/forms/Elements/Mealtype.php:20
+#: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr "posiłki"
 
-#: application/modules/events/forms/Elements/Name.php:22
-#: application/translations/_XMLforPoedit/categories.xml:28
+#: application/modules/events/forms/Elements/Medicine.php:19
+#: application/translations/_XMLforPoedit/categories.xml:35
+msgid "item_medicine"
+msgstr "leki"
+
+#: application/modules/events/forms/Elements/Name.php:21
+#: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
 msgstr "nazwa"
 
-#: application/modules/events/forms/Elements/Persons.php:15
-#: application/translations/_XMLforPoedit/categories.xml:40
+#: application/modules/events/forms/Elements/Persons.php:23
+#: application/translations/_XMLforPoedit/categories.xml:41
 msgid "item_persons"
 msgstr "osoby"
 
-#: application/modules/events/forms/Elements/Persons.php:19
-#: application/modules/events/forms/Elements/Restaurants.php:17
-#: application/modules/events/forms/Elements/Tags.php:19
+#: application/modules/events/forms/Elements/Persons.php:25
 #, fuzzy
 msgid "msg_press_return_to_save"
 msgstr "naciskać wejście zeby zachować"
 
 #: application/modules/events/forms/Elements/PhoneNumber.php:22
-#: application/translations/_XMLforPoedit/categories.xml:27
+#: application/translations/_XMLforPoedit/categories.xml:28
 msgid "item_phoneNumber"
 msgstr "numer telefonu"
 
-#: application/modules/events/forms/Elements/Price.php:28
-#: application/translations/_XMLforPoedit/categories.xml:31
+#: application/modules/events/forms/Elements/Price.php:27
+#: application/translations/_XMLforPoedit/categories.xml:32
 msgid "item_price"
 msgstr "cena"
 
-#: application/modules/events/forms/Elements/Restaurants.php:14
-#: application/translations/_XMLforPoedit/categories.xml:45
-msgid "item_restaurants"
-msgstr "restauracje"
+#: application/modules/events/forms/Elements/Price.php:39
+#, fuzzy
+msgid "title_amount"
+msgstr "Mylife"
 
-#: application/modules/events/forms/Elements/Tags.php:15
+#: application/modules/events/forms/Elements/Quantity.php:32
+#, fuzzy
+msgid "title_total_quantity"
+msgstr "ilość"
+
+#: application/modules/events/forms/Elements/Subcategory.php:22
+#: application/translations/_XMLforPoedit/categories.xml:43
+#, fuzzy
+msgid "item_subcategory"
+msgstr "kategoria"
+
+#: application/modules/events/forms/Elements/Tags.php:22
+#: application/translations/_XMLforPoedit/categories.xml:42
 #, fuzzy
 msgid "item_tags"
 msgstr "strona"
 
+#: application/modules/events/forms/Elements/Type.php:22
+#: application/translations/_XMLforPoedit/categories.xml:44
+#, fuzzy
+msgid "item_type"
+msgstr "posiłki"
+
 #: application/modules/events/forms/Elements/Typeswimming.php:19
-#: application/translations/_XMLforPoedit/categories.xml:39
+#: application/translations/_XMLforPoedit/categories.xml:40
 msgid "item_typeswimming"
 msgstr "styl pływacki"
 
-#: application/modules/events/forms/Elements/Typeswimming.php:23
-#, fuzzy
-msgid "item_typeswimming_crawl"
-msgstr "styl pływacki"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:24
-#, fuzzy
-msgid "item_typeswimming_breaststroke"
-msgstr "styl pływacki"
-
-#: application/modules/events/forms/Elements/Typeswimming.php:25
-#, fuzzy
-msgid "item_typeswimming_back"
-msgstr "styl pływacki"
-
-#: application/modules/events/views/helpers/ButtonNewEvent.php:34
+#: application/modules/events/views/helpers/ButtonNewEvent.php:18
 msgid "menu_createNewEvent"
 msgstr "utwórz nowy element"
+
+#: application/modules/events/views/helpers/Graphs.php:88
+#: application/modules/events/views/scripts/event/index.phtml:19
+#, fuzzy
+msgid "item_frequency"
+msgstr "ilość"
+
+#: application/modules/events/views/helpers/SubPageIndex.php:82
+#: application/modules/events/views/helpers/SubPagesGraphIndex.php:86
+msgid "menu_short_categories"
+msgstr "kategorie"
 
 #: application/modules/events/views/helpers/EventTable/TableAllEvents.php:25
 #: application/modules/events/views/helpers/EventTable/TableCategory.php:32
@@ -228,7 +266,12 @@ msgstr "brak wydarzeń do wyświetlenia"
 msgid "item_category"
 msgstr "kategoria"
 
-#: application/modules/members/controllers/UserController.php:77
+#: application/modules/members/controllers/SettingsController.php:40
+#, fuzzy
+msgid "msg_user_preferences_saved"
+msgstr "opcje"
+
+#: application/modules/members/controllers/UserController.php:52
 msgid "msg_user_registered"
 msgstr "nasze gratulacje, zostałeś przyjęty"
 
@@ -252,6 +295,11 @@ msgstr "imię"
 msgid "item_last_name"
 msgstr "nazwisko"
 
+#: application/modules/members/forms/UserRegister.php:107
+#, fuzzy
+msgid "item_country"
+msgstr "firma"
+
 #: application/modules/members/forms/UserRegister.php:133
 msgid "item_captcha"
 msgstr "proszę wpisać słowo "
@@ -260,114 +308,65 @@ msgstr "proszę wpisać słowo "
 msgid "action_register"
 msgstr "Zarejestruj się na Mylife"
 
-#: application/layouts/scripts/access.mobile.phtml:17
-#: application/layouts/scripts/access.mobile.phtml:37
-msgid "name_site"
-msgstr "Mylife"
-
-#: application/layouts/scripts/access.mobile.phtml:17
-msgid "Remember your life and visualize it anytime from anywhere!"
-msgstr "Zapamiętaj swoje życie i wizualizuj je jak, kiedy i gdzie chcesz!"
-
-#: application/layouts/scripts/access.mobile.phtml:22
-msgid "Save your life, do not forget anymore!"
-msgstr "Zapisuj swoje życie tak, aby nic więcej nie zapomnieć!"
-
-#: application/layouts/scripts/access.mobile.phtml:22
-msgid ""
-"Save every part of your life you would like to. Write a diary of all the "
-"activies, events you want."
+#: application/modules/members/forms/elements/SiteVersion.php:18
+msgid "answer_yes"
 msgstr ""
-"Zapisuj każdą część swojego życia. Napisz pamiętnik z każdego wydarzenia, "
-"które chciałbyś dokładnie zapamiętać!"
 
-#: application/layouts/scripts/access.mobile.phtml:27
-msgid "Remember your life, accessing it anywhere"
+#: application/modules/members/forms/elements/SiteVersion.php:20
+msgid "answer_no"
 msgstr ""
-"Zapamiętuj wydarzenia swojego życia, mając do nich dostęp zawsze i wszędzie!"
 
-#: application/layouts/scripts/access.mobile.phtml:27
-msgid ""
-"Find what you want in your passed saved life. Mylife offers a powerful tool "
-"to sort and access your events"
-msgstr ""
-"Znajdź czego potrzebujesz w swoich zapisanych wydarzeniach. Mylife pomaga "
-"szybko i skutecznie w sortowaniu twoich wydarzeń"
+#: application/modules/members/forms/elements/SiteVersion.php:23
+#, fuzzy
+msgid "item_mobile_version"
+msgstr "osoby"
 
-#: application/layouts/scripts/access.mobile.phtml:32
-msgid "Visualize you life"
-msgstr "Wizaulizuj swoje życie"
-
-#: application/layouts/scripts/access.mobile.phtml:32
-msgid ""
-"You can see summaries, graphs, dictionaries giving a short but accessible "
-"picture of every aspects of your life"
-msgstr ""
-"Możesz oglądać podsumowania, wykresy, słowa, dające szybki i przystępny "
-"obraz wielu aspektów twojego życia"
-
-#: application/layouts/scripts/access.mobile.phtml:37
-msgid "See where you are"
-msgstr "Zorientuj się, na czym stoisz"
-
-#: application/layouts/scripts/access.mobile.phtml:44
-msgid "menu_connect"
-msgstr "połączenie"
-
-#: application/layouts/scripts/access.mobile.phtml:45
-msgid "menu_signin"
-msgstr "zarejestruj się"
-
-#: application/layouts/scripts/access.mobile.phtml:51
-#: application/layouts/scripts/access.mobile.phtml:59
-#: application/layouts/scripts/layout.phtml:9
-#: application/modules/access/views/scripts/access/index.phtml:8
-msgid "title_sitename"
-msgstr "Mylife"
-
-#: application/layouts/scripts/access.mobile.phtml:53
-msgid "msg_question_become_member"
-msgstr "jesteś już zarejestrowany?"
-
-#: application/layouts/scripts/access.mobile.phtml:61
-#: application/layouts/scripts/access.phtml:7
+#: application/layouts/scripts/access.phtml:5
+#: application/modules/members/views/scripts/user/register-mobile.phtml:6
 msgid "msg_question_already_member"
 msgstr "jesteś już zarejestrowany? zaloguj się"
 
+#: application/layouts/scripts/layout.phtml:9
+#: application/modules/access/views/scripts/access/index.phtml:3
+#: application/modules/access/views/scripts/access/login-mobile.phtml:4
+#: application/modules/members/views/scripts/user/register-mobile.phtml:4
+msgid "title_sitename"
+msgstr "Mylife"
+
 #: application/layouts/scripts/layout.phtml:10
-#: application/modules/access/views/scripts/access/index.phtml:10
+#: application/modules/access/views/scripts/access/index.phtml:6
 msgid "site_shortpres"
 msgstr "mylife umożliwia ci wizualizację twojego życia w kilku klikach"
-
-#: application/layouts/scripts/_footer.phtml:4
-msgid "static_content_aboutUs"
-msgstr "O nas"
-
-#: application/layouts/scripts/_footer.phtml:9
-msgid "static_content_help"
-msgstr "pomoc"
-
-#: application/layouts/scripts/_footer.phtml:14
-msgid "static_content_terms"
-msgstr "regulamin"
-
-#: application/layouts/scripts/_footer.phtml:19
-msgid "static_content_privacy"
-msgstr "Prywatność"
-
-#: application/layouts/scripts/_footer.phtml:24
-msgid "static_content_languages"
-msgstr "język"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:5
 msgid "menu_find_event"
 msgstr "znajdź wydarzenie"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:56
+#: application/modules/events/views/scripts/event/index-mobile.phtml:43
 #, fuzzy
 msgid "menu_see_categories"
 msgstr "moje kategorie"
+
+#: application/layouts/scripts/partial/_footer.phtml:4
+msgid "static_content_aboutUs"
+msgstr "O nas"
+
+#: application/layouts/scripts/partial/_footer.phtml:9
+msgid "static_content_help"
+msgstr "pomoc"
+
+#: application/layouts/scripts/partial/_footer.phtml:14
+msgid "static_content_terms"
+msgstr "regulamin"
+
+#: application/layouts/scripts/partial/_footer.phtml:19
+msgid "static_content_privacy"
+msgstr "Prywatność"
+
+#: application/layouts/scripts/partial/_footer.phtml:24
+msgid "static_content_languages"
+msgstr "język"
 
 #: application/layouts/scripts/partial/_initialMenu.phtml:2
 msgid "button_search_current_event"
@@ -385,9 +384,71 @@ msgstr "wyświetl kategorie"
 msgid "title_nb_results"
 msgstr "liczba wyników"
 
-#: application/modules/access/views/scripts/access/index.phtml:9
+#: application/modules/access/views/scripts/access/index-mobile.phtml:11
+#: application/modules/access/views/scripts/access/index-mobile.phtml:19
+msgid "name_site"
+msgstr "Mylife"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:11
+msgid "Remember your life and visualize it anytime from anywhere!"
+msgstr "Zapamiętaj swoje życie i wizualizuj je jak, kiedy i gdzie chcesz!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:13
+msgid "Save your life, do not forget anymore!"
+msgstr "Zapisuj swoje życie tak, aby nic więcej nie zapomnieć!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:13
+msgid ""
+"Save every part of your life you would like to. Write a diary of all the "
+"activies, events you want."
+msgstr ""
+"Zapisuj każdą część swojego życia. Napisz pamiętnik z każdego wydarzenia, "
+"które chciałbyś dokładnie zapamiętać!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:15
+msgid "Remember your life, accessing it anywhere"
+msgstr ""
+"Zapamiętuj wydarzenia swojego życia, mając do nich dostęp zawsze i wszędzie!"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:15
+msgid ""
+"Find what you want in your passed saved life. Mylife offers a powerful tool "
+"to sort and access your events"
+msgstr ""
+"Znajdź czego potrzebujesz w swoich zapisanych wydarzeniach. Mylife pomaga "
+"szybko i skutecznie w sortowaniu twoich wydarzeń"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:17
+msgid "Visualize you life"
+msgstr "Wizaulizuj swoje życie"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:17
+msgid ""
+"You can see summaries, graphs, dictionaries giving a short but accessible "
+"picture of every aspects of your life"
+msgstr ""
+"Możesz oglądać podsumowania, wykresy, słowa, dające szybki i przystępny "
+"obraz wielu aspektów twojego życia"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:19
+msgid "See where you are"
+msgstr "Zorientuj się, na czym stoisz"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:26
+msgid "menu_connect"
+msgstr "połączenie"
+
+#: application/modules/access/views/scripts/access/index-mobile.phtml:29
+msgid "menu_signin"
+msgstr "zarejestruj się"
+
+#: application/modules/access/views/scripts/access/index.phtml:5
 msgid "site_slogan"
 msgstr "życie jest godne zapamiętania"
+
+#: application/modules/access/views/scripts/access/login-mobile.phtml:6
+msgid "msg_question_become_member"
+msgstr "jesteś już zarejestrowany?"
 
 #: application/modules/events/views/scripts/_pagination.phtml:44
 msgid "item_page"
@@ -400,30 +461,69 @@ msgstr "strona"
 msgid "msg_questionSureToDelete"
 msgstr "potwierdź usunięcie"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:23
 #: application/modules/events/views/scripts/event/index-mobile.phtml:33
-#: application/modules/events/views/scripts/event/index-mobile.phtml:42
-#: application/modules/events/views/scripts/event/index-mobile.phtml:50
-#: application/modules/events/views/scripts/event/index-mobile.phtml:65
-msgid "menu_short_categories"
-msgstr "kategorie"
+msgid "msg_welcome"
+msgstr ""
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:49
+#: application/modules/events/views/scripts/event/index-mobile.phtml:38
 msgid "menu_add_event"
 msgstr "dodaj wydarzenie"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:64
+#: application/modules/events/views/scripts/event/index-mobile.phtml:46
+#: application/modules/members/views/scripts/settings/index-mobile.phtml:6
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:6
+msgid "menu_back_to_previous_page"
+msgstr "powrót"
+
+#: application/modules/events/views/scripts/event/index-mobile.phtml:51
+#: application/modules/members/views/scripts/settings/index-mobile.phtml:5
 msgid "menu_settings"
 msgstr "ustawienia"
 
-#: application/modules/events/views/scripts/event/index.phtml:17
-#, fuzzy
-msgid "item_frequency"
-msgstr "ilość"
-
-#: application/modules/events/views/scripts/event/index.phtml:28
+#: application/modules/events/views/scripts/event/index.phtml:30
 msgid "menu_summary_allevents"
 msgstr "wszystkie wydarzenia"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:5
+#, fuzzy
+msgid "menu_events"
+msgstr "wydarzenie"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:41
+msgid "event_edit_button"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:46
+#, fuzzy
+msgid "event_delete_button"
+msgstr "twoje wydarzenie zostało usunięte"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:53
+msgid "title_question_delete_event"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:56
+#, fuzzy
+msgid "mgs_sure_to_delete?"
+msgstr "twoje wydarzenie zostało usunięte"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:57
+msgid "mgs_no_cancellation_of_action?"
+msgstr ""
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:59
+#, fuzzy
+msgid "button_cancel"
+msgstr "anuluj"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:61
+#, fuzzy
+msgid "action_delete"
+msgstr "utwórz"
+
+#: application/modules/events/views/scripts/event/show-mobile.phtml:62
+msgid "button_confirm?"
+msgstr ""
 
 #: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
 msgid "menu_list_category_to_add_new_events"
@@ -473,6 +573,29 @@ msgstr "zapisz"
 #: application/modules/events/views/scripts/partial/_pageItemGroupForm.phtml:5
 msgid "menu_done"
 msgstr "gotowe"
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:1
+msgid "Welcome to Mylife"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:2
+msgid "you want to add a new event, press the plus button"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:3
+msgid "you want to choose a category, press the categories button"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:4
+msgid ""
+"you want to visualize Yourlife : go to the calendar / graph page within a "
+"category or from the starting page"
+msgstr ""
+
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:5
+#, fuzzy
+msgid "menu_update_profile"
+msgstr "mój profil"
 
 #: application/translations/_XMLforPoedit/categories.xml:4
 msgid "category_art"
@@ -531,56 +654,127 @@ msgid "category_music"
 msgstr "muzyka"
 
 #: application/translations/_XMLforPoedit/categories.xml:18
-msgid "category_restaurant"
+#, fuzzy
+msgid "category_present"
 msgstr "restauracje"
 
 #: application/translations/_XMLforPoedit/categories.xml:19
+msgid "category_restaurant"
+msgstr "restauracje"
+
+#: application/translations/_XMLforPoedit/categories.xml:20
 msgid "category_running"
 msgstr "bieganie"
 
-#: application/translations/_XMLforPoedit/categories.xml:20
+#: application/translations/_XMLforPoedit/categories.xml:21
 msgid "category_social"
 msgstr "aktywności społecznościowe"
 
-#: application/translations/_XMLforPoedit/categories.xml:21
+#: application/translations/_XMLforPoedit/categories.xml:22
 msgid "category_sport"
 msgstr "sport"
 
-#: application/translations/_XMLforPoedit/categories.xml:22
+#: application/translations/_XMLforPoedit/categories.xml:23
 msgid "category_swimming"
 msgstr "pływanie"
 
-#: application/translations/_XMLforPoedit/categories.xml:23
+#: application/translations/_XMLforPoedit/categories.xml:24
 msgid "category_trip"
 msgstr "podróże"
 
-#: application/translations/_XMLforPoedit/categories.xml:24
+#: application/translations/_XMLforPoedit/categories.xml:25
 msgid "category_work"
 msgstr "praca"
 
-#: application/translations/_XMLforPoedit/categories.xml:34
-msgid "item_medicine"
-msgstr "leki"
-
-#: application/translations/_XMLforPoedit/categories.xml:35
+#: application/translations/_XMLforPoedit/categories.xml:36
 msgid "item_quantity"
 msgstr "ilość"
 
-#: application/translations/_XMLforPoedit/categories.xml:36
+#: application/translations/_XMLforPoedit/categories.xml:37
 msgid "item_opinion"
 msgstr "opinia"
 
-#: application/translations/_XMLforPoedit/categories.xml:37
-msgid "item_location"
-msgstr "miejsce"
-
-#: application/translations/_XMLforPoedit/categories.xml:43
+#: application/translations/_XMLforPoedit/categories.xml:47
 msgid "item_company"
 msgstr "firma"
 
-#: application/translations/_XMLforPoedit/categories.xml:44
+#: application/translations/_XMLforPoedit/categories.xml:48
 msgid "item_restaurant"
 msgstr "restauracja"
+
+#: application/translations/_XMLforPoedit/categories.xml:49
+msgid "item_restaurants"
+msgstr "restauracje"
+
+#: application/translations/_XMLforPoedit/categories.xml:52
+#, fuzzy
+msgid "item_mealtype_breakfast"
+msgstr "posiłki"
+
+#: application/translations/_XMLforPoedit/categories.xml:53
+#, fuzzy
+msgid "item_mealtype_lunch"
+msgstr "posiłki"
+
+#: application/translations/_XMLforPoedit/categories.xml:54
+#, fuzzy
+msgid "item_mealtype_dinner"
+msgstr "posiłki"
+
+#: application/translations/_XMLforPoedit/categories.xml:55
+#, fuzzy
+msgid "item_mealtype_brunch"
+msgstr "posiłki"
+
+#: application/translations/_XMLforPoedit/categories.xml:56
+#, fuzzy
+msgid "item_cuisineType_French"
+msgstr "rodzaj kuchni"
+
+#: application/translations/_XMLforPoedit/categories.xml:57
+#, fuzzy
+msgid "item_cuisineType_Italian"
+msgstr "rodzaj kuchni"
+
+#: application/translations/_XMLforPoedit/categories.xml:58
+#, fuzzy
+msgid "item_cuisineType_Vietnamese"
+msgstr "rodzaj kuchni"
+
+#: application/translations/_XMLforPoedit/categories.xml:59
+#, fuzzy
+msgid "item_cuisineType_Japanese"
+msgstr "rodzaj kuchni"
+
+#: application/translations/_XMLforPoedit/categories.xml:60
+#, fuzzy
+msgid "item_cuisineType_indian"
+msgstr "rodzaj kuchni"
+
+#: application/translations/_XMLforPoedit/categories.xml:61
+#, fuzzy
+msgid "item_paracetamol"
+msgstr "cena"
+
+#: application/translations/_XMLforPoedit/categories.xml:62
+#, fuzzy
+msgid "item_aspirine"
+msgstr "cena"
+
+#: application/translations/_XMLforPoedit/categories.xml:63
+#, fuzzy
+msgid "item_typeswimming_crawl"
+msgstr "styl pływacki"
+
+#: application/translations/_XMLforPoedit/categories.xml:64
+#, fuzzy
+msgid "item_typeswimming_breaststroke"
+msgstr "styl pływacki"
+
+#: application/translations/_XMLforPoedit/categories.xml:65
+#, fuzzy
+msgid "item_typeswimming_back"
+msgstr "styl pływacki"
 
 #: application/translations/_XMLforPoedit/validators/alnum.xml:4
 #: application/translations/_XMLforPoedit/validators/digits.xml:10
@@ -738,10 +932,6 @@ msgstr "Zle dane"
 
 #, fuzzy
 #~ msgid "item_people"
-#~ msgstr "strona"
-
-#, fuzzy
-#~ msgid "item_image"
 #~ msgstr "strona"
 
 #~ msgid "fr_FR"

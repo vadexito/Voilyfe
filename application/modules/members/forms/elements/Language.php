@@ -8,6 +8,8 @@
 
 class Members_Form_Elements_Language extends Pepit_Form_Element_Select
 {
+    use Pepit_Locale_Trait;
+    
     public function init()
     {
         $config = new Zend_Config_Xml(
@@ -27,7 +29,8 @@ class Members_Form_Elements_Language extends Pepit_Form_Element_Select
         }
         
         $this->setMultiOptions($localeValues)->setLabel(('menu_language'));                                
-
+        $this->setValue($this->findLocale());
+        
         parent::init();
     }
     

@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <init>
-        <country>
-            <type>
-                <france>
-                    <value>FR</value>
-                </france>
-                <germany>
-                    <value>DE</value>
-                </germany>
-                <poland>
-                    <value>PL</value>
-                </poland>
-                <spain>
-                    <value>ES</value>
-                </spain>
-                <greece>
-                    <value>EL</value>
-                </greece>
-                <belgium>
-                    <value>BE</value>
-                </belgium>
-            </type>
-            <property>value</property>
-            <entityName>ZC\Entity\ItemMulti\Country</entityName>
-        </country>
         <language>
             <type>
                 <french>

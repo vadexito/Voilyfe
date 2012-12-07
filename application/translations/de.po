@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-12-07 00:05+0100\n"
-"PO-Revision-Date: 2012-12-07 00:07+0100\n"
+"POT-Creation-Date: 2012-12-07 14:22+0100\n"
+"PO-Revision-Date: 2012-12-07 14:22+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: german\n"
@@ -17,34 +17,34 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:177
+#: application/Bootstrap.php:178
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
 #: application/modules/access/views/scripts/access/login-mobile.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr "Home"
 
-#: application/Bootstrap.php:186
+#: application/Bootstrap.php:187
 msgid "menu_event"
 msgstr "Ereignis"
 
-#: application/Bootstrap.php:196
+#: application/Bootstrap.php:197
 msgid "menu_event_add"
 msgstr "Ereignis hinzufügen"
 
-#: application/Bootstrap.php:204
+#: application/Bootstrap.php:205
 msgid "menu_metaCategory"
 msgstr "Kategorien"
 
-#: application/Bootstrap.php:214
+#: application/Bootstrap.php:215
 msgid "menu_user"
 msgstr "Benutzer"
 
-#: application/Bootstrap.php:224
+#: application/Bootstrap.php:225
 msgid "menu_logout"
 msgstr "ausloggen"
 
-#: application/Bootstrap.php:232
+#: application/Bootstrap.php:233
 msgid "menu_set_preferences"
 msgstr "Optionen"
 
@@ -85,7 +85,7 @@ msgstr "Passwort"
 #: application/modules/events/forms/ItemRowCreate.php:43
 #: application/modules/events/forms/ItemRowUpdate.php:20
 #: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:39
-#: application/modules/members/forms/SettingsUpdate.php:27
+#: application/modules/members/forms/SettingsUpdate.php:16
 #: application/modules/members/forms/UserUpdate.php:19
 msgid "action_save"
 msgstr "speichern"
@@ -108,7 +108,7 @@ msgstr "Zugang zu diesem Inhalt gesperrt"
 msgid "menu_user_profile"
 msgstr "Benutzerprofil"
 
-#: application/modules/default/views/helpers/LanguageBar.php:57
+#: application/modules/default/views/helpers/LanguageBar.php:47
 msgid "menu_language"
 msgstr "Sprache:"
 
@@ -257,22 +257,14 @@ msgstr "Keine Eregnisse"
 msgid "item_category"
 msgstr "Kategorie"
 
-#: application/modules/members/controllers/SettingsController.php:34
+#: application/modules/members/controllers/SettingsController.php:40
+#, fuzzy
+msgid "msg_user_preferences_saved"
+msgstr "Optionen"
+
 #: application/modules/members/controllers/UserController.php:52
 msgid "msg_user_registered"
 msgstr "Registrierter Benutzer"
-
-#: application/modules/members/forms/SettingsUpdate.php:18
-msgid "answer_yes"
-msgstr "Ja"
-
-#: application/modules/members/forms/SettingsUpdate.php:19
-msgid "answer_no"
-msgstr "Nein"
-
-#: application/modules/members/forms/SettingsUpdate.php:22
-msgid "item_mobile_version"
-msgstr "Mobilversion"
 
 #: application/modules/members/forms/UserRegister.php:49
 #: application/modules/members/forms/UserRegister.php:61
@@ -294,6 +286,11 @@ msgstr "Vorname"
 msgid "item_last_name"
 msgstr "Familienname"
 
+#: application/modules/members/forms/UserRegister.php:107
+#, fuzzy
+msgid "item_country"
+msgstr "Firma"
+
 #: application/modules/members/forms/UserRegister.php:133
 msgid "item_captcha"
 msgstr "Füge das angezeite Wort ein:"
@@ -301,6 +298,18 @@ msgstr "Füge das angezeite Wort ein:"
 #: application/modules/members/forms/UserRegister.php:140
 msgid "action_register"
 msgstr "Registrieren"
+
+#: application/modules/members/forms/elements/SiteVersion.php:18
+msgid "answer_yes"
+msgstr "Ja"
+
+#: application/modules/members/forms/elements/SiteVersion.php:20
+msgid "answer_no"
+msgstr "Nein"
+
+#: application/modules/members/forms/elements/SiteVersion.php:23
+msgid "item_mobile_version"
+msgstr "Mobilversion"
 
 #: application/layouts/scripts/access.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:6
@@ -452,6 +461,7 @@ msgstr "Ereignis hinzufügen"
 
 #: application/modules/events/views/scripts/event/index-mobile.phtml:46
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:6
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:6
 msgid "menu_back_to_previous_page"
 msgstr "zurück"
 
@@ -566,6 +576,11 @@ msgid ""
 "you want to visualize Yourlife : go to the calendar / graph page within a "
 "category or from the starting page"
 msgstr ""
+
+#: application/modules/members/views/scripts/user/edit-mobile.phtml:5
+#, fuzzy
+msgid "menu_update_profile"
+msgstr "Benutzerprofil"
 
 #: application/translations/_XMLforPoedit/categories.xml:4
 msgid "category_art"

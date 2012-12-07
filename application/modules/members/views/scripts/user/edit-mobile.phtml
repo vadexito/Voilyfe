@@ -1,0 +1,8 @@
+<?php 
+    echo $this->partial('partial/_mobilePage.phtml',[
+       'id'         => 'updateProfile',
+       'content'    => $this->form,
+       'title'      => $this->translate('menu_update_profile'),
+       'buttonLeft' => $this->htmlMobileButtonNavBar(['position' => 'left','type' => 1],[],$this->translate('menu_back_to_previous_page'))
+    ]);
+
