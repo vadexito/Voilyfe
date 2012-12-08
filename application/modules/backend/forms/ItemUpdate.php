@@ -12,9 +12,9 @@ class Backend_Form_ItemUpdate extends Backend_Form_ItemCreate
     {
         parent::init();
         $this->removeElement('submit_insert');
-        $this->getElement('name')->setAttrib('readOnly','true');
-        $this->getElement('name')->setFilters(array());
-        $this->getElement('name')->setValidators(array());
+        $this->getElement('name')->setAttrib('readOnly','true')
+                                 ->setFilters([])
+                                 ->setValidators([]);
         
         $submit = new Pepit_Form_Element_Submit('submit_update');
         $submit->setLabel('action_save');

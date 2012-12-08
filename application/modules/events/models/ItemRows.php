@@ -24,13 +24,11 @@ class Events_Model_ItemRows extends Events_Model_Abstract_GeneralizedItemRowsAbs
     
      public function createEntityFromForm()
     {
-        $formValues = $this->getForm()->getValues();
-
         //get container
         $item = $this->getEntityManager()
                          ->getRepository('ZC\Entity\Item')
-                         ->find($formValues['itemId']);
-        unset($formValues['itemId']);
+                         ->find($this->getForm()->getValue('itemId'));
+        
         
         //create new itemrow
         $classItemRow = 
@@ -40,41 +38,21 @@ class Events_Model_ItemRows extends Events_Model_Abstract_GeneralizedItemRowsAbs
                         
         $itemRow = new $classItemRow();
         $itemRow->item = $item;
-        
         $itemRow->creationDate = new \DateTime();
-        
-        //get member and associate with item
-        $itemRow->member = $this->getEntityManager()
-                              ->getRepository('ZC\Entity\Member')
-                              ->find(
-                                    Zend_Auth::getInstance()->getIdentity()->id
-                                );
+        $this->addMember($itemRow);
                                
-        return $this->saveEntityFromForm($formValues,$itemRow);
+        return $this->_saveEntityFromForm($itemRow);
     }
     
-    public function updateEntityFromForm($generalizedItemId)
+    
+    public function _saveEntityFromForm($entity)
     {
-        $formValues = $this->getForm()->getValues();  
+        $entity->modificationDate = new \DateTime();
+        $this->getForm()->removeElement('itemId');
         
-        $generalizedItem = $this->getStorage()->find($generalizedItemId);
-        return $this->saveEntityFromForm($formValues,$generalizedItem);
+        parent::_saveEntityFromForm($entity);
+        return $entity;
     }
-    
-   public function saveEntityFromForm($formValues,$itemRow)
-    {
-        $propertyName = $this->getPropertyName('','');
-        $itemRow->modificationDate = new \DateTime();
-        $itemRow->$propertyName = $formValues[$propertyName];
-        
-        return $itemRow;
-    }
-    
-    static public function getPropertyName($containerName,$itemName)
-    {
-        return 'value';
-    }
-    
     
 }
 

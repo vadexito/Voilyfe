@@ -24,6 +24,7 @@ class Backend_Form_ItemCreate extends Backend_Form_GeneralizedItemCreateAbstract
                             ->findAll();
         $validUnique = new Pepit_Validate_NotInDoctrineArray($generalizedItems,'name');       
         $name           ->setRequired('true')
+                        ->setAttrib('data-property-name','name')
                         ->addFilters(array('StringTrim','StripTags',
                             'StringToLower','Alnum'))
                         ->addValidators(array('notempty',$validUnique));

@@ -167,9 +167,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
     
     public function updateEntityFromForm ($memberId)
     {
-        $member = $this->_repository->find($memberId);
-        
-        return $this->_saveEntityFromForm($member);
+        return $this->_saveEntityFromForm($this->getStorage()->find($memberId));
     }
     
     
@@ -437,4 +435,21 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
                 .  get_class($entity));
         }
     }
+    
+    public function addMember($entity)
+    {
+        if (is_object($entity) && property_exists($entity,'member'))
+        {
+            $entity->member = $this->getEntityManager()
+                        ->getRepository('ZC\Entity\Member')
+                        ->find(Zend_Auth::getInstance()->getIdentity()->id);
+        }
+        else
+        {
+            throw new Pepit_Model_Exception('Addmember requires an entity doctrine or entity has no property member');
+        }
+        
+        
+    }
+    
 }

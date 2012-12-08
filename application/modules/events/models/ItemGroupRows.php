@@ -30,7 +30,7 @@ class Events_Model_ItemGroupRows extends Events_Model_Abstract_GeneralizedItemRo
         $itemGroup = $this->getEntityManager()
                          ->getRepository('ZC\Entity\ItemGroup')
                          ->find($formValues['itemGroupId']);
-        unset($formValues['itemGroupId']);
+        
         
         //create new itemgrouprow
         $classItemGroupRow = 
@@ -39,29 +39,21 @@ class Events_Model_ItemGroupRows extends Events_Model_Abstract_GeneralizedItemRo
             );
         $itemGroupRow = new $classItemGroupRow();
         $itemGroupRow->itemGroup = $itemGroup;
-        
         $itemGroupRow->creationDate = new \DateTime();
         
-        //get member and associate with itemgroup
-        $itemGroupRow->member = $this->getEntityManager()
-                              ->getRepository('ZC\Entity\Member')
-                              ->find(
-                                    Zend_Auth::getInstance()->getIdentity()->id
-                                );
+        $this->addMember($itemGroupRow);
         
-        return $this->saveEntityFromForm($formValues,$itemGroupRow);
+        return $this->_saveEntityFromForm($itemGroupRow);
     }
     
-    public function updateEntityFromForm($generalizedItemId)
+    protected function _saveEntityFromForm($entity)
     {
-        $formValues = $this->getForm()->getValues();  
+        $entity->modificationDate = new \DateTime();
+        $this->getForm()->removeElement('itemGroupId');
         
-        $generalizedItem = $this->getStorage()->find($generalizedItemId);
+        parent::_saveEntityFromForm($entity);
         
-        return $this->saveEntityFromForm($formValues,$generalizedItem);
+        return $entity;
     }
-    
-    
-    
 }
 

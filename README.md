@@ -1,3 +1,3 @@
-# My project
+# Mylife Project
 
-blabla
+Know yourself better through event library by category

@@ -106,8 +106,17 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         {
             if (is_object($entity->$property))
             {
-                return $entity->$property->id;
+                if (property_exists($entity->$property,'id'))
+                {
+                    return $entity->$property->id;
+                }
+                else
+                {
+                    throw new Pepit_Form_Exception('Id property should be defined for : '.$property);
+                }
+                
             }
+            
             return $entity->$property;
             
         }

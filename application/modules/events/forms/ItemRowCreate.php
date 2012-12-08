@@ -21,6 +21,7 @@ class Events_Form_ItemRowCreate extends Zend_Form
         $this->setMethod('post');
 
         $textElement = new Pepit_Form_Element_Text('value');
+        $textElement->setAttrib('data-property-name','value');
         
         //get container entity
         $container = $this->_model->getEntityManager()

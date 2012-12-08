@@ -135,13 +135,13 @@ abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
         );
                         
         $this->addDisplayGroup(array(
-            $typeSQL,
-            $sizeSQL,
-            $nullableSQL,
-            $formLabel,
-            $formMultioptions,
-            $formFilters,
-            $formValidators,
+            $typeSQL->setAttrib('data-property-name','typeSQL'),
+            $sizeSQL->setAttrib('data-property-name','sizeSQL'),
+            $nullableSQL->setAttrib('data-property-name','nullableSQL'),
+            $formLabel->setAttrib('data-property-name','formLabel'),
+            $formMultioptions->setAttrib('data-property-name','formMultioptions'),
+            $formFilters->setAttrib('data-property-name','formFilter'),
+            $formValidators->setAttrib('data-property-name','formValidators'),
         ),'SingleFieldOptions');
         $this ->getDisplayGroup('SingleFieldOptions');
               

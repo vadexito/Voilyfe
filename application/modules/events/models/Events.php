@@ -26,7 +26,6 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
         $category = $this->getEntityManager()
                          ->getRepository('ZC\Entity\Category')
                          ->find($this->getForm()->getValue('categoryId'));
-        $this->getForm()->removeElement('categoryId');
         
         //create new event
         $classEvent = 
@@ -34,18 +33,10 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
                     $category->name
             );
         
-        
-        //get member and associate with event
-        $member = $this->getEntityManager()
-                        ->getRepository('ZC\Entity\Member')
-                        ->find(
-                            Zend_Auth::getInstance()->getIdentity()->id
-        );
-        
         $event = new $classEvent;
         $event->category = $category;
         $event->creationDate = new \DateTime();
-        $event->member = $member;
+        $this->addMember($event);
         
         $this->_saveEntityFromForm($event);
         
@@ -59,16 +50,6 @@ class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstr
         $this->getForm()->removeElement('categoryId');
         
         parent::_saveEntityFromForm($event);
-        return $event;
-    }
-    
-    
-    
-    public function updateEntityFromForm($eventId)
-    {
-        $event = $this->getStorage()->find($eventId);
-        $this->_saveEntityFromForm($event);
-        
         return $event;
     }
     
