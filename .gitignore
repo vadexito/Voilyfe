@@ -177,11 +177,11 @@ docs/
 #############
 ## Libraries
 #############
-library/Zend
-library/Doctrine2
-library/Symphony
-library/Terawurfl
-library/vfsStream
+library/Zend/
+library/Doctrine/
+library/Symphony/
+library/Terawurfl/
+library/vfsStream/
 
 #############
 ## temp and scripts
