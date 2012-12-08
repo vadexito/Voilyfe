@@ -1,4 +1,34 @@
-<h1><?php echo $this->translate('Welcome to Mylife'); ?></h1>
-<p><?php echo $this->translate('you want to add a new event, press the plus button'); ?></p>
-<p><?php echo $this->translate('you want to choose a category, press the categories button'); ?></p>
-<p><?php echo $this->translate('you want to visualize Yourlife : go to the calendar / graph page within a category or from the starting page'); ?></p>
+<div class="ui-body ui-body-d">
+<h3 id="title-description"><?php echo $this->translate('We believe Mylife can help you know yourself better and change your life'); ?></h3>
+<div class="ui-grid-a">
+    <div id="specific-properties" class="ui-block-a">
+        <?php echo $this->widgetFunctionSite([
+            'title' => $this->translate('item_help_build'),
+            'img'   => '/images/help/build.png',
+            'visualFunction'   => '<button data-theme="b" data-mini="true" data-inline="true" data-iconpos="notext" data-icon="plus"></button>',
+            'subtitle' => $this->translate('Add new event and build Your life'),
+            'content' => $this->translate('Browse and choose a category to add new events.')]); ?>
+    </div>
+    <div id="specific-properties" class="ui-block-b">
+       <?php echo $this->widgetFunctionSite([
+            'title' => $this->translate('item_help_categories'),
+            'img'   => '/images/help/categories.png',
+            'visualFunction'   => '<button class="btn-explanation" data-theme="b" data-mini="true" data-inline="true">'.$this->translate('menu_short_categories').'</button>',
+            'subtitle' => $this->translate('Dedicated views for each category for a better experience'),
+            'content' => $this->translate('Each category is designed to give the best experience when browsing your events.')]); ?> 
+    </div>
+</div>
+    <div id="specific-properties" class="ui-block-a">
+        <?php echo $this->widgetFunctionSite([
+            'title' => $this->translate('item_help_visualize'),
+            'img'   => '/images/help/visualize.png',
+            'visualFunction'   => '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-last-events">'
+                . $this->translate('menu_last_events').'</button>'
+                . '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-calendar">'
+                .$this->translate('menu_calendar').'</button>'
+                . '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-graphs">'
+                .$this->translate('menu_graphs').'</button>',
+            'subtitle' => $this->translate('Three views for a complete visualization'),
+            'content' => $this->translate('An event view, a calendar and graphs provide great event visuals.')]); ?>
+    </div>
+</div>

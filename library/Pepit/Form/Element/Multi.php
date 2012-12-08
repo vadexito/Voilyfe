@@ -32,6 +32,8 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
             //add multioptions
             
             $this->addMultiOption(null,$this->getTranslator()->translate('msg_pickup_a_value'));
+            $this->registerInArrayValidator(false);
+            $this->setRequired(false);
             
             foreach($itemRows as $value)
             {

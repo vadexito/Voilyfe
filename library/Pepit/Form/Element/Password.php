@@ -7,12 +7,58 @@
  */
 
 
-class Pepit_Form_Element_Password extends Zend_Form_Element_Password
+class Pepit_Form_Element_Password extends Pepit_Form_Element_Xhtml
 {
-    use Pepit_Form_Element_Trait_Trait,Pepit_Doctrine_Trait;
     
-    public function init()
+    /**
+     * Use formPassword view helper by default
+     * @var string
+     */
+    public $helper = 'formPassword';
+
+    /**
+     * Whether or not to render the password
+     * @var bool
+     */
+    public $renderPassword = false;
+
+    /**
+     * Set flag indicating whether or not to render the password
+     * @param  bool $flag
+     * @return Zend_Form_Element_Password
+     */
+    public function setRenderPassword($flag)
     {
-        Pepit_Form_Element::initFormElement($this);
+        $this->renderPassword = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Get value of renderPassword flag
+     *
+     * @return bool
+     */
+    public function renderPassword()
+    {
+        return $this->renderPassword;
+    }
+
+    /**
+     * Override isValid()
+     *
+     * Ensure that validation error messages mask password value.
+     *
+     * @param  string $value
+     * @param  mixed $context
+     * @return bool
+     */
+    public function isValid($value, $context = null)
+    {
+        foreach ($this->getValidators() as $validator) {
+            if ($validator instanceof Zend_Validate_Abstract) {
+                $validator->setObscureValue(true);
+            }
+        }
+        return parent::isValid($value, $context);
     }
 }

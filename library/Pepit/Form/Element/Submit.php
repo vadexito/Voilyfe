@@ -17,7 +17,7 @@ class Pepit_Form_Element_Submit extends Zend_Form_Element_Submit
     
     protected $_decoratorDefault = array(
             array('ViewHelper'),
-            array('Description',array('tag' => 'p','class' => 'description')),
+            array('Description',array('tag' => 'p','class' => 'description','escape' => false)),
     );
     
     protected $_decoratorMobile = array(

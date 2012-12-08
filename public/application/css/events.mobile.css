@@ -181,16 +181,24 @@ div.row-block
 @media (max-width: 480px) { div,h1{border:5px solid black;} }
 
 */
+
 /*
 ================================================================================
-event index : graphs
+welcome and help presentation
 ================================================================================
 */
-
-#containerslider
+#title-description
 {
-    height: 300px; 
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+    margin-top:50px;
+}
+
+.img-widget-help
+{
+    width: 30%;
+    
+}
+
+.btn-explanation
+{
+    margin-left:20px;
 }

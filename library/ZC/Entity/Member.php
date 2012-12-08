@@ -68,11 +68,6 @@ class Member extends EntityAbstract
      */
     protected $language;
     
-    /**
-     * 
-     * @var Doctrine\Common\Collection\ArrayCollection $persons
-     */    
-    protected $persons = NULL;
     
     /**
      * 
@@ -88,16 +83,10 @@ class Member extends EntityAbstract
     
     public function __construct()
     {
-        $this->persons = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
     
-    public function addPerson($person)
-    {
-        $this->persons[] = $person;
-        $person->member = $this;
-    }
-    
+     
     public function addEvent($event)
     {
         $this->events[] = $event;
@@ -153,11 +142,6 @@ class Member extends EntityAbstract
                 ->build();
             
         
-        $builder->createOneToMany('persons','ZC\Entity\ItemMulti\Person')
-                ->mappedBy('member')
-                ->cascadeRemove()
-                ->build();
-        
         
         $builder->createOneToMany('events','ZC\Entity\Event')
                 ->mappedBy('member')
@@ -184,9 +168,6 @@ class Member extends EntityAbstract
                 ->build();
         
         $builder->addManyToOne('language', 'ZC\Entity\ItemMulti\Language');
-        
-    
-        
     }
     
     public function __toString()

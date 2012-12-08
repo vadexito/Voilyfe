@@ -10,26 +10,8 @@ class Members_Form_UserRegister extends Pepit_Form
         $this->setMethod('post');
         
         $userName = new Members_Form_Elements_UserName('userName');
+        $userPassword = new Members_Form_Elements_UserPassword('userPassword');
         
-        /* password */
-        $userPassword = new Pepit_Form_Element_Password('userPassword',array(
-            'label' => ucfirst($this->getTranslator()->translate('user_password'))
-        ));
-        $validLengthPass = new Zend_Validate_StringLength(array(
-            'min'   => 5,
-            'max'   => 64
-        ));
-        $validateEqualPass = new Pepit_Validate_ValidateEqualPass('confirmPassword');
-        $userPassword->setRequired('true')
-                    ->addFilters(array('StringTrim','StripTags'))
-                    ->addValidators(array($validLengthPass,$validateEqualPass))
-                    ->setAttrib(
-                            'placeholder', 
-                            ucfirst($this->getTranslator()->translate('user_password'))
-                    );
-        
-         
-       
         /* password check */
         $confirmPassword = new Pepit_Form_Element_Password('confirmPassword',array(
             'label' => ucfirst($this->getTranslator()->translate('item_confirmPassword'))
@@ -115,7 +97,7 @@ class Members_Form_UserRegister extends Pepit_Form
 
         if (!Zend_Registry::get('config')->get('register',false) || 
            (Zend_Registry::get('config')->get('register',false) &&
-            Zend_Registry::get('config')->register->form->element->captcha === 'false'))
+            Zend_Registry::get('config')->register->form->element->captcha !== 'false'))
         {
             $this->addElement($captcha);
         }
@@ -141,11 +123,11 @@ class Members_Form_UserRegister extends Pepit_Form
             'By clicking the button, you agree to the %terms1% and to the %terms2%.'
         );
         
-        return preg_replace(
+        return '<small>'.preg_replace(
             '#(%terms1%)(.*)(%terms2%)#',
             $linkTerm.'$2'.$linkPrivatePolicy,
             $tosAndPP
-        );
+        ).'</small>';
     }
 }
 

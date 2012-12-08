@@ -1,0 +1,32 @@
+<ul data-role="listview" data-inset="true">
+    <!-- only the submenu for the options -->
+<?php 
+    $options = array();
+    foreach ($this->container as $page) 
+    {//$a=new Zend_Navigation_Page_Mvc();$a->getController();
+        foreach ($page->getPages() as $subPage)
+        {//var_dump($subPage->getId());
+            $subPage->setCustomHtmlAttribs(['data-ajax' => 'false']);
+            if ($subPage->getId() != 'logout')
+            {
+                $subPage->setCustomHtmlAttribs(['data-ajax' => 'false','data-prefetch' => 'true']);
+            }
+            $line = '    <li>'.$this->navigation()->menu()->htmlify($subPage).'</li>'."\n";
+            if (isset($options[$subPage->getOrder()]))
+            {
+                $options[] = $line;
+            }
+            else
+            {
+                $options[$subPage->getOrder()] = $line;
+            }
+        }
+    }
+    ksort($options);
+    foreach ($options as $option)
+    {
+        echo $option;
+    } ?>
+</ul>
+
+    

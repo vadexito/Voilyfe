@@ -6,7 +6,7 @@
  */
 
 
-class Events_Form_Elements_Quantity extends Pepit_Form_Element_Range
+class Events_Form_Elements_Quantity extends Pepit_Form_Element_RangePlusUnit
 {
 
     public function init()
@@ -17,6 +17,17 @@ class Events_Form_Elements_Quantity extends Pepit_Form_Element_Range
         ));
         parent::init();
     
+        $units=[
+            Zend_Measure_Weight::GRAM,
+            Zend_Measure_Weight::KILOGRAM,
+            Zend_Measure_Weight::MILLIGRAM,
+            Zend_Measure_Weight::ONCE,
+        ];
+        foreach ($units as $unit)
+        {
+            $this->addMultiOption($unit,new Zend_Measure_Weight('0',$unit));
+        }
+        
         $this->setAttribs([
                 'min' => '0',
                 'max' => '200',

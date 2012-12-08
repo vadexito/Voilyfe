@@ -42,12 +42,6 @@ class Member extends \ZC\Entity\Member implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function addPerson($person)
-    {
-        $this->__load();
-        return parent::addPerson($person);
-    }
-
     public function addEvent($event)
     {
         $this->__load();
@@ -81,7 +75,7 @@ class Member extends \ZC\Entity\Member implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'firstName', 'lastName', 'userName', 'userPassword', 'passwordSalt', 'email', 'registeringDate', 'role', 'country', 'persons', 'events', 'itemGroupRows', 'language');
+        return array('__isInitialized__', 'id', 'firstName', 'lastName', 'userName', 'userPassword', 'passwordSalt', 'email', 'registeringDate', 'role', 'country', 'events', 'itemGroupRows', 'language');
     }
 
     public function __clone()

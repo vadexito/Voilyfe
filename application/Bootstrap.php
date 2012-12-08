@@ -26,6 +26,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         include_once 'Pepit/Model/Traits/Doctrine2.php';
         include_once 'Pepit/Doctrine/Trait.php';
         include_once 'Pepit/Locale/Trait.php';
+        include_once 'Pepit/Http/UserAgent/Trait.php';
         include_once APPLICATION_PATH.'/modules/events/controllers/trait/Trait.php';
     }
 
@@ -233,6 +234,22 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $page4_2->setLabel('menu_set_preferences');
         $page4_2->setOrder(1);
         
+        $page4_3 = Zend_Navigation_Page::factory(array(
+            'route' => 'default',
+            'params' => ['module'=> 'events','controller'=> 'help'],
+        ));
+        $page4_3->setId('help');
+        $page4_3->setLabel('menu_help');
+        $page4_3->setOrder(3);
+        
+        $page4_4 = Zend_Navigation_Page::factory(array(
+            'route' => 'member',
+            'params' => ['controller'=> 'data', 'action' => 'index'],
+        ));
+        $page4_4->setId('data');
+        $page4_4->setLabel('menu_data');
+        $page4_4->setOrder(2);
+        
         
         
         $page5 = Zend_Navigation_Page::factory(array(
@@ -276,7 +293,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'order' => 4
         ));
         
-        $page4->addPages(array($page4_1,$page4_2));
+        $page4->addPages(array($page4_1,$page4_2,$page4_3,$page4_4));
         $page5->setPages(array($page5_1,$page5_2,$page5_3,$page5_4,$page5_5));
         $container->setPages(array($page1,$page2,$page2bis,$page3,$page4,$page5));
         

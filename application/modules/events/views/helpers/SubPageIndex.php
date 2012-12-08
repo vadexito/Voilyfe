@@ -56,7 +56,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
             $this->_footer = '_footerCategories.mobile';
         }
         
-        if (!$this->_buttonRight)
+        if ($this->_buttonRight === NULL)
         {
             if ($this->_category->name !=='all')
             {

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mylife Beta1\n"
-"POT-Creation-Date: 2012-12-07 14:22+0100\n"
-"PO-Revision-Date: 2012-12-07 14:22+0100\n"
+"POT-Creation-Date: 2012-12-08 17:17+0100\n"
+"PO-Revision-Date: 2012-12-08 17:17+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: italian\n"
@@ -17,35 +17,45 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/Bootstrap.php:178
+#: application/Bootstrap.php:179
 #: application/layouts/scripts/partial/_footer.mobile.phtml:4
 #: application/modules/access/views/scripts/access/login-mobile.phtml:5
 #: application/modules/members/views/scripts/user/register-mobile.phtml:5
 msgid "menu_home"
 msgstr ""
 
-#: application/Bootstrap.php:187
+#: application/Bootstrap.php:188
 msgid "menu_event"
 msgstr ""
 
-#: application/Bootstrap.php:197
+#: application/Bootstrap.php:198
 msgid "menu_event_add"
 msgstr ""
 
-#: application/Bootstrap.php:205
+#: application/Bootstrap.php:206
 msgid "menu_metaCategory"
 msgstr ""
 
-#: application/Bootstrap.php:215
+#: application/Bootstrap.php:216
 msgid "menu_user"
 msgstr ""
 
-#: application/Bootstrap.php:225
+#: application/Bootstrap.php:226
 msgid "menu_logout"
 msgstr ""
 
-#: application/Bootstrap.php:233
+#: application/Bootstrap.php:234
 msgid "menu_set_preferences"
+msgstr ""
+
+#: application/Bootstrap.php:242
+#: application/modules/events/views/scripts/help/index-mobile.phtml:5
+msgid "menu_help"
+msgstr ""
+
+#: application/Bootstrap.php:250
+#: application/modules/members/views/scripts/data/index-mobile.phtml:5
+msgid "menu_data"
 msgstr ""
 
 #: application/modules/access/controllers/AccessController.php:43
@@ -66,15 +76,15 @@ msgstr ""
 
 #: application/modules/access/forms/Elements/UserName.php:14
 #: application/modules/access/forms/Elements/UserName.php:18
-#: application/modules/members/forms/UserRegister.php:14
-#: application/modules/members/forms/UserRegister.php:25
+#: application/modules/members/forms/Elements/UserName.php:18
+#: application/modules/members/forms/Elements/UserName.php:20
 msgid "user_name"
 msgstr ""
 
 #: application/modules/access/forms/Elements/UserPassword.php:14
 #: application/modules/access/forms/Elements/UserPassword.php:18
-#: application/modules/members/forms/UserRegister.php:30
-#: application/modules/members/forms/UserRegister.php:42
+#: application/modules/members/forms/Elements/UserPassword.php:9
+#: application/modules/members/forms/Elements/UserPassword.php:21
 msgid "user_password"
 msgstr ""
 
@@ -171,7 +181,7 @@ msgstr ""
 msgid "item_meals"
 msgstr ""
 
-#: application/modules/events/forms/Elements/Mealtype.php:20
+#: application/modules/events/forms/Elements/Mealtype.php:19
 #: application/translations/_XMLforPoedit/categories.xml:33
 msgid "item_mealtype"
 msgstr ""
@@ -205,11 +215,12 @@ msgstr ""
 msgid "item_price"
 msgstr ""
 
-#: application/modules/events/forms/Elements/Price.php:39
+#: application/modules/events/forms/Elements/Price.php:44
 msgid "title_amount"
 msgstr ""
 
-#: application/modules/events/forms/Elements/Quantity.php:32
+#: application/modules/events/forms/Elements/Quantity.php:30
+#: application/modules/events/forms/Elements/Quantity_testrangeplusunit.php:41
 msgid "title_total_quantity"
 msgstr ""
 
@@ -244,6 +255,7 @@ msgstr ""
 
 #: application/modules/events/views/helpers/SubPageIndex.php:82
 #: application/modules/events/views/helpers/SubPagesGraphIndex.php:86
+#: application/modules/events/views/scripts/partial/_welcome.phtml:16
 msgid "menu_short_categories"
 msgstr ""
 
@@ -261,51 +273,55 @@ msgstr ""
 msgid "msg_user_preferences_saved"
 msgstr ""
 
-#: application/modules/members/controllers/UserController.php:52
+#: application/modules/members/controllers/UserController.php:54
 msgid "msg_user_registered"
 msgstr ""
 
-#: application/modules/members/forms/UserRegister.php:49
-#: application/modules/members/forms/UserRegister.php:61
+#: application/modules/members/forms/UserRegister.php:17
+#: application/modules/members/forms/UserRegister.php:29
 msgid "item_confirmPassword"
 msgstr ""
 
-#: application/modules/members/forms/UserRegister.php:68
-#: application/modules/members/forms/UserRegister.php:75
-msgid "item_email"
-msgstr ""
-
-#: application/modules/members/forms/UserRegister.php:81
-#: application/modules/members/forms/UserRegister.php:89
+#: application/modules/members/forms/UserRegister.php:36
+#: application/modules/members/forms/UserRegister.php:44
 msgid "item_first_name"
 msgstr ""
 
-#: application/modules/members/forms/UserRegister.php:94
-#: application/modules/members/forms/UserRegister.php:102
+#: application/modules/members/forms/UserRegister.php:50
+#: application/modules/members/forms/UserRegister.php:58
 msgid "item_last_name"
 msgstr ""
 
-#: application/modules/members/forms/UserRegister.php:107
-msgid "item_country"
-msgstr ""
-
-#: application/modules/members/forms/UserRegister.php:133
+#: application/modules/members/forms/UserRegister.php:75
 msgid "item_captcha"
 msgstr ""
 
-#: application/modules/members/forms/UserRegister.php:140
+#: application/modules/members/forms/UserRegister.php:82
 msgid "action_register"
 msgstr ""
 
-#: application/modules/members/forms/elements/SiteVersion.php:18
-msgid "answer_yes"
+#: application/modules/members/forms/UserRegister.php:117
+msgid "Terms of Service"
 msgstr ""
 
-#: application/modules/members/forms/elements/SiteVersion.php:20
-msgid "answer_no"
+#: application/modules/members/forms/UserRegister.php:120
+msgid "Privacy Policy"
 msgstr ""
 
-#: application/modules/members/forms/elements/SiteVersion.php:23
+#: application/modules/members/forms/UserRegister.php:123
+msgid "By clicking the button, you agree to the %terms1% and to the %terms2%."
+msgstr ""
+
+#: application/modules/members/forms/Elements/Country.php:9
+msgid "item_country"
+msgstr ""
+
+#: application/modules/members/forms/Elements/Email.php:12
+#: application/modules/members/forms/Elements/Email.php:14
+msgid "item_email"
+msgstr ""
+
+#: application/modules/members/forms/Elements/SiteVersion.php:24
 msgid "item_mobile_version"
 msgstr ""
 
@@ -450,6 +466,8 @@ msgid "menu_add_event"
 msgstr ""
 
 #: application/modules/events/views/scripts/event/index-mobile.phtml:46
+#: application/modules/events/views/scripts/help/index-mobile.phtml:6
+#: application/modules/members/views/scripts/data/index-mobile.phtml:6
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:6
 #: application/modules/members/views/scripts/user/edit-mobile.phtml:6
 msgid "menu_back_to_previous_page"
@@ -520,14 +538,17 @@ msgid "menu_list_meta_category"
 msgstr ""
 
 #: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:6
+#: application/modules/events/views/scripts/partial/_welcome.phtml:26
 msgid "menu_last_events"
 msgstr ""
 
 #: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:7
+#: application/modules/events/views/scripts/partial/_welcome.phtml:28
 msgid "menu_calendar"
 msgstr ""
 
 #: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:8
+#: application/modules/events/views/scripts/partial/_welcome.phtml:30
 msgid "menu_graphs"
 msgstr ""
 
@@ -548,22 +569,47 @@ msgstr ""
 msgid "menu_done"
 msgstr ""
 
-#: application/modules/events/views/scripts/partial/_welcome.phtml:1
-msgid "Welcome to Mylife"
-msgstr ""
-
 #: application/modules/events/views/scripts/partial/_welcome.phtml:2
-msgid "you want to add a new event, press the plus button"
-msgstr ""
-
-#: application/modules/events/views/scripts/partial/_welcome.phtml:3
-msgid "you want to choose a category, press the categories button"
-msgstr ""
-
-#: application/modules/events/views/scripts/partial/_welcome.phtml:4
 msgid ""
-"you want to visualize Yourlife : go to the calendar / graph page within a "
-"category or from the starting page"
+"We believe Mylife can help you know yourself better and change your life"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:6
+msgid "item_help_build"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:9
+msgid "Add new event and build Your life"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:10
+msgid "Browse and choose a category to add new events."
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:14
+msgid "item_help_categories"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:17
+msgid "Dedicated views for each category for a better experience"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:18
+msgid ""
+"Each category is designed to give the best experience when browsing your "
+"events."
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:23
+msgid "item_help_visualize"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:31
+msgid "Three views for a complete visualization"
+msgstr ""
+
+#: application/modules/events/views/scripts/partial/_welcome.phtml:32
+msgid "An event view, a calendar and graphs provide great event visuals."
 msgstr ""
 
 #: application/modules/members/views/scripts/user/edit-mobile.phtml:5
