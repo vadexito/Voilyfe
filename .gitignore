@@ -179,7 +179,7 @@ docs/
 #############
 library/Zend/
 library/Doctrine/
-library/Symphony/
+library/Symfony/
 library/Terawurfl/
 library/vfsStream/
 
