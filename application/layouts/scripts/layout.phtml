@@ -12,7 +12,8 @@
         </header>
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
-                <?php echo $this->partial('partial/_hNav.phtml') ?>
+                <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
+                      echo $this->listCategories('partial/_navDropdown.phtml','backend');?>
             </div>
         </nav>
         <div class="container-fluid">

@@ -7,7 +7,8 @@
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <?php echo $this->partial('partial/_hNav.phtml') ?>
+                    <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
+                          echo $this->listCategories('partial/_navDropdown.phtml','backend');?>
                 </div>
             </div>
         </nav>
@@ -17,7 +18,7 @@
                     <div class="row-fluid">
                         <?php echo $this->partial('partial/_vNav.phtml') ?>
                     </div>
-                    <?php if (!isset($this->form) && ($this->category->name != 'all') && ($this->category->categories->count()=== 0)) : ?>
+                    <?php if (!isset($this->form) && isset($this->category) && ($this->category->categories->count()=== 0)) : ?>
                     <div class="row-fluid">
                         <?php echo $this->buttonNewEvent($this->category->id); ?>
                      </div>
