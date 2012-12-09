@@ -8,7 +8,7 @@
 
 
 
-class Events_Form_ItemRowCreate extends Zend_Form
+class Events_Form_ItemRowCreate extends Pepit_Form
 {
     
     protected $_containerId;
@@ -22,13 +22,15 @@ class Events_Form_ItemRowCreate extends Zend_Form
 
         $textElement = new Pepit_Form_Element_Text('value');
         $textElement->setAttrib('data-property-name','value');
+        $textElement->addDecorator('label',['placement'=>'prepend']);
+                    
         
         //get container entity
         $container = $this->_model->getEntityManager()
                             ->getRepository('ZC\Entity\Item')
                             ->find($this->_containerId);
                     
-        $textElement->setLabel($container->name);
+        $textElement->setLabel('Value for item row of element '.$container->name.'');
         
         
         $containerId = new Zend_Form_Element_Hidden(

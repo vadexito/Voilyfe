@@ -6,7 +6,7 @@
  * @author     DM
  */
 
-class Events_Model_Events extends Events_Model_Abstract_GeneralizedItemRowsAbstract
+class Events_Model_Events extends Pepit_Model_Doctrine2
 {
     
     protected $_formClasses = array(

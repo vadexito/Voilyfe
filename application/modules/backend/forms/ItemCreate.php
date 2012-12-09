@@ -18,6 +18,7 @@ class Backend_Form_ItemCreate extends Backend_Form_GeneralizedItemCreateAbstract
         $name = new Pepit_Form_Element_Text('name',array(
             'label' => 'Name (small letter only): '
         ));
+        $name->addDecorator('label',['placement'=>'append']);
         
         //define validator for uniqueness
         $generalizedItems = $this ->_em->getRepository('ZC\Entity\GeneralizedItem')

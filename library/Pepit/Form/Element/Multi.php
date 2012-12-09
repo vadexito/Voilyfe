@@ -104,17 +104,31 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
         $property = $this->getAttrib('data-property-name');
         if ($property && property_exists($entity,$property))
         {
-            if (is_object($entity->$property))
+            $value = $entity->$property;
+            if (is_object($value))
             {
-                if (property_exists($entity->$property,'id'))
+                //array collection
+                if (method_exists($value,'count'))
                 {
-                    return $entity->$property->id;
+                    $ids = [];
+                    foreach ($value as $subvalue)
+                    {
+                        $ids[] = $subvalue->id;
+                    }
+                    return $ids;
                 }
+                //entity
                 else
                 {
-                    throw new Pepit_Form_Exception('Id property should be defined for : '.$property);
+                    if (property_exists($entity->$property,'id'))
+                    {
+                        return $entity->$property->id;
+                    }
+                    else
+                    {
+                        throw new Pepit_Form_Exception('Id property should be defined for : '.$property);
+                    }
                 }
-                
             }
             
             return $entity->$property;

@@ -37,4 +37,9 @@ Trait Pepit_Model_Traits_Doctrine2
         $this->_em = $em;
     }
     
+    static public function getPropertyName($containerName,$itemName)
+    {
+        return $containerName.'_'.$itemName;
+    }
+    
 }
