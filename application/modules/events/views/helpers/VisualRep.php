@@ -69,17 +69,25 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
         $list = '';
         $htmlTag = key_exists('htmlTag', $this->_options) ? 
             $this->_options['htmlTag'] : 'div';
-                
+            
+        $attribs = [
+            'href'          => '#',
+            'data-ajax'     => 'false',
+            'class'         => 'winner-list-line'
+        ];
+        
+        
         $title = key_exists('title',$dataChart) ? $dataChart['title'] : '';
-        foreach ($dataChart['values'] as $value => $freq)
+        foreach ($dataChart['values'] as $value => $data)
         {
             if ($value)
             {
-                $href='#';
+                $attribs['data-events'] = Zend_Json::encode($data['events']);
+                
                 $list .= '<li>
-                    <a href="'.$href.'" data-ajax="false">
+                    <a'. $this->_htmlAttribs($attribs).'>
                     <h3>'.$value. '</h3>'."\n"
-                    . '<span class="ui-li-count">'.$freq.'</span>'."\n"
+                    . '<span class="ui-li-count">'.$data['count'].'</span>'."\n"
                     . "\t". '</a>'."\n"
                     . "\t".'</li>'."\n";
             }

@@ -81,6 +81,7 @@ SUBPAGE CALENDAR : draw calendar
 
         
     }
-
+    
+    new IndexView({el:$('body')});
 	
 }); 				

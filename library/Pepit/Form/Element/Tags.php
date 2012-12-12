@@ -215,40 +215,63 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         $propertyTag = $this->_containerType === 'itemGroup' ? 
             $this->_itemName.'_name' : 'value';
         
+        
         foreach ($events as $event)
         {
             if ($event->$property)
             {
                 if (!method_exists($event->$property,'count'))
                 {
-                    if ($event->$property->$propertyTag)
-                    {
-                        $tags[] = $event->$property->$propertyTag;
-                    }
+                    $tag = $event->$property->$propertyTag;
+                    $tags = $this->_addTag($event, $tags, $tag);
+                    
                 }
                 else
                 //case of an array collection
                 {
                     foreach ($event->$property as $tag)
                     {
-                        if ($tag->$propertyTag)
-                        {
-                            $tags[] = $tag->$propertyTag;
-                        }
+                        $tags = $this->_addTag(
+                                $event,
+                                $tags,
+                                $tag->$propertyTag
+                        );
                     }
                 }
             }
         }
         
-        $entities = array_count_values($tags);
-        arsort($entities);
+        uasort($tags,function($a,$b){
+            return $b['count'] - $a['count'];
+        });
       
         return [
             'type'  =>'winner_list',
             'title' => ucfirst($this->getLabel()),
-            'values'=> $entities
+            'values'=> $tags
         ];
         
+    }
+    
+    protected function _addTag($event,$tags,$tag)
+    {
+        if ($tag)
+        {
+            if (key_exists($tag,$tags))
+            {
+                $tags[$tag]['count']++;
+                $tags[$tag]['events'][] = $event->id;
+            }
+            else
+            {
+                $tags[$tag] = [
+                    'count' => 1,
+                    'events' => [$event->id],
+                ];
+            }
+        }
+        
+        return $tags;
     }
     
     protected function _getEntities()
