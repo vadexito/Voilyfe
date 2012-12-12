@@ -18,11 +18,7 @@
                     <div class="row-fluid">
                         <?php echo $this->partial('partial/_vNav.phtml') ?>
                     </div>
-                    <?php if (!isset($this->form) && isset($this->category) && ($this->category->categories->count()=== 0)) : ?>
-                    <div class="row-fluid">
-                        <?php echo $this->buttonNewEvent($this->category->id); ?>
-                     </div>
-                    <?php endif; ?>
+                    <?php echo $this->buttonNewEvent(); ?>
                     <div class="row-fluid">   
                         <div id="calendar-events" class="pull-right">
                             <div id="calendarBiMonth"></div>
