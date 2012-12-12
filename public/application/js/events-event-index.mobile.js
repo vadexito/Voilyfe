@@ -75,7 +75,7 @@ SUBPAGE CALENDAR : draw calendar
             }
 
             if ( passed.method === 'postrefresh') {
-                addLinkToCalEvent()
+                addLinkToCalEvent();
             }
         });
 

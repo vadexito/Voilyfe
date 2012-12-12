@@ -6,7 +6,7 @@
  * @author     DM
  */
 
-class Events_Model_ItemRows extends Events_Model_Abstract_GeneralizedItemRowsAbstract
+class Events_Model_ItemRows extends Pepit_Model_Doctrine2
 {
     
     protected $_formClasses = array(
@@ -21,8 +21,7 @@ class Events_Model_ItemRows extends Events_Model_Abstract_GeneralizedItemRowsAbs
      */
     protected $_storageName = 'ZC\Entity\ItemRow';
     
-    
-     public function createEntityFromForm()
+    public function createEntityFromForm()
     {
         //get container
         $item = $this->getEntityManager()

@@ -85,17 +85,17 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             //if the element is new
             if (array_key_exists('new',$tagElement))
             {
+                $model = clone $this->_model;
+                $model->bindToForm(clone $this->_model->getForm());
                 
-                if ($this->_model->getForm()->isValid($tagElement['new']))
+                if ($model->getForm()->isValid($tagElement['new']))
                 {
-                    $tag = $this->_model
-                                ->getStorage()
-                                ->find($this->_model->insert());
+                    $tag = $model->getStorage()->find($model->insert());
                 }
                 else
                 {
                     $errors = array();
-                    foreach ($this->_model->getForm()->getErrors() as $key => $item)
+                    foreach ($model->getForm()->getErrors() as $key => $item)
                     {
                         if ($item)
                         {

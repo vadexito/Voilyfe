@@ -22,8 +22,8 @@
     
     //sorting lines of categories, the first being the most used
     //(with the most events)
-    usort($singleCat,"Layout_View_Helper_ListCategories::compEvents");
-    usort($metaCat,"Layout_View_Helper_ListCategories::compEvents");
+    usort($singleCat,"Events_View_Helper_ListCategories::compEvents");
+    usort($metaCat,"Events_View_Helper_ListCategories::compEvents");
     
     // some lines are show, the rest being in a collapsible set
     $lineShown = $config->categories->list->lines->show;
