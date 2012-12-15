@@ -8,7 +8,14 @@ $this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
 $this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
 
 $this->inlineScript()->offsetSetFile(150,'/js/mvc/views/eventListView.js');
-$this->inlineScript()->offsetSetFile(151,'/js/mvc/views/indexView.js');
+$this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
+$this->inlineScript()->offsetSetFile(152,'/js/mvc/views/propertyView.js');
+$this->inlineScript()->offsetSetFile(153,'/js/mvc/views/eventListItemView.js');
+$this->inlineScript()->offsetSetFile(157,'/js/mvc/views/pageView.js');
+$this->inlineScript()->offsetSetFile(154,'/js/mvc/models/event.js');
+$this->inlineScript()->offsetSetFile(155,'/js/mvc/models/events.js');
+$this->inlineScript()->offsetSetFile(156,'/js/mvc/models/page.js');
+$this->inlineScript()->offsetSetFile(149,'/js/mvc/utils/close.js');
 
 
 if ($this->events)
@@ -39,6 +46,10 @@ else //if no event to show
         'active'    => 'last-events',
         'title'     => ucfirst($this->translate('msg_welcome')),
     ]);
+    
+    
+    
+    
 }
     echo $this->subPageIndex($this->category,'list_singleCategories',[
         'content'   => $this->listCategories('partial/_categoriesNewEventMenu.phtml','eventAdd'),
@@ -59,32 +70,32 @@ else //if no event to show
         'active'    => 'options',
         'buttonRight' => '',
     ]);
-    echo $this->subPageIndex($this->category,'event-list-page',[
-        'content'   => '<ul id="event-list" data-role="listview"></ul>',
-        'title'     => 'blabla',
-        'active'    => 'graphs',
-        'buttonRight' => '',
-    ]);
+    
 ?>
      
     <span id="dataToClientSide" data-categoryId="<?php echo $this->category->id; ?>"></span>
-    <script type="text/template" id="event-line-template">
-        <li class="event-line">
-            <a data-ajax="false" class="event-line-link" href="<%= href %>">
-                <img  src="<%= imgSrc %>" />
-                <h4><%= mainTitle %></h4>
-                <p>
-                    <strong>
-                        <%= commonProperties %>
-                    </strong>
-                </p>
-                <p>
-                    <%= specificProperties %>
-                </p>
-                <p class="ui-li-aside"><strong><%= aside %></strong></p>  
-            </a>
-        </li>
-    </script>
-    <script type="text/template" id="event-property-template">
+    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'last-events-page-template']);
+        echo $this->subPageIndex($this->category,'<%= id %>',[
+            'content'       => '',
+            'title'         => '<%= title %>',
+            'active'        => 'graphs',
+            'buttonRight'   => '',
+            'noWrap'        => true
+        ]);
+        $this->inlineScript()->captureEnd()?>
+    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-line-template'])?>
+        <a data-ajax="false" class="event-line-link" href="<%= href %>">
+            <img  src="<%= imgSrc %>" />
+            <h4><%= title %></h4>
+            <p>
+                <strong><%= commonProperties %></strong>
+            </p>
+            <p>
+                <%= specificProperties %>
+            </p>
+            <p class="ui-li-aside"><strong><%= aside %></strong></p>  
+        </a>
+    <?php $this->inlineScript()->captureEnd()?>
+    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-property-template'])?>
         <img src="/images/icons/nav_bar/<%= srcIcon %>" style="width:15px;height:15px;"/><%= content %>
-    </script>
+    <?php $this->inlineScript()->captureEnd()?>

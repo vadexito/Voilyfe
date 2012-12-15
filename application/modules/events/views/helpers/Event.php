@@ -39,8 +39,6 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     }
     
     
-    
-    
     /**
      * show single line of event (<li> tag)
      * 
@@ -58,17 +56,35 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
         
         $this->setPathIconCategory()->setPathIconItem();
         $categoryName = 'category_'.$event->category->name;
-   
-        return $this->renderLine(
-            $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL,
-            $this->renderCommonProperties(),
-            $this->renderSpecificProperties(),
-            $this->_getHref($this->view->all),
-            ''
-        );
+        $commonProperties = $this->commonProperties();
+        unset($commonProperties['date']);
+        $category = $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL;
+        
+        return $this->renderLine([
+            'title'         => rtrim(implode(' - ',[$this->localDate(),$category]),' - '),
+            'subTitle'      => $this->renderProperties($commonProperties),
+            'content'       => $this->renderProperties($this->specificProperties()),
+            'href'         =>$this->_getHref($this->view->all),
+            'aside'         => ''
+        ]);
     }
     
-    
+    public function eventForFront()
+    {
+        $categoryName = 'category_'.$this->_event->category->name;
+        $category = $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL;
+        
+        return [
+            'id'                    => $this->_event->id,
+            'href'                  => '#',
+            'imgSrc'                => $this->_getThumbnailSrc(),
+            'title'                 => $category,
+            'commonProperties'      => $this->commonProperties(),
+            'specificProperties'    => $this->specificProperties(),
+            'aside'                 => '',
+        ];
+    }
+              
     protected function _initModel()
     {
         $this->_model = new Events_Model_Events();
@@ -147,12 +163,14 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
      * @param string $imgSrc
      * @return string
      */
-    public function renderLine($title,$subTitle,$content,$href,$aside)
+    public function renderLine($options)
     {
+        extract($options); //title,subtitle,content,href,aside
+        
         return '<li class="event-line">
         <a data-ajax="false" class="event-line-link" href="'.$href.'">'
             .$this->renderUserImageThumbnail()
-            .'<h4>'. rtrim(implode(' - ',[$this->localDate(),$title]),' - ') .'</h4>'
+            .'<h4>'. $title .'</h4>'
             .'<p><strong>&nbsp '.$subTitle.'</strong></p>
             <p>'.$content.'</p>
             <p class="ui-li-aside">'. $aside .'<strong></strong></p>
@@ -193,22 +211,19 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     public function specificProperties()
     {
         $event = $this->_event;
-        $properties = array();
+        $properties = [];
         foreach ($event->category->items as $item)
         {
             $property = Events_Model_Events::getPropertyName($event->category->name,$item->name);
-            $properties[$item->name]= $this->_renderPropertyWithIcon($event, $property);
+            $properties[$item->name]= [
+                'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$property)
+                ),
+                'srcIcon'   => $this->_getSrcIcon($property)
+            ];
         }
         
         return $properties;
     }
-    
-    
-    public function renderSpecificProperties()
-    {
-        return implode(', ',array_filter(array_values($this->specificProperties())));
-    }
-    
     
     public function localDate($format = NULL)
     {
@@ -231,32 +246,38 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     public function commonProperties()
     {
         $properties = [];
-        
         $properties['date'] = $this->localDate();
         
         foreach (['location','persons','tags'] as $item)
         {
-            $properties[$item]= $this->_renderPropertyWithIcon($this->_event,$item);
+            $properties[$item]= [
+                'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$item)),
+                'srcIcon'   => $this->_getSrcIcon($item),
+            ];
         }
         
         return $properties;
     }
     
-    public function renderCommonProperties()
+    public function renderProperties($properties)
     {
-        $commonProperty = $this->commonProperties();
-        unset($commonProperty['date']);
-        return implode(', ',array_filter(array_values($commonProperty)));
-    }
-    
-    protected function _renderPropertyWithIcon($event,$property)
-    {
-        $string = Pepit_Doctrine_Tool::toString($event,$property);
-        if (!$string)
+        $html = [];
+        foreach ($properties as $property)
         {
-            return '';
+            if ($property['value'])
+            {
+                $html[]= '<img src="'
+                . $property['srcIcon'] 
+                .'" style="width:15px;height:15px;"/> '
+                .$this->view->escape($property['value']);
+            }
         }
         
+        return implode(', ',$html);
+    }
+    
+    protected function _getSrcIcon($property)
+    {
         //try with the property name (specific property)
         $relativePath = sprintf($this->getPathIconItem(),ucfirst($property));
         $iconFile = APPLICATION_PATH.'/../public'.$relativePath;
@@ -271,10 +292,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             $src = sprintf($this->getPathIconItem(),$property);
         }
         
-        return '<img src="'
-            . $src 
-            .'" style="width:15px;height:15px;"/> '
-            .$this->view->escape($this->view->translate($string));
+        return $src;
     }
     
     public function badgeCatDate()

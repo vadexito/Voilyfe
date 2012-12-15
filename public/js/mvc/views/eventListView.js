@@ -2,25 +2,25 @@ window.EventListView = Backbone.View.extend({
     
     initialize: function(){
         
-        this.template = _.template( $("#event-line-template").html());
-        
     },
     
-    el: '#event-list',
+    tagName: 'ul',
+    attributes: {
+        'id'  : 'event-list',
+        'data-role'  : 'listview'
+    },
+
+    
     
     render: function(){
-        this.$el.html( this.template ({
-            href :"test",
-            imgSrc :"test",
-            mainTitle :"test",
-            commonProperties : 'j',
-            specificProperties : 'j'
-        }) );
+        
+        _.each(this.model.models,function(event){
+            
+        this.$el.append(new EventListItemView({model:event}).render()); 
+        },this);
         
         return this.el;
     }
-    
-    
     
 });
 

@@ -6,7 +6,6 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
     const VISUAL_TYPE_GOOGLE_CHART = 'google_chart';
     const VISUAL_TYPE_WINNER_LIST = 'winner_list';
     
-    
     protected $_options;
     protected $_formElement;
     protected $_id = NULL;
@@ -73,7 +72,8 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
         $attribs = [
             'href'          => '#',
             'data-ajax'     => 'false',
-            'class'         => 'winner-list-line'
+            'class'         => 'winner-list-line',
+            'data-item'     => $this->_formElement->getId()
         ];
         
         

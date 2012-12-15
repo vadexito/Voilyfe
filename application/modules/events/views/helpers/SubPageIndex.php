@@ -12,9 +12,10 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
     protected $_content = '';
     protected $_footer = NULL;
     protected $_title = NULL;
+    protected $_noWrap = NULL;
     
     protected $_possibleOptions = ['active','content','footer','title',
-            'buttonRight','buttonLeft'];
+            'buttonRight','buttonLeft','noWrap'];
     
     public function subPageIndex($category,$id = NULL,$options = [])
     {
@@ -43,7 +44,8 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
                'title'      => $this->_title,
                'buttonLeft' => $this->_buttonLeft,
                'buttonRight'=> $this->_buttonRight,
-               'footer'     => $this->_footer 
+               'footer'     => $this->_footer ,
+               'noWrap'     => $this->_noWrap 
             ]
         );
     }

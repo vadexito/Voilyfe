@@ -1,12 +1,12 @@
-<ul data-role="listview">
+
 <?php
+    $list = '';
     $filterMonth = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::MONTH_NAME));
     $filterYear = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::YEAR));
     
-    $events = $this->events;
-    
     $month = null;
     $year = null;
+    $eventsForFront = [];
     foreach ($this->events as $event)
     {
         //we put a divider each month
@@ -15,9 +15,16 @@
         {
             $month = $filterMonth->filter($event->date);
             $year = $filterYear->filter($event->date);
-            echo '<li data-role="list-divider">'.$month.' '.$year.'</li>';
+            $list .= '<li data-role="list-divider">'.$month.' '.$year.'</li>';
         }
-        echo $this->event($event)->eventLine();
+        $list .= $this->event($event)->eventLine();
+        $eventsForFront[]  = $this->event($event)->eventForFront();
         
-    }?>
+    }
+    
+    $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(102,'var lastEvents = '.Zend_Json::encode($eventsForFront).';','text/javascript',['noescape'=>'true','id' => 'last-events-list']);
+?>
+        
+<ul data-role="listview" id="last-events-list">    
+    <?php echo $list; ?>
 </ul>

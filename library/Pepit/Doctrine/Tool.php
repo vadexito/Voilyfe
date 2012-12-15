@@ -52,10 +52,11 @@ class Pepit_Doctrine_Tool
         {
             return $element->__toString();
         }
-        else
+        else 
         {
-            return $element;
+            return (string)$element;
         }
+        
         
     }
     
