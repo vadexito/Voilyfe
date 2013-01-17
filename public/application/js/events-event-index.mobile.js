@@ -82,6 +82,11 @@ SUBPAGE CALENDAR : draw calendar
         
     }
     
+/*
+================================================================================
+SUBPAGE GRAPHS : ranking events link and generation of event page (one event)
+================================================================================
+*/   
     new IndexView({el:$('body')});
 	
 }); 				

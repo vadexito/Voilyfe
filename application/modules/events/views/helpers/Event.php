@@ -7,7 +7,7 @@
  */
 
 
-class Events_View_Helper_Event extends Zend_View_Helper_Abstract
+class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
 {
     protected $_pathIconCategory = NULL;
     protected $_pathIconItem = NULL;
@@ -64,7 +64,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
             'title'         => rtrim(implode(' - ',[$this->localDate(),$category]),' - '),
             'subTitle'      => $this->renderProperties($commonProperties),
             'content'       => $this->renderProperties($this->specificProperties()),
-            'href'         =>$this->_getHref($this->view->all),
+            'href'         =>$this->getHref($this->view->all),
             'aside'         => ''
         ]);
     }
@@ -91,7 +91,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     }
     
     
-    protected function _getHref($allOption)
+    public function getHref($allOption)
     {
         $options = [
             'action'=>'show','containerId'=>$this->_event->category->id,
@@ -167,8 +167,15 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     {
         extract($options); //title,subtitle,content,href,aside
         
+        $attribs = [
+            'data-ajax'     => 'false',
+            'class'         => 'event-line-link',
+            'href'          => $href,
+            'data-eventid'  => $this->_event->id,
+        ];
+        
         return '<li class="event-line">
-        <a data-ajax="false" class="event-line-link" href="'.$href.'">'
+        <a '. $this->_htmlAttribs($attribs).'>'
             .$this->renderUserImageThumbnail()
             .'<h4>'. $title .'</h4>'
             .'<p><strong>&nbsp '.$subTitle.'</strong></p>
@@ -241,12 +248,16 @@ class Events_View_Helper_Event extends Zend_View_Helper_Abstract
     /**
      * return array from common properties location, persons, date, tasg
      * 
-     * @param array $array
+     * @param boolean $includeDate whether or not to include the date in the 
+     * property set
      */
-    public function commonProperties()
+    public function commonProperties($includeDate= true)
     {
         $properties = [];
-        $properties['date'] = $this->localDate();
+        if ($includeDate)
+        {
+            $properties['date'] = $this->localDate();
+        }
         
         foreach (['location','persons','tags'] as $item)
         {

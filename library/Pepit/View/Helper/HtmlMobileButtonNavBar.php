@@ -5,6 +5,7 @@ class Pepit_View_Helper_HtmlMobileButtonNavBar extends Zend_View_Helper_HtmlElem
     
     protected $_position = 'right';
     
+    
     const TYPE_BUTTON_BACK = 1;
     const TYPE_BUTTON_ADD_NEW_EVENT = 2;
     const TYPE_BUTTON_NONE = 3;
@@ -17,11 +18,14 @@ class Pepit_View_Helper_HtmlMobileButtonNavBar extends Zend_View_Helper_HtmlElem
             $this->_position = $options['position'];
         }
         
+        
         $attribs = array_merge($attribs,[
             'data-theme'    => 'b',
             'data-ajax'     => 'false',
             'class'         => 'ui-btn-'.$this->getPosition(),
         ]);
+        
+        
         
         if (array_key_exists('type',$options))
         {

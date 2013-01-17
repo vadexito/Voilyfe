@@ -12,8 +12,10 @@ $this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
 $this->inlineScript()->offsetSetFile(152,'/js/mvc/views/propertyView.js');
 $this->inlineScript()->offsetSetFile(153,'/js/mvc/views/eventListItemView.js');
 $this->inlineScript()->offsetSetFile(157,'/js/mvc/views/pageView.js');
+$this->inlineScript()->offsetSetFile(159,'/js/mvc/views/eventView.js');
 $this->inlineScript()->offsetSetFile(154,'/js/mvc/models/event.js');
 $this->inlineScript()->offsetSetFile(155,'/js/mvc/models/events.js');
+$this->inlineScript()->offsetSetFile(158,'/js/mvc/models/pages.js');
 $this->inlineScript()->offsetSetFile(156,'/js/mvc/models/page.js');
 $this->inlineScript()->offsetSetFile(149,'/js/mvc/utils/close.js');
 
@@ -45,6 +47,9 @@ else //if no event to show
         'content'   => $this->partial('partial/_welcome.phtml'),
         'active'    => 'last-events',
         'title'     => ucfirst($this->translate('msg_welcome')),
+        'popups'    => [
+                    ['attribs' => ['id' => 'bla'],'content' => 'bla']
+        ]
     ]);
     
     
@@ -84,7 +89,7 @@ else //if no event to show
         ]);
         $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-line-template'])?>
-        <a data-ajax="false" class="event-line-link" href="<%= href %>">
+        <a data-ajax="false" class="event-line-link" href="<%= href %>" data-eventId="<%= eventId %>">
             <img  src="<%= imgSrc %>" />
             <h4><%= title %></h4>
             <p>
@@ -98,4 +103,31 @@ else //if no event to show
     <?php $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-property-template'])?>
         <img src="/images/icons/nav_bar/<%= srcIcon %>" style="width:15px;height:15px;"/><%= content %>
-    <?php $this->inlineScript()->captureEnd()?>
+    <?php 
+        $this->inlineScript()->captureEnd();   
+        
+        //capture template for single event view
+        $this->inlineScript()->setAllowArbitraryAttributes('true')
+                               ->captureStart('append','text/template',[
+                                   'noescape'=>'true',
+                                   'id' => 'event-details-template'
+        ]);
+        echo $this->partial('partial/_showEventContent-mobile.phtml',[
+            'eventId'               => '<%= eventId %>',
+            'date'                  => '<%= date %>',
+            'userImage'             => '<%= userImage %>',
+            'commonProperties'      => '<%= commonProperties %>',
+            'specificProperties'    => '<%= specificProperties %>',
+        ]);
+        $this->inlineScript()->captureEnd();
+        
+        //capture template for the delete popup of the single event view
+        $this->inlineScript()->setAllowArbitraryAttributes('true')
+                             ->captureStart('append','text/template',[
+                                 'noescape' =>'true',
+                                 'id'       => 'event-deletePopup-template'
+        ]);
+        echo $this->partial('partial/_showEventPopup-mobile.phtml',[
+            'eventId' => '<%= eventId %>'            
+        ]);
+        $this->inlineScript()->captureEnd();    

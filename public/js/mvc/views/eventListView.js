@@ -16,10 +16,14 @@ window.EventListView = Backbone.View.extend({
         
         _.each(this.model.models,function(event){
             
-        this.$el.append(new EventListItemView({model:event}).render()); 
+            this.appendNewEvent(event);
         },this);
         
         return this.el;
+    },
+    
+    appendNewEvent: function(event){
+        this.$el.append(new EventListItemView({model:event}).render()); 
     }
     
 });

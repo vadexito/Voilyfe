@@ -1,5 +1,4 @@
-window.Events = Backbone.Collection.extend({
-    
+window.Events = Backbone.Collection.extend({    
     model: Event
 });
 

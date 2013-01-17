@@ -10,28 +10,20 @@ window.EventListItemView = Backbone.View.extend({
         
     },
     
+    
+    
     render: function(){
        
-        var specificProperties = [];
-        _.each(this.model.get('specificProperties'),function(el){
-                if (el.value){
-                    specificProperties.push(el.value); 
-                }
-        });
-        var commonProperties = [];
-        var date;
-        _.each(this.model.get('commonProperties'),function(el,item){
-                if (item == "date"){
-                    date = el;
-                } else if (el.value) {
-                    commonProperties.push(el.value);
-                }
-        });
-       
-        this.model.set('title',date+' - '+this.model.get('title'))
-        this.model.set('specificProperties',specificProperties.join(', '));
-        this.model.set('commonProperties',commonProperties.join(', '));
-        this.$el.html( this.template (this.model.toJSON()) );
+        this.$el.html( this.template ({
+                href:this.model.get('href'),
+                eventId:this.model.get('id'),
+                imgSrc:this.model.get('imgSrc'),
+                aside:this.model.get('aside'),
+                title: this.model.generateEventLineProperties().date,
+                specificProperties:this.model.generateEventLineProperties().specific.join(', '),
+                commonProperties:this.model.generateEventLineProperties().common.join(', ')
+        }));
+        
         return this.el;
        
     }

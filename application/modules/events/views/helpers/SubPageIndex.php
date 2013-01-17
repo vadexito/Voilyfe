@@ -13,9 +13,10 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
     protected $_footer = NULL;
     protected $_title = NULL;
     protected $_noWrap = NULL;
+    protected $_popups = NULL;
     
     protected $_possibleOptions = ['active','content','footer','title',
-            'buttonRight','buttonLeft','noWrap'];
+            'buttonRight','buttonLeft','noWrap','popups'];
     
     public function subPageIndex($category,$id = NULL,$options = [])
     {
@@ -45,7 +46,8 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
                'buttonLeft' => $this->_buttonLeft,
                'buttonRight'=> $this->_buttonRight,
                'footer'     => $this->_footer ,
-               'noWrap'     => $this->_noWrap 
+               'noWrap'     => $this->_noWrap, 
+               'popups'     => $this->_popups 
             ]
         );
     }
@@ -58,21 +60,30 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
             $this->_footer = '_footerCategories.mobile';
         }
         
+        $plusButtonOptions = ['position' => 'right','type' => 2];
         if ($this->_buttonRight === NULL)
         {
             if ($this->_category->name !=='all')
             {
                 $this->_name = 'category_'.$this->_category->name;
                 $hrefButtonAdd = $this->view->url(array('action' => 'create','containerId' => $this->_category->id),'event');
+                $attribs = [
+                    'href'      => $hrefButtonAdd
+                ];
             }
             else
             {
                 $this->_name = 'menu_events';
                 $hrefButtonAdd = '#list_singleCategories';
+                $attribs = [
+                    'href'      => $hrefButtonAdd,
+                    'data-rel'  => 'popup',
+                ];
             }
             
-            $this->_buttonRight = $this->view->htmlMobileButtonNavBar(['position' => 'right','type' => 2],[
-                    'href' => $hrefButtonAdd]
+            $this->_buttonRight = $this->view->htmlMobileButtonNavBar(
+                    $plusButtonOptions,
+                    $attribs
             );
            
         }

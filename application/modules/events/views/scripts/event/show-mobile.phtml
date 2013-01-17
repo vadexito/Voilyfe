@@ -14,55 +14,24 @@
                 ['position' => 'right','type'=>  Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_ADD_NEW_EVENT],
                 ['href' => $this->url(['containedId' => $event->category->id,'action' => 'create'],'event')]
             );
-            echo $this->mobilePage()->renderHeader($btnLeft,$btnRight,''); 
-        ?>
+            echo $this->mobilePage()->renderHeader($btnLeft,$btnRight,''); ?> 
+        
     </div> 
     <div data-role="content">
-        <div id="upper-block">
-            <div id="subheader-date"class="inside">
-                    <?php echo $this->event($event)->subHeaderDate?>
-            </div>
-        </div>
-        <div id="items-central-block" class="row-block">
-            <div class="ui-grid-b">
-                <div id="specific-properties" class="ui-block-a">
-                     <p><?php echo $this->event($event)->renderCommonProperties;?></p>
-                     <p><?php echo $this->event($event)->renderSpecificProperties;?></p>
-                </div>
-                <div class="ui-block-b"></div>
-                <div class="ui-block-c">
-                    <?php echo $this->event($event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']);?>
-                </div>
-            </div>
-        </div>
-        <div id="buttons-lower-block" class="row-block ui-grid-a">
-            <div class="ui-block-a">
-                <a data-role="button" data-theme="a" data-ajax="false" href="<?php echo $this->url(['action'=>'edit','containerRowId' => $event->id],'event');?>">
-                    <?php echo ucfirst($this->translate('event_edit_button')); ?>
-                </a>
-            </div>
-            <div class="ui-block-b">
-                <a data-rel="popup" data-position-to="window" data-role="button" data-theme="a" href="#popupDelete">
-                    <?php echo ucfirst($this->translate('event_delete_button')); ?>
-                </a>
-            </div> 
-        </div>
-    </div>
-    <div data-role="popup" id="popupDelete" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-        <div data-role="header" data-theme="a" class="ui-corner-top">
-                <h1><?php echo $this->translate('title_question_delete_event'); ?></h1>
-        </div>
-        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-                <h3 class="ui-title"><?php echo $this->translate('mgs_sure_to_delete?'); ?></h3>
-                <p><?php echo $this->translate('mgs_no_cancellation_of_action?'); ?></p>
-                <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
-                    <?php echo $this->translate('button_cancel');?>
-                </a>    
-                <a data-ajax="false" href="<?php echo $this->url(['action'=>'delete','containerRowId' => $event->id],'event').'?submit_delete='.$this->translate('action_delete'); ?>" data-role="button" data-inline="true" data-theme="b">
-                    <?php echo $this->translate('button_confirm?');?>
-                </a>  
-        </div>
-    </div>
+<?php 
+    echo $this->partial('partial/_showEventContent-mobile.phtml',[
+            'eventId'               => $event->id,
+            'date'                  => $this->event($event)->subHeaderDate,
+            'userImage'             => $this->event($event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']),
+            'commonProperties'      => $this->event($event)->renderProperties($this->event($event)->commonProperties(false)),
+            'specificProperties'    => $this->event($event)->renderProperties($this->event($event)->specificProperties),
+    ]);
+        
+    echo $this->partial('partial/_showEventPopup-mobile.phtml',[
+            'eventId' => $event->id            
+    ]);
+?>
+    
     <div data-role="footer" data-position="fixed" data-id="footer" data-tap-toggle="false">
         <div data-role="navbar">
             <ul><?php echo $this->paginationControl($this->paginatorEvents,'Sliding','_pagination-mobile.phtml')?></ul>
