@@ -36,7 +36,7 @@ window.IndexView = Backbone.View.extend({
             id: 'event-' + model.get('id'),
             title: '',
             content: event.render(),
-            popup: event.options.popup
+            popup: event.popup
         });
     },
     viewListEvents : function(e){
