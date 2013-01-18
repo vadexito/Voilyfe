@@ -6,25 +6,29 @@ class Events_AjaxController extends Zend_Controller_Action
     
     protected $_model;
     protected $_category;
+    protected $_userId;
     
     public function init()
     { 
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(true);
+        
         $ajaxContext = $this->_helper->getHelper('AjaxContext');
-        $ajaxContext->addActionContexts([
-            'widgetchart' => 'json',
-            'eventcalendar' => 'json',
-            'datelocale' => 'json',
-            'validateform' => 'json',
-            'knownlocations' => 'json',
-            'googlelocations' => 'json',
-        ])->initContext();
+        $ajaxContext->addActionContext($this->_getParam('action'),array('json'));
+        $ajaxContext->initContext();
         
         $this->_model = new Events_Model_Events();
         
-        $this->_category = $this->getCategory(
+        if ($this->getRequest()->getParam('containerId'))
+        {
+            $this->_category = $this->getCategory(
                 $this->_model, 
                 $this->getRequest()->getParam('containerId')
-        );
+            );
+        }
+        
+        $this->_userId = Zend_Auth::getInstance()->getIdentity()->id;
+        
         
     }
     
@@ -88,6 +92,10 @@ class Events_AjaxController extends Zend_Controller_Action
      */
     public function datelocaleAction()
     {
+        if (!$this->getRequest()->getParam('dateW3C'))
+        {
+            throw new Pepit_Controller_Exception('No parameter dateW3C found');
+        }
         $date = (new Zend_date(
                 $this->getRequest()->getParam('dateW3C'),
                 Zend_Date::ISO_8601

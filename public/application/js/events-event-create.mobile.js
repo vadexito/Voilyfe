@@ -78,6 +78,7 @@ date element
             $.ajax({
                 url: '/events/ajax/datelocale/dateW3C/'+date+'/format/json',
                 success: function(dateString){
+                    
                     $('.button_date').text(dateString.date);
                 },
                 dataType: 'json'
