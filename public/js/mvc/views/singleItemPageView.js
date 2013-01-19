@@ -1,8 +1,32 @@
 window.SingleItemPageView = Backbone.View.extend({
     
     initialize: function(){
+        this.popupDate = this.$el.find('.popupDate');
+        this.initTags();
     
     },
+    
+    initTags: function(){
+        var input = this.$el.find('input.form-element-tags');  
+        if (input.length > 0){
+            new InputView({
+                el: input,
+                collection: new Tags,
+                model: new Input({
+                    'tagsContainer': $('#add_event'),
+                    'propertyName':$(input).attr('data-property-name'),
+                    'multitag':$(input).attr('data-multitag'),
+                    'itemName':$(input).attr('data-item-name'),
+                    'itemId':$(input).attr('data-containerId'),
+                    'itemGroupForm': $('#'+$(input).attr('data-property-name')+'_itemGroup_form_page'),
+                    'formElementName': $(input).attr('id'),
+                    'autocomplete':$.parseJSON($(input).attr('data-autocomplete')),
+                    'populate':$.parseJSON($(input).attr('data-populate'))
+                })
+            });
+        }
+    },
+    
     
     events:{
         'click a.menu_save'         : 'saveEvent',
@@ -40,19 +64,15 @@ window.SingleItemPageView = Backbone.View.extend({
             },
             dataType: 'json'
         });
+        
+        //close popup        
+        this.popupDate.popup("close");
+        
     },
     
     openPopup:function(e){
-        var $popup = $($(e.currentTarget).attr('href'));
-        $popup.find('input').focus();
-    },
-    
-    render: function(){
         
-        
-        
-        return this.el;
+        this.popupDate.find('input').focus();
     }
-    
 });
 

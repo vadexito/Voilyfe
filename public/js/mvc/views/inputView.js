@@ -27,35 +27,36 @@ window.InputView = Backbone.View.extend({
     
     initAutocomplete: function(){
         
-        if (this.model.get('autocomplete')){
+        if (!this.model.get('autocomplete')){
             return;
         };
         
         var self = this;
         
         this.$el.autocomplete({
-                target: $('#suggestions_item_'+this.model.get('itemName')),
-                source: this.model.get('autocomplete').data,
-                callback: function(e) {
-                        var value = $(e.currentTarget).text();
-                        self.createTagAndHiddenTagSimple(
-                            value,
-                            $.parseJSON($(e.currentTarget).attr('data-autocomplete')).value,
-                            false
-                        );
-                    
-                       //removing value from autocomplete
-                        self.model.get('autocomplete').data.splice(
-                            $.inArray(value, self.model.get('autocomplete').data)
-                            ,1
-                        );
-                        self.$el.autocomplete("update",{
-                            source: self.model.get('autocomplete').data
-                        });
-                        self.$el.autocomplete('clear');
-                },
-                link: 'target.html?term=',
-                minLength: 1
+            target: $('#suggestions_item_'+this.model.get('itemName')),
+            source: this.model.get('autocomplete').data,
+            callback: function(e) {
+                
+                var value = $(e.currentTarget).text();
+                self.createTagAndHiddenTagSimple(
+                    value,
+                    $.parseJSON($(e.currentTarget).attr('data-autocomplete')).value,
+                    false
+                );
+
+               //removing value from autocomplete
+                self.model.get('autocomplete').data.splice(
+                    $.inArray(value, self.model.get('autocomplete').data)
+                    ,1
+                );
+                self.$el.autocomplete("update",{
+                    source: self.model.get('autocomplete').data
+                });
+                self.$el.autocomplete('clear');
+            },
+            link: 'target.html?term=',
+            minLength: 1
         });
     },
     

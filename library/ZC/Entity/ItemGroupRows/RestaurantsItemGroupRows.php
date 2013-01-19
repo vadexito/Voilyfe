@@ -32,6 +32,8 @@ class RestaurantsItemGroupRows extends \ZC\Entity\ItemGroupRow
 
     static function loadMetadata(\Doctrine\ORM\Mapping\ClassMetadata $metadata)
     {
+        $metadata->setCustomRepositoryClass('ZC\Repository\ItemGroupRowRepository');
+        
         $metadata->setTableName('restaurants_item_group_rows');
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
         $builder->createField('restaurants_phoneNumber','string')->length(255)->nullable(true)->build();

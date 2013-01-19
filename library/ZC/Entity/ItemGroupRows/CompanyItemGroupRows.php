@@ -27,6 +27,8 @@ class CompanyItemGroupRows extends \ZC\Entity\ItemGroupRow
 
     static function loadMetadata(\Doctrine\ORM\Mapping\ClassMetadata $metadata)
     {
+        $metadata->setCustomRepositoryClass('ZC\Repository\ItemGroupRowRepository');
+        
         $metadata->setTableName('company_item_group_rows');
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
         $builder->createField('company_phoneNumber','string')->length(255)->nullable(true)->build();

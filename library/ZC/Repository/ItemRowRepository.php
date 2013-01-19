@@ -23,4 +23,17 @@ class ItemRowRepository extends GeneralizedItemRowRepositoryAbstract
                     ->getQuery()
                     ->getResult();
     } 
+    
+    public function findAllByItemIdAndMemberId($itemId,$memberId)
+    {
+        return $this->createQueryBuilder('i')   
+                    ->join('i.item','it')
+                    ->join('i.member','m')
+                    ->where('it.id = :id')
+                    ->setParameter('id',$itemId)
+                    ->andWhere('m.id = :membid')
+                    ->setParameter('membid',$memberId)
+                    ->getQuery()
+                    ->getResult();
+    } 
 }

@@ -50,25 +50,6 @@ window.SaveEventPageBodyView = Backbone.View.extend({
             new SingleItemPageView({
                 el:this
             });
-
-            var input = $(this).find('input.form-element-tags');        
-            if (input.length > 0){
-                new InputView({
-                    el: input,
-                    collection: new Tags,
-                    model:new Input({
-                        'tagsContainer': $('#add_event'),
-                        'propertyName':$(input).attr('data-property-name'),
-                        'multitag':$(input).attr('data-multitag'),
-                        'itemName':$(input).attr('data-item-name'),
-                        'itemId':$(input).attr('data-containerId'),
-                        'itemGroupForm': $('#'+$(input).attr('data-property-name')+'_itemGroup_form_page'),
-                        'formElementName': $(input).attr('id'),
-                        'autocomplete':$.parseJSON($(input).attr('data-autocomplete')),
-                        'populate':$.parseJSON($(input).attr('data-populate'))
-                    })
-                });
-            }
         });
     }
     

@@ -14,4 +14,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemGroupRowRepository extends GeneralizedItemRowRepositoryAbstract
 {
+    public function findAllByMemberId($id)
+    {
+        return $this->createQueryBuilder('i')   
+                    ->join('i.member','m')
+                    ->where('m.id = :id')
+                    ->setParameter('id',$id)
+                    ->getQuery()
+                    ->getResult();
+    } 
 }

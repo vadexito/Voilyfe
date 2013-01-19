@@ -185,7 +185,10 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         return $this->_tagIdProperty;
     }
 
-
+    /**
+     * init property data-autcomplete for aucomplete operated by jquery
+     * @return \Pepit_Form_Element_Tags
+     */
     protected function _initAutocomplete()
     {
         $entities = $this->_getEntities();                 
@@ -278,13 +281,18 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     {
         $repository = $this->getEntityManager()
                                     ->getRepository($this->_tagEntity);
+        $memberId = Zend_Auth::getInstance()->getIdentity()->id; 
+        
         if ($this->_containerType === 'itemGroup')
         {
-            $entities = $repository->findAll();
+            $entities = $repository->findAllByMemberId($memberId);
         }
         else
         {
-            $entities = $repository->findItemRowsByItemId($this->_containerId);
+            $entities = $repository->findAllByItemIdAndMemberId(
+                    $this->_containerId,
+                    $memberId
+            );
         }
         
         return $entities;
