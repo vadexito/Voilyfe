@@ -96,7 +96,7 @@ class Events_AjaxController extends Zend_Controller_Action
         {
             throw new Pepit_Controller_Exception('No parameter dateW3C found');
         }
-        $date = (new Zend_date(
+        $date = (new Zend_Date(
                 $this->getRequest()->getParam('dateW3C'),
                 Zend_Date::ISO_8601
         ));
