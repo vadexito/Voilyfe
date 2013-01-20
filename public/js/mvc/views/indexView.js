@@ -2,19 +2,12 @@ window.IndexView = Backbone.View.extend({
     
     initialize: function(){
         
-        this.initEventsLast();       
+        this.initEventsLast();
         
-        $(document).on('beforepagechange',function(){ 
-            
-            if (this.options.currentPage){                
-                this.options.currentPage.close();
-                this.options.currentPage =null;
-            }            
-        });
-        
+        if ($('#calendar-widget').length > 0){       
+            this.calendar = new CalendarView({el:$('#calendar-widget')});
+        } 
     },
-    
-    //collection : new Pages,
     
     initEventsLast: function(){
         
@@ -24,7 +17,30 @@ window.IndexView = Backbone.View.extend({
     
     events : {
         'click a.winner-list-line'  : 'viewListEvents',
-        'click a.event-line-link'   : 'showEvent'
+        'click a.event-line-link'   : 'showEvent',
+        'datebox' : 'showEventofDate'
+    },
+    
+    showEventofDate:function(e, passed){
+        if ( passed.method === 'set') {
+            
+            var theDate = this.calendar.$el.data('datebox').theDate;
+            var EventsAtDate = new Events();
+
+            this.options.lastEventsCollection.each( function(event){
+                
+                if ((new Date(event.get('W3CDate')) - theDate) === 0){
+                    EventsAtDate.add(event);       
+                }            
+            });
+       
+            this.openPage({
+                id: "new-page-for-daily-events-"+theDate.getFullYear()+'-'+ (theDate.getMonth()+1) +'-'+theDate.getDate(),
+                title: "",
+                content: new EventListView({model:EventsAtDate}).render()
+            });
+        }
+        
     },
     
     showEvent: function(e){
@@ -32,7 +48,7 @@ window.IndexView = Backbone.View.extend({
        e.preventDefault();
        var model = this.options.lastEventsCollection.get($(e.currentTarget).attr('data-eventid'));
        var event = new EventView({model:model});
-       this.addPage({
+       this.openPage({
             id: 'event-' + model.get('id'),
             title: '',
             content: event.render(),
@@ -49,36 +65,52 @@ window.IndexView = Backbone.View.extend({
             tagEvents.add(this.options.lastEventsCollection.get(id));            
         },this);
         
-        this.addPage({
-            id: $(e.currentTarget).attr('data-item')+'-'+tagValue+"-page",
+        this.openPage({
+            id: $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
             title: tagValue,
             content: (new EventListView({model:tagEvents})).render()
         });
     },
     
-    addPage: function(options,NoChangePage){
+    openPage: function(options,NoChangePage){    
         
-        var page = new PageView({
-            model: new Page({title:options.title}),
-            id:options.id
+        var pageNotFound = true;
+        
+        //if the page already exists
+        $('div[data-role="page"]').each(function(index,page){                
+            if (options.id == $(page).attr('id')){
+                
+                if (!NoChangePage){
+                    
+                    $.mobile.changePage('#'+options.id);
+                    pageNotFound = false;
+                }
+            }
         });
         
-        // add content in the page
-        if (options.content){
-            page.render().find('div[data-role="content"]').append(options.content);
-            $('body').append(page.el);
-        }
-        
-        //possibly add popup (inside the page to be jquery mobile compatible)
-        if (options.popup){
-            
-            page.$el.append(options.popup);
-        }
-        
-        if (!NoChangePage){
-          $.mobile.changePage('#'+options.id);  
-        }
-        this.options.currentPage = page;       
+        if (pageNotFound){
+            //if the page doesn't exists we create it
+            var page = new PageView({
+                model   : new Page({title:options.title}),
+                id      :options.id
+            });
+
+
+            // add content in the page
+            if (options.content){
+                page.render().find('div[data-role="content"]').append(options.content);
+                $('body').append(page.el);
+            }
+
+            //possibly add popup (inside the page to be jquery mobile compatible)
+            if (options.popup){            
+                page.$el.append(options.popup);
+            }
+
+            if (!NoChangePage){
+                $.mobile.changePage('#'+options.id);
+            }
+        }  
     }
     
 });

@@ -1,7 +1,6 @@
 window.SingleItemPageView = Backbone.View.extend({
     
     initialize: function(){
-        this.popupDate = this.$el.find('.popupDate');
         this.initTags();
     
     },
@@ -30,14 +29,17 @@ window.SingleItemPageView = Backbone.View.extend({
     
     events:{
         'click a.menu_save'         : 'saveEvent',
-        'click a.button_date'       : 'openPopup',
-        'change div.popupDate'      : 'updateDate',
+        'click a.button_date'       : 'openInputDate',
+        'change .inputDate'         : 'updateDate',
         'click .button-option-plus' : 'plusButton',
         'pageshow'                  : 'addInputFocus'
     },
 
     addInputFocus: function(e){
-        this.$el.find('input').not('input[type=hidden]').first().focus();
+        var $input = this.$el.find('input[type="text"],select').not('input[type=hidden]');
+        if ($input.length > 0){
+            $input.first().focus();
+        }        
     },
     
     plusButton: function(){
@@ -49,8 +51,8 @@ window.SingleItemPageView = Backbone.View.extend({
     },
     
     updateDate:function(e){
-        var $input = $(e.currentTarget).find('input');
-        var date = $input.attr('value');
+        
+        var date = $(e.currentTarget).attr('value');
         
         //update element for saving
         $('#date').attr('value',date);
@@ -59,20 +61,16 @@ window.SingleItemPageView = Backbone.View.extend({
         $.ajax({
             url: '/events/ajax/datelocale/dateW3C/'+date+'/format/json',
             success: function(dateString){
-
-                $('.button_date').text(dateString.date);
+                $(e.currentTarget).replaceWith('<a class="button_date">'+dateString.date+'</a>').focus();                
             },
             dataType: 'json'
         });
-        
-        //close popup        
-        this.popupDate.popup("close");
-        
     },
     
-    openPopup:function(e){
-        
-        this.popupDate.find('input').focus();
+    openInputDate:function(e){
+        e.preventDefault();
+        $(e.currentTarget).replaceWith('<input type="date" value="'
+            +$('#date').attr('value')+'" class="inputDate"/>').focus();
     }
 });
 

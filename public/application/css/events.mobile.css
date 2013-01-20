@@ -202,3 +202,71 @@ welcome and help presentation
 {
     margin-left:20px;
 }
+
+
+/*
+================================================================
+eventcreate / form element : tags
+================================================================
+*/
+
+.li-tags
+{
+    margin-left: 1em;
+    
+}
+
+
+
+/*
+================================================================
+eventcreate / title and date in title
+================================================================
+*/
+
+h1.title_event_form.ui-title
+{
+    margin:5px;
+    padding:0;
+    line-height: 15px;
+}
+.title_event_form a.button_date
+{
+    font-size: 14px;
+    text-decoration: none;
+    margin:0;
+    color:white;
+    
+}
+
+.title_event_form a.button_date:hover
+{
+    color:white;
+}
+
+a.button_date
+{
+    cursor: pointer;
+}
+
+.title_event_form span
+{
+    font-size: 18px;
+    margin:0;
+}
+
+form pre
+{
+    font-size: 9px;
+}
+
+/* plus button for more options next to input*/
+img.button-option-plus
+{
+    float: right;
+    position:relative;
+    margin:5px 20px ;
+    max-height: 25px;
+    max-width: 25px;
+}
+

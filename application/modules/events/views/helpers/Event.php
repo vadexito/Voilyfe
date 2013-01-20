@@ -82,6 +82,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             'commonProperties'      => $this->commonProperties(),
             'specificProperties'    => $this->specificProperties(),
             'aside'                 => '',
+            'W3CDate'               => $this->localDate(Zend_Date::W3C)
         ];
     }
               

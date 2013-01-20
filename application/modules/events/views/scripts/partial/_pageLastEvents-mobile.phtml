@@ -22,7 +22,13 @@
         
     }
     
-    $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(102,'var lastEvents = '.Zend_Json::encode($eventsForFront).';','text/javascript',['noescape'=>'true','id' => 'last-events-list']);
+    $this->inlineScript()->setAllowArbitraryAttributes('true')
+            ->offsetSetScript(
+                    102,
+                    'var lastEvents = '.Zend_Json::encode($eventsForFront).';'
+                    ,'text/javascript',
+                    ['noescape'=>'true','id' => 'last-events-list']
+            );
 ?>
         
 <ul data-role="listview" id="last-events-list">    
