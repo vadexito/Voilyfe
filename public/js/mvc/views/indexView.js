@@ -23,14 +23,17 @@ window.IndexView = Backbone.View.extend({
     },
     
     initLastEventsPage: function(){
-        
+        var id = 'last-events-page';
         var page = this.openPage({
             id: '',
             content: (new EventListView({model:this.options.lastEventsCollection})).render(),
             template:'first-level'
         },true,true);
         
-        $('#last-events-page').html(page.$el.html()).trigger("pagecreate");        
+        $('#' + id).html(page.$el.html());
+        if ($.mobile.activePage.attr('id') == id){
+            $('#' + id).trigger("pagecreate");        
+        }        
     },
     
     initGoogleCharts: function(){
