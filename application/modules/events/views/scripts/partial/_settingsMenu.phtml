@@ -9,7 +9,7 @@
             $subPage->setCustomHtmlAttribs(['data-ajax' => 'false']);
             if ($subPage->getId() != 'logout')
             {
-                $subPage->setCustomHtmlAttribs(['data-ajax' => 'false','data-prefetch' => 'true']);
+                $subPage->setCustomHtmlAttribs(['data-ajax' => 'false']);
             }
             $line = '    <li>'.$this->navigation()->menu()->htmlify($subPage).'</li>'."\n";
             if (isset($options[$subPage->getOrder()]))

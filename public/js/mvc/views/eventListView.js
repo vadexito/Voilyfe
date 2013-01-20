@@ -6,8 +6,8 @@ window.EventListView = Backbone.View.extend({
     
     tagName: 'ul',
     attributes: {
-        'id'  : 'event-list',
-        'data-role'  : 'listview'
+        'id'            : 'event-list',
+        'data-role'     : 'listview'
     },
 
     

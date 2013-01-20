@@ -3,12 +3,12 @@
 class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
 {
     
-    protected $_name = NULL;
-    protected $_category;
+    protected $_category;    
+    protected $_categoryName = NULL;
     
     protected $_buttonRight = NULL;
     protected $_buttonLeft = NULL;
-    protected $_active;
+    protected $_active = '';
     protected $_content = '';
     protected $_footer = NULL;
     protected $_title = NULL;
@@ -33,6 +33,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
             throw new Pepit_View_Exception('An id  has to be provided for subpageindex viewer');
         }
         
+        $this->_resetOptions();
         $this->_loadOptions($options);
         $this->_loadDefaultOptions();
         
@@ -52,6 +53,17 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         );
     }
     
+    protected function _resetOptions()
+    {
+        $this->_buttonRight = NULL;
+        $this->_buttonLeft = NULL;
+        $this->_active = '';
+        $this->_content = '';
+        $this->_footer = NULL;
+        $this->_title = NULL;
+        $this->_noWrap = NULL;
+        $this->_popups = NULL;
+    }
     
     protected function _loadDefaultOptions()
     {
@@ -65,7 +77,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         {
             if ($this->_category->name !=='all')
             {
-                $this->_name = 'category_'.$this->_category->name;
+                $this->_categoryName = 'category_'.$this->_category->name;
                 $hrefButtonAdd = $this->view->url(array('action' => 'create','containerId' => $this->_category->id),'event');
                 $attribs = [
                     'href'      => $hrefButtonAdd
@@ -73,7 +85,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
             }
             else
             {
-                $this->_name = 'menu_events';
+                $this->_categoryName = 'menu_events';
                 $hrefButtonAdd = '#list_singleCategories';
                 $attribs = [
                     'href'      => $hrefButtonAdd,
@@ -98,7 +110,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         
         if ($this->_title === NULL)
         {
-            $this->_title = ucfirst($this->view->translate($this->_name));
+            $this->_title = ucfirst($this->view->translate($this->_categoryName));
         }
         
         

@@ -34,17 +34,7 @@ ul[data-role=listview] a p
     display:none;
 }
 
-/*
-================================================================================
-event line display
-================================================================================
-*/
 
-li.event-line a.ui-link-inherit.event-line-link
-{
-    padding-top: 0.15em;
-    padding-bottom: 0.15em;
-}
 
 
 
@@ -112,10 +102,7 @@ div[data-id=footer] .ui-btn-text
     font-size: 10px;
 }
 
-a.event-date
-{
-    text-decoration: none;
-}
+
 
 .widget-graph
 {

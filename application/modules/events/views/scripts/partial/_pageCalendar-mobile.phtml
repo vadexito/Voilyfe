@@ -1,1 +1,5 @@
-<input name="calendar" data-categoryId ="<?php echo $this->categoryId ; ?>" id="calendar-widget" data-role='datebox' data-transition="none" data-options='{"enableDates": <?php echo($this->getJsonDates($this->eventsPerDay));?>, "useInline":true,"mode": "calbox","hideInput": true}'/>
+<input name="calendar" data-categoryId ="<?php 
+    echo $this->categoryId ; 
+    ?>" id="calendar-widget" data-role='datebox' data-transition="none" data-options='{"enableDates": <?php 
+    echo($this->getJsonDates($this->eventsPerDay));
+    ?>, "calUsePickers":true,"calHighPick":false, "useInline":true,"mode": "calbox","hideInput": true,"themeDateHigh":"c"}'/>

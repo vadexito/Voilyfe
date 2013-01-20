@@ -270,3 +270,25 @@ img.button-option-plus
     max-width: 25px;
 }
 
+/*
+================================================================================
+event line display
+================================================================================
+*/
+
+li.event-line a.ui-link-inherit.event-line-link
+{
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+}
+
+
+a.calendar-event-date, a.calendar-noevent-date 
+{
+    text-decoration: none;
+}
+
+a.calendar-noevent-date 
+{
+    cursor: pointer;
+}

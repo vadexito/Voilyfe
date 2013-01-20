@@ -80,11 +80,21 @@ else //if no event to show
 ?>
      
     <span id="dataToClientSide" data-categoryId="<?php echo $this->category->id; ?>"></span>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'last-events-page-template']);
+    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-first-level-template']);
+        echo $this->subPageIndex($this->category,'<%= id %>',[
+            'content'       => '',
+            'active'        => 'last-events',
+            'noWrap'        => true
+        ]);
+        $this->inlineScript()->captureEnd()?>
+    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-second-level-template']);
         echo $this->subPageIndex($this->category,'<%= id %>',[
             'content'       => '',
             'title'         => '<%= title %>',
             'active'        => 'graphs',
+            'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
+            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                ucfirst($this->translate('menu_back_to_previous_page'))),
             'buttonRight'   => '',
             'noWrap'        => true
         ]);

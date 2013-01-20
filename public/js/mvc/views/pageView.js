@@ -10,7 +10,12 @@ window.PageView = Backbone.View.extend({
     
     initialize: function(){
         
-        this.template = _.template( $("#last-events-page-template").html());
+        if (this.options.template == 'first-level'){
+            this.template = _.template( $("#indexpage-first-level-template").html());
+        } else {
+            this.template = _.template( $("#indexpage-second-level-template").html());
+        }
+        
         
     },
     
