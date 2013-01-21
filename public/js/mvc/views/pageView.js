@@ -10,18 +10,13 @@ window.PageView = Backbone.View.extend({
     
     initialize: function(){
         
-        if (this.options.template == 'first-level'){
-            this.template = _.template( $("#indexpage-first-level-template").html());
-        } else {
-            this.template = _.template( $("#indexpage-second-level-template").html());
-        }
-        
-        
+        this.template = _.template( $("#indexpage-"+this.options.template+"-template").html());
     },
     
     render: function(){
         
-       this.$el.html(this.template(this.model.toJSON()));
+       this.$el.html(this.template(this.model.toJSON()))               
+            .find('#' + this.options.active).addClass('ui-btn-active ui-state-persist'); 
        return this.$el;
     }
     

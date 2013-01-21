@@ -24,7 +24,7 @@ window.EventListView = Backbone.View.extend({
     },
     
     appendNewEvent: function(event){
-        this.$el.append(new EventListItemView({model:event}).render()); 
+        this.$el.append(new EventListItemView({model:event,active:this.options.active}).render()); 
     }
     
 });

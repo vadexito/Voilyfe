@@ -25,9 +25,10 @@ window.IndexView = Backbone.View.extend({
     initLastEventsPage: function(){
         var id = 'last-events-page';
         var page = this.openPage({
-            id: '',
-            content: (new EventListView({model:this.options.lastEventsCollection})).render(),
-            template:'first-level'
+            id          : '',
+            content     : (new EventListView({model:this.options.lastEventsCollection,active:'last-events'})).render(),
+            template    : 'first-level',
+            active      : 'last-events'
         },true,true);
         
         $('#' + id).html(page.$el.html());
@@ -82,9 +83,11 @@ window.IndexView = Backbone.View.extend({
             });
        
             this.openPage({
-                id: "new-page-for-daily-events-"+theDate.getFullYear()+'-'+ (theDate.getMonth()+1) +'-'+theDate.getDate(),
-                title: "",
-                content: new EventListView({model:EventsAtDate}).render()
+                id      : "new-page-for-daily-events-"+theDate.getFullYear()+'-'+ (theDate.getMonth()+1) +'-'+theDate.getDate(),
+                title   : "",
+                content : new EventListView({model:EventsAtDate,active:'calendar'}).render(),
+                active  : 'calendar',
+                template: 'second-level'
             });
         }
         
@@ -96,11 +99,13 @@ window.IndexView = Backbone.View.extend({
        var model = this.options.lastEventsCollection.get($(e.currentTarget).attr('data-eventid'));
        var event = new EventView({model:model});
        this.openPage({
-            id: 'event-' + model.get('id'),
-            title: '',
-            content: event.render(),
-            popup: event.popup
-        });
+            id          : 'event-' + model.get('id'),
+            title       : '',
+            content     : event.render(),
+            popup       : event.popup,
+            active      : $(e.currentTarget).attr('data-active'),
+            template    :'event-details'
+        });        
     },
     viewListEvents : function(e){
         
@@ -113,9 +118,11 @@ window.IndexView = Backbone.View.extend({
         },this);
         
         this.openPage({
-            id: $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
-            title: tagValue,
-            content: (new EventListView({model:tagEvents})).render()
+            id      : $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
+            title   : tagValue,
+            content : (new EventListView({model:tagEvents,active:'graphs'})).render(),
+            active  :'graphs',
+            template:'second-level'
         });
     },
     
@@ -140,11 +147,11 @@ window.IndexView = Backbone.View.extend({
             
             var page = new PageView({
                 model   : new Page({title:options.title}),
-                id      :options.id,
-                template:options.template
+                id      : options.id,
+                template: options.template,
+                active  : options.active
             });
-
-
+            
             // add content in the page
             if (options.content){
                 page.render().find('div[data-role="content"]').append(options.content);
@@ -172,7 +179,7 @@ window.IndexView = Backbone.View.extend({
         var id;
         
         if (namePage == 'newEvent'){
-            console.log($('a[data-icon="plus"]').length);
+            
             window.location = $('a[data-icon="plus"]').first().attr('href');            
         }
         
