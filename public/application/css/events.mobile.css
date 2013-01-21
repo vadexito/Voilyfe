@@ -90,12 +90,18 @@ div.row-block
     padding:1%;
 }
 
-#user-image
+.user-image
 {
     width:70%;
     min-width: 90px;
     max-width: 250px;
     float:right;
+    cursor: pointer;
+}
+
+.image-full-page
+{
+    width:100%;
 }
 
 .icon-category

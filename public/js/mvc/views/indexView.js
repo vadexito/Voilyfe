@@ -13,8 +13,12 @@ window.IndexView = Backbone.View.extend({
     events : {
         'click a.winner-list-line'  : 'viewListEvents',
         'click a.event-line-link'   : 'showEvent',
-        'datebox'                   : 'showEventofDate'
+        'datebox'                   : 'showEventofDate',
+        'click .user-image'         : 'showImage'
     },
+    
+    
+    
     
     initCalendar: function(){
         if ($('#calendar-widget').length > 0){       
@@ -107,6 +111,7 @@ window.IndexView = Backbone.View.extend({
             template    :'event-details'
         });        
     },
+    
     viewListEvents : function(e){
         
         //Create collection for subgroup of events corresponding to tag
@@ -124,6 +129,18 @@ window.IndexView = Backbone.View.extend({
             active  :'graphs',
             template:'second-level'
         });
+    },
+    
+    showImage: function(e){
+        
+        this.openPage({
+            id      : $(e.currentTarget).attr('src')
+                .toLowerCase().replace(/\/(.*)\//g, '').replace(/\_/,'').replace(/\./,''),
+            title   : '',
+            content : $(e.currentTarget).clone().removeClass('user-image').addClass('image-full-page'),
+            template:'event-details'
+        });
+        
     },
     
     openPage: function(options,NoChangePage,NoAddDOM){    
@@ -173,6 +190,7 @@ window.IndexView = Backbone.View.extend({
         
         return page;
     },
+    
     
     changePage: function(namePage,options){
         
