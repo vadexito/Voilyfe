@@ -14,15 +14,7 @@ window.EventListItemView = Backbone.View.extend({
     
     render: function(){
        
-        this.$el.html( this.template ({
-                href:this.model.get('href'),
-                eventId:this.model.get('id'),
-                imgSrc:this.model.get('imgSrc'),
-                aside:this.model.get('aside'),
-                title: this.model.generateEventLineProperties().date,
-                specificProperties:this.model.generateEventLineProperties().specific.join(', '),
-                commonProperties:this.model.generateEventLineProperties().common.join(', ')
-        }));
+        this.$el.html( this.template (this.model.toJSON()));
         
         return this.el;
        

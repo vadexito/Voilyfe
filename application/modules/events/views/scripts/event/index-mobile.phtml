@@ -1,24 +1,32 @@
 <?php 
 $this->headLink()->prependStylesheet('/css/lib/datebox.css');
+$this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
+$this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
+
 $this->headScript()->offsetSetFile(100,'https://www.google.com/jsapi'); 
 $this->headScript()->offsetSetFile(101,'/js/lib/jqm-datebox/datebox-core.js');
 $this->headScript()->offsetSetFile(102,'/js/lib/jqm-datebox/datebox-core-modeCalbox.js');
 
-$this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
-$this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
+$this->inlineScript()->offsetSetFile(140,'/js/mvc/utils/close.js');
 
-$this->inlineScript()->offsetSetFile(150,'/js/mvc/views/eventListView.js');
+$this->inlineScript()->offsetSetFile(151,'/js/mvc/models/event.js');
+$this->inlineScript()->offsetSetFile(152,'/js/mvc/models/events.js');
+$this->inlineScript()->offsetSetFile(153,'/js/mvc/models/page.js');
+$this->inlineScript()->offsetSetFile(154,'/js/mvc/models/pages.js');
+$this->inlineScript()->offsetSetFile(155,'/js/mvc/models/itemInEvent.js');
+$this->inlineScript()->offsetSetFile(156,'/js/mvc/models/itemInEvents.js');
+
+$this->inlineScript()->offsetSetFile(160,'/js/mvc/views/eventListView.js');
+$this->inlineScript()->offsetSetFile(161,'/js/mvc/views/calendarView.js');
+$this->inlineScript()->offsetSetFile(162,'/js/mvc/views/itemInEventView.js');
+$this->inlineScript()->offsetSetFile(163,'/js/mvc/views/itemInEventsView.js');
+$this->inlineScript()->offsetSetFile(164,'/js/mvc/views/eventListItemView.js');
+$this->inlineScript()->offsetSetFile(165,'/js/mvc/views/pageView.js');
+$this->inlineScript()->offsetSetFile(166,'/js/mvc/views/eventView.js');
+$this->inlineScript()->offsetSetFile(167,'/js/mvc/views/propertyView.js');
 $this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
-$this->inlineScript()->offsetSetFile(152,'/js/mvc/views/propertyView.js');
-$this->inlineScript()->offsetSetFile(160,'/js/mvc/views/calendarView.js');
-$this->inlineScript()->offsetSetFile(153,'/js/mvc/views/eventListItemView.js');
-$this->inlineScript()->offsetSetFile(157,'/js/mvc/views/pageView.js');
-$this->inlineScript()->offsetSetFile(159,'/js/mvc/views/eventView.js');
-$this->inlineScript()->offsetSetFile(154,'/js/mvc/models/event.js');
-$this->inlineScript()->offsetSetFile(155,'/js/mvc/models/events.js');
-$this->inlineScript()->offsetSetFile(158,'/js/mvc/models/pages.js');
-$this->inlineScript()->offsetSetFile(156,'/js/mvc/models/page.js');
-$this->inlineScript()->offsetSetFile(149,'/js/mvc/utils/close.js');
+
+
 
 
 if ($this->events)
@@ -101,7 +109,7 @@ else //if no event to show
         $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-line-template'])?>
         <a data-ajax="false" class="event-line-link" href="<%= href %>" data-eventId="<%= eventId %>">
-            <img  src="<%= imgSrc %>" />
+            <img  src="<%= userImageSrc %>" />
             <h4><%= title %></h4>
             <p>
                 <strong><%= commonProperties %></strong>
@@ -124,10 +132,14 @@ else //if no event to show
                                    'id' => 'event-details-template'
         ]);
         echo $this->partial('partial/_showEventContent-mobile.phtml',[
-            'eventId'               => '<%= eventId %>',           
+            'eventId'               => '<%= eventId %>', 
+            'year'                  => '<%= year %>',
+            'logoCategory'          => '',
+            'day'                   => '<%= day %>',
+            'month'                 => '<%= month %>',
+            'weekDay'               => '<%= weekDay %>',
             'categoryId'            => '<%= categoryId %>',
-            'date'                  => '<%= date %>',
-            'userImage'             => '<%= userImage %>',
+            'userImageSrc'          => '<%= userImageSrc %>',
             'commonProperties'      => '<%= commonProperties %>',
             'specificProperties'    => '<%= specificProperties %>',
         ]);

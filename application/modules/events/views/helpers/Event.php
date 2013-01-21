@@ -76,13 +76,19 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
         
         return [
             'id'                    => $this->_event->id,
+            'eventId'               => $this->_event->id,
+            'categoryId'            => $this->_event->category->id,
             'href'                  => '#',
-            'imgSrc'                => $this->_getThumbnailSrc(),
+            'userImageSrc'          => $this->getThumbnailSrc(),
             'title'                 => $category,
             'commonProperties'      => $this->commonProperties(),
             'specificProperties'    => $this->specificProperties(),
             'aside'                 => '',
-            'W3CDate'               => $this->localDate(Zend_Date::W3C)
+            'W3CDate'               => $this->localDate(Zend_Date::W3C),
+            'year'      => $this->localDate(Zend_Date::YEAR),
+            'month'     => $this->localDate(Zend_Date::MONTH_NAME),
+            'day'       => $this->localDate(Zend_Date::DAY),
+            'weekDay'   => $this->localDate(Zend_Date::WEEKDAY),
         ];
     }
               
@@ -108,7 +114,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             'event'
         );
     }
-    protected function _getThumbnailSrc()
+    public function getThumbnailSrc()
     {
         $event = $this->_event;
         if ($event->image && $event->image->path)
@@ -208,7 +214,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
         }
         
         
-        return '<img '. $idProperty . $altProperty .' src="'.$this->_getThumbnailSrc().'" />';
+        return '<img '. $idProperty . $altProperty .' src="'.$this->getThumbnailSrc().'" />';
     }
     
     /**
@@ -327,22 +333,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
         return $badge;
     }
     
-    public function subHeaderDate()
-    {
-        $subHeader = 
-        '<ul data-role="listview" data-theme="d" data-divider-theme="d">'
-        . '<li data-role="list-divider"><h3 id="year-header" class="date">'
-        .$this->localDate(Zend_Date::YEAR)
-        . $this->renderLogoCategory('50px')
-        .'</h3></li>'
-        . '<li class="lineWithCatIcon"><h1 id="day-header" class="date">'.$this->localDate(Zend_Date::DAY).'</h1>'
-        . '<div id="month-day">'
-        .'<h2 id="month-header" class="date">'.$this->localDate(Zend_Date::MONTH_NAME).'</h2>'
-        . '<h3 id="weekday-header" class="date">'.$this->localDate(Zend_Date::WEEKDAY).'</h3>'."\n".'</div>'
-        . '</li><li data-role="list-divider"></li></ul>' . "\n"; 
-        
-        return $subHeader;
-    }
+    
     
     
     public function renderLogoCategory($width)

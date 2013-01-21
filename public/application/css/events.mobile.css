@@ -282,6 +282,11 @@ li.event-line a.ui-link-inherit.event-line-link
     padding-bottom: 0.15em;
 }
 
+/*
+================================================================================
+calendar view
+================================================================================
+*/
 
 a.calendar-event-date, a.calendar-noevent-date 
 {

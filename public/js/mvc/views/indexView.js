@@ -56,14 +56,14 @@ window.IndexView = Backbone.View.extend({
                 new google.visualization.ColumnChart(self).draw(data,options);
             }
 
-            google.load('visualization', '1.0', {'callback':drawVisualization,'packages':['corechart']}); 
+            google.load('visualization', '1.0', {'callback':drawVisualization,'packages':['corechart']});             
         });
     },
     
     initEventsLast: function(){
         
-        //lastEvents is defined in the html page as a global variable
-        this.options.lastEventsCollection = new Events(lastEvents);
+        this.options.lastEventsCollection = new Events(lastEvents);        
+        
     },
     
     

@@ -21,8 +21,12 @@
 <?php 
     echo $this->partial('partial/_showEventContent-mobile.phtml',[
             'eventId'               => $event->id,
-            'date'                  => $this->event($event)->subHeaderDate,
-            'userImage'             => $this->event($event)->renderUserImageThumbnail(['id'=>'user-image','alt' => 'user-image']),
+            'year'                  => $this->event($event)->localDate(Zend_Date::YEAR),
+            'logoCategory'          => $this->event($event)->renderLogoCategory('50px'),
+            'day'                   => $this->event($event)->localDate(Zend_Date::DAY),
+            'month'                 => $this->event($event)->localDate(Zend_Date::MONTH_NAME),
+            'weekDay'               => $this->event($event)->localDate(Zend_Date::WEEKDAY),
+            'userImageSrc'          => $this->event($event)->getThumbnailSrc(),
             'commonProperties'      => $this->event($event)->renderProperties($this->event($event)->commonProperties(false)),
             'specificProperties'    => $this->event($event)->renderProperties($this->event($event)->specificProperties),
     ]);

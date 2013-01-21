@@ -15,18 +15,12 @@ window.EventView = Backbone.View.extend({
     
     render: function(){
         
-        this.$el.html( this.template({
-            eventId                 : this.model.get('id'),
-            categoryId              :'3',
-            date                    : this.model.generateEventLineProperties().date,
-            userImage               : '<img alt="user-image" src="'+this.model.get('imgSrc')+'">',
-            specificProperties      :this.model.generateEventLineProperties().specific.join(', '),
-            commonProperties        :this.model.generateEventLineProperties().common.join(', ')
-        }));
-        
+        this.$el.html( this.template(this.model.toJSON()) );
+            
+         
         this.popup = this.templatePopup({
             eventId     : this.model.get('id'),
-            categoryId  :'3'
+            categoryId  : this.model.get('categoryId')
         });
         return this.el;
     }
