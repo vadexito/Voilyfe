@@ -31,10 +31,6 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
             'max' => '200',
             'step' => '2',
         ]);
-        
-        
-        
-        
        
     }
     
@@ -43,7 +39,7 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
         $options = [
             'title' => ucfirst($this->getTranslator()->translate('title_amount')),
             'type' => 'sum',
-            'propertyForAdding' => $this->getName(),
+            'propertyForAdding' => 'price',
             'unit' => '€'
         ];
         

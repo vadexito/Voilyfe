@@ -139,9 +139,10 @@ class Pepit_Widget_Chart
         {
             $date = $event->date->getTimeStamp();
             $delta = NULL;
-            if ($this->_propertyForAdding && property_exists($event,$this->_propertyForAdding))
+            
+            $property = strtolower($event->category->name).'_'.$this->_propertyForAdding;
+            if ($this->_propertyForAdding && property_exists($event,$property))
             {
-                $property = $this->_propertyForAdding;
                 $delta = $event->$property;
             }
             elseif ($this->_propertyForAdding)

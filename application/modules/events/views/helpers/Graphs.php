@@ -20,11 +20,12 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
     {
         $this->_events = $events;
         $this->_all = $all;
+        
         $this->_form = $this->view->event($this->_events[0])->getForm();
         
         foreach ($this->getElementsToShowAndInitOptions() as $formElement)
         {
-                        
+            
             $this->_options[$this->_getId($formElement)]['buttons'] = $this->_buttonGroup($formElement);
         }
         

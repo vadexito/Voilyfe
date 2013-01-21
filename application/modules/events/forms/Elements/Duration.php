@@ -28,10 +28,11 @@ class Events_Form_Elements_Duration extends Pepit_Form_Element_Range
     
     public function dataChart($events)
     {
+                
         $options = [
             'title' => ucfirst($this->getTranslator()->translate('title_total_time')),
             'type' => 'sum',
-            'propertyForAdding' => $this->getName(),
+            'propertyForAdding' => 'duration',
             'unit' => 'minutes',
             'timeUnitNb' => 1,
             'timeUnit' => 'month',
