@@ -8,7 +8,7 @@ trait Pepit_Form_Element_Trait_Trait
     
     protected $_horizontal = false;
     protected $_storageEntity = NULL;
-    
+    protected $_storageEntityProperty = 'value';
     
     public function getStorageEntity()
     {
@@ -18,6 +18,17 @@ trait Pepit_Form_Element_Trait_Trait
     public function setStorageEntity($entity)
     {
         $this->_storageEntity = $entity;
+        return $this;
+    }
+    
+    public function getStorageEntityProperty()
+    {
+        return $this->_storageEntityProperty;
+    }
+    
+    public function setStorageEntityProperty($entity)
+    {
+        $this->_storageEntityProperty = $entity;
         return $this;
     }
     

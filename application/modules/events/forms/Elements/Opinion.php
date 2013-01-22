@@ -15,6 +15,8 @@ class Events_Form_Elements_Opinion extends Pepit_Form_Element_Textarea
         "required" => false,
         "filters" => array('StripTags','StringTrim',),
         ));
+        
+        
         parent::init();
     }
 

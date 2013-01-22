@@ -1,1 +1,32 @@
-<?php echo $this->partial('layout.phtml') ?>
+<?php echo $this->doctype()."\n" ?>
+<html>
+    <head>
+        <?php echo $this->partial('partial/_head.phtml') ?>
+    </head>
+    <body> 
+        <div class="container-narrow">
+            <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <a class="brand">Admin section</a>
+                    <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
+                          echo $this->listCategories('partial/_navDropdown.phtml','backend');?>
+                </div>            
+            </nav>
+            
+            <hr>  
+            
+            <div class="row-fluid">                
+                <div id="main">
+                    <?php echo $this->flashMessages();?>
+                    <?php echo $this->layout()->content ;?>
+                </div>
+             </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <?php echo $this->partial('partial/_footer.phtml') ?>
+            </div>
+        </footer>
+        <?php echo $this->inlineScript(); ?>
+    </body>
+</html>

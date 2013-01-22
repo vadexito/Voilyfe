@@ -14,7 +14,7 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     
     
     /**
-     * id of the corresponding item in database
+     * id of the corresponding item in database if item
      * @var integer
      */
     protected $_idDB;
@@ -25,22 +25,37 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     {
         if ($this->getStorageEntity())
         {
-            $itemRows = $this->getEntityManager()
-                        ->getRepository($this->getStorageEntity())
-                        ->findByItem($this->getIdDB());
-                        
+            $repository = $this->getEntityManager()
+                        ->getRepository($this->getStorageEntity());
+            if ($this->getIdDB())
+            {
+                $itemRows = $repository->findByItem($this->getIdDB());
+            }
+            else
+            {
+                $itemRows = $repository->findAll();
+            }
+            
             //add multioptions
             
             $this->addMultiOption(null,$this->getTranslator()->translate('msg_pickup_a_value'));
             $this->registerInArrayValidator(false);
             $this->setRequired(false);
-            
             foreach($itemRows as $value)
             {
-                $this->addMultiOption(
+                $property = $this->getStorageEntityProperty();
+                if (property_exists($value,$property))
+                {
+                    $this->addMultiOption(
                         $value->id,
-                        $value->value
-                );
+                        $value->$property
+                    );
+                }
+                else
+                {
+                    throw new Pepit_Form_Exception('The property '.$property.' is not found in the element '. gettype($value));
+                }
+                
             }
         }
         
@@ -102,6 +117,12 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     public function populate($entity)
     {
         $property = $this->getAttrib('data-property-name');
+        
+//        \Doctrine\Common\Util\Debug::dump($this->getId());echo '<br/>';
+//        \Doctrine\Common\Util\Debug::dump($entity);echo '<br/>';
+//        \Doctrine\Common\Util\Debug::dump($property);die;
+        
+        
         if ($property && property_exists($entity,$property))
         {
             $value = $entity->$property;

@@ -8,5 +8,11 @@
 
 class Pepit_Form_Element_Checkbox extends Zend_Form_Element_Checkbox
 {
+    public function init()
+    {
+        
+        
+        
+    }
     
 }

@@ -21,7 +21,7 @@ class Backend_Form_ItemCreate extends Backend_Form_GeneralizedItemCreateAbstract
         $name->addDecorator('label',['placement'=>'append']);
         
         //define validator for uniqueness
-        $generalizedItems = $this ->_em->getRepository('ZC\Entity\GeneralizedItem')
+        $generalizedItems = $this ->getEntityManager()->getRepository('ZC\Entity\GeneralizedItem')
                             ->findAll();
         $validUnique = new Pepit_Validate_NotInDoctrineArray($generalizedItems,'name');       
         $name           ->setRequired('true')

@@ -18,8 +18,8 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
 
     static public function updateDoctrineDataBase()
     {
-        $tool = new Doctrine\ORM\Tools\SchemaTool($this->_em);
-        $tool->updateSchema($this->_em->getMetadataFactory()->getAllMetadata());
+        $tool = new Doctrine\ORM\Tools\SchemaTool($this ->getEntityManager());
+        $tool->updateSchema($this ->getEntityManager()->getMetadataFactory()->getAllMetadata());
     }
     
     static public function ResultToArrayByKey(array $data,$key)
@@ -91,8 +91,8 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
             $entity = $this->createEntityFromForm();
 
             // Save new entity
-            $this->_em->persist($entity);
-            $this->_em->flush($entity);
+            $this ->getEntityManager()->persist($entity);
+            $this ->getEntityManager()->flush($entity);
 
         } 
         catch (Exception $e)
@@ -144,8 +144,8 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
         try
         {
             // find row to delete with id
-            $this->_em->remove($this->getStorage()->find($entityId));
-            $this->_em->flush();
+            $this ->getEntityManager()->remove($this->getStorage()->find($entityId));
+            $this ->getEntityManager()->flush();
             
         }
         catch (Exception $e)
@@ -192,7 +192,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
                 $keySg = Pepit_Inflector::singularize($keyPluralName);
                 $addMethod = 'add'.ucfirst($keySg);
                 $entity->$addMethod(
-                        $this->_em->getRepository($targetEntity)
+                        $this ->getEntityManager()->getRepository($targetEntity)
                              ->find($entityId)
                 );
             }
@@ -299,12 +299,6 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
         }
         
         return $arrayResult;
-        
-//        return $this->getArrayForFormFromEntityWithSingleValueFields(
-//                $this->_em,
-//                $entity,
-//                array_keys($this->getForm('update')->getElements())
-//        );     
     }
     
     /**

@@ -10,8 +10,6 @@
     
 abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
 {
-    protected $_em;
-    
     protected function _initGeneralizedItemOptions()
     {
         $associationType  = new Pepit_Form_Element_Select('associationType',array(
@@ -35,12 +33,12 @@ abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
         $formElementClass = Pepit_Form_Element::initMultioptions(
                 $formElementClass,
                 'ZC\Entity\FormElementClass',
-                'id', 'name', $this->_em
+                'id', 'name', $this ->getEntityManager()
         );
         
         
         
-        $formElements = $this->_em->getRepository('ZC\Entity\FormElementClass')
+        $formElements = $this ->getEntityManager()->getRepository('ZC\Entity\FormElementClass')
                             ->findAll();
         foreach ($formElements as $formElement)
         {
@@ -121,7 +119,7 @@ abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
         $formFilters = Pepit_Form_Element::initMultioptions(
                 $formFilters,
                 'ZC\Entity\FormFilter',
-                'id', 'name', $this->_em
+                'id', 'name', $this ->getEntityManager()
         );
                         
         
@@ -131,7 +129,7 @@ abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
         $formValidators = Pepit_Form_Element::initMultioptions(
                 $formValidators,
                 'ZC\Entity\FormValidator',
-                'id', 'name', $this->_em
+                'id', 'name', $this ->getEntityManager()
         );
                         
         $this->addDisplayGroup(array(
@@ -149,30 +147,19 @@ abstract class Backend_Form_GeneralizedItemCreateAbstract extends Pepit_Form
     
     protected function _initItemsOptions()
     {
-        $generalizedItems = new Pepit_Form_Element_MultiCheckbox('itemIds',array(
-            'label' => 'Items: '
-        ));
-        
-        // get item list for multioption
-                        
-        $generalizedItems ->setValue(array('date' => 'date'));
-        $generalizedItems = Pepit_Form_Element::initMultioptions(
-                $generalizedItems,
-                'ZC\Entity\GeneralizedItem',
-                'id', 'name', $this->_em
-        );
+        $generalizedItems = (new Backend_Form_Elements_MultiCheckbox('itemIds',array(
+            'label' => 'Items: ',
+            'storageEntity'         => 'ZC\Entity\GeneralizedItem',
+            'storageEntityProperty' => 'name',
+        )))->setValue(array('date' => 'date'))
+           ->setAttrib('data-property-name', 'items');
+
         
         $this->addDisplayGroup(array(
             $generalizedItems,
         ),'Category_Options');
         $this ->getDisplayGroup('Category_Options');
     }
-    
-    public function setEntityManager($em)
-    {
-        $this->_em = $em;
-    }
-    
     
 }
 

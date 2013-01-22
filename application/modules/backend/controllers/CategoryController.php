@@ -74,8 +74,7 @@ class Backend_CategoryController extends Pepit_Controller_Abstract
         
         //load formular
         $form = $this->_model->getForm(
-            'update',
-            array('entitymanager' => Zend_Registry::get('entitymanager'))
+            'update'
         );
         
         // set form action

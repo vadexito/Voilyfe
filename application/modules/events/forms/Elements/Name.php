@@ -20,6 +20,7 @@ class Events_Form_Elements_Name extends Pepit_Form_Element_Text
                 ])
                 ->setLabel('item_name');
         
+        
         parent::init();
     }
 

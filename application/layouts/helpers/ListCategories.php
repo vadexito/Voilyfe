@@ -1,6 +1,6 @@
 <?php
 
-class Events_View_Helper_ListCategories extends Zend_View_Helper_Abstract
+class Application_View_Helper_ListCategories extends Zend_View_Helper_Abstract
 {
     
     public function listCategories($partialView,$namePage)

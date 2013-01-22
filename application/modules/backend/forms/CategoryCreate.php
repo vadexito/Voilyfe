@@ -20,7 +20,7 @@ class Backend_Form_CategoryCreate extends Backend_Form_GeneralizedItemCreateAbst
         ));
         
         //define validator for uniqueness
-        $categoriesDb = $this ->_em->getRepository('ZC\Entity\Category')
+        $categoriesDb = $this ->getEntityManager()->getRepository('ZC\Entity\Category')
                             ->findAll();
         $validUnique = new Pepit_Validate_NotInDoctrineArray($categoriesDb,'name');       
         
@@ -28,22 +28,14 @@ class Backend_Form_CategoryCreate extends Backend_Form_GeneralizedItemCreateAbst
                         ->addFilters(array('StringTrim','StripTags',
                             'StringToLower','Alnum'))
                         ->addValidators(array('notempty',$validUnique))
-                        ->addDecorator('label');
+                        ->addDecorator('label')->setAttrib('data-property-name','name');
         
         
-        
-        
-        $categoriesRaw = new Pepit_Form_Element_MultiCheckbox('categoryIds',array(
-            'label' => 'Generalized categories (meta and simple categories): '
-        ));
-        
-        $categories = Pepit_Form_Element::initMultioptions(
-                $categoriesRaw->addDecorator('label'),
-                'ZC\Entity\Category',
-                'id', 'name', $this->_em
-        );
-        
-        
+        $categories = (new Backend_Form_Elements_MultiCheckbox('categoryIds',array(
+            'label'                 => 'Generalized categories (meta and simple categories): ',
+            'storageEntity'         => 'ZC\Entity\Category',
+            'storageEntityProperty' => 'name',
+        )))->setAttrib('data-property-name', 'categories');
        
         //create submit element        
         $submit = new Pepit_Form_Element_Submit('submit_insert',array(

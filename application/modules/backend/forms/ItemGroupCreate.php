@@ -20,7 +20,7 @@ class Backend_Form_ItemGroupCreate extends Backend_Form_GeneralizedItemCreateAbs
         ));
         
         //define validator for uniqueness
-        $generalizedItems = $this ->_em->getRepository('ZC\Entity\GeneralizedItem')
+        $generalizedItems = $this ->getEntityManager()->getRepository('ZC\Entity\GeneralizedItem')
                             ->findAll();
         $validUnique = new Pepit_Validate_NotInDoctrineArray($generalizedItems,'name');       
                
@@ -42,7 +42,7 @@ class Backend_Form_ItemGroupCreate extends Backend_Form_GeneralizedItemCreateAbs
         $this->getElement('associationType')->setMultioptions($associationTypes);
         
         $formElementClass = 'Pepit_Form_Element_Select';
-        $idFormElementClass = $this->_em->getRepository('ZC\Entity\FormElementClass')
+        $idFormElementClass = $this ->getEntityManager()->getRepository('ZC\Entity\FormElementClass')
                 ->findOneByName($formElementClass)->id;
 
         $this->getElement('formElementClassId')->setMultioptions(array(
@@ -58,7 +58,7 @@ class Backend_Form_ItemGroupCreate extends Backend_Form_GeneralizedItemCreateAbs
         $identifierItemId = Pepit_Form_Element::initMultioptions(
                 $identifierItemId,
                 'ZC\Entity\Item',
-                'id', 'name',$this->_em
+                'id', 'name',$this ->getEntityManager()
         );
         $itemType = $this->getElement('itemType');
         $itemType->setMultioptions(array(
