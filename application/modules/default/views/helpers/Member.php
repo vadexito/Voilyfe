@@ -22,4 +22,5 @@ class Application_View_Helper_Member extends Zend_View_Helper_Abstract
             return false;
         }
     }
+    
 }

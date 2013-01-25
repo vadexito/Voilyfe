@@ -13,7 +13,7 @@ class SwimmingEvents extends \ZC\Entity\Event
     /**
      * @Var string
      */
-    protected $swimming_location = null;
+    protected $swimming_opinion = null;
 
     /**
      * @Var float
@@ -29,7 +29,7 @@ class SwimmingEvents extends \ZC\Entity\Event
     {
         $metadata->setTableName('swimming_events');
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
-        $builder->createField('swimming_location','string')->length(255)->nullable(false)->build();
+        $builder->createField('swimming_opinion','string')->length(255)->nullable(false)->build();
         $builder->createField('swimming_duration','float')->length(255)->nullable(false)->build();
         $builder->createManyToOne('swimming_typeswimming','ZC\Entity\ItemRow')->build();
     }

@@ -1,14 +1,14 @@
 <?php echo $this->doctype() ?>
 <html>
     <head>
-        <?php echo $this->partial('partial/_head.phtml') ?>
+        <?php echo $this->partial('partial/_head.phtml');?>
     </head>
     <body> 
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
-                          echo $this->listCategories('partial/_navDropdown.phtml','backend');?>
+                          if ($this->member()->role === ('admin' || 'owner')) : echo $this->listCategories('partial/_navDropdown.phtml','backend'); endif;?>
                 </div>
             </div>
         </nav>

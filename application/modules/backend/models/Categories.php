@@ -50,15 +50,14 @@ class Backend_Model_Categories extends Backend_Model_Abstract_Container
     
     protected function _save($entityId)
     {
-        $entity = $this->getStorage()->find($entityId);
+        //update file
+        $this->createContainerEntity($this->getStorage()->find($entityId)); 
         
-        $this->createContainerEntity($entity); 
-        
-        //updatedatabase
-        Pepit_Doctrine_Tool::updateDoctrineSchemaForCreatingNewContainer(
-                $this->_em,
-                $this->getParentClassContainer()
-        );
+        //update database structure
+//        Pepit_Doctrine_Tool::updateDoctrineSchemaForCreatingNewContainer(
+//                $this->getEntityManager(),
+//                $this->getParentClassContainer()
+//        );
     }
     
     public function delete($categoryId)
@@ -106,12 +105,11 @@ class Backend_Model_Categories extends Backend_Model_Abstract_Container
         
         $category = $this->getStorage()->find($entityId);
         
-        return $this->_saveEntityFromForm($formValues, $category);
+        return $this->_saveEntityFromForm($category);
     }
     
     protected function _saveEntityFromForm($category)
     {
-        
         $formValues = $this->getForm()->getValues();
         
         if (array_key_exists('itemIds',$formValues) &&

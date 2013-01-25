@@ -30,6 +30,11 @@ class RestaurantEvents extends \ZC\Entity\Event
      */
     protected $restaurant_restaurants = null;
 
+    /**
+     * @Var string
+     */
+    protected $restaurant_opinion = null;
+
     static function loadMetadata(\Doctrine\ORM\Mapping\ClassMetadata $metadata)
     {
         $metadata->setTableName('restaurant_events');
@@ -38,6 +43,7 @@ class RestaurantEvents extends \ZC\Entity\Event
         $builder->createField('restaurant_price','float')->length(255)->nullable(true)->build();
         $builder->createManyToOne('restaurant_mealtype','ZC\Entity\ItemRow')->build();
         $builder->createManyToOne('restaurant_restaurants','ZC\Entity\ItemGroupRow')->build();
+        $builder->createField('restaurant_opinion','string')->length(255)->nullable(false)->build();
     }
 
 

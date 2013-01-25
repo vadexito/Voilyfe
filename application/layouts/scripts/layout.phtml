@@ -13,7 +13,7 @@
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
-                      echo $this->listCategories('partial/_navDropdown.phtml','backend');?>
+                      if ($this->member()->role === ('admin' || 'owner')) : echo $this->listCategories('partial/_navDropdown.phtml','backend'); endif;?>
             </div>
         </nav>
         <div class="container-fluid">

@@ -89,13 +89,7 @@ class Backend_CategoryController extends Pepit_Controller_Abstract
         
         $this->processEdit(
                 $form,
-                'category updated successfully.',
-                $this->view->url(
-                    array(
-                        'controller'    => 'category',
-                        'action'        => 'index',
-                    ),
-                    'backend'),
+                "Category file updated successfully./n Category value in database categories updated. ",'/backend/doctrinetool/updatedatabase',                
                 $categoryId
         );
     }

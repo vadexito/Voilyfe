@@ -116,7 +116,7 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
     {
        try
        {
-            // create new user from array
+            // update data base
             $this->updateEntityFromForm($entityId);
             
             // flush for updating new entity

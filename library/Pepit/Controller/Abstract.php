@@ -6,6 +6,8 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
     
     public function processInsert($form,$messageSuccess,$redirectUrl)
     {
+        $this->_initProcess($form);
+        
         // if the form or subform has been sent
         if ($this->getRequest()->isPost())
         {
@@ -47,6 +49,8 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
     public function processEdit(
         $form,$messageSuccess,$redirectUrl,$entityId)
     {
+        $this->_initProcess($form);
+
         // if the form has been fullfilled
         if ($this->getRequest()->isPost())
         {
@@ -95,6 +99,8 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
     public function processDelete(
             $form,$messageSuccess,$redirectUrl,$entityId)
     {
+        $this->_initProcess($form);
+
         // check if form was sent
         if ($this->getRequest()->isPost() || $this->getRequest()->isGet() )
         {
@@ -118,6 +124,13 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
         }
         // transmit data to view
         $this->view->form  = $form;
+    }
+    
+    protected function _initProcess(Pepit_Form $form)
+    {
+        $form->getElement('urlReferer')->setValue(
+                $this->getRequest()->getServer('HTTP_REFERER')
+        );
     }
 }
 

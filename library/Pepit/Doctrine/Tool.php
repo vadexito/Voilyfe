@@ -15,6 +15,9 @@ class Pepit_Doctrine_Tool
         // define tool cli for doctrine and execute create entity
         $tool = new Doctrine\ORM\Tools\SchemaTool($em);
         
+        $driver = new \Doctrine\ORM\Mapping\Driver\PHPDriver(APPLICATION_PATH."/../library/ZC/Entity/");
+        $em->getConfiguration()->setMetadataDriverImpl($driver);
+        
        //update for itemgrouprow discriminator map
         $discriminatorMap = 
             call_user_func_array(
@@ -33,6 +36,7 @@ class Pepit_Doctrine_Tool
     {
         // define tool cli for doctrine and execute update
         $tool = new Doctrine\ORM\Tools\SchemaTool($em);
+        
         $tool->updateSchema($em->getMetadataFactory()->getAllMetadata());
     }
     

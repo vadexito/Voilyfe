@@ -21,7 +21,11 @@ class Application_Controller_Plugin_Navmenu extends Zend_Controller_Plugin_Abstr
         if ($this->_auth->hasIdentity())
         {
             $this->_createUserMenu();
-            $this->_createCategoryMenu(); 
+            
+            if ( $request->getModuleName() === 'events')
+            {
+                $this->_createCategoryMenu(); 
+            }            
         }
     }
     

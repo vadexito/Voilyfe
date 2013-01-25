@@ -40,6 +40,9 @@ class Pepit_Form extends Zend_Form
             'Form',
             ));
         }
+        
+        $hiddenElement = new Zend_Form_Element_Hidden('urlReferer');
+        $this->addElement($hiddenElement);
     }
     
     

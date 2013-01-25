@@ -16,7 +16,7 @@ class DeliveryEvents extends \ZC\Entity\Event
     protected $delivery_meals = null;
 
     /**
-     * @Var string
+     * @Var float
      */
     protected $delivery_price = null;
 
@@ -30,7 +30,7 @@ class DeliveryEvents extends \ZC\Entity\Event
         $metadata->setTableName('delivery_events');
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
         $builder->createField('delivery_meals','string')->length(255)->nullable(true)->build();
-        $builder->createField('delivery_price','string')->length(255)->nullable(true)->build();
+        $builder->createField('delivery_price','float')->length(255)->nullable(true)->build();
         $builder->createManyToOne('delivery_company','ZC\Entity\ItemGroupRow')->build();
     }
 
