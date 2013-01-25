@@ -12,7 +12,7 @@
             }
         }
     }
-    usort($singleCat,"Events_View_Helper_ListCategories::compEvents");
+    usort($singleCat,$this->listCategories()->compEvents);
 ?>
 <ul id="list-singleCat" data-role="listview" data-inset="true" data-icon="plus" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
     <!-- only the submenu for the options -->
