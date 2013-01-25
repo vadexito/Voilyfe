@@ -1,6 +1,6 @@
 <?php 
-    $singleCat = array();
-    $metaCat = array();
+    $singleCat = $metaCat = $cat = [];
+    
     $config = Zend_Registry::get('config');
     $imgPath = $config->public->images->icon->category->path; 
     foreach ($this->container as $page) 
@@ -9,12 +9,12 @@
         {
             if ($subPage->isMeta)
             {
-                $metaCat[] = $this->categoryListLine($subPage,$imgPath);
-            ;
+                $metaCat[] = $cat[] = $this->categoryListLine($subPage,$imgPath,true,false,'arrow-r','<img src="/images/icons/nav_bar/photos.png" style="width:15px;height:15px;">');
+                
             }
             else
             {
-                $singleCat[] = $this->categoryListLine($subPage,$imgPath,true,true);
+                $singleCat[] = $cat[] = $this->categoryListLine($subPage,$imgPath);
             }
             
         }
@@ -24,36 +24,13 @@
     //(with the most events)
     usort($singleCat,$this->listCategories()->compEvents);
     usort($metaCat,$this->listCategories()->compEvents);
+    usort($cat,$this->listCategories()->compEvents);
     
     // some lines are show, the rest being in a collapsible set
     $lineShown = $config->categories->list->lines->show;
 ?>
-<div data-role="collapsible-set" data-theme="b" data-content-theme="d">
-    <div data-role="collapsible" data-collapsed="false">
-        <h2><?php echo $this->translate('menu_list_category_to_add_new_events'); ?></h2>
-        <ul id="list-singleCat" data-role="listview" data-inset="true" data-split-icon="plus" data-split-theme="b">
-<?php $i = 0; foreach ($singleCat as $option): if ($i < $lineShown) : echo $option['render'] ; $i++; else : if ($i == $lineShown) : ?>
-        </ul>
-        <div data-role="collapsible">
-            <h2><?php echo $this->translate('menu_list_more_categories'); ?></h2>
-            <ul id="list-singleCat" data-role="listview" data-inset="true" data-split-icon="plus" data-split-theme="b" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
-<?php endif; echo $option['render']; $i++; endif; endforeach; ?>
-            </ul>
-        </div>
-    </div>
-</div>
-<div data-role="collapsible-set" data-theme="b" data-content-theme="d">
-    <div data-role="collapsible" data-collapsed="false">
-        <h2><?php echo $this->translate('menu_list_meta_category'); ?></h2>
-        <ul id="list-singleCat" data-role="listview" data-inset="true" data-split-icon="plus" data-split-theme="b">
-<?php $i = 0; foreach ($metaCat as $option): if ($i < $lineShown) : echo $option['render'] ; $i++; else : if ($i == $lineShown) : ?>
-        </ul>
-        <div data-role="collapsible">
-            <h2><?php echo $this->translate('menu_list_more_categories'); ?></h2>
-            <ul id="list-singleCat" data-role="listview" data-inset="true" data-split-icon="plus" data-split-theme="b" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
-<?php endif; echo $option['render']; $i++; endif; endforeach; ?>
-            </ul>
-        </div>
-    </div>
-</div>
-    
+
+<ul id="list-singleCat" data-role="listview" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
+    <?php foreach ($cat as $option): echo $option['render'] ; endforeach;?>
+</ul>
+

@@ -4,7 +4,7 @@ class Events_View_Helper_CategoryListLine extends Zend_View_Helper_HtmlElement
 {
     
     public function categoryListLine($page,$imgPath,$bubbleCount=true,
-            $lineSplit=false,$icon = 'plus')
+            $lineSplit=false,$icon = 'arrow-r',$subTitle='')
     {
         $categoryName = $page->getLabel();
         $category = preg_replace('#category_#','',$categoryName);
@@ -18,6 +18,7 @@ class Events_View_Helper_CategoryListLine extends Zend_View_Helper_HtmlElement
         $options=[
             'href'              => $href,
             'imgSrc'            => $imgSrc,
+            'subTitle'          => $subTitle,
             'categoryName'      => $categoryName,
             'nbEvents'          => $nbEvents,
             'bubbleCount'       => $bubbleCount,
@@ -48,7 +49,7 @@ class Events_View_Helper_CategoryListLine extends Zend_View_Helper_HtmlElement
             <a href="'.$href.'" data-ajax="false">
                 <img src="'. $imgSrc .'"/>
                     <h3>'.$this->view->translate($categoryName). '</h3>'."\n"
-                    .'<p></p>'
+                    .'<p>'. $subTitle .'</p>'
                 .($bubbleCount ? '<span class="ui-li-count">'.$nbEvents.'</span>'."\n":null)
                 ."\t". '</a>'
                 .($lineSplit ? '<a data-ajax = "false" href="'. $hrefCreate .'"></a>'."\n":null)

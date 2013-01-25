@@ -78,7 +78,12 @@ else //if no event to show
         'title'         => ucfirst($this->translate('menu_see_categories')),
         'buttonLeft'    => $this->htmlMobileButtonNavBar(['type' => 
             Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
-                ucfirst($this->translate('menu_back_to_previous_page')))
+                ucfirst($this->translate('menu_back_to_previous_page'))),
+        'footer'        => '_footerEmpty.mobile',
+        'buttonRight'   => '',
+        'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
+            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                ucfirst($this->translate('menu_back_to_previous_page'))),
         
     ]);
     
