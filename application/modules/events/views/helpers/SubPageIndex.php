@@ -73,25 +73,27 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         }
         
         $plusButtonOptions = ['position' => 'right','type' => 2];
+        if ($this->_category->name !=='all')
+        {
+            $this->_categoryName = 'category_'.$this->_category->name;
+            $hrefButtonAdd = $this->view->url(array('action' => 'create','containerId' => $this->_category->id),'event');
+            $attribs = [
+                'href'      => $hrefButtonAdd
+            ];
+        }
+        else
+        {
+            $this->_categoryName = 'menu_events';
+            $hrefButtonAdd = '#list_singleCategories';
+            $attribs = [
+                'href'      => $hrefButtonAdd,
+                'data-rel'  => 'popup',
+            ];
+        }
+        
         if ($this->_buttonRight === NULL)
         {
-            if ($this->_category->name !=='all')
-            {
-                $this->_categoryName = 'category_'.$this->_category->name;
-                $hrefButtonAdd = $this->view->url(array('action' => 'create','containerId' => $this->_category->id),'event');
-                $attribs = [
-                    'href'      => $hrefButtonAdd
-                ];
-            }
-            else
-            {
-                $this->_categoryName = 'menu_events';
-                $hrefButtonAdd = '#list_singleCategories';
-                $attribs = [
-                    'href'      => $hrefButtonAdd,
-                    'data-rel'  => 'popup',
-                ];
-            }
+            
             
             $this->_buttonRight = $this->view->htmlMobileButtonNavBar(
                     $plusButtonOptions,
@@ -111,6 +113,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         if ($this->_title === NULL)
         {
             $this->_title = ucfirst($this->view->translate($this->_categoryName));
+            
         }
         
         

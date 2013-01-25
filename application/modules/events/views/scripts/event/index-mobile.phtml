@@ -28,16 +28,18 @@ $this->inlineScript()->offsetSetFile(168,'/js/mvc/views/graphView.js');
 $this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
 
 
+$addButton = ($this->category->categories->count()===0) ? NULL : '';
 
 
 if ($this->events)
 {
     echo $this->subPageIndex($this->category,'last-events-page',[
-        'content'   => $this->partial(
+        'content'       => $this->partial(
             'partial/_pageLastEvents-mobile.phtml',
             ['events' => $this->events,'all'=>$this->allOption]
         ),
-        'active'    => 'last-events',
+        'active'        => 'last-events', 
+        'buttonRight'   => $addButton,
     ]);
     
     echo $this->subPageIndex($this->category,'calendar-page',[
@@ -46,6 +48,7 @@ if ($this->events)
             ['events' => $this->events,'eventsPerDay' => $this->eventsPerDay]
         ),
         'active'    => 'calendar',
+        'buttonRight'   => $addButton,
     ]);
     
     echo $this->subPagesGraphIndex($this->category,$this->graphs($this->events,$this->allOption));
@@ -59,7 +62,8 @@ else //if no event to show
         'title'     => ucfirst($this->translate('msg_welcome')),
         'popups'    => [
                     ['attribs' => ['id' => 'bla'],'content' => 'bla']
-        ]
+        ],
+        'buttonRight'   => $addButton,
     ]);
     
 }
@@ -100,7 +104,8 @@ else //if no event to show
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-first-level-template']);
         echo $this->subPageIndex($this->category,'<%= id %>',[
             'content'       => '',
-            'noWrap'        => true
+            'noWrap'        => true,
+            'buttonRight'   => $addButton,
         ]);
         $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-second-level-template']);

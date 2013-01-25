@@ -28,8 +28,6 @@ class Events_View_Helper_CategoryListLine extends Zend_View_Helper_HtmlElement
         ];
         
         
-        
-        
         return array(
             'render' => $this->_render($options),
             'countEvent' => $nbEvents
