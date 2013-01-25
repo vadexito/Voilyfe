@@ -8,13 +8,13 @@
         {
             if (!$subPage->isMeta)
             {
-                $singleCat[] = $this->categoryListLine($subPage,$imgPath,false,false);
+                $singleCat[] = $this->categoryListLine($subPage,$imgPath,false,false,"false");
             }
         }
     }
     usort($singleCat,$this->listCategories()->compEvents);
 ?>
-<ul id="list-singleCat" data-role="listview" data-inset="true" data-icon="plus" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
+<ul id="list-singleCat" data-role="listview" data-icon="plus" data-filter="true" data-filter-placeholder="<?php echo $this->translate('searchbar_search_categories'); ?>" data-filter-theme="d">
     <!-- only the submenu for the options -->
 <?php foreach ($singleCat as $option): echo $option['render']; endforeach; ?>
 </ul>
