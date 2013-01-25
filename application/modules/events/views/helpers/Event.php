@@ -174,22 +174,16 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
     {
         extract($options); //title,subtitle,content,href,aside
         
-        $attribs = [
-            'data-ajax'     => 'false',
-            'class'         => 'event-line-link',
-            'href'          => $href,
-            'data-eventid'  => $this->_event->id,
-        ];
+        return '<li class="event-line" data-icon="false">'.$this->view->partial('partial/_eventListItem.phtml',[
+            'href'                  => $href,
+            'eventId'               => $this->_event->id,
+            'imgSrc'                => $this->getThumbnailSrc(),
+            'title'                 => $title,
+            'commonProperties'      => $subTitle,
+            'specificProperties'    => $content,
+            'aside'                 => $aside,
+        ]).'</li>'."\n";
         
-        return '<li class="event-line">
-        <a '. $this->_htmlAttribs($attribs).'>'
-            .$this->renderUserImageThumbnail()
-            .'<h4>'. $title .'</h4>'
-            .'<p><strong>&nbsp '.$subTitle.'</strong></p>
-            <p>'.$content.'</p>
-            <p class="ui-li-aside">'. $aside .'<strong></strong></p>
-        </a>
-    </li>'."\n";
     }
     
     /**

@@ -284,10 +284,25 @@ event line display
 
 li.event-line a.ui-link-inherit.event-line-link
 {
-    padding-top: 0.15em;
+    padding-top: 0;
     padding-bottom: 0.15em;
+    padding-left: 90px;
 }
 
+p.sub-line-property
+{
+    min-height: 8px;
+    margin:0;
+    
+    
+}
+
+.sub-line-date
+{
+    margin-bottom:25px;
+    font-size: 14px;
+    
+}
 /*
 ================================================================================
 calendar view

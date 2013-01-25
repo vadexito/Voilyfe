@@ -13,6 +13,7 @@ window.IndexView = Backbone.View.extend({
     
     events : {
         'click a.event-line-link'   : 'showEvent',
+        'click a.winner-list-line'  : 'viewListEvents',
         'datebox'                   : 'showEventofDate',
         'click .user-image'         : 'showImage'
     },
@@ -66,7 +67,24 @@ window.IndexView = Backbone.View.extend({
         
     },
     
-    
+    viewListEvents : function(e){
+        
+        //Create collection for subgroup of events corresponding to tag
+        var tagEvents = new Events();
+        var tagValue = $(e.currentTarget).find('h3').html();
+        
+        _.each($.parseJSON($(e.currentTarget).attr('data-events')),function(id){
+            tagEvents.add(mainPage.options.lastEventsCollection.get(id));            
+        },mainPage);
+        
+        mainPage.openPage({
+            id      : $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
+            title   : tagValue,
+            content : (new EventListView({model:tagEvents,active:'graphs'})).render(),
+            active  :'graphs',
+            template:'second-level'
+        });
+    },
     
     showEventofDate:function(e, passed){
         if ( passed.method === 'set') {

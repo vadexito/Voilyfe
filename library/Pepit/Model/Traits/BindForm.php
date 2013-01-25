@@ -65,6 +65,6 @@ Trait Pepit_Model_Traits_BindForm
         return $this->_formClasses;
     }
     
-    abstract function loadForm($formMode,$options);
+    abstract function loadForm($name,$options=NULL,$module=NULL);
     
 }

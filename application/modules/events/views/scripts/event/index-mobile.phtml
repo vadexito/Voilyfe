@@ -119,20 +119,18 @@ else //if no event to show
         ]);
         $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-line-template'])?>
-        <a data-ajax="false" class="event-line-link" href="<%= href %>" data-eventId="<%= eventId %>">
-            <img  src="<%= userImageSrc %>" />
-            <h4><%= title %></h4>
-            <p>
-                <strong><%= commonProperties %></strong>
-            </p>
-            <p>
-                <%= specificProperties %>
-            </p>
-            <p class="ui-li-aside"><strong><%= aside %></strong></p>  
-        </a>
+        <?php echo $this->partial('partial/_eventListItem.phtml',[
+            'href'                  => '<%= href %>',
+            'eventId'               => '<%= eventId %>',
+            'imgSrc'                => '<%= userImageSrc %>',
+            'title'                 => '<%= title %>',
+            'commonProperties'      => '<%= commonProperties %>',
+            'specificProperties'    => '<%= specificProperties %>',
+            'aside'                 => '<%= aside %>',
+        ]); ?>
     <?php $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-property-template'])?>
-        <img src="/images/icons/nav_bar/<%= srcIcon %>" style="width:15px;height:15px;"/><%= content %>
+        <img src="<%= srcIcon %>" style="width:10px;height:10px;"/> <%= value %>
     <?php 
         $this->inlineScript()->captureEnd();   
         

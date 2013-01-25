@@ -3,16 +3,18 @@ window.GraphView = Backbone.View.extend({
     initialize: function(){
         
         this.page = this.$el.parents().filter('div[data-role="page"]').first();
+        this.initGoogleChart(); 
         
-        if ($.mobile.activePage.attr('id') == this.page.attr('id')){            
-            this.initGoogleChart();        
-        }
+        
+//        if ($.mobile.activePage.attr('id') == this.page.attr('id')){            
+//            this.initGoogleChart();        
+//        }
         
         this.page.on('pageshow',{graph:this},this.updatePage);
     },
     
     events : {
-        'click a.winner-list-line'  : 'viewListEvents'
+        
     },
     
     initGoogleChart: function(){
@@ -49,24 +51,7 @@ window.GraphView = Backbone.View.extend({
     },
     
     
-    viewListEvents : function(e){
-        
-        //Create collection for subgroup of events corresponding to tag
-        var tagEvents = new Events();
-        var tagValue = $(e.currentTarget).find('h3').html();
-        
-        _.each($.parseJSON($(e.currentTarget).attr('data-events')),function(id){
-            tagEvents.add(mainPage.options.lastEventsCollection.get(id));            
-        },mainPage);
-        
-        mainPage.openPage({
-            id      : $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
-            title   : tagValue,
-            content : (new EventListView({model:tagEvents,active:'graphs'})).render(),
-            active  :'graphs',
-            template:'second-level'
-        });
-    },
+    
     
     
     
