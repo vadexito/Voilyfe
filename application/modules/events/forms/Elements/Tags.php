@@ -6,7 +6,7 @@
  */
 
 
-class Events_Form_Elements_Tags extends Pepit_Form_Element_Tags
+class Events_Form_Elements_Tags extends Events_Form_Elements_Abstract_Tags
 {
 
     protected $_containerId = 19;
@@ -16,7 +16,7 @@ class Events_Form_Elements_Tags extends Pepit_Form_Element_Tags
     
     public function init()
     {
-        $this   ->setAttrib('class','item_common')
+        $this   ->addClass('item_common')
                 ->setAttrib('data-item-name','tags')
                 ->setAttrib('data-property-name','tags')
                 ->setLabel('item_tags')

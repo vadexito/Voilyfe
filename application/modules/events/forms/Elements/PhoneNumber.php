@@ -6,7 +6,7 @@
  */
 
 
-class Events_Form_Elements_PhoneNumber extends Pepit_Form_Element_Text
+class Events_Form_Elements_PhoneNumber extends Events_Form_Elements_Abstract_Text
 {
 
     protected $_id = null;

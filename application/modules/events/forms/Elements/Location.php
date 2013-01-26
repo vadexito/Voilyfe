@@ -19,6 +19,8 @@ class Events_Form_Elements_Location extends Pepit_Form_Element_Location
             ->setLabel('item_location')
             ->setRequired(false)
             ->setAttrib(Pepit_Form_Element::DATA_ITEM_ATTRIB,'location');
+       
+        $this->addClass('event_item');
         
         parent::init();
     }

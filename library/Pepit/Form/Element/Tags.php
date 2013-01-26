@@ -28,10 +28,10 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     public function init()
     {
         $this->setOptions(array(
-            'class'     => 'form-element-tags',
             'horizontal'=> true,
         ));
         
+        $this->addClass('form-element-tags');
         $this->_initForm();
         parent::init();
         

@@ -43,6 +43,19 @@ trait Pepit_Form_Element_Trait_Trait
         return $this->_horizontal;
     }
     
+    public function addClass($class)
+    {
+        if ($this->getAttrib('class'))
+        {
+            $this->setAttrib('class',$this->getAttrib('class').' '.$class);            
+        }
+        else
+        {
+            $this->setAttrib('class',$class); 
+        }
+        return $this;
+    }
+    
     
 }
 

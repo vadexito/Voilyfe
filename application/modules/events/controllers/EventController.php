@@ -264,9 +264,8 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
                 $icon = preg_replace($pattern,'$1',$icon);
                 echo '.ui-icon-mylife-'.$icon.'{'
                 .'background:url("/images/icons/nav_bar/'.$icon.'.png") 50% 50% no-repeat;'
-                .'background-size: 24px 22px;}'."\n";
+                .'background-size: 18px 17px;}'."\n";
             }
-            
         }
         $this->view->headStyle()->captureEnd();
     }

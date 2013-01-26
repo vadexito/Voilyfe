@@ -10,14 +10,12 @@ window.ItemInEventView = Backbone.View.extend({
         
     render: function(){
         
-        this.$el.html(this.template(this.model.toJSON()));     
-//        this.$el.html( '<img src="'
-//            +this.model.get('srcIcon')
-//            +'" style="width:15px;height:15px;"/> '
-//            + this.model.get('value'));
-        
+               
+        this.$el.html(this.template(this.model.toJSON()));
         return this.el;
-    }   
+    }
+    
+    
     
 });
 

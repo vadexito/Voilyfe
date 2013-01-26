@@ -6,7 +6,7 @@
  */
 
 
-class Events_Form_Elements_Restaurants extends Pepit_Form_Element_Tags
+class Events_Form_Elements_Restaurants extends Events_Form_Elements_Abstract_Tags
 {
 
     protected $_containerId = 10;

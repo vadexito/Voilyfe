@@ -32,7 +32,8 @@ window.SingleItemPageView = Backbone.View.extend({
         'click a.button_date'       : 'openInputDate',
         'change .inputDate'         : 'updateDate',
         'click .button-option-plus' : 'plusButton',
-        'pageshow'                  : 'addInputFocus'
+        'pageshow'                  : 'addInputFocus'//,
+//        'keyup .event_item'         : 'goToNext'
     },
 
     addInputFocus: function(e){
@@ -41,6 +42,18 @@ window.SingleItemPageView = Backbone.View.extend({
             $input.first().focus();
         }        
     },
+    
+//    goToNext: function(l){
+//       if (l.keyCode == 13){
+//           var pages = $('div[data-role="page"]');
+//           console.log($(pages[2]).attr('id'));
+//           console.log(pages.first().attr('id'));
+//           
+//           
+//           //.attr('id'));
+//           //$.mobile.changePage($('div[data-role="page"]').first().attr('id'));
+//       }
+//    },
     
     plusButton: function(){
         console.log('plus');

@@ -43,7 +43,7 @@ window.IndexView = Backbone.View.extend({
         var id = 'last-events-page';
         var page = this.openPage({
             id          : '',
-            content     : (new EventListView({model:this.options.lastEventsCollection,active:'last-events'})).render(),
+            content     : (new EventListView({model:this.options.lastEventsCollectionTrunc,active:'last-events'})).render(),
             template    : 'first-level',
             active      : 'last-events'
         },true,true);
@@ -63,7 +63,12 @@ window.IndexView = Backbone.View.extend({
     
     initEventsLast: function(){
         
-        this.options.lastEventsCollection = new Events(lastEvents);        
+        this.options.lastEventsCollection = new Events(lastEvents);
+        
+        _.each(lastEvents,function(event){
+            event.truncate = 35;
+        });
+        this.options.lastEventsCollectionTrunc = new Events(lastEvents);        
         
     },
     
@@ -74,10 +79,10 @@ window.IndexView = Backbone.View.extend({
         var tagValue = $(e.currentTarget).find('h3').html();
         
         _.each($.parseJSON($(e.currentTarget).attr('data-events')),function(id){
-            tagEvents.add(mainPage.options.lastEventsCollection.get(id));            
-        },mainPage);
+            tagEvents.add(this.options.lastEventsCollectionTrunc.get(id));            
+        },this);
         
-        mainPage.openPage({
+        this.openPage({
             id      : $(e.currentTarget).attr('data-item')+'-'+tagValue.replace(/ /g,'')+"-page",
             title   : tagValue,
             content : (new EventListView({model:tagEvents,active:'graphs'})).render(),
@@ -92,7 +97,7 @@ window.IndexView = Backbone.View.extend({
             var theDate = this.calendar.$el.find('input').data('datebox').theDate;
             var EventsAtDate = new Events();
 
-            this.options.lastEventsCollection.each( function(event){
+            this.options.lastEventsCollectionTrunc.each( function(event){
                 
                 if ((new Date(event.get('W3CDate')) - theDate) === 0){
                     EventsAtDate.add(event);       

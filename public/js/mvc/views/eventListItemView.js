@@ -11,10 +11,7 @@ window.EventListItemView = Backbone.View.extend({
         
     },
     
-    
-    
-    render: function(){
-       
+    render: function(){       
        
         this.$el.html( this.template (this.model.toJSON()));
         this.$el.find('a').attr('data-active',this.options.active);

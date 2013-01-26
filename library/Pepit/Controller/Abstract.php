@@ -128,9 +128,7 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
     
     protected function _initProcess(Pepit_Form $form)
     {
-        $form->getElement('urlReferer')->setValue(
-                $this->getRequest()->getServer('HTTP_REFERER')
-        );
+        
     }
 }
 

@@ -9,6 +9,7 @@ class Pepit_Form_Element_Xhtml extends Zend_Form_Element_Xhtml implements Pepit_
     public function init()
     {
         parent::init();
+        
         Pepit_Form_Element::initFormElement($this);
     }
     

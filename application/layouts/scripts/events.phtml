@@ -7,8 +7,8 @@
         <nav id="upper-menu" class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <?php echo $this->listCategories('partial/_navDropdown.phtml','user');
-                          if ($this->member()->role === ('admin' || 'owner')) : echo $this->listCategories('partial/_navDropdown.phtml','backend'); endif;?>
+                    <?php echo $this->listCategories('partial/_navDropdown.phtml','user'); 
+                          if (($this->member()->role === 'admin') || ($this->member()->role === 'owner')) : echo $this->listCategories('partial/_navDropdown.phtml','backend'); endif;?>
                 </div>
             </div>
         </nav>

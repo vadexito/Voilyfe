@@ -15,7 +15,13 @@ window.InputView = Backbone.View.extend({
         
     },
     
-    initPopulate: function(){
+    events:{
+        'keypress':'enterTagContent'
+    },
+    
+    
+    initPopulate: function(){ 
+        
         if (this.model.get('populate')){
             var self = this;
             $.each(this.model.get('populate'),function(index,value){
@@ -60,9 +66,6 @@ window.InputView = Backbone.View.extend({
         });
     },
     
-    events:{
-        'keypress':'enterTagContent'
-    },
     
     
     

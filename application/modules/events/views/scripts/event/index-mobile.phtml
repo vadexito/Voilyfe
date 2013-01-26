@@ -27,8 +27,13 @@ $this->inlineScript()->offsetSetFile(167,'/js/mvc/views/propertyView.js');
 $this->inlineScript()->offsetSetFile(168,'/js/mvc/views/graphView.js');
 $this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
 
+$addButton = NULL;
+if ( property_exists($this->category,'categories') && method_exists($this->category->categories,'count')
+        && ($this->category->categories->count()>0))
+{
+    $addButton =  '' ;
+}
 
-$addButton = ($this->category->categories->count()===0) ? NULL : '';
 
 
 if ($this->events)

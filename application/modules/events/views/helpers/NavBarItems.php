@@ -2,23 +2,28 @@
 
 class Events_View_Helper_NavBarItems extends Zend_View_Helper_Abstract
 {
-    public function navBarItems(array $formElements,$activeItem,$nbItemPerNavBar = 4)
+    public function navBarItems(array $formElements,$activeItem,$nbItemPerNavBar = 5)
     {
-        $content = '';
+        $content = $navBar = '';
         $i=0;
-        $navBar = '';
+        
         foreach ($formElements as $formElement)
         {
             $active = null;
             $propertyName = $formElement->getAttrib('data-property-name');
             $item = preg_replace('#.*_(.*)$#','$1',$propertyName);
             
+            //mark the item active
             if ( $propertyName === $activeItem)
             {
                 $active = true;
             }
+            
+            //add an item in the navbar line
             $navBar = $navBar . $this->_renderButton($propertyName,$item,$active);
-            if (($i % $nbItemPerNavBar) === 3)
+            
+            //save line and add new line of items
+            if (($i % $nbItemPerNavBar) === $nbItemPerNavBar-1)
             {
                 $content = $content.$this->_renderNavBar($navBar)."\n";
                 $navBar = '';
@@ -36,7 +41,7 @@ class Events_View_Helper_NavBarItems extends Zend_View_Helper_Abstract
     
     protected function _renderNavBar($content)
     {
-        return '<div data-role="navbar">
+        return '<div data-role="navbar" class="nav-glyphish">
                     <ul>'.$content."\n"
                     .'</ul>
                 </div><!-- /navbar -->';

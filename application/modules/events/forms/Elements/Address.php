@@ -6,7 +6,7 @@
  */
 
 
-class Events_Form_Elements_Address extends Pepit_Form_Element_Text
+class Events_Form_Elements_Address extends Events_Form_Elements_Abstract_Text
 {
 
     protected $_id = null;
@@ -20,6 +20,8 @@ class Events_Form_Elements_Address extends Pepit_Form_Element_Text
                     ))
                 ->setLabel('item_address');
         
+        $this->addClass('event_item');
+                
         parent::init();
     }
 

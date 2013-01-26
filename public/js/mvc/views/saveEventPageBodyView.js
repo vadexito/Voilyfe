@@ -16,6 +16,7 @@ window.SaveEventPageBodyView = Backbone.View.extend({
     },
     
     initForm: function(){
+        
         //input for submit post
         if ($('input[type=submit]').length > 0){
             

@@ -269,11 +269,11 @@ form pre
 /* plus button for more options next to input*/
 img.button-option-plus
 {
-    float: right;
     position:relative;
-    margin:5px 20px ;
+    margin-left: 15px;
     max-height: 25px;
     max-width: 25px;
+    cursor: pointer;
 }
 
 /*
