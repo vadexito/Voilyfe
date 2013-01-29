@@ -5,8 +5,8 @@ window.IndexView = Backbone.View.extend({
         this.initEventsLast();
         this.initGraphs();
         this.initCalendar();
-        this.initLastEventsPage();        
-        
+        this.initLastEventsPage();
+        this.initListCategeoriesPage();
         
         mainPage = this;
     },
@@ -19,7 +19,7 @@ window.IndexView = Backbone.View.extend({
     },
     
     showEvent: function(e){
-        
+       
        e.preventDefault();
        var model = this.options.lastEventsCollection.get($(e.currentTarget).attr('data-eventid'));
        var event = new EventView({model:model});
@@ -31,6 +31,10 @@ window.IndexView = Backbone.View.extend({
             active      : $(e.currentTarget).attr('data-active'),
             template    :'event-details'
         });        
+    },
+    
+    initListCategeoriesPage: function(){
+        new ListCategoriesPageView({el: this.$el.find('#list_singleCategories')});        
     },
     
     initCalendar: function(){
@@ -169,7 +173,7 @@ window.IndexView = Backbone.View.extend({
             }
 
             if (!NoChangePage){
-                
+                console.log('#'+options.id);
                 $.mobile.changePage('#'+options.id);
             }
         }

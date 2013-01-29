@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2012-12-08 17:16+0100\n"
-"PO-Revision-Date: 2012-12-08 17:27+0100\n"
+"POT-Creation-Date: 2013-01-27 01:06+0100\n"
+"PO-Revision-Date: 2013-01-27 01:07+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -91,11 +91,11 @@ msgstr "nom d'utilisateur"
 msgid "user_password"
 msgstr "Mot de passe"
 
-#: application/modules/backend/forms/CategoryUpdate.php:21
+#: application/modules/backend/forms/CategoryUpdate.php:22
 #: application/modules/backend/forms/ItemUpdate.php:20
 #: application/modules/events/forms/EventUpdate.php:20
 #: application/modules/events/forms/ItemGroupRowUpdate.php:20
-#: application/modules/events/forms/ItemRowCreate.php:43
+#: application/modules/events/forms/ItemRowCreate.php:47
 #: application/modules/events/forms/ItemRowUpdate.php:20
 #: application/modules/events/forms/Abstract/GeneralizedItemRowCreate.php:39
 #: application/modules/members/forms/SettingsUpdate.php:16
@@ -103,7 +103,7 @@ msgstr "Mot de passe"
 msgid "action_save"
 msgstr "Enregistrer"
 
-#: application/modules/backend/forms/ItemCreate.php:42
+#: application/modules/backend/forms/ItemCreate.php:44
 msgid "action_create"
 msgstr "Créer"
 
@@ -117,7 +117,7 @@ msgstr "adresse"
 msgid "no_authorization_view_page"
 msgstr "Vous n'avez pas d'autorisation pour voir cette page"
 
-#: application/modules/default/controllers/plugins/Navmenu.php:101
+#: application/modules/default/controllers/plugins/Navmenu.php:105
 msgid "menu_user_profile"
 msgstr "Mon profil"
 
@@ -125,11 +125,11 @@ msgstr "Mon profil"
 msgid "menu_language"
 msgstr "langue :"
 
-#: application/modules/events/controllers/AjaxController.php:55
+#: application/modules/events/controllers/AjaxController.php:59
 msgid "legend_all_events"
 msgstr "Tous mes événements"
 
-#: application/modules/events/controllers/AjaxController.php:162
+#: application/modules/events/controllers/AjaxController.php:170
 msgid "category_unknown"
 msgstr "Catégorie inconnue"
 
@@ -162,11 +162,11 @@ msgstr "date"
 msgid "item_duration"
 msgstr "durée"
 
-#: application/modules/events/forms/Elements/Duration.php:32
+#: application/modules/events/forms/Elements/Duration.php:33
 msgid "title_total_time"
 msgstr "Temps (total)"
 
-#: application/modules/events/forms/Elements/Duration.php:38
+#: application/modules/events/forms/Elements/Duration.php:39
 #: library/Pepit/Form/Element/Date.php:64
 msgid "unit_month"
 msgstr "mois"
@@ -196,7 +196,7 @@ msgstr "type de repas"
 msgid "item_medicine"
 msgstr "médicament"
 
-#: application/modules/events/forms/Elements/Name.php:21
+#: application/modules/events/forms/Elements/Name.php:18
 #: application/translations/_XMLforPoedit/categories.xml:29
 msgid "item_name"
 msgstr "nom"
@@ -221,7 +221,7 @@ msgstr "Numéro de téléphone"
 msgid "item_price"
 msgstr "prix"
 
-#: application/modules/events/forms/Elements/Price.php:44
+#: application/modules/events/forms/Elements/Price.php:40
 msgid "title_amount"
 msgstr "Montant"
 
@@ -250,17 +250,17 @@ msgstr "type"
 msgid "item_typeswimming"
 msgstr "Type de nage"
 
-#: application/modules/events/views/helpers/ButtonNewEvent.php:18
+#: application/modules/events/views/helpers/ButtonNewEvent.php:25
 msgid "menu_createNewEvent"
 msgstr "Créer un nouvel événement"
 
-#: application/modules/events/views/helpers/Graphs.php:88
+#: application/modules/events/views/helpers/Graphs.php:89
 #: library/Pepit/Form/Element/Date.php:59
 #: application/modules/events/views/scripts/event/index.phtml:19
 msgid "item_frequency"
 msgstr "Fréquence"
 
-#: application/modules/events/views/helpers/SubPageIndex.php:82
+#: application/modules/events/views/helpers/SubPageIndex.php:109
 #: application/modules/events/views/helpers/SubPagesGraphIndex.php:86
 #: application/modules/events/views/scripts/partial/_welcome.phtml:16
 msgid "menu_short_categories"
@@ -332,7 +332,7 @@ msgstr "Adresse email"
 msgid "item_mobile_version"
 msgstr "Version mobile"
 
-#: library/Pepit/Form/Element/Multi.php:34
+#: library/Pepit/Form/Element/Multi.php:41
 msgid "msg_pickup_a_value"
 msgstr "Choisir"
 
@@ -341,7 +341,7 @@ msgid "action_edit"
 msgstr "Mettre à jour"
 
 #: library/Pepit/View/Helper/EventTable/Abstract.php:84
-#: application/modules/events/views/scripts/event/show-mobile.phtml:61
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:16
 msgid "action_delete"
 msgstr "effacer"
 
@@ -377,7 +377,7 @@ msgid "menu_find_event"
 msgstr "Recherche"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:43
+#: application/modules/events/views/scripts/event/index-mobile.phtml:87
 msgid "menu_see_categories"
 msgstr "Catégories"
 
@@ -491,15 +491,19 @@ msgstr "page"
 msgid "msg_questionSureToDelete"
 msgstr "Confirmez-vous ?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:33
+#: application/modules/events/views/scripts/event/index-mobile.phtml:67
 msgid "msg_welcome"
 msgstr "bienvenue"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:38
+#: application/modules/events/views/scripts/event/index-mobile.phtml:77
 msgid "menu_add_event"
 msgstr "Nouvel événement"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:46
+#: application/modules/events/views/scripts/event/index-mobile.phtml:82
+#: application/modules/events/views/scripts/event/index-mobile.phtml:90
+#: application/modules/events/views/scripts/event/index-mobile.phtml:95
+#: application/modules/events/views/scripts/event/index-mobile.phtml:122
+#: application/modules/events/views/scripts/event/index-mobile.phtml:133
 #: application/modules/events/views/scripts/help/index-mobile.phtml:6
 #: application/modules/members/views/scripts/data/index-mobile.phtml:6
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:6
@@ -507,7 +511,7 @@ msgstr "Nouvel événement"
 msgid "menu_back_to_previous_page"
 msgstr "Retour"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:51
+#: application/modules/events/views/scripts/event/index-mobile.phtml:101
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:5
 msgid "menu_settings"
 msgstr "Options"
@@ -520,52 +524,10 @@ msgstr "En un clin d'oeil"
 msgid "menu_events"
 msgstr "Evénements"
 
-#: application/modules/events/views/scripts/event/show-mobile.phtml:41
-msgid "event_edit_button"
-msgstr "Editer"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:46
-msgid "event_delete_button"
-msgstr "effacer"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:53
-msgid "title_question_delete_event"
-msgstr "Effacer"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:56
-msgid "mgs_sure_to_delete?"
-msgstr "Etes-vous bien sûr ?"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:57
-msgid "mgs_no_cancellation_of_action?"
-msgstr "La suppression est définitive"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:59
-msgid "button_cancel"
-msgstr "Annuler"
-
-#: application/modules/events/views/scripts/event/show-mobile.phtml:62
-msgid "button_confirm?"
-msgstr "Confirmer"
-
 #: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
-msgid "menu_list_category_to_add_new_events"
-msgstr "Ajouter un événement"
-
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:38
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:52
-msgid "menu_list_more_categories"
-msgstr "Plus de catégories"
-
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:39
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:53
 #: application/modules/events/views/scripts/partial/_categoriesNewEventMenu.phtml:17
 msgid "searchbar_search_categories"
 msgstr "Chercher une catégorie"
-
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:47
-msgid "menu_list_meta_category"
-msgstr "Visualiser une famille de catégories"
 
 #: application/modules/events/views/scripts/partial/_footerCategories.mobile.phtml:6
 #: application/modules/events/views/scripts/partial/_welcome.phtml:26
@@ -598,6 +560,34 @@ msgstr "Enregistrer"
 #: application/modules/events/views/scripts/partial/_pageItemGroupForm.phtml:5
 msgid "menu_done"
 msgstr "Fait"
+
+#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:30
+msgid "event_edit_button"
+msgstr "Editer"
+
+#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:35
+msgid "event_delete_button"
+msgstr "effacer"
+
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:3
+msgid "title_question_delete_event"
+msgstr "Effacer"
+
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:6
+msgid "mgs_sure_to_delete?"
+msgstr "Etes-vous bien sûr ?"
+
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:7
+msgid "mgs_no_cancellation_of_action?"
+msgstr "La suppression est définitive"
+
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:9
+msgid "button_cancel"
+msgstr "Annuler"
+
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:17
+msgid "button_confirm?"
+msgstr "Confirmer"
 
 #: application/modules/events/views/scripts/partial/_welcome.phtml:2
 msgid ""
@@ -795,11 +785,11 @@ msgid "item_cuisineType_indian"
 msgstr "cuisine indienne"
 
 #: application/translations/_XMLforPoedit/categories.xml:61
-msgid "item_paracetamol"
+msgid "item_medicine_paracetamol"
 msgstr "paracetamol"
 
 #: application/translations/_XMLforPoedit/categories.xml:62
-msgid "item_aspirine"
+msgid "item_medicine_aspirine"
 msgstr "aspirine"
 
 #: application/translations/_XMLforPoedit/categories.xml:63
@@ -813,6 +803,38 @@ msgstr "Brasse"
 #: application/translations/_XMLforPoedit/categories.xml:65
 msgid "item_typeswimming_back"
 msgstr "Dos"
+
+#: application/translations/_XMLforPoedit/categories.xml:66
+msgid "item_type_present_given"
+msgstr "cadeau donné"
+
+#: application/translations/_XMLforPoedit/categories.xml:67
+msgid "item_type_present_received"
+msgstr "Cadeau reçu"
+
+#: application/translations/_XMLforPoedit/categories.xml:68
+msgid "item_subcategory_books"
+msgstr "livres"
+
+#: application/translations/_XMLforPoedit/categories.xml:69
+msgid "item_subcategory_games"
+msgstr "jeux"
+
+#: application/translations/_XMLforPoedit/categories.xml:70
+msgid "item_subcategory_kitchen"
+msgstr "cuisine"
+
+#: application/translations/_XMLforPoedit/categories.xml:71
+msgid "item_subcategory_shows"
+msgstr "spectacles"
+
+#: application/translations/_XMLforPoedit/categories.xml:72
+msgid "item_subcategory_sport"
+msgstr "sport"
+
+#: application/translations/_XMLforPoedit/categories.xml:73
+msgid "item_medicine_ibuprofene"
+msgstr "ibuprofène"
 
 #: application/translations/_XMLforPoedit/validators/alnum.xml:4
 #: application/translations/_XMLforPoedit/validators/digits.xml:10
@@ -959,6 +981,18 @@ msgstr ""
 #: application/translations/_XMLforPoedit/validators/file/size.xml:10
 msgid "File '%value%' is not readable or does not exist"
 msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
+
+#~ msgid "menu_list_category_to_add_new_events"
+#~ msgstr "Ajouter un événement"
+
+#~ msgid "menu_list_more_categories"
+#~ msgstr "Plus de catégories"
+
+#~ msgid "menu_list_meta_category"
+#~ msgstr "Visualiser une famille de catégories"
+
+#~ msgid "item_aspirine"
+#~ msgstr "aspirine"
 
 #~ msgid "Welcome to Mylife"
 #~ msgstr "bienvenue à Mylife"

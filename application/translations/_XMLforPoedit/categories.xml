@@ -58,10 +58,18 @@
     <translate>item_cuisineType_Vietnamese</translate>
     <translate>item_cuisineType_Japanese</translate>
     <translate>item_cuisineType_indian</translate>
-    <translate>item_paracetamol</translate>
-    <translate>item_aspirine</translate>
+    <translate>item_medicine_paracetamol</translate>
+    <translate>item_medicine_aspirine</translate>
     <translate>item_typeswimming_crawl</translate>
     <translate>item_typeswimming_breaststroke</translate>
     <translate>item_typeswimming_back</translate>
+    <translate>item_type_present_given</translate>
+    <translate>item_type_present_received</translate>
+    <translate>item_subcategory_books</translate>
+    <translate>item_subcategory_games</translate>
+    <translate>item_subcategory_kitchen</translate>
+    <translate>item_subcategory_shows</translate>
+    <translate>item_subcategory_sport</translate>
+    <translate>item_medicine_ibuprofene</translate>
   </itemRows>
 </zend-config>

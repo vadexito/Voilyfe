@@ -267,13 +267,17 @@ form pre
 }
 
 /* plus button for more options next to input*/
-img.button-option-plus
+img.button-option-plus,img.button-option-gps
 {
     position:relative;
     margin-left: 15px;
     max-height: 25px;
     max-width: 25px;
     cursor: pointer;
+}
+img.button-option-gps.saved
+{
+    cursor:default;
 }
 
 /*

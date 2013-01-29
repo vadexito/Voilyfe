@@ -1,14 +1,9 @@
 window.Event = Backbone.Model.extend({
         initialize: function() {
             
-            if (!this.get('truncate')){
-                this.set('truncate',10000);
-            }
-            
             this.eventproperties = this.generateProperties();
             this.set('specificProperties',this.eventproperties.specific);
-            this.set('commonProperties', this.eventproperties.common);
-            
+            this.set('commonProperties', this.eventproperties.common);            
             this.set('title', this.eventproperties.date);
             this.set('eventId',this.get('id'));
         },

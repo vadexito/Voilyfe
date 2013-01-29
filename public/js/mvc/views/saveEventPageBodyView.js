@@ -40,9 +40,24 @@ window.SaveEventPageBodyView = Backbone.View.extend({
     
     initButtons: function(){
         
-        $('#form_element_item_location').find('div.ui-block-b').append(
-            $('<img class="button-option-plus" src="/images/icons/other/icon-plus.png" alt="plus" class="ui-li-icon">')
-        );
+        $('input[data-property-name="book_name"]').each(function(index,el){
+            $(el).parent().append(
+                $('<img src="/images/icons/other/icon-plus.png" alt="plus" class="button-option-plus plus_'
+                    +$(el).attr('data-property-name') 
+                    +'">')
+            );
+        });
+        
+        
+        $('input[data-property-name="location"]').each(function(index,el){
+            $(el).parent().append(
+                $('<img src="/images/icons/other/icon-gps-notconnected.jpg" alt="gps" class="button-option-gps">')
+            );
+        });
+        if (navigator.geolocation){
+            $('img.button-option-gps').attr('src','/images/icons/other/icon-gps-connected.jpg');
+        }
+        
     },
     
     initItemPages: function(){

@@ -81,14 +81,18 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             'href'                  => '#',
             'userImageSrc'          => $this->getThumbnailSrc(),
             'title'                 => $category,
+            'category'              => ucfirst($this->view->translate($categoryName)),
             'commonProperties'      => $this->commonProperties(),
             'specificProperties'    => $this->specificProperties(),
             'aside'                 => '',
             'W3CDate'               => $this->localDate(Zend_Date::W3C),
-            'year'      => $this->localDate(Zend_Date::YEAR),
-            'month'     => $this->localDate(Zend_Date::MONTH_NAME),
-            'day'       => $this->localDate(Zend_Date::DAY),
-            'weekDay'   => $this->localDate(Zend_Date::WEEKDAY),
+            'year'                  => $this->localDate(Zend_Date::YEAR),
+            'month'                 => $this->localDate(Zend_Date::MONTH_NAME),
+            'day'                   => $this->localDate(Zend_Date::DAY),
+            'weekDay'               => $this->localDate(Zend_Date::WEEKDAY),
+            'latitude'              => $this->_event->location->latitude,
+            'longitude'             => $this->_event->location->longitude,
+            'location'              => $this->_event->location->address,
         ];
     }
               

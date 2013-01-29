@@ -15,17 +15,11 @@ class RunningEvents extends \ZC\Entity\Event
      */
     protected $running_duration = null;
 
-    /**
-     * @Var ZC\Entity\ItemRow
-     */
-    protected $running_typeswimming = null;
-
     static function loadMetadata(\Doctrine\ORM\Mapping\ClassMetadata $metadata)
     {
         $metadata->setTableName('running_events');
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
         $builder->createField('running_duration','float')->length(255)->nullable(false)->build();
-        $builder->createManyToOne('running_typeswimming','ZC\Entity\ItemRow')->build();
     }
 
 

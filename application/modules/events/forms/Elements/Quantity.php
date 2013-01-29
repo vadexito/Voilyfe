@@ -29,7 +29,7 @@ class Events_Form_Elements_Quantity extends Pepit_Form_Element_Range
         $options = [
             'title' => ucfirst($this->getTranslator()->translate('title_total_quantity')),
             'type' => 'sum',
-            'propertyForAdding' => $this->getName(),
+            'propertyForAdding' => 'quantity',
             'unit' => 'mg'
         ];
         

@@ -32,8 +32,8 @@ window.SingleItemPageView = Backbone.View.extend({
         'click a.button_date'       : 'openInputDate',
         'change .inputDate'         : 'updateDate',
         'click .button-option-plus' : 'plusButton',
-        'pageshow'                  : 'addInputFocus'//,
-//        'keyup .event_item'         : 'goToNext'
+        'click .button-option-gps'  : 'addLocation',
+        'pageshow'                  : 'addInputFocus'
     },
 
     addInputFocus: function(e){
@@ -42,21 +42,38 @@ window.SingleItemPageView = Backbone.View.extend({
             $input.first().focus();
         }        
     },
+
+    plusButton: function(event){
+        if ($(event.currentTarget).hasClass('plus_book_name')){
+            this.searchAmazon(this.$el.find('input').val());
+        };
+        
+    },
     
-//    goToNext: function(l){
-//       if (l.keyCode == 13){
-//           var pages = $('div[data-role="page"]');
-//           console.log($(pages[2]).attr('id'));
-//           console.log(pages.first().attr('id'));
-//           
-//           
-//           //.attr('id'));
-//           //$.mobile.changePage($('div[data-role="page"]').first().attr('id'));
-//       }
-//    },
+    addLocation: function(){
+        navigator.geolocation.getCurrentPosition( 
+            this.saveLocation,
+            this.errorLocalization,
+            {maximumAge:5000, timeout:2000}
+        );
+    },
     
-    plusButton: function(){
-        console.log('plus');
+    errorlocalization: function(){
+        
+    },
+    
+    saveLocation: function(currentPosition){
+        $('input[name="location[latitude]"]').val(
+            currentPosition.coords.latitude
+        );
+        $('input[name="location[longitude]"]').val(
+            currentPosition.coords.longitude
+        );
+        $('img.button-option-gps').attr('src','/images/icons/other/icon-gps-saved.jpg').addClass('saved');
+    },
+    
+    searchAmazon: function(book){
+        
     },
     
     saveEvent: function(){
@@ -74,7 +91,8 @@ window.SingleItemPageView = Backbone.View.extend({
         $.ajax({
             url: '/events/ajax/datelocale/dateW3C/'+date+'/format/json',
             success: function(dateString){
-                $(e.currentTarget).replaceWith('<a class="button_date">'+dateString.date+'</a>').focus();                
+                $('.button_date').replaceWith('<a class="button_date">'+dateString.date+'</a>');                
+                $(e.currentTarget).replaceWith('<a class="button_date">'+dateString.date+'</a>');                
             },
             dataType: 'json'
         });
