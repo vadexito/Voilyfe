@@ -28,12 +28,14 @@ window.SingleItemPageView = Backbone.View.extend({
     
     
     events:{
-        'click a.menu_save'         : 'saveEvent',
-        'click a.button_date'       : 'openInputDate',
-        'change .inputDate'         : 'updateDate',
-        'click .button-option-plus' : 'plusButton',
-        'click .button-option-gps'  : 'addLocation',
-        'pageshow'                  : 'addInputFocus'
+        'click a.menu_save'                 : 'saveEvent',
+        'click a.button_date'               : 'openInputDate',
+        'change .inputDate'                 : 'updateDate',
+        'click .button-option-plus'         : 'plusButton',
+        'click .button-option-gps.unsaved'  : 'addLocation',
+        'pageshow'                          : 'addInputFocus',
+        'click a.close-popup'               : 'saveLocationInput'
+        
     },
 
     addInputFocus: function(e){
@@ -50,26 +52,71 @@ window.SingleItemPageView = Backbone.View.extend({
         
     },
     
-    addLocation: function(){
-        navigator.geolocation.getCurrentPosition( 
-            this.saveLocation,
-            this.errorLocalization,
-            {maximumAge:5000, timeout:2000}
-        );
-    },
-    
-    errorlocalization: function(){
+    addLocation: function(e){
+        var self = this;
+        var zoom = 15;
+        var openMap = function(position){
+            
+            new mylife().showPopupMap(
+                self.$el.attr('id'),
+                'choosemap',
+                {
+                    id:'map_choose'+self.$el.attr('id'),
+                    latitude: position.coords.latitude, 
+                    longitude: position.coords.longitude,
+                    self:self,
+                    zoom: zoom
+                },
+                self.showMapFormChoosing
+            );
+        };
         
+        var errorLocalization = function(error){
+            console.log(error.code);
+            zoom = 5;
+            var paris = {coords:{
+                    latitude:48.857487,
+                    longitude:2.342834
+            }};
+            openMap(paris);
+        };
+        
+        navigator.geolocation.getCurrentPosition( 
+            openMap,
+            errorLocalization,
+            {maximumAge:5000, timeout:2000}
+        ); 
     },
     
-    saveLocation: function(currentPosition){
-        $('input[name="location[latitude]"]').val(
-            currentPosition.coords.latitude
-        );
-        $('input[name="location[longitude]"]').val(
-            currentPosition.coords.longitude
-        );
-        $('img.button-option-gps').attr('src','/images/icons/other/icon-gps-saved.jpg').addClass('saved');
+    showMapFormChoosing: function(options){
+        //create map
+        var centerPosition = new google.maps.LatLng(options.latitude,options.longitude);
+        
+        var map = new google.maps.Map($('#'+options.id).get(0), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: centerPosition ,
+            zoom: options.zoom ? options.zoom : 15
+        });
+        
+        // add marker
+        options.self.marker = new google.maps.Marker({
+            position: centerPosition,
+            map: map,
+            draggable:true
+        });
+    },
+    
+    saveLocationInput: function(){
+        
+        this.saveLocationInDataBase(this.marker.getPosition());
+    },
+    
+    saveLocationInDataBase: function(googleLatLng){
+        
+        $('input[name="location[latitude]"]').val(googleLatLng.lat());
+        $('input[name="location[longitude]"]').val(googleLatLng.lng());
+        
+        $('img.button-option-gps').attr('src','/images/icons/other/icon-gps-saved.jpg');
     },
     
     searchAmazon: function(book){

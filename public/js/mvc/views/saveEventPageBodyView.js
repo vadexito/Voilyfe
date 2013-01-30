@@ -51,7 +51,7 @@ window.SaveEventPageBodyView = Backbone.View.extend({
         
         $('input[data-property-name="location"]').each(function(index,el){
             $(el).parent().append(
-                $('<img src="/images/icons/other/icon-gps-notconnected.jpg" alt="gps" class="button-option-gps">')
+                $('<img src="/images/icons/other/icon-gps-notconnected.jpg" alt="gps" class="button-option-gps unsaved">')
             );
         });
         if (navigator.geolocation){

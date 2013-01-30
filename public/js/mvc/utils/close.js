@@ -8,6 +8,11 @@ Backbone.View.prototype.close = function(){
     //close and unbind
     this.remove();
     this.unbind();
-}
+    
+    
+};
+
+
+
 
 

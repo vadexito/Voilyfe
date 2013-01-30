@@ -4,11 +4,11 @@ window.ItemInEventView = Backbone.View.extend({
     
     tag: 'span',
     
+    template: _.template( $("#event-property-template").html()),
+    
     initialize: function(){
-        this.template = _.template( $("#event-property-template").html());
+        
     },
-    
-    
     
     render: function(){
         

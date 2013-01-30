@@ -1,4 +1,7 @@
-<?php   $this->inlineScript()->offsetSetFile(200,'/js/lib/jquery_mobile/jqm.autoComplete.js');
+<?php   $this->headScript()->offsetSetFile(100,'https://www.google.com/jsapi');
+        
+        $this->inlineScript()->offsetSetFile(200,'/js/lib/jquery_mobile/jqm.autoComplete.js');
+        $this->inlineScript()->offsetSetFile(30,"http://maps.googleapis.com/maps/api/js?key=AIzaSyCF7ZgOuhe3sg_c1J0F7hpuace2NAv-DVk&sensor=false&libraries=places,geometry");
         $this->inlineScript()->offsetSetFile(40,'/js/lib/underscore.js');
         $this->inlineScript()->offsetSetFile(50,'/js/lib/backbone.js');
             
@@ -9,10 +12,17 @@
         $this->inlineScript()->offsetSetFile(154,'/js/mvc/views/inputView.js');
         $this->inlineScript()->offsetSetFile(155,'/js/mvc/views/subformView.js');
         $this->inlineScript()->offsetSetFile(156,'/js/mvc/views/hiddenFormView.js');
-        $this->inlineScript()->offsetSetFile(160,'/js/mvc/views/singleItemPageView.js');
-        $this->inlineScript()->offsetSetFile(161,'/js/mvc/views/saveEventPageBodyView.js');
         $this->inlineScript()->offsetSetFile(157,'/js/mvc/views/hiddenTagSimpleFormView.js');
-        $this->inlineScript()->offsetSetFile(158,'/js/mvc/utils/close.js'); ?>
+        
+        $this->inlineScript()->offsetSetFile(158,'/js/mvc/utils/close.js');
+        $this->inlineScript()->offsetSetFile(140,'/js/mvc/utils/mylife.js');
+        
+        $this->inlineScript()->offsetSetFile(159,'/js/mvc/views/popupView.js');
+        $this->inlineScript()->offsetSetFile(160,'/js/mvc/views/gpsButtonView.js');
+        $this->inlineScript()->offsetSetFile(170,'/js/mvc/views/singleItemPageView.js');
+        $this->inlineScript()->offsetSetFile(171,'/js/mvc/views/saveEventPageBodyView.js');
+        
+        ?>
 
 <form enctype="multipart/form-data" id="add_event" data-ajax="false" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
 <?php 
