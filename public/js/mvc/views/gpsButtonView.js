@@ -23,7 +23,7 @@ window.GpsButtonView = Backbone.View.extend({
         var page = $(e.currentTarget).parents().filter('div[data-role="page"]').first().attr('id');
         var idPopup = 'popupMap-'+page;        
         var mapOptions = {
-            id : 'map',
+            id : 'map-'+page,
             latitude: this.options.latitude,
             longitude: this.options.longitude,
             markerTitle: this.options.markerTitle

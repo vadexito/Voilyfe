@@ -110,80 +110,97 @@ else //if no event to show
 ?>
      
     <span id="dataToClientSide" data-categoryId="<?php echo $this->category->id; ?>"></span>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-first-level-template']);
-        echo $this->subPageIndex($this->category,'<%= id %>',[
-            'content'       => '',
-            'noWrap'        => true,
-            'buttonRight'   => $addButton,
-        ]);
-        $this->inlineScript()->captureEnd()?>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-second-level-template']);
-        echo $this->subPageIndex($this->category,'<%= id %>',[
-            'content'       => '',
-            'title'         => '<%= title %>',
-            'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
-            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
-                ucfirst($this->translate('menu_back_to_previous_page'))),
-            'buttonRight'   => '',
-            'noWrap'        => true
-        ]);
-        $this->inlineScript()->captureEnd()?>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'indexpage-event-details-template']);
-        echo $this->subPageIndex($this->category,'<%= id %>',[
-            'content'       => '',
-            'title'         => '<%= title %>',
-            'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
-            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
-                ucfirst($this->translate('menu_back_to_previous_page'))),
-            'buttonRight'   => '',
-            'footer'        => '_footerEmpty.mobile',
-            'noWrap'        => true
-        ]);
-        $this->inlineScript()->captureEnd()?>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-line-template'])?>
-        <?php echo $this->partial('partial/_eventListItem.phtml',[
-            'href'                  => '<%= href %>',
-            'eventId'               => '<%= eventId %>',
-            'imgSrc'                => '<%= userImageSrc %>',
-            'title'                 => '<%= title %>',
-            'commonProperties'      => '<%= commonProperties %>',
-            'specificProperties'    => '<%= specificProperties %>',
-            'aside'                 => '<%= aside %>',
-        ]); ?>
-    <?php $this->inlineScript()->captureEnd()?>
-    <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-property-template'])?>
-        <img src="<%= srcIcon %>" data-eventid="<%= eventId %>" style="width:<%= iconSize %> ;height:<%= iconSize %>";"/> <%= value %>
     <?php 
-        $this->inlineScript()->captureEnd();   
-        
-        //capture template for single event view
-        $this->inlineScript()->setAllowArbitraryAttributes('true')
-                               ->captureStart('append','text/template',[
-                                   'noescape'=>'true',
-                                   'id' => 'event-details-template'
-        ]);
-        echo $this->partial('partial/_showEventContent-mobile.phtml',[
-            'eventId'               => '<%= eventId %>', 
-            'year'                  => '<%= year %>',
-            'logoCategory'          => '',
-            'day'                   => '<%= day %>',
-            'month'                 => '<%= month %>',
-            'weekDay'               => '<%= weekDay %>',
-            'categoryId'            => '<%= categoryId %>',
-            'userImageSrc'          => '<%= userImageSrc %>',
-            'commonProperties'      => '<%= commonProperties %>',
-            'specificProperties'    => '<%= specificProperties %>',
-        ]);
-        $this->inlineScript()->captureEnd();
-        
-        //capture template for the delete popup of the single event view
-        $this->inlineScript()->setAllowArbitraryAttributes('true')
-                             ->captureStart('append','text/template',[
-                                 'noescape' =>'true',
-                                 'id'       => 'event-deletePopup-template'
-        ]);
-        echo $this->partial('partial/_showEventPopup-mobile.phtml',[
-            'eventId' => '<%= eventId %>' ,           
-            'categoryId' => '<%= categoryId %>'            
-        ]);
-        $this->inlineScript()->captureEnd();   
+//        $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('prepend','text/template',['noescape'=>'true','id' => 'indexpage-first-level-template']);
+//        echo $this->subPageIndex($this->category,'<%= id %>',[
+//            'content'       => '',
+//            'noWrap'        => true,
+//            'buttonRight'   => $addButton,
+//        ]);
+//        $this->inlineScript()->captureEnd()?>
+    <?php 
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                10,
+                $this->subPageIndex($this->category,'<%= id %>',[
+                    'content'       => '',
+                    'noWrap'        => true,
+                    'buttonRight'   => $addButton,
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'indexpage-first-level-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                11,
+                $this->subPageIndex($this->category,'<%= id %>',[
+                    'content'       => '',
+                    'title'         => '<%= title %>',
+                    'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
+                    Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                        ucfirst($this->translate('menu_back_to_previous_page'))),
+                    'buttonRight'   => '',
+                    'noWrap'        => true
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'indexpage-second-level-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                12,
+                $this->subPageIndex($this->category,'<%= id %>',[
+                    'content'       => '',
+                    'title'         => '<%= title %>',
+                    'buttonLeft' => $this->htmlMobileButtonNavBar(['type' => 
+                    Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                        ucfirst($this->translate('menu_back_to_previous_page'))),
+                    'buttonRight'   => '',
+                    'footer'        => '_footerEmpty.mobile',
+                    'noWrap'        => true
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'indexpage-event-details-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                13,
+                $this->partial('partial/_eventListItem.phtml',[
+                    'href'                  => '<%= href %>',
+                    'eventId'               => '<%= eventId %>',
+                    'imgSrc'                => '<%= userImageSrc %>',
+                    'title'                 => '<%= title %>',
+                    'commonProperties'      => '<%= commonProperties %>',
+                    'specificProperties'    => '<%= specificProperties %>',
+                    'aside'                 => '<%= aside %>',
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'event-line-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                14,
+                '<img src="<%= srcIcon %>" data-eventid="<%= eventId %>" style="width:<%= iconSize %> ;height:<%= iconSize %>";"/> <%= value %>',
+                'text/template',
+                ['noescape'=>'true','id' => 'event-property-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                15,
+                $this->partial('partial/_showEventContent-mobile.phtml',[
+                    'eventId'               => '<%= eventId %>', 
+                    'year'                  => '<%= year %>',
+                    'logoCategory'          => '',
+                    'day'                   => '<%= day %>',
+                    'month'                 => '<%= month %>',
+                    'weekDay'               => '<%= weekDay %>',
+                    'categoryId'            => '<%= categoryId %>',
+                    'userImageSrc'          => '<%= userImageSrc %>',
+                    'commonProperties'      => '<%= commonProperties %>',
+                    'specificProperties'    => '<%= specificProperties %>',
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'event-details-template']
+        );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                16,
+                $this->partial('partial/_showEventPopup-mobile.phtml',[
+                    'eventId' => '<%= eventId %>' ,           
+                    'categoryId' => '<%= categoryId %>'            
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'event-deletePopup-template']
+        );

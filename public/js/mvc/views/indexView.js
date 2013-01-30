@@ -16,8 +16,6 @@ window.IndexView = Backbone.View.extend({
         'click a.winner-list-line'  : 'viewListEvents',
         'datebox'                   : 'showEventofDate',
         'click .user-image'         : 'showImage'
-        
-        
     },
     
     

@@ -5,12 +5,10 @@ window.PageView = Backbone.View.extend({
         'data-role' : 'page',
         'id' : 'event-list-page'
     },
-    
     model:Page,
     
     initialize: function(){
-        
-        this.template = _.template( $("#indexpage-"+this.options.template+"-template").html());
+        this.template =  _.template( $("#indexpage-"+this.options.template+"-template").html());
     },
     
     render: function(){
