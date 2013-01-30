@@ -4,7 +4,8 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
 {
     protected $_model;
     
-    public function processInsert($form,$messageSuccess,$redirectUrl)
+    public function processInsert($form,$messageSuccess,$redirectUrl,
+            $entityId = NULL)
     {
         $this->_initProcess($form);
         
@@ -41,6 +42,12 @@ class Pepit_Controller_Abstract extends Pepit_Controller_Abstract_Abstract
                 //transmit data to form
                 $form->populate($form->getValues());
             }
+        }
+        elseif ($entityId)
+        {
+            $form->populate(
+                    $this->_model->getArrayForFormUpdateFromEntity($entityId)
+            );
         }
         //transmit to view the data
         $this->view->form = $form;

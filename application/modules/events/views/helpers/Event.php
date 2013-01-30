@@ -90,9 +90,15 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             'month'                 => $this->localDate(Zend_Date::MONTH_NAME),
             'day'                   => $this->localDate(Zend_Date::DAY),
             'weekDay'               => $this->localDate(Zend_Date::WEEKDAY),
-            'latitude'              => $this->_event->location->latitude,
-            'longitude'             => $this->_event->location->longitude,
-            'location'              => $this->_event->location->address,
+            'latitude'              => ($this->_event->location 
+                    && property_exists($this->_event->location,'latitude')) ?
+                    $this->_event->location->latitude : '',
+            'longitude'              => ($this->_event->location 
+                    && property_exists($this->_event->location,'longitude')) ?
+                    $this->_event->location->longitude : '',
+            'address'              => ($this->_event->location 
+                    && property_exists($this->_event->location,'address')) ?
+                    $this->_event->location->address : '',
         ];
     }
               

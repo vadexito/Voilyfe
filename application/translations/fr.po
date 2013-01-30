@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2013-01-27 01:06+0100\n"
-"PO-Revision-Date: 2013-01-27 01:07+0100\n"
+"POT-Creation-Date: 2013-01-29 22:37+0100\n"
+"PO-Revision-Date: 2013-01-29 22:37+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -341,7 +341,7 @@ msgid "action_edit"
 msgstr "Mettre à jour"
 
 #: library/Pepit/View/Helper/EventTable/Abstract.php:84
-#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:16
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:13
 msgid "action_delete"
 msgstr "effacer"
 
@@ -377,7 +377,7 @@ msgid "menu_find_event"
 msgstr "Recherche"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:87
+#: application/modules/events/views/scripts/event/index-mobile.phtml:88
 msgid "menu_see_categories"
 msgstr "Catégories"
 
@@ -491,19 +491,19 @@ msgstr "page"
 msgid "msg_questionSureToDelete"
 msgstr "Confirmez-vous ?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:67
+#: application/modules/events/views/scripts/event/index-mobile.phtml:68
 msgid "msg_welcome"
 msgstr "bienvenue"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:77
+#: application/modules/events/views/scripts/event/index-mobile.phtml:78
 msgid "menu_add_event"
 msgstr "Nouvel événement"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:82
-#: application/modules/events/views/scripts/event/index-mobile.phtml:90
-#: application/modules/events/views/scripts/event/index-mobile.phtml:95
-#: application/modules/events/views/scripts/event/index-mobile.phtml:122
-#: application/modules/events/views/scripts/event/index-mobile.phtml:133
+#: application/modules/events/views/scripts/event/index-mobile.phtml:83
+#: application/modules/events/views/scripts/event/index-mobile.phtml:91
+#: application/modules/events/views/scripts/event/index-mobile.phtml:96
+#: application/modules/events/views/scripts/event/index-mobile.phtml:123
+#: application/modules/events/views/scripts/event/index-mobile.phtml:134
 #: application/modules/events/views/scripts/help/index-mobile.phtml:6
 #: application/modules/members/views/scripts/data/index-mobile.phtml:6
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:6
@@ -511,7 +511,7 @@ msgstr "Nouvel événement"
 msgid "menu_back_to_previous_page"
 msgstr "Retour"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:101
+#: application/modules/events/views/scripts/event/index-mobile.phtml:102
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:5
 msgid "menu_settings"
 msgstr "Options"
@@ -561,13 +561,17 @@ msgstr "Enregistrer"
 msgid "menu_done"
 msgstr "Fait"
 
-#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:30
+#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:26
 msgid "event_edit_button"
 msgstr "Editer"
 
-#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:35
+#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:29
 msgid "event_delete_button"
 msgstr "effacer"
+
+#: application/modules/events/views/scripts/partial/_showEventContent-mobile.phtml:32
+msgid "event_clone_button"
+msgstr "Cloner"
 
 #: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:3
 msgid "title_question_delete_event"
@@ -585,7 +589,7 @@ msgstr "La suppression est définitive"
 msgid "button_cancel"
 msgstr "Annuler"
 
-#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:17
+#: application/modules/events/views/scripts/partial/_showEventPopup-mobile.phtml:14
 msgid "button_confirm?"
 msgstr "Confirmer"
 
@@ -981,6 +985,9 @@ msgstr ""
 #: application/translations/_XMLforPoedit/validators/file/size.xml:10
 msgid "File '%value%' is not readable or does not exist"
 msgstr "Le fichier '%value%' n'est pas lisible ou n'existe pas"
+
+#~ msgid "event_create_similar_button"
+#~ msgstr "Cloner"
 
 #~ msgid "menu_list_category_to_add_new_events"
 #~ msgstr "Ajouter un événement"

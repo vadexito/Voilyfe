@@ -28,7 +28,18 @@ window.Event = Backbone.Model.extend({
                     }));
 
                 }
-            });            
+            });  
+            if (this.get('latitude') && this.get('longitude')){
+                commonProperties.model.add( new ItemInEvent({
+                            value       : '',
+                            srcIcon     : '/images/icons/other/icon-gps-saved.jpg',
+                            iconSize    : '20px',
+                            iconClass   : 'icon-gps',
+                            eventId     : this.get('id')
+                }));
+                
+            }
+            
             
             _.each(this.get('commonProperties'),function(itemData,name){
                 

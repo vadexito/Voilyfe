@@ -16,7 +16,11 @@ window.IndexView = Backbone.View.extend({
         'click a.winner-list-line'  : 'viewListEvents',
         'datebox'                   : 'showEventofDate',
         'click .user-image'         : 'showImage'
+        
+        
     },
+    
+    
     
     showEvent: function(e){
        
@@ -173,7 +177,7 @@ window.IndexView = Backbone.View.extend({
             }
 
             if (!NoChangePage){
-                console.log('#'+options.id);
+                
                 $.mobile.changePage('#'+options.id);
             }
         }

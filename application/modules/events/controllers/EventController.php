@@ -122,8 +122,14 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
     
     public function createAction()
     {
+        //get eventId of the event for populating the new event to create (clone)
+        $eventId = NULL;
+        if ($this->getRequest()->getParam('containerRowId'))
+        {
+            $eventId = $this->getRequest()->getParam('containerRowId');
+        }
+
         //prepare form for input event
-        
         $form = $this->_model->getForm('insert',array(
             'containerId' => $this->_category->id,
             'containerType' => 'category',
@@ -145,7 +151,8 @@ class Events_EventController extends Events_Controller_Abstract_Abstract
                     'action' => 'index',
                     'containerId' => $this->_category->id),
                 'event'
-            ))
+            )),
+            $eventId
         );
         
         

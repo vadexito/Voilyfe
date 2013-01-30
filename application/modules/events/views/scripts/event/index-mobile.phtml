@@ -26,6 +26,7 @@ $this->inlineScript()->offsetSetFile(166,'/js/mvc/views/eventView.js');
 $this->inlineScript()->offsetSetFile(167,'/js/mvc/views/propertyView.js');
 $this->inlineScript()->offsetSetFile(168,'/js/mvc/views/graphView.js');
 $this->inlineScript()->offsetSetFile(169,'/js/mvc/views/listCategoriesPageView.js');
+$this->inlineScript()->offsetSetFile(170,'/js/mvc/views/popupView.js');
 $this->inlineScript()->offsetSetFile(180,'/js/mvc/views/indexView.js');
 
 $addButton = NULL;
@@ -149,7 +150,7 @@ else //if no event to show
         ]); ?>
     <?php $this->inlineScript()->captureEnd()?>
     <?php $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('append','text/template',['noescape'=>'true','id' => 'event-property-template'])?>
-        <img src="<%= srcIcon %>" style="width:10px;height:10px;"/> <%= value %>
+        <img src="<%= srcIcon %>" data-eventid="<%= eventId %>" style="width:<%= iconSize %> ;height:<%= iconSize %>";"/> <%= value %>
     <?php 
         $this->inlineScript()->captureEnd();   
         

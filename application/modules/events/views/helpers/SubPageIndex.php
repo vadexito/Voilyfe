@@ -30,7 +30,7 @@ class Events_View_Helper_SubPageIndex extends Pepit_View_Helper_Abstract
         
         if (!$id)
         {
-            throw new Pepit_View_Exception('An id  has to be provided for subpageindex viewer');
+            throw new Pepit_View_Exception('An id has to be provided for subpageindex viewer');
         }
         
         $this->_resetOptions();

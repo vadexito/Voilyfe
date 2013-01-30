@@ -172,7 +172,10 @@ div.row-block
     font-style: italic;
 }
 
-
+#buttons-lower-block
+{
+    text-align: center;
+}
 
 /* Large desktop 
 @media (min-width: 1200px) { div,h1{border:5px solid blue;} }
@@ -207,6 +210,16 @@ welcome and help presentation
 .btn-explanation
 {
     margin-left:20px;
+}
+/*
+================================================================
+GPS icon (event view and event line view
+================================================================
+*/
+
+img.icon-gps
+{
+    cursor: pointer;
 }
 
 
