@@ -286,6 +286,10 @@ abstract class Pepit_Model_Doctrine2 extends Pepit_Model_Abstract_Abstract imple
     public function getArrayForFormUpdateFromEntity($entityId)
     {
         $entity = $this->getStorage()->find($entityId);
+        if (!$entity)
+        {
+            return [];
+        }
         
         $arrayResult = [];
         foreach ($this->getForm()->getElements() as $formElement)

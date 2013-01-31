@@ -20,9 +20,15 @@ class Location extends EntityAbstract
      */
     protected $longitude = NULL;
     
+    /**
+     * @Var ZC\Entity\Member
+     */
+    protected $member = null;
+    
     public static function loadMetadata(\Doctrine\ORM\Mapping\ClassMetadata $metadata)
     {
         $metadata->setTableName('locations');
+        $metadata->setCustomRepositoryClass('ZC\Repository\ItemGroupRowRepository');
         
         $builder = new \Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder($metadata);
         
@@ -33,6 +39,9 @@ class Location extends EntityAbstract
         
         $builder->createField('latitude', 'float')
                 ->nullable(true)
+                ->build();
+        
+        $builder->createManyToOne("member", "ZC\Entity\Member")                
                 ->build();
         
         $builder->createField('longitude', 'float')

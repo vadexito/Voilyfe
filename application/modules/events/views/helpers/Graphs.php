@@ -34,22 +34,30 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         return $options;
     }
     
+    /**
+     * defines the graphs which will be show in the grahs page
+     * @return array of element to be shown
+     */
     public function getElementsToShowAndInitOptions()
     {
         if ($this->_elementsToShow === NULL)
         {
             foreach ($this->_form->getElements() as $formElement)
             {
+                // if no specific category only common element else
+                // all the elements
                 if (!$this->_all || 
                     in_array($formElement->getId(),$this->_commonElement)) 
                     
                 {
+                    //generate graph
                     $graph = $this->view->visualRep(
                             $formElement,
                             $this->_events,
                             ['htmlTag' => 'div']
                     );
                     
+                    //if there is a graph to be shown update _option property
                     if ($graph)
                     {
                         $this->_options[$this->_getId($formElement)] = [

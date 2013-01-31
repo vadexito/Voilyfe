@@ -32,6 +32,9 @@ class Pepit_View_Helper_FormLocation extends Zend_View_Helper_FormElement
     {
         $html = '';
         
+        $helperTags = new Pepit_View_Helper_FormTags();
+        $helperTags->setView($this->view);
+        
         $helper = new Zend_View_Helper_FormText();
         $helper->setView($this->view);
         
@@ -45,7 +48,7 @@ class Pepit_View_Helper_FormLocation extends Zend_View_Helper_FormElement
             $longitude = (isset($value['longitude']) ? $value['longitude']: '');
         }
         
-        $html .= $helper->formText($name.'[address]',$address,$attribs);
+        $html .= $helperTags->formTags($name.'[address]',$address,$attribs);
         $html .= $helper->formText($name.'[latitude]',$latitude,array('id' => 'input_latitude'));
         $html .= $helper->formText($name.'[longitude]',$longitude,array('id' => 'input_longitude'));
 

@@ -63,7 +63,7 @@ class Location extends \ZC\Entity\Location implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'address', 'latitude', 'longitude');
+        return array('__isInitialized__', 'id', 'address', 'latitude', 'longitude', 'member');
     }
 
     public function __clone()

@@ -55,6 +55,7 @@ window.SingleItemPageView = Backbone.View.extend({
     addLocation: function(e){
         var self = this;
         var zoom = 15;
+        
         var openMap = function(position){
             
             new mylife().showPopupMap(
@@ -71,21 +72,33 @@ window.SingleItemPageView = Backbone.View.extend({
             );
         };
         
-        var errorLocalization = function(error){
-            console.log(error.code);
-            zoom = 5;
-            var paris = {coords:{
-                    latitude:48.857487,
-                    longitude:2.342834
-            }};
-            openMap(paris);
-        };
-        
-        navigator.geolocation.getCurrentPosition( 
-            openMap,
-            errorLocalization,
-            {maximumAge:5000, timeout:2000}
-        ); 
+        // if a position if registrered (edit event) use it (populate map)
+        var latitude = $('input[name="location[latitude]"]').val();
+        var longitude = $('input[name="location[longitude]"]').val();
+        if (latitude && longitude){
+            
+            openMap({coords:{latitude:latitude ,longitude:longitude}});  
+            console.log('k');
+        } else {
+            
+            var errorLocalization = function(error){
+                console.log(error.code);
+                zoom = 5;
+                var paris = {coords:{
+                        latitude:48.857487,
+                        longitude:2.342834
+                }};
+                openMap(paris);
+            };
+
+            // if there is a current position available use it otherwise center 
+            // on an arbitrary given city
+            navigator.geolocation.getCurrentPosition( 
+                openMap,
+                errorLocalization,
+                {maximumAge:5000, timeout:2000}
+            );
+        }
     },
     
     showMapFormChoosing: function(options){

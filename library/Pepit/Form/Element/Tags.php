@@ -80,7 +80,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         {
             if (!is_array($tagElement))
             {
-                throw new Pepit_Form_Exception('The sub-element of the element '.$this->getName().'to map should be an array');
+                throw new Pepit_Form_Exception('The sub-element of the element '.$this->getName().' to map should be an array');
             }
             //if the element is new
             if (array_key_exists('new',$tagElement))
@@ -90,7 +90,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
                 
                 if ($model->getForm()->isValid($tagElement['new']))
                 {
-                    $tag = $model->getStorage()->find($model->insert());
+                    $tag = $this->getEntityManager()->getRepository($this->_tagEntity)->find($model->insert());
                 }
                 else
                 {
@@ -109,7 +109,8 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
             //if the element is already in the database, we use its id
             else
             {
-                $tag = $this->_model->getStorage()->find($tagElement['id']);
+                $tag = $this->getEntityManager()->getRepository($this->_tagEntity)
+                            ->find($tagElement['id']);
             }
             if (!$this->getMultiTag())
             {
@@ -126,12 +127,13 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     public function populate($entity)
     {
         $tags = parent::populate($entity);
+        
         if ($tags)
         {
             $populatedArray = [];
             $property = $this->getTagIdProperty();
             $dataPopulate = [];
-
+            
             if ($this->getMultiTag())
             {
                 foreach ($tags as $tag)
@@ -191,12 +193,21 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
      */
     protected function _initAutocomplete()
     {
-        $entities = $this->_getEntities();                 
+        $entities = $this->_getEntities();           
         array_walk($entities, function (&$value,$key,$prop){
-            $value = array(
-                'value' => $value->id,
-                'label' => $value->$prop
-            );
+            
+            if (property_exists($value,$prop))
+            {
+                $value = array(
+                    'value' => $value->id,
+                    'label' => $value->$prop
+                );
+            }
+            else
+            {
+                throw new Pepit_Form_Exception('The class '.get_class($value).' should have the property'.$prop);
+            }
+            
         },$this->getTagIdProperty());
         
  
@@ -215,9 +226,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         $tags = [];
         $property = $this->getAttrib('data-property-name');
         
-        $propertyTag = $this->_containerType === 'itemGroup' ? 
-            $this->_itemName.'_name' : 'value';
-        
+        $propertyTag = $this->getTagIdProperty();
         
         foreach ($events as $event)
         {
@@ -283,7 +292,8 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
                                     ->getRepository($this->_tagEntity);
         $memberId = Zend_Auth::getInstance()->getIdentity()->id; 
         
-        if ($this->_containerType === 'itemGroup')
+        if ($this->_containerType === 'itemGroup' ||
+            $this->_containerType === 'location' )
         {
             $entities = $repository->findAllByMemberId($memberId);
         }

@@ -15,21 +15,27 @@ window.EventView = Backbone.View.extend({
         
         this.$el.html( this.template(this.model.toJSON()) );
         
-        var event = mainPage.options.lastEventsCollection.get(
-            this.$el.find('img.icon-gps').attr('data-eventid')
-        );    
+        //if there are GPS coordinates
+        if (this.$el.find('img.icon-gps').attr('data-eventid')){
             
-        new GpsButtonView({
-            el : this.$el.find('img.icon-gps'),
-            latitude    :event.get('latitude'),
-            longitude   :event.get('longitude'),
-            markerTitle :event.get('address')
-        });
+            var event = mainPage.options.lastEventsCollection.get(
+                this.$el.find('img.icon-gps').attr('data-eventid')
+            );    
+
+            new GpsButtonView({
+                el : this.$el.find('img.icon-gps'),
+                latitude    :event.get('latitude'),
+                longitude   :event.get('longitude'),
+                markerTitle :event.get('address')
+            });
+
+            this.popup = this.templatePopup({
+                eventId     : this.model.get('id'),
+                categoryId  : this.model.get('categoryId')
+            });
+            
+        }
         
-        this.popup = this.templatePopup({
-            eventId     : this.model.get('id'),
-            categoryId  : this.model.get('categoryId')
-        });
         return this.el;
     }
     
