@@ -34,9 +34,8 @@ class Backend_DoctrinetoolController extends Zend_Controller_Action
             {
                 $this->_tool->updateSchema($this->_em->getMetadataFactory()->getAllMetadata());        
                 return $this->_redirect($this->view->url(
-                    ['controller'=> 'category','action'=> 'index'],
+                    ['controller'=> 'index','action'=> 'index'],
                     'backend'));
-                
             }
         }
         

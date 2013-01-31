@@ -1,9 +1,10 @@
 <div class="row-fluid">
     <div class="hero-unit container-fluid">
-        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'initdatabase'),'backend');?>" class="btn btn-primary">Initialize data base</a>
-        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'inittranslationfiles'),'backend');?>" class="btn btn-primary">Initialize XML translation files</a><br/><br/>
-        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'googleplaces'),'backend');?>" class="btn btn-primary">Initialize Table Google Places Types / category</a>
-        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'initgoogletypes'),'backend');?>" class="btn btn-primary">Initialize Google Types</a>
+        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'initdatabase'),'backend');?>" class="btn-block btn btn-primary">Initialize data base</a>
+        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'inittranslationfiles'),'backend');?>" class="btn-block btn btn-primary">Initialize XML translation files</a>
+        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'googleplaces'),'backend');?>" class="btn btn-primary btn-block ">Initialize Table Google Places Types / category</a>
+        <a href="<?php echo $this->url(array('controller' => 'init','action'=>'initgoogletypes'),'backend');?>" class="btn btn-primary btn-block">Initialize Google Types</a><br/>
+        <a href="<?php echo $this->url(array('controller' => 'doctrinetool','action'=>'updatedatabase'),'backend');?>" class="btn btn-success btn-block">Update data base</a>
     </div>
 </div>
     
