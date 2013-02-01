@@ -28,13 +28,14 @@ window.EventView = Backbone.View.extend({
                 longitude   :event.get('longitude'),
                 markerTitle :event.get('address')
             });
-
-            this.popup = this.templatePopup({
-                eventId     : this.model.get('id'),
-                categoryId  : this.model.get('categoryId')
-            });
             
         }
+        
+        //create popup for deleting event
+        this.popup = this.templatePopup({
+            eventId     : this.model.get('id'),
+            categoryId  : this.model.get('categoryId')
+        });
         
         return this.el;
     }

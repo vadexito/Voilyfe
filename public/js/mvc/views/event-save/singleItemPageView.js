@@ -1,13 +1,14 @@
 window.SingleItemPageView = Backbone.View.extend({
     
     initialize: function(){
-        this.initTags();
-    
+        
+        this.initTags();    
     },
     
     initTags: function(){
-        var input = this.$el.find('input.form-element-tags');  
+        var input = this.$el.find('input.form-element-tags'); 
         if (input.length > 0){
+            
             new InputView({
                 el: input,
                 collection: new Tags,
@@ -75,7 +76,7 @@ window.SingleItemPageView = Backbone.View.extend({
         // if a position if registrered (edit event) use it (populate map)
         var latitude = $('input[name="location[latitude]"]').val();
         var longitude = $('input[name="location[longitude]"]').val();
-        if (latitude && longitude){
+        if (latitude > 0 && longitude > 0){
             
             openMap({coords:{latitude:latitude ,longitude:longitude}});  
             console.log('k');

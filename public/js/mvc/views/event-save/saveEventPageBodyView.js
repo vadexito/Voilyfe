@@ -34,7 +34,6 @@ window.SaveEventPageBodyView = Backbone.View.extend({
             $('input[type=date].popupinput').remove();
             $('input.form-element-tags').remove();
             $('input.form-template').remove();
-
         });
     },
     
@@ -49,7 +48,8 @@ window.SaveEventPageBodyView = Backbone.View.extend({
         });
         
         
-        $('input[data-property-name="location"]').each(function(index,el){
+        $('input#location').each(function(index,el){
+            
             $(el).parent().append(
                 $('<img src="/images/icons/other/icon-gps-notconnected.jpg" alt="gps" class="button-option-gps unsaved">')
             );
@@ -61,6 +61,7 @@ window.SaveEventPageBodyView = Backbone.View.extend({
     },
     
     initItemPages: function(){
+        
         $('div[data-role="page"]').each(function(){
         
             new SingleItemPageView({

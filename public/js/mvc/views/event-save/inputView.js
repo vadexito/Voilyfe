@@ -23,10 +23,13 @@ window.InputView = Backbone.View.extend({
     initPopulate: function(){ 
         
         if (this.model.get('populate')){
+            
             var self = this;
+            
             $.each(this.model.get('populate'),function(index,value){
-
-                self.createTagAndHiddenTagSimple(value,index,false);
+                if (value){
+                     self.createTagAndHiddenTagSimple(value,index,false);
+                }
             });
         }
     },
@@ -64,6 +67,7 @@ window.InputView = Backbone.View.extend({
             link: 'target.html?term=',
             minLength: 1
         });
+        
     },
     
     
