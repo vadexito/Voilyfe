@@ -17,7 +17,8 @@ class Events_Form_Elements_Typeswimming extends Pepit_Form_Element_Select
         "idDB" => 17,
         ))
           ->setLabel('item_typeswimming')
-          ->setStorageEntity('ZC\Entity\ItemRow');
+          ->setStorageEntity('ZC\Entity\ItemRow')
+          ->setTagIdProperty('value');
         
         parent::init();
     }

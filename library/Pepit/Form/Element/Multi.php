@@ -10,7 +10,7 @@
 abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     implements Pepit_Form_Element_Interface_Interface
 {
-    use Pepit_Form_Element_Trait_Trait,Pepit_Doctrine_Trait;
+    use Pepit_Form_Element_Trait_Trait,Pepit_Doctrine_Trait,Pepit_Form_Element_Trait_KeywordsVisual;
     
     
     /**
@@ -118,11 +118,6 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     {
         $property = $this->getAttrib('data-property-name');
         
-//        \Doctrine\Common\Util\Debug::dump($this->getId());echo '<br/>';
-//        \Doctrine\Common\Util\Debug::dump($entity);echo '<br/>';
-//        \Doctrine\Common\Util\Debug::dump($property);die;
-        
-        
         if ($property && property_exists($entity,$property))
         {
             $value = $entity->$property;
@@ -156,41 +151,5 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
             
         }
         return false;
-    }
-    
-    public function dataChart($events)
-    {
-                
-        $tags = [];
-        $property = $this->getAttrib('data-property-name');
-        $propertyTag = 'value';
-        
-        foreach ($events as $event)
-        {
-            if ($event->$property)
-            {
-                if (!method_exists($event->$property,'count'))
-                {
-                    $tags[] = $event->$property->$propertyTag;
-                }
-                else
-                {
-                    foreach ($event->$property as $tag)
-                    {
-                        $tags[] = $tag->$propertyTag;
-                    }
-                }
-            }
-            
-        }
-        $entities = array_count_values($tags);
-        arsort($entities);
-      
-        return [
-            'type'  =>'winner_list',
-            'title' => ucfirst($this->getLabel()),
-            'values'=> $entities
-        ];
-        
     }
 }

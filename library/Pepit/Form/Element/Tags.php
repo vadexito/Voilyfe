@@ -8,6 +8,8 @@
 
 class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
 {
+    use Pepit_Form_Element_Trait_KeywordsVisual;
+    
     /**
      * Default form view helper to use for rendering
      * @var string
@@ -20,7 +22,6 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     
     protected $_containerId = NULL;
     protected $_itemName;
-    protected $_tagIdProperty = NULL;
     protected $_containerType; // category, itemgroup or item
     
     protected $_multiTag = false;
@@ -157,35 +158,7 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         
     }
     
-    public function setTagIdProperty($property = NULL)
-    {
-        if ($property)
-        {
-            $this->_tagIdProperty = $property;
-        }
-        else if (!$this->_tagIdProperty)
-        {
-            if ($this->_containerType === 'item')
-            {
-                $this->_tagIdProperty = 'value';
-            }
-            else if ($this->_containerType === 'itemGroup')
-            {
-                $this->_tagIdProperty = $this->_itemName.'_name';
-            }
-        }
-        
-        return $this;
-    }
     
-    public function getTagIdProperty()
-    {
-        if ($this->_tagIdProperty === NULL)
-        {
-            $this->setTagIdProperty();
-        }
-        return $this->_tagIdProperty;
-    }
 
     /**
      * init property data-autcomplete for aucomplete operated by jquery
@@ -217,73 +190,6 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
         );
         
         return $this;
-    }
-    
-    
-    public function dataChart($events)
-    {
-                
-        $tags = [];
-        $property = $this->getAttrib('data-property-name');
-        
-        $propertyTag = $this->getTagIdProperty();
-        
-        foreach ($events as $event)
-        {
-            if ($event->$property)
-            {
-                if (!method_exists($event->$property,'count'))
-                {
-                    $tag = $event->$property->$propertyTag;
-                    $tags = $this->_addTag($event, $tags, $tag);
-                    
-                }
-                else
-                //case of an array collection
-                {
-                    foreach ($event->$property as $tag)
-                    {
-                        $tags = $this->_addTag(
-                                $event,
-                                $tags,
-                                $tag->$propertyTag
-                        );
-                    }
-                }
-            }
-        }
-        
-        uasort($tags,function($a,$b){
-            return $b['count'] - $a['count'];
-        });
-      
-        return [
-            'type'  =>'winner_list',
-            'title' => ucfirst($this->getLabel()),
-            'values'=> $tags
-        ];
-        
-    }
-    
-    protected function _addTag($event,$tags,$tag)
-    {
-        if ($tag)
-        {
-            if (key_exists($tag,$tags))
-            {
-                $tags[$tag]['count']++;
-                $tags[$tag]['events'][] = $event->id;
-            }
-            else
-            {
-                $tags[$tag] = [
-                    'count' => 1,
-                    'events' => [$event->id],
-                ];
-            }
-        }
-        
-        return $tags;
     }
     
     protected function _getEntities()
@@ -344,6 +250,23 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     public function getContainerId()
     {
         return $this->_containerId;
+    }
+    
+    public function setContainerType($value)
+    {
+        $this->_containerType = $value;
+        
+        return $this;
+    }
+    
+    public function getContainerType()
+    {
+        return $this->_containerType;
+    }
+    
+    public function getItemName()
+    {
+        return $this->_itemName;
     }
     
      /**

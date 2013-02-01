@@ -18,8 +18,8 @@ class Events_Form_Elements_CuisineType extends Pepit_Form_Element_Select
                 "idDB" => 8
             ])
             ->setLabel('item_cuisineType')
-            ->setStorageEntity('ZC\Entity\ItemRow');
-        
+            ->setStorageEntity('ZC\Entity\ItemRow')
+            ->setTagIdProperty('value');
         parent::init();
     }
 
