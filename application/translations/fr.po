@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Beta1 1\n"
-"POT-Creation-Date: 2013-01-29 22:37+0100\n"
-"PO-Revision-Date: 2013-01-29 22:37+0100\n"
+"POT-Creation-Date: 2013-02-01 12:43+0100\n"
+"PO-Revision-Date: 2013-02-01 12:43+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: DM <david.mizrahi@m4x.org>\n"
 "Language: français\n"
@@ -117,7 +117,11 @@ msgstr "adresse"
 msgid "no_authorization_view_page"
 msgstr "Vous n'avez pas d'autorisation pour voir cette page"
 
-#: application/modules/default/controllers/plugins/Navmenu.php:105
+#: application/modules/default/controllers/plugins/Navmenu.php:61
+msgid "category_all"
+msgstr "Tous les événements"
+
+#: application/modules/default/controllers/plugins/Navmenu.php:122
 msgid "menu_user_profile"
 msgstr "Mon profil"
 
@@ -133,15 +137,15 @@ msgstr "Tous mes événements"
 msgid "category_unknown"
 msgstr "Catégorie inconnue"
 
-#: application/modules/events/controllers/EventController.php:142
+#: application/modules/events/controllers/EventController.php:148
 msgid "msg_event_created"
 msgstr "Voila ! Un nouvel événement a été créé"
 
-#: application/modules/events/controllers/EventController.php:178
+#: application/modules/events/controllers/EventController.php:185
 msgid "msg_event_updated"
 msgstr "Voilà ! Votre événement est bien mis à jour !"
 
-#: application/modules/events/controllers/EventController.php:210
+#: application/modules/events/controllers/EventController.php:217
 msgid "msg_event_deleted"
 msgstr "Votre événement a été effacé."
 
@@ -176,7 +180,7 @@ msgstr "mois"
 msgid "item_image"
 msgstr "Image"
 
-#: application/modules/events/forms/Elements/Location.php:19
+#: application/modules/events/forms/Elements/Location.php:23
 #: application/translations/_XMLforPoedit/categories.xml:38
 msgid "item_location"
 msgstr "lieu"
@@ -254,7 +258,7 @@ msgstr "Type de nage"
 msgid "menu_createNewEvent"
 msgstr "Créer un nouvel événement"
 
-#: application/modules/events/views/helpers/Graphs.php:89
+#: application/modules/events/views/helpers/Graphs.php:97
 #: library/Pepit/Form/Element/Date.php:59
 #: application/modules/events/views/scripts/event/index.phtml:19
 msgid "item_frequency"
@@ -377,7 +381,7 @@ msgid "menu_find_event"
 msgstr "Recherche"
 
 #: application/layouts/scripts/partial/_footer.mobile.phtml:6
-#: application/modules/events/views/scripts/event/index-mobile.phtml:88
+#: application/modules/events/views/scripts/event/index-mobile.phtml:91
 msgid "menu_see_categories"
 msgstr "Catégories"
 
@@ -491,19 +495,19 @@ msgstr "page"
 msgid "msg_questionSureToDelete"
 msgstr "Confirmez-vous ?"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:68
+#: application/modules/events/views/scripts/event/index-mobile.phtml:71
 msgid "msg_welcome"
 msgstr "bienvenue"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:78
+#: application/modules/events/views/scripts/event/index-mobile.phtml:81
 msgid "menu_add_event"
 msgstr "Nouvel événement"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:83
-#: application/modules/events/views/scripts/event/index-mobile.phtml:91
-#: application/modules/events/views/scripts/event/index-mobile.phtml:96
-#: application/modules/events/views/scripts/event/index-mobile.phtml:123
-#: application/modules/events/views/scripts/event/index-mobile.phtml:134
+#: application/modules/events/views/scripts/event/index-mobile.phtml:86
+#: application/modules/events/views/scripts/event/index-mobile.phtml:94
+#: application/modules/events/views/scripts/event/index-mobile.phtml:99
+#: application/modules/events/views/scripts/event/index-mobile.phtml:132
+#: application/modules/events/views/scripts/event/index-mobile.phtml:146
 #: application/modules/events/views/scripts/help/index-mobile.phtml:6
 #: application/modules/members/views/scripts/data/index-mobile.phtml:6
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:6
@@ -511,7 +515,7 @@ msgstr "Nouvel événement"
 msgid "menu_back_to_previous_page"
 msgstr "Retour"
 
-#: application/modules/events/views/scripts/event/index-mobile.phtml:102
+#: application/modules/events/views/scripts/event/index-mobile.phtml:105
 #: application/modules/members/views/scripts/settings/index-mobile.phtml:5
 msgid "menu_settings"
 msgstr "Options"
@@ -524,7 +528,7 @@ msgstr "En un clin d'oeil"
 msgid "menu_events"
 msgstr "Evénements"
 
-#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:33
+#: application/modules/events/views/scripts/partial/_categoriesMenu.phtml:32
 #: application/modules/events/views/scripts/partial/_categoriesNewEventMenu.phtml:17
 msgid "searchbar_search_categories"
 msgstr "Chercher une catégorie"

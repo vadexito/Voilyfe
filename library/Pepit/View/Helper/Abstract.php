@@ -9,7 +9,7 @@
 
 
 
-class Pepit_View_Helper_Abstract extends Zend_View_Helper_Abstract
+class Pepit_View_Helper_Abstract extends Zend_View_Helper_HtmlElement
 {
     protected $_possibleOptions=[];
     

@@ -8,7 +8,21 @@
         {
             if (!$subPage->isMeta)
             {
-                $singleCat[] = $this->categoryListLine($subPage,$imgPath,false,false,"false");
+                $options = [
+                    'categoryName'  => $subPage->getLabel(),
+                    'categoryId'    => $subPage->categoryId,
+                    'href'          => $subPage->getHref(),
+                    'bubbleCount'   => false,
+                    'iconEndOfLine' => "false"
+
+                ];
+                if ($this->imgFileExists($src = sprintf($imgPath,
+                    ucfirst(preg_replace('#category_#','',$options['categoryName'])))))
+                {
+                    $options['imgAttribs'] = ['src' => $src];
+                }
+                
+                $singleCat[] = $this->categoryListLine($options);
             }
         }
     }

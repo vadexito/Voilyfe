@@ -32,6 +32,7 @@ class Application_Controller_Plugin_Navmenu extends Zend_Controller_Plugin_Abstr
     protected function _createCategoryMenu()
     {
         $model = new Events_Model_Events();
+        $memberId = $this->_auth->getIdentity()->id;
         
         if ($this->_nav->findById('event') && 
                 $this->_nav->findById('metaCategory'))
@@ -45,10 +46,26 @@ class Application_Controller_Plugin_Navmenu extends Zend_Controller_Plugin_Abstr
             $pageEvent = $this->_nav->findById('event');
             $pageEventAdd = $this->_nav->findById('eventAdd');
             $pageMetaCategory = $this->_nav->findById('metaCategory');
+            
+            
+            //add category all
+            $pageAllEvents = Zend_Navigation_Page::factory([ 
+                    'params'        => ['action' => 'index'],              
+                    'route'         => 'event',
+                    'order'         => 1,
+                    'events'        => $model->getStorage()->findEventsByMemberIdOrderByDateDesc(
+                                            $memberId
+                                        ),
+                    'categoryId'    => ''
+            ]);
+            $pageAllEvents->setLabel('category_all');
+            $pageMetaCategory->addPage($pageAllEvents);
+            
+            //add other categories
             foreach($categories as $category)
             {
                 $events = $model->findEventsByCategoryByMemberIdOrderByDateDesc(
-                                            $this->_auth->getIdentity()->id,
+                                            $memberId,
                                             $category);
                 $newPage = Zend_Navigation_Page::factory(array( 
                     'label'         => 'category_'.$category->name,

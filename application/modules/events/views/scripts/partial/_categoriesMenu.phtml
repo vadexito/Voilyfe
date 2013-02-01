@@ -2,19 +2,45 @@
     $singleCat = $metaCat = $cat = [];
     
     $config = Zend_Registry::get('config');
-    $imgPath = $config->public->images->icon->category->path; 
+    
+    $imgPath = $config->public->images->icon->category->path;
     foreach ($this->container as $page) 
     {
         foreach ($page->getPages() as $subPage)
         {
+            $options = [
+                'categoryName'  => $subPage->getLabel(),
+                'categoryId'    => $subPage->categoryId,
+                'href'          => $subPage->getHref(),
+                'nbEvents'      => count($subPage->events),
+                'bubbleCount'   => true,
+                
+            ];
+            
+            if ($subPage->getLabel() === 'category_all')
+            {
+                $options['imgAttribs'] = [
+                    'src'       => '/images/icons/other/allEvents.jpg',
+                    'class'     => 'ui-li-icon',
+                    'style'     => 'min-width: 30px;'
+                ];
+            }
+            
+            if ($this->imgFileExists($src = sprintf($imgPath,
+                ucfirst(preg_replace('#category_#','',$options['categoryName'])))))
+            {
+                $options['imgAttribs'] = ['src' => $src];
+            }
+            
             if ($subPage->isMeta)
             {
-                $metaCat[] = $cat[] = $this->categoryListLine($subPage,$imgPath,true,false,'arrow-r','<img src="/images/icons/nav_bar/photos.png" style="width:15px;height:15px;">');
+                $options['subTitle'] = '<img src="/images/icons/nav_bar/photos.png" style="width:15px;height:15px;">';
+                $metaCat[] = $cat[] = $this->categoryListLine($options);
                 
             }
             else
             {
-                $singleCat[] = $cat[] = $this->categoryListLine($subPage,$imgPath);
+                $singleCat[] = $cat[] = $this->categoryListLine($options);
             }
             
         }
@@ -26,7 +52,6 @@
     usort($metaCat,$this->listCategories()->compEvents);
     usort($cat,$this->listCategories()->compEvents);
     
-    // some lines are show, the rest being in a collapsible set
     $lineShown = $config->categories->list->lines->show;
 ?>
 

@@ -110,21 +110,14 @@ else //if no event to show
 ?>
      
     <span id="dataToClientSide" data-categoryId="<?php echo $this->category->id; ?>"></span>
-    <?php 
-//        $this->inlineScript()->setAllowArbitraryAttributes('true')->captureStart('prepend','text/template',['noescape'=>'true','id' => 'indexpage-first-level-template']);
-//        echo $this->subPageIndex($this->category,'<%= id %>',[
-//            'content'       => '',
-//            'noWrap'        => true,
-//            'buttonRight'   => $addButton,
-//        ]);
-//        $this->inlineScript()->captureEnd()?>
+    
     <?php 
         $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
                 10,
                 $this->subPageIndex($this->category,'<%= id %>',[
                     'content'       => '',
                     'noWrap'        => true,
-                    'buttonRight'   => $addButton,
+                    'buttonRight'   => $addButton
                 ]),
                 'text/template',
                 ['noescape'=>'true','id' => 'indexpage-first-level-template']

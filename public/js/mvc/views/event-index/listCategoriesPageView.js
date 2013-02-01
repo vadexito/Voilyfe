@@ -6,7 +6,7 @@ window.ListCategoriesPageView = Backbone.View.extend({
              this.$el.append('\
             <div data-role="popup" id="popupGPS">\n\
                <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">\n\
-                   <li data-role="divider" data-theme="a">Proposition after GPS analysis</li>\n\
+                   <li data-role="divider" data-theme="a">LAst closest events</li>\n\
                </ul>\n\
             </div>');
         }
