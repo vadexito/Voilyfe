@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<messages>
-    <notSame>
-        <translate>The two given tokens do not match</translate>
-    </notSame>
-    <missingToken>
-        <translate>No token was provided to match against</translate>
-    </missingToken>
-</messages>

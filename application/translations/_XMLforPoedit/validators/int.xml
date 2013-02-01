@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<messages>
-    <intInvalid>
-        <translate>Invalid type given. String or integer expected</translate>
-    </intInvalid>
-    <notInt>
-        <translate>'%value%' does not appear to be an integer</translate>
-    </notInt>
-</messages>

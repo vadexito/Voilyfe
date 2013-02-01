@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<messages>
-    <notEmptyInvalid>
-        <translate>Value is required and can't be empty</translate>
-    </notEmptyInvalid>
-    <isEmpty>
-        <translate>Invalid type given. String, integer, float, boolean or array expected</translate>
-    </isEmpty>
-</messages>
