@@ -4,7 +4,8 @@ window.Event = Backbone.Model.extend({
             this.eventproperties = this.generateProperties();
             this.set('specificProperties',this.eventproperties.specific);
             this.set('commonProperties', this.eventproperties.common);            
-            this.set('title', this.eventproperties.date);
+            this.set('title', this.eventproperties.date
+                +(this.get('title') ? ' - ' +this.get('title'):''));
             this.set('eventId',this.get('id'));
         },
         defaults:{

@@ -62,14 +62,21 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
         $this->setPathIconCategory()->setPathIconItem();
         $categoryName = 'category_'.$event->category->name;
         $commonProperties = $this->commonProperties();
+        
+        
+        $title = $commonProperties['date'];
+        if ($this->view->all)
+        {
+            $title .= ' - '.ucfirst($this->view->translate($categoryName));
+        }
         unset($commonProperties['date']);
-        $category = $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL;
+        
         
         return $this->renderLine([
-            'title'         => rtrim(implode(' - ',[$this->localDate(),$category]),' - '),
+            'title'         => $title,
             'subTitle'      => $this->renderProperties($commonProperties),
             'content'       => $this->renderProperties($this->specificProperties()),
-            'href'         =>$this->getHref($this->view->all),
+            'href'          =>$this->getHref($this->view->all),
             'aside'         => ''
         ]);
     }
