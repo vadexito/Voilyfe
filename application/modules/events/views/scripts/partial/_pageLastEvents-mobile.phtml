@@ -1,21 +1,32 @@
 
 <?php
     $list = '';
-    $filterMonth = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::MONTH_NAME));
-    $filterYear = new Pepit_Filter_DateTimeToDateForm(array('date_format' => Zend_Date::YEAR));
+    $filterMonth = new Zend_Filter_NormalizedToLocalized(['date_format' => Zend_Date::MONTH_NAME]);
+    $filterYear = new Zend_Filter_NormalizedToLocalized(['date_format' => Zend_Date::YEAR]);
     
-    $month = null;
-    $year = null;
+    $monthPrev = null;
+    $yearPrev = null;
     $eventsForFront = [];
     foreach ($this->events as $event)
     {
+        $date = $event->date;
+        $month = $date->format('n');
+        $year = $date->format('Y');
+
         //we put a divider each month
-        if (!($filterMonth->filter($event->date) === $month &&
-                $filterYear->filter($event->date) === $year))
+        if (!($month === $monthPrev && $year === $yearPrev))
         {
-            $month = $filterMonth->filter($event->date);
-            $year = $filterYear->filter($event->date);
-            $list .= '<li data-role="list-divider">'.$month.' '.$year.'</li>';
+            $dateNormalized = [
+                'day'       => $date->format('d'),
+                'month'     => $month,
+                'year'      => $year
+            ];
+            $monthPrev = $month;
+            $yearPrev = $year;
+            
+            $list .= '<li data-role="list-divider">'
+                    .$filterMonth->filter($dateNormalized)
+                    .' '.$filterYear->filter($dateNormalized).'</li>';
         }
         $list .= $this->event($event)->eventLine();
         $eventsForFront[]  = $this->event($event)->eventForFront();

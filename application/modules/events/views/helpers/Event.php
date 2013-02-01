@@ -15,6 +15,11 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
     protected $_event;
     protected $_model;
     
+    protected $_filterDate;
+    protected $_localizedMonths;
+    protected $_localizedWeekDays;
+    
+    
     /**
      * initialize helper
      * 
@@ -73,6 +78,7 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
     {
         $categoryName = 'category_'.$this->_event->category->name;
         $category = $this->view->all ? ucfirst($this->view->translate($categoryName)) : NULL;
+        $date = $this->_event->date;
         
         return [
             'id'                    => $this->_event->id,
@@ -85,11 +91,11 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             'commonProperties'      => $this->commonProperties(),
             'specificProperties'    => $this->specificProperties(),
             'aside'                 => '',
-            'W3CDate'               => $this->localDate(Zend_Date::W3C),
-            'year'                  => $this->localDate(Zend_Date::YEAR),
-            'month'                 => $this->localDate(Zend_Date::MONTH_NAME),
-            'day'                   => $this->localDate(Zend_Date::DAY),
-            'weekDay'               => $this->localDate(Zend_Date::WEEKDAY),
+            'W3CDate'               => $date->format(DateTime::W3C),
+            'year'                  => $date->format('Y'),
+            'month'                 => $this->getLocalizedMonth()['format']['wide'][$date->format('n')],
+            'day'                   => $date->format('d'),
+            'weekDay'               => $this->getLocalizedWeekDays()['format']['wide'][strtolower($date->format('D'))],
             'latitude'              => ($this->_event->location 
                     && property_exists($this->_event->location,'latitude')) ?
                     $this->_event->location->latitude : '',
@@ -250,11 +256,19 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
             $format = Zend_Date::DATE_MEDIUM;
         }
         
-        $filterDate = new Pepit_Filter_DateTimeToDateForm(array(
-            'date_format' => $format
-        ));
+        if (!$this->_filterDate)
+        {
+            $this->_filterDate = new Zend_Filter_NormalizedToLocalized();
+        }
+        $this->_filterDate->setOptions(['date_format' => $format]);
         
-        return $filterDate->filter($this->_event->date);
+        $value = $this->_event->date;
+        
+        return $this->_filterDate->filter([
+            'day'       => $value->format('d'),
+            'month'     => $value->format('m'),
+            'year'      => $value->format('Y')
+        ]);
     }
     /**
      * return array from common properties location, persons, date, tasg
@@ -364,6 +378,42 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
     {
         return $this->_event;
     }
+    
+    public function initLocalizedMonth()
+    {
+        if ($this->_localizedMonths === NULL)
+        {
+            $this->_localizedMonths = Zend_Registry::get('Zend_Locale')->getTranslationList('Months');
+        }
+    }
+    
+    public function getLocalizedMonth()
+    {
+        if ($this->_localizedMonths === NULL)
+        {
+            $this->initLocalizedMonth();
+        }
+        return $this->_localizedMonths;
+    }
+    
+    public function initLocalizedWeekDays()
+    {
+        if ($this->_localizedWeekDays === NULL)
+        {
+            $this->_localizedWeekDays = Zend_Registry::get('Zend_Locale')->getTranslationList('Days');
+        }
+    }
+    
+    public function getLocalizedWeekDays()
+    {
+        if ($this->_localizedWeekDays === NULL)
+        {
+            $this->initLocalizedWeekDays();
+        }
+        return $this->_localizedWeekDays;
+    }
+    
+    
     
     
 }
