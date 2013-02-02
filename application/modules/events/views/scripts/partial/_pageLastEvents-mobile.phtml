@@ -1,14 +1,15 @@
 
 <?php
     $list = '';
-    $filterMonth = new Zend_Filter_NormalizedToLocalized(['date_format' => Zend_Date::MONTH_NAME]);
-    $filterYear = new Zend_Filter_NormalizedToLocalized(['date_format' => Zend_Date::YEAR]);
-    
     $monthPrev = null;
     $yearPrev = null;
+    
     $eventsForFront = [];
     foreach ($this->events as $event)
     {
+        $eventHelper = $this->event();
+        $eventHelper->setEvent($event);
+        
         $date = $event->date;
         $month = $date->format('n');
         $year = $date->format('Y');
@@ -16,20 +17,15 @@
         //we put a divider each month
         if (!($month === $monthPrev && $year === $yearPrev))
         {
-            $dateNormalized = [
-                'day'       => $date->format('d'),
-                'month'     => $month,
-                'year'      => $year
-            ];
             $monthPrev = $month;
             $yearPrev = $year;
             
             $list .= '<li data-role="list-divider">'
-                    .$filterMonth->filter($dateNormalized)
-                    .' '.$filterYear->filter($dateNormalized).'</li>';
+                    .$eventHelper->getLocalizedMonth()['format']['wide'][$date->format('n')]
+                    .' '.$year.'</li>';
         }
-        $list .= $this->event($event)->eventLine();
-        $eventsForFront[]  = $this->event($event)->eventForFront();
+        $list .= $eventHelper->eventLine();
+        $eventsForFront[]  = $eventHelper->eventForFront();
         
     }
     

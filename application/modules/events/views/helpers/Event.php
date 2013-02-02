@@ -13,11 +13,14 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
     protected $_pathIconItem = NULL;
     
     protected $_event;
-    protected $_model;
+    protected $_model = NULL;
     
     protected $_filterDate;
     protected $_localizedMonths;
     protected $_localizedWeekDays;
+    
+    protected $_commonProperties = NULL;
+    protected $_specificProperties = NULL;
     
     
     /**
@@ -26,21 +29,30 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
      * @param Entity $event
      * @return \Events_View_Helper_Event
      */
-    public function event($event)
+    public function event($event = NULL)
     {
-        $this->_event = $event;
+        if (!($event === NULL))
+        {
+            $this->setEvent($event);
+            $this->_commonProperties = $this->_specificProperties = NULL;
+        }
         return $this;
     }
     
+    public function setEvent($event)
+    {
+        $this->_event = $event;
+        $this->_commonProperties = $this->_specificProperties = NULL;
+    }
     public function getForm()
     {
         $this->_initModel();
         
-        return $this->_model->getForm('insert',array(
+        return $this->_model->getForm('insert',[
             'containerId' => $this->_event->category->id,
             'containerType' => 'category',
             'model'         => $this->_model
-        ));
+        ]);
     }
     
     
@@ -117,7 +129,10 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
               
     protected function _initModel()
     {
-        $this->_model = new Events_Model_Events();
+        if ($this->_model === NULL)
+        {
+            $this->_model = new Events_Model_Events();
+        }
     }
     
     
@@ -241,23 +256,27 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
      */
     public function specificProperties()
     {
-        $event = $this->_event;
-        $properties = [];
-        foreach ($event->category->items as $item)
+        if ($this->_specificProperties === NULL)
         {
-            $property = Events_Model_Events::getPropertyName($event->category->name,$item->name);
-            $properties[$item->name]= [
-                'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$property)
-                ),
-                'srcIcon'   => $this->_getSrcIcon($property)
-            ];
+            $event = $this->_event;
+            $properties = [];
+            foreach ($event->category->items as $item)
+            {
+                $property = Events_Model_Events::getPropertyName($event->category->name,$item->name);
+                $properties[$item->name]= [
+                    'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$property)
+                    ),
+                    'srcIcon'   => $this->_getSrcIcon($property)
+                ];
+            }
+            $this->_specificProperties = $properties;
         }
-        
-        return $properties;
+        return $this->_specificProperties;
     }
     
     public function localDate($format = NULL)
     {
+        
         if ($format === NULL)
         {
             $format = Zend_Date::DATE_MEDIUM;
@@ -285,21 +304,27 @@ class Events_View_Helper_Event extends Zend_View_Helper_HtmlElement
      */
     public function commonProperties($includeDate= true)
     {
-        $properties = [];
-        if ($includeDate)
+        if ($this->_commonProperties === NULL)
         {
+            $properties = [];
             $properties['date'] = $this->localDate();
+            foreach (['location','persons','tags'] as $item)
+            {
+                $properties[$item]= [
+                    'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$item)),
+                    'srcIcon'   => $this->_getSrcIcon($item),
+                ];
+            }            
+            $this->_commonProperties = $properties;
         }
         
-        foreach (['location','persons','tags'] as $item)
+        if (!$includeDate)
         {
-            $properties[$item]= [
-                'value'     => $this->view->translate(Pepit_Doctrine_Tool::toString($this->_event,$item)),
-                'srcIcon'   => $this->_getSrcIcon($item),
-            ];
+            unset($properties['date']);
         }
+            
+        return $this->_commonProperties;
         
-        return $properties;
     }
     
     public function renderProperties($properties)
