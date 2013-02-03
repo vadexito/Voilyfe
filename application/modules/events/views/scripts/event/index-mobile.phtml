@@ -197,3 +197,10 @@ else //if no event to show
                 'text/template',
                 ['noescape'=>'true','id' => 'event-deletePopup-template']
         );
+        $this->inlineScript()->setAllowArbitraryAttributes('true')->offsetSetScript(
+                17,
+                $this->partial('partial/_event_GPSprop_popup.phtml',[ 
+                ]),
+                'text/template',
+                ['noescape'=>'true','id' => 'popup-event-GPSlocalized-propositions-template']
+        );

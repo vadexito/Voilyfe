@@ -1,34 +1,36 @@
 <div class="ui-body ui-body-d">
-<h3 id="title-description"><?php echo $this->translate('We believe Mylife can help you know yourself better and change your life'); ?></h3>
-<div class="ui-grid-a">
-    <div id="specific-properties" class="ui-block-a">
-        <?php echo $this->widgetFunctionSite([
-            'title' => $this->translate('item_help_build'),
-            'img'   => '/images/help/build.png',
-            'visualFunction'   => '<button data-theme="b" data-mini="true" data-inline="true" data-iconpos="notext" data-icon="plus"></button>',
-            'subtitle' => $this->translate('Add new event and build Your life'),
-            'content' => $this->translate('Browse and choose a category to add new events.')]); ?>
-    </div>
-    <div id="specific-properties" class="ui-block-b">
-       <?php echo $this->widgetFunctionSite([
-            'title' => $this->translate('item_help_categories'),
-            'img'   => '/images/help/categories.png',
-            'visualFunction'   => '<button class="btn-explanation" data-theme="b" data-mini="true" data-inline="true">'.$this->translate('menu_short_categories').'</button>',
-            'subtitle' => $this->translate('Dedicated views for each category for a better experience'),
-            'content' => $this->translate('Each category is designed to give the best experience when browsing your events.')]); ?> 
-    </div>
-</div>
-    <div id="specific-properties" class="ui-block-a">
-        <?php echo $this->widgetFunctionSite([
-            'title' => $this->translate('item_help_visualize'),
-            'img'   => '/images/help/visualize.png',
-            'visualFunction'   => '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-last-events">'
-                . $this->translate('menu_last_events').'</button>'
-                . '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-calendar">'
-                .$this->translate('menu_calendar').'</button>'
-                . '<button class="btn-explanation" data-theme="a" data-mini="true" data-inline="true" data-iconpos="top" data-icon="mylife-graphs">'
-                .$this->translate('menu_graphs').'</button>',
-            'subtitle' => $this->translate('Three views for a complete visualization'),
-            'content' => $this->translate('An event view, a calendar and graphs provide great event visuals.')]); ?>
-    </div>
+    <h1 id="title-description" class="title_guide"><?php echo $this->translate('Save, remember and enjoy.')?></h1>
+    <h2 id="subtitle-description" class="title_guide"><?php echo $this->translate('With Mylife, you can:'); ?></h2>
+    <h2 class="title-function"><?php echo $this->translate('Visualize')?></h2>
+    <ul data-role="listview" data-inset="true">
+        <li>
+            <button data-theme="b" data-corners="true" data-iconpos="notext" data-inline="true" data-icon="mylife-graphs"></button>
+            <button data-theme="b" data-corners="true" data-iconpos="notext" data-inline="true" data-icon="mylife-graphs"></button>
+            <button data-theme="b" data-corners="true" data-iconpos="notext" data-inline="true" data-icon="mylife-graphs"></button>
+            <?php echo $this->translate('Every category has several possible visualizations')?></li>
+        <li><?php echo $this->translate('Press and get dedicated visual for each family of events')?></li>
+        <li><?php echo $this->translate('Choose the events to see thanks to your own tags')?></li>
+        <li><?php echo $this->translate('')?></li>
+    </ul>
+    
+    <h2 class="title-function"><?php echo $this->translate('Save')?></h2>
+    <ul data-role="listview" data-inset="true">
+        <li><button data-theme="b" data-corners="true" data-iconpos="notext" data-inline="true" data-icon="plus"></button><?php echo $this->translate('Press plus to add an event')?></li>
+        <li><?php echo $this->translate('Efficient saving though learning application and gps based propositions')?></li>
+        <li><?php echo $this->translate('Save the key characteristics of your events in each category')?></li>
+        <li><?php echo $this->translate('To save: press the plus button first choose a category; then press the plus button')?></li>
+    </ul>
+    
+    <h2 class="title-function"><?php echo $this->translate('Categorize')?></h2>
+    <ul data-role="listview" data-inset="true">
+        <li><button data-mini="true" data-theme="b" data-corners="true" data-inline="true" ><?php echo $this->translate('button_categories')?></button><?php echo $this->translate('Choose a category to access specific tools')?></li>
+        <li><?php echo $this->translate('Every category has its own tool box')?></li>
+        <li><?php echo $this->translate('You only use your favorite categories')?></li>
+    </ul>
+    
+    <h2 class="title-function"><?php echo $this->translate('Find')?></h2>
+    <ul data-role="listview" data-inset="true">
+        <li><?php echo $this->translate('Searching is easy with the categories')?></li>
+        <li><?php echo $this->translate('Tags makes your search easier')?></li>
+    </ul>
 </div>

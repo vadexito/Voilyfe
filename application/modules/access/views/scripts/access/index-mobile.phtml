@@ -4,29 +4,31 @@
 <?php $this->headLink()->headlink(['rel' => "apple-touch-startup-image",'href' => "/images/startup.png"],'APPEND'); ?>
 <div data-role="page">
     <div data-role="content">
-        <div class="ui-grid-a" id="slide-show">
-            <div id="fluid_container">
-                <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
-                    <?php echo $this->slide('/images/images-camera/slides/bridge.jpg',"camera_caption fadeFromBottom",
-                            $this->translate('name_site').' - '.$this->translate('Remember your life and visualize it anytime from anywhere!')) ;?>
-                    <?php echo $this->slide('/images/images-camera/slides/leaf.jpg',"camera_caption fadeFromBottom",
-                            $this->translate('Save your life, do not forget anymore!').' - '.$this->translate('Save every part of your life you would like to. Write a diary of all the activies, events you want.')); ?>
-                    <?php echo $this->slide('/images/images-camera/slides/bridge.jpg',"camera_caption fadeFromBottom",
-                            $this->translate('Remember your life, accessing it anywhere').' - '.$this->translate('Find what you want in your passed saved life. Mylife offers a powerful tool to sort and access your events'));?>
-                    <?php echo $this->slide('/images/images-camera/slides/bridge.jpg',"camera_caption fadeFromBottom",
-                            $this->translate('Visualize you life').' - '.$this->translate('You can see summaries, graphs, dictionaries giving a short but accessible picture of every aspects of your life'));?>
-                    <?php echo $this->slide('/images/images-camera/slides/bridge.jpg',"camera_caption fadeFromBottom",
-                            $this->translate('See where you are').' - '.$this->translate('name_site'));?>
-                </div><!-- #camera_wrap_1 -->
-            </div><!-- .fluid_container -->
-        </div>
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a <?php echo $this->dataPrefetch() ?> data-role="button" href="<?php echo $this->url(['action'=>'login'],'access'); ?>" data-transition="none" data-theme="b">
-                    <?php echo $this->translate('menu_connect')?>
-                </a>
+        <div class=".fluid_container" id="slide-show">            
+            <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+                <?php echo $this->slide('/images/images-camera/slides/road.jpg',"camera_caption",
+                        $this->translate('Save, remember and enjoy')) ;?>
+                <?php echo $this->slide('/images/images-camera/slides/railway.jpg',"camera_caption",
+                        $this->translate('Keep quick and in each categories')) ;?>
+                <?php echo $this->slide('/images/images-camera/slides/bridge.jpg',"camera_caption",
+                        $this->translate('One environment for one category')); ?>
+                <?php echo $this->slide('/images/images-camera/slides/agenda.jpg',"camera_caption",
+                        $this->translate('Find your past immediatly back')); ?>
+                <?php echo $this->slide('/images/images-camera/slides/world.jpg',"camera_caption",
+                        $this->translate('Visualize and enjoy'));?>
+            </div><!-- #camera_wrap_1 -->
+            <div class="ui-grid-a" id="button-choice-block">
+                <div class="ui-block-a">
+                    <a <?php echo $this->dataPrefetch() ?> class="button-choice" data-role="button" href="<?php echo $this->url(['action'=>'login'],'access'); ?>" data-transition="none" data-theme="b">
+                       <?php echo $this->translate('menu_connect')?>
+                    </a>
+                </div>
+                <div class="ui-block-b">
+                    <a <?php echo $this->dataPrefetch() ?> class="button-choice" data-role="button" href="<?php echo $this->url(['action'=>'register'],'member'); ?>" data-transition="none" data-theme="b">
+                       <?php echo $this->translate('menu_signin')?>
+                    </a>
+                </div>	   
             </div>
-                <div class="ui-block-b"><a <?php echo $this->dataPrefetch() ?> data-role="button" href="<?php echo $this->url(['action'=>'register'],'member'); ?>" data-transition="none" data-theme="b"><?php echo $this->translate('menu_signin')?></a></div>	   
-        </div>
+        </div><!-- .fluid_container -->
     </div>
 </div>

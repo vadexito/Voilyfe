@@ -7,9 +7,9 @@
         foreach ($page->getPages() as $subPage)
         {//var_dump($subPage->getId());
             $subPage->setCustomHtmlAttribs(['data-ajax' => 'false']);
-            if ($subPage->getId() != 'logout')
+            if ($subPage->getId() == 'help')
             {
-                $subPage->setCustomHtmlAttribs(['data-ajax' => 'false']);
+                
             }
             $line = '    <li>'.$this->navigation()->menu()->htmlify($subPage).'</li>'."\n";
             if (isset($options[$subPage->getOrder()]))

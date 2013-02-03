@@ -22,13 +22,6 @@ body {
     background: transparent;
 }
 
-ul[data-role=listview] a p
-{
-    color: #E9572A;
-    text-shadow: 0 -0.7px 0 #F24611
-    
-}
-
 #input_latitude, #input_longitude
 {
     display:none;
@@ -115,9 +108,9 @@ div[data-id=footer] .ui-btn-text
 
 
 /*
-================================================================
-Nav bar element customization (left and right buttons and title)
-================================================================
+================================================================================
+Nav bar element customization (left and right buttons and title) in header mobile
+================================================================================
 */
 
 .ui-btn-corner-all 

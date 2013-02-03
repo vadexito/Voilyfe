@@ -2,15 +2,15 @@
     <div data-role="navbar">
             <ul>
  <?php 
-    $pages = array(
-        array('name' => 'last-events','translation' => $this->translate('menu_last_events')),
-        array('name' => 'calendar','translation' => $this->translate('menu_calendar')),
-        array('name' => 'graphs','translation' => $this->translate('menu_graphs')),
-        array('name' => 'options','translation' => $this->translate('menu_options')),
-    );
+    $pages = [
+        ['name' => 'last-events','translation' => $this->translate('menu_last_events'),'icon' => 'mylife-home'],
+        array('name' => 'calendar','translation' => $this->translate('menu_calendar'),'icon' => 'mylife-calendar'),
+        array('name' => 'graphs','translation' => $this->translate('menu_graphs'),'icon' => 'mylife-graphs'),
+        array('name' => 'options','translation' => $this->translate('menu_options'),'icon' => 'mylife-options'),
+    ];
     foreach ($pages as $page) : $name = $page['name']; $active = ''; if ($name === $this->active) : $active = 'ui-btn-active ui-state-persist'; endif; ?>              
                 <li>
-                    <a id="<?php echo $name ?>" href="#<?php echo $name; ?>-page" data-icon="mylife-<?php echo $name; ?>" data-transition="none" class='event-menu <?php echo $active; ?>'>
+                    <a id="<?php echo $name ?>" href="#<?php echo $name; ?>-page" data-icon="<?php echo $page['icon']; ?>" data-transition="none" class='event-menu <?php echo $active; ?>'>
                         <?php echo ucfirst($page['translation']); ?>
                     </a>
                 </li>

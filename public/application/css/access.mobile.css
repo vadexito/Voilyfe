@@ -15,18 +15,87 @@
 
 /*
 ================================================================
+sign in or sign up
+================================================================
+*/
+
+#button-choice-block
+{
+    bottom:30%;
+    margin-left:15%;
+    width:70%;
+    position: absolute;
+    
+    
+}
+
+/*
+================================================================
 slide show access page
 ================================================================
 */
 
-#fluid_container
+
+.button-choice
 {
-    margin: 10% auto;
-    max-width: 1000px;
-    width: 70%;
+    
 }
 
 #slide-show
 {
-    margin-bottom: 25%;
+    margin-bottom: 0;
+}
+
+div.camera_caption
+{
+    text-align: center;
+    font-size: 20px;
+}
+
+#back_to_camera 
+{
+        background: rgba(255,255,255,.9);
+        clear: both;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+}
+.fluid_container 
+{
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+}
+#camera_wrap_1 {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin-bottom: 0!important;
+        position: fixed;
+        right: 0;
+        top: 0;
+}
+.camera_bar {
+        z-index: 2;
+}
+.camera_thumbs {
+        margin-top: -100px;
+        position: relative;
+        z-index: 1;
+}
+.camera_thumbs_cont {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+}
+.camera_overlayer {
+        opacity: .1;
 }

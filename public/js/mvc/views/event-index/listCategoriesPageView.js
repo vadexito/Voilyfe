@@ -1,14 +1,12 @@
 window.ListCategoriesPageView = Backbone.View.extend({
     
+    template:   _.template( $("#popup-event-GPSlocalized-propositions-template").html()),
+    
     initialize: function(){
         
         if ($('#popupGPS').length === 0){
-             this.$el.append('\
-            <div data-role="popup" id="popupGPS">\n\
-               <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">\n\
-                   <li data-role="divider" data-theme="a">LAst closest events</li>\n\
-               </ul>\n\
-            </div>');
+            this.$el.append(this.template());
+
         }
     },
     

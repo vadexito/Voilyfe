@@ -20,7 +20,8 @@ class Events_Form_Elements_Subcategory extends Pepit_Form_Element_Select
         "filters" => array('StringTrim'),
         ))
         ->setLabel('item_subcategory')
-        ->setStorageEntity('ZC\Entity\ItemRow');
+        ->setStorageEntity('ZC\Entity\ItemRow')
+         ->setTagIdProperty('value');
         
         parent::init();
     }

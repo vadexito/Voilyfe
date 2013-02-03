@@ -123,11 +123,9 @@ div.row-block
     height:50%
 }
 
-#specific-properties
-{
-    padding: 5% 3% 3% 2%;
-    
-}
+
+
+
 
 .date
 {
@@ -196,9 +194,32 @@ div.row-block
 welcome and help presentation
 ================================================================================
 */
+
+.ui-icon-mylife-calendar{background:url("/images/icons/nav_bar/calendar.png") 50% 50% no-repeat;background-size: 18px 17px;}
+.ui-icon-mylife-graphs{background:url("/images/icons/nav_bar/graphs.png") 50% 50% no-repeat;background-size: 18px 17px;}
+.ui-icon-mylife-home{background:url("/images/icons/nav_bar/home.png") 50% 50% no-repeat;background-size: 18px 17px;}
+
 #title-description
 {
-    margin-top:50px;
+    margin-top:1%;
+    margin-bottom: 1%;
+    
+}
+
+.title-function
+{
+    margin-top:5%;
+}
+
+#subtitle-description
+{
+    margin-bottom: 5%;
+    
+}
+
+.title_guide
+{
+    text-align: center; 
 }
 
 .img-widget-help
@@ -211,6 +232,14 @@ welcome and help presentation
 {
     margin-left:20px;
 }
+
+div.specific-properties
+{
+    padding: 5% 3% 3% 2%;
+    
+}
+
+
 /*
 ================================================================
 GPS icon (event view and event line view

@@ -1,4 +1,5 @@
-<?php if (!(property_exists($this,'noWrap') && ($this->noWrap === true))) : ?><div data-role="page" id="<?php echo $this->id ? $this->id : '' ?>"><!-- page --><?php endif;?>
+<?php if (!(property_exists($this,'noWrap') && ($this->noWrap === true))) : ?>
+<div data-role="page" id="<?php echo $this->id ? $this->id : '' ?>"><!-- page --><?php endif;?>
     <div data-role="header" data-position="fixed" data-id="header" data-tap-toggle="false">
         <?php echo $this->buttonLeft ?>
         <h1><?php echo $this->title ;?></h1>
@@ -9,6 +10,7 @@
     </div><!-- /content -->
     <?php echo $this->popups(); ?>
     <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('active' => $this->active)): ''?>
-<?php if (!(property_exists($this,'noWrap') && ($this->noWrap === true))) : ?></div><!-- end of page --><?php endif;?>
+<?php if (!(property_exists($this,'noWrap') && ($this->noWrap === true))) : ?>
+</div><!-- end of page --><?php endif;?>
 
     

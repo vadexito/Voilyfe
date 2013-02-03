@@ -22,7 +22,7 @@ class Members_Form_Elements_SiteVersion extends Pepit_Form_Element_Select
                 ->setAttrib('data-role','slider')
                 ->setValue($this->_session->deviceType)
                 ->setLabel('item_mobile_version');                            
-
+        
         parent::init();
     }
     
