@@ -2,13 +2,17 @@ window.IndexView = Backbone.View.extend({
     
     initialize: function(){
         
-        this.initEventsLast();
-        this.initGraphs();
-        this.initCalendar();
-        this.initLastEventsPage();
-        this.initListCategeoriesPage();
+        if (typeof lastEvents != 'undefined'){
+            this.initEventsLast(lastEvents);
+            this.initGraphs();
+            this.initCalendar();
+            this.initLastEventsPage();
+            this.initListCategoriesPage(); 
+            
+            mainPage = this;
+        }
         
-        mainPage = this;
+        
     },
     
     events : {
@@ -35,7 +39,7 @@ window.IndexView = Backbone.View.extend({
         });        
     },
     
-    initListCategeoriesPage: function(){
+    initListCategoriesPage: function(){
         new ListCategoriesPageView({el: this.$el.find('#list_singleCategories')});        
     },
     
@@ -67,7 +71,7 @@ window.IndexView = Backbone.View.extend({
         });
     },
     
-    initEventsLast: function(){
+    initEventsLast: function(lastEvents){
         
         this.options.lastEventsCollection = new Events(lastEvents);
         

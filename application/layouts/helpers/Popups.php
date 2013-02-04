@@ -29,8 +29,6 @@ class Application_View_Helper_Popups extends Zend_View_Helper_HtmlElement
                         . '</div>';
             }
         }
-        
-        
         return $html;
         
     }
