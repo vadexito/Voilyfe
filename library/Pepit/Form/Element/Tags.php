@@ -28,6 +28,8 @@ class Pepit_Form_Element_Tags extends Pepit_Form_Element_Xhtml
     
     public function init()
     {
+        $this->setAttrib('data-visualrep','tags');
+        
         $this->setOptions(array(
             'horizontal'=> true,
         ));

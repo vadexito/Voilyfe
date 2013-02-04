@@ -77,7 +77,6 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
         ];
         
         
-        $title = key_exists('title',$dataChart) ? $dataChart['title'] : '';
         foreach ($dataChart['values'] as $value => $data)
         {
             if ($value)
@@ -85,8 +84,8 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
                 $attribs['data-events'] = Zend_Json::encode($data['events']);
                 
                 $list .= '<li>
-                    <a'. $this->_htmlAttribs($attribs).'>
-                    <h3>'.$value. '</h3>'."\n"
+                    <a'. $this->_htmlAttribs($attribs).'>'
+                    .$value."\n"
                     . '<span class="ui-li-count">'.$data['count'].'</span>'."\n"
                     . "\t". '</a>'."\n"
                     . "\t".'</li>'."\n";
@@ -95,9 +94,7 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
         
         return ($this->_wrapper ? '<'.$this->_wrapper.'>' : '')
             .'<'.$htmlTag.' class="visual-rep" id="'
-            . $this->getId().'"><h2>'
-            . $title
-            . '</h2><ul class="visual-rep-list" data-inset="true" id="'
+            . $this->getId().'"><ul class="visual-rep-list" id="'
             . $this->getId().'-list'
             . '" data-role="listview">'.$list
             . '</ul></'.$htmlTag.'>'

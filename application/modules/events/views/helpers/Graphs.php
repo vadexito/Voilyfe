@@ -18,8 +18,14 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
 
     protected $_options = [];
     
-    public function graphs($events,$all)
+    public function graphs($events = NULL,$all = NULL)
     {
+        if ($events === NULL && $all === NULL)
+        {
+            return $this;
+        }
+        
+        
         $this->_events = $events;
         $this->_all = $all;
         
@@ -29,6 +35,7 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
             'containerType' => 'category',
             'model'         => $this->getModel()
         ]);     
+        $this->_form->getElement('date')->setLabel('item_frequency');
         
         foreach ($this->getElementsToShowAndInitOptions() as $formElement)
         {
@@ -36,8 +43,8 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
             $this->_options[$this->_getId($formElement)]['buttons'] = $this->_buttonGroup($formElement);
         }
         
-        $this->_options['graph_date']['id'] = 'graphs-page';
         $options = array_values($this->_options);
+        
         return $options;
     }
     
@@ -51,6 +58,7 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         {
             foreach ($this->_form->getElements() as $formElement)
             {
+                
                 // if no specific category only common element else
                 // all the elements
                 if (!$this->_all || 
@@ -67,10 +75,12 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
                     //if there is a graph to be shown update _option property
                     if ($graph)
                     {
-                        $this->_options[$this->_getId($formElement)] = [
-                            'id'        => $this->_getId($formElement),
+                        $id = $this->_getId($formElement);
+                        $this->_options[$id] = [
+                            'id'        => $id,
                             'active'    => 'graphs',
-                            'graph'     => $graph
+                            'graph'     => $graph,
+                            'title'     => $formElement->getLabel()
                         ];
                     } 
                     else
@@ -91,31 +101,42 @@ class Events_View_Helper_Graphs extends Zend_View_Helper_HtmlElement
         
         
     }
-    protected function _buttonGroup($activeElement)
+    
+    public function getListElementsToShow()
+    {
+        return $this->_buttonGroup();
+    }
+    
+    
+    protected function _buttonGroup($activeElement = NULL)
     {
         $buttons = '';
         foreach ($this->getElementsToShowAndInitOptions() as $formElement)
         {
-            $attribs = ['data-role' => 'button'];
+            $attribs = [];
+            $attribs['href'] = '#'.$this->_getId($formElement);
             
-            if ($formElement->getId() === 'date')
+            $label = ucfirst($formElement->getLabel());
+            
+            $icon = '';
+            if ($formElement->getAttrib('data-visualrep'))
             {
-                $attribs['href'] = '#graphs-page';
-                $label = $this->view->translate('item_frequency');
+                $src = [
+                    'tags'          => '/images/icons/nav_bar/tags.png',
+                    'google_chart'  => '/images/icons/nav_bar/graphs.png',
+                ];
+                
+                $icon = '<img src="'.$src[$formElement->getAttrib('data-visualrep')].'" alt="France" class="ui-li-icon">';
             }
-            else
-            {
-                $attribs['href'] = '#'.$this->_getId($formElement);
-                $label = ucfirst($formElement->getLabel());
-            }
-        
-            if ($formElement->getId() === $activeElement->getId())
+            
+            if ($activeElement && 
+                    ($formElement->getId() === $activeElement->getId()))
             {
                 $attribs['class'] = 'ui-btn-active';
             }
 
-            $buttons .='<a '.$this->_htmlAttribs($attribs).'>'
-                        .$label.'</a>'."\n";
+            $buttons .='<li><a '.$this->_htmlAttribs($attribs).'>'
+                        .$icon.$label.'</a></li>'."\n";
         }
         
         return $buttons;

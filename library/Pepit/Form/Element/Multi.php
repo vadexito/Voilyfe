@@ -23,6 +23,8 @@ abstract class Pepit_Form_Element_Multi extends Zend_Form_Element_Multi
     
     public function init()
     {
+        $this->setAttrib('data-visualrep','tags');
+        
         if ($this->getStorageEntity())
         {
             $repository = $this->getEntityManager()

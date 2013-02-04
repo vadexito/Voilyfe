@@ -50,7 +50,7 @@ class Events_View_Helper_SubPagesGraphIndex extends Pepit_View_Helper_Abstract
             ];
         }
         
-        return $this->view->partialLoop('partial/_pageGraph-mobile.phtml',$loopOptions);
+        return $this->view->partialLoop('partial/_pageVisualRep-mobile.phtml',$loopOptions);
     }
     
     protected function _loadDefaultOptions()
@@ -81,10 +81,9 @@ class Events_View_Helper_SubPagesGraphIndex extends Pepit_View_Helper_Abstract
         
         if (!$this->_buttonLeft)
         {
-            $this->_buttonLeft = $this->view->htmlMobileButtonNavBar(['position' => 'left'],[
-                    'href' => '#list_allCategories'],
-                    $this->view->translate('menu_short_categories')
-            );
+            $this->_buttonLeft = $this->view->htmlMobileButtonNavBar(['position'=>'left','type' => 
+            Pepit_View_Helper_HtmlMobileButtonNavBar::TYPE_BUTTON_BACK],[],
+                ucfirst($this->view->translate('menu_back_to_previous_page')));
         }
         
         if ($this->_title === NULL)

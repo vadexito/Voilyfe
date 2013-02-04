@@ -19,6 +19,8 @@ class Events_Form_Elements_Price extends Pepit_Form_Element_Range
     {
         parent::init();
         
+        $this->setAttrib('data-visualrep','google_chart');
+        
         $this->_id = 5;
         $this->setOptions([
         "required" => false,

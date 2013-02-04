@@ -1,14 +1,3 @@
-<div data-role="page" id="<?php echo $this->id ? $this->id : '' ?>"><!-- page -->
-    <div data-role="header" data-position="fixed" data-id="header" data-tap-toggle="false">
-        <?php echo $this->buttonLeft ?>
-        <h1><?php echo $this->title ;?></h1>
-        <?php echo $this->buttonRight ?>
-    </div><!-- /header -->
-    <div data-role="content">	
-        <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-            <?php echo $this->buttons; ?>
-        </div>        
-        <?php echo $this->graph; ?>
-    </div><!-- /content -->
-    <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('active' => $this->active)): ''?>
-</div><!-- end of page -->
+<ul data-role="listview">
+    <?php echo $this->buttons; ?>
+</ul>    

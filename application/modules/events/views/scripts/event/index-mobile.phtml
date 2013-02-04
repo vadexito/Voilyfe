@@ -59,8 +59,17 @@ if ($this->events)
         'active'    => 'calendar',
         'buttonRight'   => $addButton,
     ]);
-   
-    echo $this->subPagesGraphIndex($this->category,$this->graphs($this->events,$this->allOption)); 
+    
+    $graphOptions = $this->graphs($this->events,$this->allOption);
+    echo $this->subPageIndex($this->category,'graphs-page',[
+        'content'   => $this->partial(
+            'partial/_pageGraph-mobile.phtml',
+            ['buttons' => $this->graphs()->getListElementsToShow()]
+        ),
+        'active'    => 'graphs',
+        'buttonRight'   => $addButton,
+    ]);   
+    echo $this->subPagesGraphIndex($this->category,$graphOptions); 
     
 } 
 else //if no event to show

@@ -18,6 +18,8 @@ class Pepit_Form_Element_Date extends Pepit_Form_Element_Xhtml
     
     public function init()
     {
+        $this->setAttrib('data-visualrep','google_chart');
+        
         $session = new Zend_Session_Namespace('mylife_device_info');
         if (isset($session->deviceType) && 
             ($session->deviceType === Application_Controller_Plugin_MobileInit::DEVICE_TYPE_MOBILE))
