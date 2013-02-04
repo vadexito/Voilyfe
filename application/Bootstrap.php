@@ -37,12 +37,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view = $this->getPluginResource('view')->getView();
         
         // add title;
-        $title = 'Mylife';
-        if (APPLICATION_ENV !== 'production')
-        {
-            $title .= ' - '.ucfirst(substr(APPLICATION_ENV,0,5)).' Env';
-        }
-        $view->headTitle($title);
+        $view->headTitle('Mylife');
  
         //add short cut icon
         $view->headLink([
