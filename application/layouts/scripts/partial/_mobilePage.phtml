@@ -11,6 +11,4 @@
     <?php echo $this->popups(); ?>
     <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('active' => $this->active)): ''?>
 <?php if (!(property_exists($this,'noWrap') && ($this->noWrap === true))) : ?>
-</div><!-- end of page --><?php endif;?>
-
-    
+</div><!-- end of page --><?php endif;?>   
