@@ -86,7 +86,7 @@ window.IndexView = Backbone.View.extend({
         
         //Create collection for subgroup of events corresponding to tag
         var tagEvents = new Events();
-        var tagValue = $(e.currentTarget).find('h3').html();
+        var tagValue = $(e.currentTarget).find('span.tagvalue').html();
         
         _.each($.parseJSON($(e.currentTarget).attr('data-events')),function(id){
             tagEvents.add(this.options.lastEventsCollectionTrunc.get(id));            

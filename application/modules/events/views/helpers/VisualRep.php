@@ -85,7 +85,7 @@ class Events_View_Helper_VisualRep extends Zend_View_Helper_HtmlElement
                 
                 $list .= '<li>
                     <a'. $this->_htmlAttribs($attribs).'>'
-                    .$value."\n"
+                    .'<span class="tagvalue">'.$value.'</span>'."\n"
                     . '<span class="ui-li-count">'.$data['count'].'</span>'."\n"
                     . "\t". '</a>'."\n"
                     . "\t".'</li>'."\n";

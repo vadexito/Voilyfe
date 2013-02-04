@@ -3,12 +3,10 @@ window.GraphView = Backbone.View.extend({
     initialize: function(){
         
         this.page = this.$el.parents().filter('div[data-role="page"]').first();
-        this.initGoogleChart(); 
         
-        
-//        if ($.mobile.activePage.attr('id') == this.page.attr('id')){            
-//            this.initGoogleChart();        
-//        }
+        if (typeof google != 'undefined'){
+            this.initGoogleChart(); 
+        }
         
         this.page.on('pageshow',{graph:this},this.updatePage);
     },
