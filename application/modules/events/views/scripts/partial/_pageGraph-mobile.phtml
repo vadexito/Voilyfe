@@ -7,8 +7,7 @@
     <div data-role="content">	
         <div data-role="controlgroup" data-mini="true" data-type="horizontal">
             <?php echo $this->buttons; ?>
-        </div>
-        
+        </div>        
         <?php echo $this->graph; ?>
     </div><!-- /content -->
     <?php echo ($this->footer)? $this->partial('partial/'.$this->footer.'.phtml',array('active' => $this->active)): ''?>
